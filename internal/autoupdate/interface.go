@@ -16,5 +16,5 @@ type Receiver interface {
 	Receive(from, to int) (data map[string]json.RawMessage, err error)
 
 	// Changed keys returns all keys that where changed between higher "from" and lower or equal "to".
-	ChangedKeys(from, to int) (keys []string, all bool, err error)
+	ChangedKeys(from, to int) (keys []string, err error)
 }

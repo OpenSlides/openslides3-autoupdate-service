@@ -29,9 +29,9 @@ func (r *ReceiverMock) Receive(from, to int) (map[string]json.RawMessage, error)
 }
 
 // ChangedKeys returns the value in r.Changed.
-func (r *ReceiverMock) ChangedKeys(from, to int) (keys []string, all bool, err error) {
+func (r *ReceiverMock) ChangedKeys(from, to int) (keys []string, err error) {
 	if from == 0 || r.Changed == nil {
-		return nil, true, nil
+		return nil, nil
 	}
-	return r.Changed, false, nil
+	return r.Changed, nil
 }

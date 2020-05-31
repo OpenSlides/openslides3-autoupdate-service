@@ -61,11 +61,20 @@ func (r *Receiver) Update() (data map[string]json.RawMessage, changeID int, err 
 // Receive is used to get missing data. It returns all data between higher
 // "from" and lower or equal "to".
 func (r *Receiver) Receive(from, to int) (data map[string]json.RawMessage, err error) {
-	return nil, nil
+	keys, err := r.redisConn.ChangedKeys(from, to)
+	if err != nil {
+		return nil, fmt.Errorf("get changed keys: %w", err)
+	}
+
+	data, err = r.redisConn.Data(keys)
+	if err != nil {
+		return nil, fmt.Errorf("get data: %w", err)
+	}
+	return data, nil
 }
 
 // ChangedKeys returns all keys that where changed between higher "from" and
 // lower or equal "to".
-func (r *Receiver) ChangedKeys(from, to int) (keys []string, all bool, err error) {
-	return nil, true, nil
+func (r *Receiver) ChangedKeys(from, to int) (keys []string, err error) {
+	return r.redisConn.ChangedKeys(from, to)
 }
