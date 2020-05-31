@@ -1,10 +1,4 @@
 github.com/garyburd/redigo v1.6.0 h1:0VruCpn7yAIIu7pWVClQC8wxCJEcG3nyzpMSHKi1PQc=
 github.com/garyburd/redigo v1.6.0/go.mod h1:NR3MbYisc3/PwhQ00EMzDiPmrwpPxAn5GI05/YaO1SY=
-github.com/ostcar/topic v0.2.1 h1:8iaILevf6z/Hz1kwE5UAfZmAzBHZJEXIoz3mlIYh9n4=
-github.com/ostcar/topic v0.2.1/go.mod h1:61PcAdinfpVwmQTjP2W0rZoEJqnKku7zvGS9Ag4Si18=
-github.com/ostcar/topic v0.3.0 h1:5LttES2K2gJNRp1V4qD4/vkoMIFnMu7xb2wIsUYMQMU=
-github.com/ostcar/topic v0.3.0/go.mod h1:61PcAdinfpVwmQTjP2W0rZoEJqnKku7zvGS9Ag4Si18=
-github.com/ostcar/topic v0.3.1-0.20200531101529-c37bf25fe1ed h1:A3SX974J+Mcf9zAuyuPlgBMt2juOSkMJuC2lntPduqE=
-github.com/ostcar/topic v0.3.1-0.20200531101529-c37bf25fe1ed/go.mod h1:61PcAdinfpVwmQTjP2W0rZoEJqnKku7zvGS9Ag4Si18=
 github.com/ostcar/topic v0.3.2 h1:etk3rYpLUJd4VlXEAwn5r+FkNy20FCJqb5TAswfZEgY=
 github.com/ostcar/topic v0.3.2/go.mod h1:61PcAdinfpVwmQTjP2W0rZoEJqnKku7zvGS9Ag4Si18=
