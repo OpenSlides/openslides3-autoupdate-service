@@ -18,7 +18,7 @@ Ist die Change id mehr als eins größer als die höhste Change id, dann werden
 die Daten aller fehlenden change ids manuell geladen bevor die Daten aus dem
 Stream bearbeitet werden. (Für manuelles laden siehe unten.)
 
-Ist die change id kleiner als ein größer als die höhste change id, dann wird das
+Ist die change id kleiner als eins größer als die höhste change id, dann wird das
 paket verworfen.
 
 Um eine Change ID oder ein range einer change id manuell zu laden wird das
