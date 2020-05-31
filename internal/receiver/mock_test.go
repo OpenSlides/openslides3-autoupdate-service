@@ -15,3 +15,11 @@ func (r *redisConnMock) FullData() (map[string]json.RawMessage, int, int, error)
 func (r *redisConnMock) Update() ([]byte, error) {
 	return nil, nil
 }
+
+func (r *redisConnMock) ChangedKeys(from, to int) ([]string, error) {
+	return nil, nil
+}
+
+func (r *redisConnMock) Data(keys []string) (map[string]json.RawMessage, error) {
+	return nil, nil
+}

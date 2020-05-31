@@ -142,3 +142,38 @@ func (r *Redis) Update() ([]byte, error) {
 	}
 	return data, nil
 }
+
+// ChangedKeys returns all keys in the changeidkey higher from and lower or
+// equal to.
+func (r *Redis) ChangedKeys(from, to int) ([]string, error) {
+	conn := r.pool.Get()
+	defer conn.Close()
+
+	keys, err := redis.Strings(conn.Do("ZRANGEBYSCORE", changeIDKey, "("+strconv.Itoa(from), strconv.Itoa(to)))
+	if err != nil {
+		return nil, fmt.Errorf("get changed keys from redis: %w", err)
+	}
+	return keys, nil
+}
+
+// Data returns the data from redis for specific keys.
+func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
+	conn := r.pool.Get()
+	defer conn.Close()
+
+	args := make([]interface{}, len(keys))
+	for i := range keys {
+		args[i] = keys[i]
+	}
+
+	rawData, err := redis.StringMap(conn.Do("HMGET", args...))
+	if err != nil {
+		return nil, fmt.Errorf("hmget all request: %w", err)
+	}
+
+	data := make(map[string]json.RawMessage, len(rawData))
+	for k, v := range rawData {
+		data[k] = json.RawMessage(v)
+	}
+	return data, nil
+}

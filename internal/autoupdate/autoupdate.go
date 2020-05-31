@@ -107,13 +107,13 @@ func (a *Autoupdate) Receive(ctx context.Context, changeID int) (map[string]json
 		return a.cache.forKeys(keys), int(nid), nil
 	}
 
-	keys, all, err := a.receiver.ChangedKeys(changeID, maxChangeID)
-	if err != nil {
-		return nil, 0, fmt.Errorf("receive changed keys: %v", err)
+	if changeID < a.minChangeID {
+		return a.cache.all(), maxChangeID, nil
 	}
 
-	if all {
-		return a.cache.all(), maxChangeID, nil
+	keys, err := a.receiver.ChangedKeys(changeID, maxChangeID)
+	if err != nil {
+		return nil, 0, fmt.Errorf("receive changed keys: %v", err)
 	}
 
 	return a.cache.forKeys(keys), maxChangeID, nil
