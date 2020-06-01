@@ -9,6 +9,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	ahttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/receiver"
@@ -17,11 +18,12 @@ import (
 
 func main() {
 	listenAddr := getEnv("LISTEN_HTTP_ADDR", ":8002")
+	workerAddr := getEnv("WORKER_ADDR", "http://localhost:8000")
 
 	redisConn := redis.New(getEnv("REDIS_ADDR", "localhost:6379"))
 
 	receiver := receiver.New(
-		getEnv("WORKER_ADDR", "localhost:8000"),
+		workerAddr,
 		redisConn,
 	)
 
@@ -30,7 +32,8 @@ func main() {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	handler := ahttp.New(service)
+	auth := auth.New(workerAddr)
+	handler := ahttp.New(service, auth)
 
 	srv := &http.Server{Addr: listenAddr, Handler: handler}
 	defer func() {

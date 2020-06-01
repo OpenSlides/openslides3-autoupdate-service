@@ -50,6 +50,13 @@ To get all data after a change id:
 curl localhost:8002/system/autoupdate?change_id=133188953000
 ```
 
+To test an authenticated request, login to OpenSlides and find the given session
+id. Afterwards the session cookie can be used with curl:
+
+```
+curl --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" localhost:8002/system/autoupdate
+```
+
 
 ## Run Test
 
@@ -65,4 +72,4 @@ The service can be configured with the following environment variables:
 
 * `LISTEN_HTTP_ADDR`: Host and port on which the services listen on (Default: `:8002`).
 * `REDIS_ADDR`: Host and port of the redis service (Default: `localhost:6379`).
-* `WORKER_ADDR`: Host and port of the OpenSlides worker (Default: `localhost:8000`).
+* `WORKER_ADDR`: Host and port of the OpenSlides worker (Default: `http://localhost:8000`).

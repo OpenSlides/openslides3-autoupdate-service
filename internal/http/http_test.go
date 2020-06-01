@@ -14,6 +14,7 @@ import (
 )
 
 func TestAutoupdateFirstData(t *testing.T) {
+	auther := new(test.AutherMock)
 	receiver := new(test.ReceiverMock)
 	receiver.MaxChangeID = 2
 	receiver.FullData = map[string]json.RawMessage{
@@ -27,7 +28,7 @@ func TestAutoupdateFirstData(t *testing.T) {
 	}
 	defer a.Close()
 
-	srv := httptest.NewServer(ahttp.New(a))
+	srv := httptest.NewServer(ahttp.New(a, auther))
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -49,6 +50,7 @@ func TestAutoupdateFirstData(t *testing.T) {
 
 func TestAutoupdateWithChangeID(t *testing.T) {
 	t.Skip("This does not work :(")
+	auther := new(test.AutherMock)
 	receiver := new(test.ReceiverMock)
 	receiver.MaxChangeID = 2
 	receiver.FullData = map[string]json.RawMessage{
@@ -62,7 +64,7 @@ func TestAutoupdateWithChangeID(t *testing.T) {
 	}
 	defer a.Close()
 
-	srv := httptest.NewServer(ahttp.New(a))
+	srv := httptest.NewServer(ahttp.New(a, auther))
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -95,4 +97,36 @@ func TestAutoupdateWithChangeID(t *testing.T) {
 	if len(body) != 0 {
 		t.Errorf("Got content in body, expected no data")
 	}
+}
+
+func TestAuth(t *testing.T) {
+	auther := new(test.AutherMock)
+	receiver := new(test.ReceiverMock)
+
+	a, err := autoupdate.New(receiver)
+	if err != nil {
+		t.Fatalf("autoupdate startup failed: %v", err)
+	}
+	defer a.Close()
+
+	srv := httptest.NewServer(ahttp.New(a, auther))
+	defer srv.Close()
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, srv.URL+"/system/autoupdate", nil)
+	if err != nil {
+		t.Fatalf("Can not create request: %v", err)
+	}
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatalf("Can not send request: %v", err)
+	}
+	defer resp.Body.Close()
+	cancel()
+
+	if !auther.AuthCalled {
+		t.Errorf("Auther was not called.")
+	}
+
 }

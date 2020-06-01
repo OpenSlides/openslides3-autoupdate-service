@@ -38,7 +38,7 @@ func TestAutoupdateReceiveNewData(t *testing.T) {
 	}
 	defer a.Close()
 
-	data, id, err := a.Receive(context.Background(), 1)
+	data, id, err := a.Receive(context.Background(), 1, 1)
 
 	if err != nil {
 		t.Errorf("Receive returned an unexpected error: %v", err)
@@ -68,7 +68,7 @@ func TestAutoupdateReceiveFirstData(t *testing.T) {
 	}
 	defer a.Close()
 
-	data, id, err := a.Receive(context.Background(), 0)
+	data, id, err := a.Receive(context.Background(), 1, 0)
 
 	if err != nil {
 		t.Errorf("Receive returned an unexpected error: %v", err)

@@ -87,7 +87,9 @@ func (a *Autoupdate) Close() {
 // done, the service is closed or new data is received.
 //
 // If the returned value is nil, then the context or the service was closed.
-func (a *Autoupdate) Receive(ctx context.Context, changeID int) (map[string]json.RawMessage, int, error) {
+//
+// The returned data is restricted for the given uid.
+func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (map[string]json.RawMessage, int, error) {
 	a.mu.RLock()
 	maxChangeID := a.maxChangeID
 	a.mu.RUnlock()
