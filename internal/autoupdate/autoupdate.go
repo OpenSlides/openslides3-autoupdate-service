@@ -34,7 +34,6 @@ func New(receiver Receiver) (*Autoupdate, error) {
 	}
 
 	closed := make(chan struct{})
-	log.Println("max:", max)
 
 	a := &Autoupdate{
 		receiver:    receiver,
@@ -107,7 +106,7 @@ func (a *Autoupdate) Receive(ctx context.Context, changeID int) (map[string]json
 		return a.cache.forKeys(keys), int(nid), nil
 	}
 
-	if changeID < a.minChangeID {
+	if changeID == 0 || changeID < a.minChangeID {
 		return a.cache.all(), maxChangeID, nil
 	}
 
