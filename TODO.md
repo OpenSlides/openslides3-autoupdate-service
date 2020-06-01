@@ -1,7 +1,6 @@
 * Projector
 * Restricter
 * Notify
-* Auth
 * Startup with incomplete redis data
 
 

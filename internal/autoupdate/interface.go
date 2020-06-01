@@ -1,6 +1,8 @@
 package autoupdate
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 // Receiver gets the data for the autoupdate service.
 type Receiver interface {

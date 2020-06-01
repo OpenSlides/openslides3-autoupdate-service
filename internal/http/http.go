@@ -15,13 +15,15 @@ import (
 type Handler struct {
 	autoupdate *autoupdate.Autoupdate
 	mux        *http.ServeMux
+	auther     Auther
 }
 
 // New create a new Handler with the correct urls.
-func New(autoupdate *autoupdate.Autoupdate) *Handler {
+func New(autoupdate *autoupdate.Autoupdate, auther Auther) *Handler {
 	h := &Handler{
 		autoupdate: autoupdate,
 		mux:        http.NewServeMux(),
+		auther:     auther,
 	}
 	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
 	return h
@@ -34,10 +36,15 @@ func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/octet-stream")
 
-	// TODO: auth
+	uid, err := h.auther.Auth(r)
+	if err != nil {
+		// TODO: Send a better message to the client when anonymous users are
+		// not alowed.
+		internalErr(w, fmt.Errorf("authenticate: %w", err))
+		return
+	}
 
 	rawChangeID := r.URL.Query().Get("change_id")
-
 	changeID := 0
 	if rawChangeID != "" {
 		var err error
@@ -51,10 +58,9 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(200)
 	w.(http.Flusher).Flush()
 	var data map[string]json.RawMessage
-	var err error
 
 	for {
-		data, changeID, err = h.autoupdate.Receive(r.Context(), changeID)
+		data, changeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
 		if err != nil {
 			internalErr(w, err)
 			return
