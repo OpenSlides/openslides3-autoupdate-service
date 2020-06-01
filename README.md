@@ -3,3 +3,66 @@
 The OpenSlides3 autoupdate service is a messaging system for openslides 3.x. It
 replaces django channels.
 
+To work, the service needs running OpenSlides 3 instance. It reads the data from
+redis, gets autoupdates via redis and authenticates request via the openslides service.
+
+
+## Install and Start
+
+### With Go
+
+When Go is installed, the service can be installed with:
+
+```
+go get github.com/OpenSlides/openslides3-autoupdate-service/cmd/autoupdate
+```
+
+This command is case sensitive!
+
+After this command, the binary is installed inside the
+[gopath](https://github.com/golang/go/wiki/GOPATH). When the gopath is
+integrated correctly, the autoupdate service can be started with:
+
+```
+autoupdate
+```
+
+### With Checked out repository and Go
+
+When the repository is checked out, the service can be build and started with
+
+```
+go build ./cmd/autoupdate && ./autoupdate
+```
+
+
+## Example requests with curl
+
+To get all data:
+
+```
+curl localhost:8002/system/autoupdate
+```
+
+To get all data after a change id:
+
+```
+curl localhost:8002/system/autoupdate?change_id=133188953000
+```
+
+
+## Run Test
+
+To run the tests, call:
+
+```
+go test ./...
+```
+
+## Environment variables
+
+The service can be configured with the following environment variables:
+
+* `LISTEN_HTTP_ADDR`: Host and port on which the services listen on (Default: `:8002`).
+* `REDIS_ADDR`: Host and port of the redis service (Default: `localhost:6379`).
+* `WORKER_ADDR`: Host and port of the OpenSlides worker (Default: `localhost:8000`).
