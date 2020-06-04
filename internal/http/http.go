@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 )
@@ -63,9 +64,11 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(200)
 	w.(http.Flusher).Flush()
 	var data map[string]json.RawMessage
+	var all bool
+	var newChangeID int
 
 	for {
-		_, data, changeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
+		all, data, newChangeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
 		if err != nil {
 			sendErr(w, err)
 			return
@@ -76,30 +79,43 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		if err := sendData(w, data, changeID); err != nil {
+		if err := sendData(w, all, data, changeID, newChangeID); err != nil {
 			sendErr(w, err)
 			return
 		}
 		w.(http.Flusher).Flush()
+		changeID = newChangeID
 	}
 }
 
-func sendData(w io.Writer, data map[string]json.RawMessage, changeID int) error {
-	var format struct {
-		Changed  map[string]json.RawMessage `json:"changed"`
-		ChangeID int                        `json:"change_id"`
+func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChangeID, toChangeID int) error {
+	changed := make(map[string][]json.RawMessage)
+	deleted := make([]string, 0)
+	for k := range data {
+		if data[k] == nil {
+			deleted = append(deleted, k)
+		} else {
+			collection := strings.Split(k, ":")[0]
+			changed[collection] = append(changed[collection], data[k])
+		}
 	}
 
-	format.Changed = data
-	format.ChangeID = changeID
-
-	encoded, err := json.Marshal(format)
-	if err != nil {
-		return fmt.Errorf("encode responce format: %w", err)
+	format := struct {
+		Changed      map[string][]json.RawMessage `json:"changed"`
+		Deleted      []string                     `json:"deleted"`
+		FromChangeID int                          `json:"from_change_id"`
+		ToChangeID   int                          `json:"to_change_id"`
+		AllData      bool                         `json:"all_data"`
+	}{
+		changed,
+		deleted,
+		fromChangeID,
+		toChangeID,
+		all,
 	}
 
-	if _, err := fmt.Fprintf(w, "%s\n", encoded); err != nil {
-		return fmt.Errorf("sending data to client: %w", err)
+	if err := json.NewEncoder(w).Encode(format); err != nil {
+		return fmt.Errorf("encode and send output data: %w", err)
 	}
 	return nil
 }
