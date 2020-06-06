@@ -26,11 +26,17 @@ func New(autoupdate *autoupdate.Autoupdate, auther Auther) *Handler {
 		auther:     auther,
 	}
 	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
+	h.mux.Handle("/system/health", http.HandlerFunc(h.handleHealth))
 	return h
 }
 
 func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	h.mux.ServeHTTP(w, r)
+}
+
+func (h *Handler) handleHealth(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	fmt.Fprintln(w, `{"healthy": true}`)
 }
 
 func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
