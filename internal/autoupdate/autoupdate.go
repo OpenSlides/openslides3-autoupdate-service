@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"sync"
 
 	"github.com/ostcar/topic"
 )
@@ -16,59 +15,52 @@ import (
 // newst data ist returned, even when old change ids are requested. The change
 // id system only desices, which keys have changed.
 type Autoupdate struct {
-	receiver    Receiver
-	cache       *cache
-	minChangeID int
-	closed      chan struct{}
-	topic       *topic.Topic
-
-	mu          sync.RWMutex
-	maxChangeID int
+	datastore  Datastore
+	closed     chan struct{}
+	topic      *topic.Topic
+	smallestID int
 }
 
 // New create a new autoupdate instance.
-func New(receiver Receiver) (*Autoupdate, error) {
-	fd, min, max, err := receiver.StartData()
-	if err != nil {
-		return nil, fmt.Errorf("receiving startup data: %w", err)
-	}
-
+func New(datastore Datastore) (*Autoupdate, error) {
 	closed := make(chan struct{})
+	smallestID := datastore.LowestID()
 
 	a := &Autoupdate{
-		receiver:    receiver,
-		minChangeID: min,
-		maxChangeID: max,
-		cache:       &cache{data: fd},
-		closed:      closed,
-		topic:       topic.New(topic.WithClosed(closed), topic.WithStartID(uint64(max))),
+		datastore:  datastore,
+		smallestID: smallestID,
+		closed:     closed,
+		topic:      topic.New(topic.WithClosed(closed), topic.WithStartID(uint64(smallestID))),
 	}
 
-	// Background task, that updates the data.
 	go func() {
 		for {
-			data, changeID, err := a.receiver.Update()
+			// TODO: this will not clean up the goroutine when there is no new data.
+			select {
+			case <-a.closed:
+				return
+			default:
+			}
+
+			keys, changeID, err := datastore.KeysChanged()
 			if err != nil {
-				log.Printf("Can not receive updated data: %v", err)
-				continue
+				log.Printf("Error: Can not receive new data: %v", err)
 			}
 
-			if changeID > a.maxChangeID+1 {
-				// Data is to new. Get the data in between.
-				data, err := a.receiver.Receive(a.maxChangeID, changeID-1)
-				if err != nil {
-					log.Printf("Can not receive data: %v", err)
-					continue
-				}
-				a.update(data, changeID-1)
+			tid := a.topic.Publish(keys...)
+
+			// When the received data is to new, all the missing data is received at
+			// once. If more then one change id was skipped, the missing ids have to be
+			// created in the toppic with dummy items.
+			for tid < uint64(changeID) {
+				tid = a.topic.Publish()
 			}
 
-			if changeID < a.maxChangeID+1 {
-				// Data already known.
-				continue
+			// if the topic id is bigger then the change id, then something is broken.
+			// There is no way to recover safely from this.
+			if tid != uint64(changeID) {
+				log.Panicf("topic id differs from change id. Topic: %d, changeid %d", tid, changeID)
 			}
-
-			a.update(data, changeID)
 		}
 	}()
 
@@ -88,63 +80,21 @@ func (a *Autoupdate) Close() {
 //
 // If the returned value is nil, then the context or the service was closed.
 //
-// The returned data is restricted for the given uid.
-func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (map[string]json.RawMessage, int, error) {
-	a.mu.RLock()
-	maxChangeID := a.maxChangeID
-	a.mu.RUnlock()
-
-	if changeID >= maxChangeID {
-		nid, keys, err := a.topic.Receive(ctx, uint64(changeID))
-		if err != nil {
-			return nil, 0, fmt.Errorf("get changed keys: %w", err)
-		}
-
-		if keys == nil {
-			// service or connection is closed.
-			return nil, 0, nil
-		}
-
-		return a.cache.forKeys(keys), int(nid), nil
+// The returned data is restricted for the given uid. (TODO)
+func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, map[string]json.RawMessage, int, error) {
+	if changeID == 0 || changeID < a.smallestID {
+		return true, a.datastore.GetAll(), int(a.topic.LastID()), nil
 	}
 
-	if changeID == 0 || changeID < a.minChangeID {
-		return a.cache.all(), maxChangeID, nil
-	}
-
-	keys, err := a.receiver.ChangedKeys(changeID, maxChangeID)
+	newChangeID, changedKeys, err := a.topic.Receive(ctx, uint64(changeID))
 	if err != nil {
-		return nil, 0, fmt.Errorf("receive changed keys: %v", err)
+		return false, nil, 0, fmt.Errorf("get changed keys: %w", err)
 	}
 
-	return a.cache.forKeys(keys), maxChangeID, nil
-}
-
-// update updates the cache. It is not save for concourent use.
-func (a *Autoupdate) update(data map[string]json.RawMessage, changeID int) {
-	a.cache.update(data)
-
-	keys := make([]string, 0, len(data))
-	for key := range data {
-		keys = append(keys, key)
+	// The connection was closed or ther server is exiting.
+	if changedKeys == nil {
+		return false, nil, 0, nil
 	}
 
-	tid := a.topic.Publish(keys...)
-
-	// When the received data is to new, all the missing data is received at
-	// once. If more then one change id was skipped, the missing ids have to be
-	// created in the toppic with dummy items.
-	for tid < uint64(changeID) {
-		tid = a.topic.Publish()
-	}
-
-	// if the topic id is bigger then the change id, then something is broken.
-	// There is no way to recover safely from this.
-	if tid != uint64(changeID) {
-		log.Panicf("topic id differs from change id. Topic: %d, changeid %d", tid, changeID)
-	}
-
-	a.mu.Lock()
-	a.maxChangeID = changeID
-	a.mu.Unlock()
+	return false, a.datastore.GetMany(changedKeys), int(newChangeID), nil
 }

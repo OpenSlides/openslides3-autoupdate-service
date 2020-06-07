@@ -15,14 +15,13 @@ import (
 
 func TestAutoupdateFirstData(t *testing.T) {
 	auther := new(test.AutherMock)
-	receiver := new(test.ReceiverMock)
-	receiver.MaxChangeID = 2
-	receiver.FullData = map[string]json.RawMessage{
+	datastore := test.NewDatastoreMock(1)
+	datastore.FullData = map[string]json.RawMessage{
 		"user:1": []byte("hello world1"),
 		"user:2": []byte("hello world2"),
 	}
 
-	a, err := autoupdate.New(receiver)
+	a, err := autoupdate.New(datastore)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
@@ -51,14 +50,13 @@ func TestAutoupdateFirstData(t *testing.T) {
 func TestAutoupdateWithChangeID(t *testing.T) {
 	t.Skip("This does not work :(")
 	auther := new(test.AutherMock)
-	receiver := new(test.ReceiverMock)
-	receiver.MaxChangeID = 2
-	receiver.FullData = map[string]json.RawMessage{
+	datastore := test.NewDatastoreMock(1)
+	datastore.FullData = map[string]json.RawMessage{
 		"user:1": []byte("hello world1"),
 		"user:2": []byte("hello world2"),
 	}
 
-	a, err := autoupdate.New(receiver)
+	a, err := autoupdate.New(datastore)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
@@ -101,9 +99,9 @@ func TestAutoupdateWithChangeID(t *testing.T) {
 
 func TestAuth(t *testing.T) {
 	auther := new(test.AutherMock)
-	receiver := new(test.ReceiverMock)
+	datastore := test.NewDatastoreMock(1)
 
-	a, err := autoupdate.New(receiver)
+	a, err := autoupdate.New(datastore)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}

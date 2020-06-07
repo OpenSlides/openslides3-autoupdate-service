@@ -2,6 +2,7 @@ package http
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -44,9 +45,7 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 
 	uid, err := h.auther.Auth(r)
 	if err != nil {
-		// TODO: Send a better message to the client when anonymous users are
-		// not alowed.
-		internalErr(w, fmt.Errorf("authenticate: %w", err))
+		sendErr(w, fmt.Errorf("authenticate: %w", err))
 		return
 	}
 
@@ -66,9 +65,9 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	var data map[string]json.RawMessage
 
 	for {
-		data, changeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
+		_, data, changeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
 		if err != nil {
-			internalErr(w, err)
+			sendErr(w, err)
 			return
 		}
 
@@ -78,7 +77,7 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := sendData(w, data, changeID); err != nil {
-			internalErr(w, err)
+			sendErr(w, err)
 			return
 		}
 		w.(http.Flusher).Flush()
@@ -107,7 +106,17 @@ func sendData(w io.Writer, data map[string]json.RawMessage, changeID int) error 
 
 // internalErr sends a nonsense error message to the client and logs the real
 // message to stdout.
-func internalErr(w io.Writer, err error) {
+func sendErr(w io.Writer, err error) {
+	var clientError interface {
+		ClientError() string
+		Error() string
+	}
+	if errors.As(err, &clientError) {
+		fmt.Fprintf(w, `{"error": {"type": "%s", "msg": "%s"}}`, clientError.ClientError(), clientError.Error())
+		fmt.Fprintln(w)
+		return
+	}
+
 	log.Printf("Internal Error: %v", err)
 	fmt.Fprintln(w, `{"error": {"type": "InternalError", "msg": "Ups, something went wrong!"}}`)
 }

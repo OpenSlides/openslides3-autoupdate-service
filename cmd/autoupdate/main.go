@@ -11,8 +11,8 @@ import (
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
 	ahttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/receiver"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 )
 
@@ -22,12 +22,12 @@ func main() {
 
 	redisConn := redis.New(getEnv("REDIS_ADDR", "localhost:6379"))
 
-	receiver := receiver.New(
-		workerAddr,
-		redisConn,
-	)
+	ds, err := datastore.New(workerAddr, redisConn)
+	if err != nil {
+		log.Fatalf("Can not initialize data: %v", err)
+	}
 
-	service, err := autoupdate.New(receiver)
+	service, err := autoupdate.New(ds)
 	if err != nil {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
