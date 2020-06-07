@@ -39,12 +39,6 @@ func (a *Auth) Auth(r *http.Request) (int, error) {
 		return 0, fmt.Errorf("send whoami request: %w", err)
 	}
 
-	// resp, err := http.DefaultClient.Do(req)
-	// if err != nil {
-	// 	return 0, fmt.Errorf("send whoami request: %w", err)
-	// }
-	// defer resp.Body.Close()
-
 	var respData struct {
 		UserID       *int `json:"user_id"`
 		GuestEnabled bool `json:"guest_enabled"`
@@ -55,7 +49,7 @@ func (a *Auth) Auth(r *http.Request) (int, error) {
 	}
 
 	if !respData.GuestEnabled && respData.UserID == nil {
-		return 0, fmt.Errorf("anonymous not enabled")
+		return 0, new(errorNoAnonymous)
 	}
 
 	if respData.UserID == nil {

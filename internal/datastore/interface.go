@@ -1,4 +1,4 @@
-package receiver
+package datastore
 
 import "encoding/json"
 

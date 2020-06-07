@@ -1,4 +1,4 @@
-package autoupdate
+package datastore
 
 import (
 	"encoding/json"
