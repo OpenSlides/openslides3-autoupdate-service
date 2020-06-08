@@ -14,6 +14,8 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
 	ahttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/user"
 )
 
 func main() {
@@ -27,7 +29,13 @@ func main() {
 		log.Fatalf("Can not initialize data: %v", err)
 	}
 
-	service, err := autoupdate.New(ds)
+	restricter := restricter.New(ds, map[string]restricter.Element{
+		"users/user":          user.NewUser(ds),
+		"users/group":         restricter.ElementFunc(user.Group),
+		"users/personal_note": restricter.ElementFunc(user.PersonalNote),
+	})
+
+	service, err := autoupdate.New(ds, restricter)
 	if err != nil {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}

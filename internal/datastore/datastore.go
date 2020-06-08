@@ -4,7 +4,13 @@ package datastore
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"sync"
+)
+
+const (
+	groupDefaultPK = 1
+	groupAdminPK   = 2
 )
 
 // Datastore holds the connection to OpenSlides and Redis.
@@ -95,12 +101,80 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 
 // GetMany returns the values for the given keys.
 func (d *Datastore) GetMany(keys []string) map[string]json.RawMessage {
-	return d.cache.forKeys(keys)
+	return d.cache.forKeys(keys...)
 }
 
 // GetAll returns all data.
 func (d *Datastore) GetAll() map[string]json.RawMessage {
 	return d.cache.all()
+}
+
+// HasPerm returns, if the user has the perm.
+func (d *Datastore) HasPerm(uid int, perm string) bool {
+	var group struct {
+		Permissions []string `json:"permissions"`
+	}
+
+	if uid == 0 {
+		// Check if the perm is in the default group.
+		defaultGroup := d.cache.element("users/group:" + strconv.Itoa(groupDefaultPK))
+
+		if err := json.Unmarshal(defaultGroup, &group); err != nil {
+			return false
+		}
+
+		for _, p := range group.Permissions {
+			if p == perm {
+				return true
+			}
+		}
+		return false
+	}
+
+	userData := d.cache.element("users/user" + strconv.Itoa(uid))
+
+	if userData == nil {
+		return false
+	}
+
+	var user struct {
+		GroupsID []int `json:"groups_id"`
+	}
+
+	if err := json.Unmarshal(userData, &user); err != nil {
+		return false
+	}
+
+	if len(user.GroupsID) == 0 {
+		user.GroupsID = []int{groupDefaultPK}
+	}
+
+	for _, id := range user.GroupsID {
+		if id == groupAdminPK {
+			// User is in admin group.
+			return true
+		}
+
+		group.Permissions = nil
+
+		groupData := d.cache.element("users/group:" + strconv.Itoa(id))
+
+		if groupData == nil {
+			// User is in group that does not exist.
+			return false
+		}
+
+		if err := json.Unmarshal(groupData, &group); err != nil {
+			return false
+		}
+
+		for _, p := range group.Permissions {
+			if p == perm {
+				return true
+			}
+		}
+	}
+	return false
 }
 
 // update updates the cache. It is not save for concourent use.
