@@ -21,7 +21,9 @@ func TestAutoupdateFirstData(t *testing.T) {
 		"user:2": []byte("hello world2"),
 	}
 
-	a, err := autoupdate.New(datastore)
+	restricter := new(test.RestricterMock)
+
+	a, err := autoupdate.New(datastore, restricter)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
@@ -56,7 +58,9 @@ func TestAutoupdateWithChangeID(t *testing.T) {
 		"user:2": []byte("hello world2"),
 	}
 
-	a, err := autoupdate.New(datastore)
+	restricter := new(test.RestricterMock)
+
+	a, err := autoupdate.New(datastore, restricter)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
@@ -101,7 +105,9 @@ func TestAuth(t *testing.T) {
 	auther := new(test.AutherMock)
 	datastore := test.NewDatastoreMock(1)
 
-	a, err := autoupdate.New(datastore)
+	restricter := new(test.RestricterMock)
+
+	a, err := autoupdate.New(datastore, restricter)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}

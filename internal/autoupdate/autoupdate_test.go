@@ -16,8 +16,9 @@ func TestAutoupdateReceiveNewData(t *testing.T) {
 		"user:2": []byte("hello world2"),
 	}
 	datastore.Change([]string{"user:1"})
+	restricter := new(test.RestricterMock)
 
-	a, err := autoupdate.New(datastore)
+	a, err := autoupdate.New(datastore, restricter)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
@@ -53,7 +54,9 @@ func TestAutoupdateReceiveFirstData(t *testing.T) {
 		"user:2": []byte("hello world2"),
 	}
 
-	a, err := autoupdate.New(datastore)
+	restricter := new(test.RestricterMock)
+
+	a, err := autoupdate.New(datastore, restricter)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}

@@ -16,13 +16,14 @@ import (
 // id system only desices, which keys have changed.
 type Autoupdate struct {
 	datastore  Datastore
+	restricter Restricter
 	closed     chan struct{}
 	topic      *topic.Topic
 	smallestID int
 }
 
 // New create a new autoupdate instance.
-func New(datastore Datastore) (*Autoupdate, error) {
+func New(datastore Datastore, restricter Restricter) (*Autoupdate, error) {
 	closed := make(chan struct{})
 	smallestID := datastore.LowestID()
 
@@ -30,6 +31,7 @@ func New(datastore Datastore) (*Autoupdate, error) {
 		datastore:  datastore,
 		smallestID: smallestID,
 		closed:     closed,
+		restricter: restricter,
 		topic:      topic.New(topic.WithClosed(closed), topic.WithStartID(uint64(smallestID))),
 	}
 
@@ -80,10 +82,12 @@ func (a *Autoupdate) Close() {
 //
 // If the returned value is nil, then the context or the service was closed.
 //
-// The returned data is restricted for the given uid. (TODO)
+// The returned data is restricted for the given uid.
 func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, map[string]json.RawMessage, int, error) {
 	if changeID == 0 || changeID < a.smallestID {
-		return true, a.datastore.GetAll(), int(a.topic.LastID()), nil
+		data := a.datastore.GetAll()
+		a.restricter.Restrict(uid, data)
+		return true, data, int(a.topic.LastID()), nil
 	}
 
 	newChangeID, changedKeys, err := a.topic.Receive(ctx, uint64(changeID))
@@ -96,5 +100,7 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 		return false, nil, 0, nil
 	}
 
+	data := a.datastore.GetAll()
+	a.restricter.Restrict(uid, data)
 	return false, a.datastore.GetMany(changedKeys), int(newChangeID), nil
 }

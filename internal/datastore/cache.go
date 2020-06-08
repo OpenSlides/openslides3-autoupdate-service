@@ -30,7 +30,7 @@ func (c *cache) update(changed map[string]json.RawMessage) {
 // with a nil value.
 //
 // Creates a copy of all data.
-func (c *cache) forKeys(keys []string) map[string]json.RawMessage {
+func (c *cache) forKeys(keys ...string) map[string]json.RawMessage {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
 
@@ -40,6 +40,16 @@ func (c *cache) forKeys(keys []string) map[string]json.RawMessage {
 		data[key] = append(v[:0:0], v...)
 	}
 	return data
+}
+
+// element returns the element for the key.
+//
+// If a key does not exist in the cache, nil is returned
+func (c *cache) element(key string) json.RawMessage {
+	c.mu.RLock()
+	defer c.mu.RUnlock()
+
+	return c.data[key]
 }
 
 // all returns all data from the cache.
