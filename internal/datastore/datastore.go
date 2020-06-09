@@ -4,13 +4,7 @@ package datastore
 import (
 	"encoding/json"
 	"fmt"
-	"strconv"
 	"sync"
-)
-
-const (
-	groupDefaultPK = 1
-	groupAdminPK   = 2
 )
 
 // Datastore holds the connection to OpenSlides and Redis.
@@ -22,6 +16,8 @@ type Datastore struct {
 
 	mu          sync.RWMutex
 	maxChangeID int
+
+	hasPerm
 }
 
 // New returns an initialized Datastore instance.
@@ -35,10 +31,12 @@ func New(osAddr string, redisConn RedisConn) (*Datastore, error) {
 	d := &Datastore{
 		osAddr:      osAddr,
 		redisConn:   redisConn,
-		cache:       &cache{data: fd},
+		cache:       new(cache),
 		minChangeID: min,
 		maxChangeID: max,
 	}
+
+	d.updateCache(fd, max)
 
 	return d, nil
 }
@@ -82,7 +80,10 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 		if err != nil {
 			return nil, 0, fmt.Errorf("receive missing data from %d to %d: %w", d.maxChangeID, changeID-1, err)
 		}
-		d.updateCache(data, changeID-1)
+
+		if err := d.updateCache(data, changeID-1); err != nil {
+			return nil, 0, fmt.Errorf("updating cache: %w", err)
+		}
 	}
 
 	if changeID < d.maxChangeID+1 {
@@ -90,7 +91,9 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 		return d.KeysChanged()
 	}
 
-	d.updateCache(sData.Elements, changeID)
+	if err := d.updateCache(sData.Elements, changeID); err != nil {
+		return nil, 0, fmt.Errorf("updating cache: %w", err)
+	}
 
 	keys := make([]string, 0, len(sData.Elements))
 	for k := range sData.Elements {
@@ -109,81 +112,18 @@ func (d *Datastore) GetAll() map[string]json.RawMessage {
 	return d.cache.all()
 }
 
-// HasPerm returns, if the user has the perm.
-func (d *Datastore) HasPerm(uid int, perm string) bool {
-	var group struct {
-		Permissions []string `json:"permissions"`
-	}
-
-	if uid == 0 {
-		// Check if the perm is in the default group.
-		defaultGroup := d.cache.element("users/group:" + strconv.Itoa(groupDefaultPK))
-
-		if err := json.Unmarshal(defaultGroup, &group); err != nil {
-			return false
-		}
-
-		for _, p := range group.Permissions {
-			if p == perm {
-				return true
-			}
-		}
-		return false
-	}
-
-	userData := d.cache.element("users/user" + strconv.Itoa(uid))
-
-	if userData == nil {
-		return false
-	}
-
-	var user struct {
-		GroupsID []int `json:"groups_id"`
-	}
-
-	if err := json.Unmarshal(userData, &user); err != nil {
-		return false
-	}
-
-	if len(user.GroupsID) == 0 {
-		user.GroupsID = []int{groupDefaultPK}
-	}
-
-	for _, id := range user.GroupsID {
-		if id == groupAdminPK {
-			// User is in admin group.
-			return true
-		}
-
-		group.Permissions = nil
-
-		groupData := d.cache.element("users/group:" + strconv.Itoa(id))
-
-		if groupData == nil {
-			// User is in group that does not exist.
-			return false
-		}
-
-		if err := json.Unmarshal(groupData, &group); err != nil {
-			return false
-		}
-
-		for _, p := range group.Permissions {
-			if p == perm {
-				return true
-			}
-		}
-	}
-	return false
-}
-
 // update updates the cache. It is not save for concourent use.
-func (d *Datastore) updateCache(data map[string]json.RawMessage, changeID int) {
+func (d *Datastore) updateCache(data map[string]json.RawMessage, changeID int) error {
 	d.cache.update(data)
 
 	d.mu.Lock()
 	d.maxChangeID = changeID
 	d.mu.Unlock()
+
+	if err := d.hasPerm.update(data); err != nil {
+		return fmt.Errorf("updating hasPerm: %w", err)
+	}
+	return nil
 }
 
 // receive is used to get missing data. It returns all data between higher

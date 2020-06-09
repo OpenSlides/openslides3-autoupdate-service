@@ -14,6 +14,10 @@ func (c *cache) update(changed map[string]json.RawMessage) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
+	if c.data == nil {
+		c.data = make(map[string]json.RawMessage)
+	}
+
 	for k, v := range changed {
 		if v == nil {
 			delete(c.data, k)
