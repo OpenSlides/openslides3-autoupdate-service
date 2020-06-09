@@ -1,5 +1,5 @@
 * Projector
-* Restricter
+* Restricter - Required user to see
 * Notify
 * Startup with incomplete redis data
 

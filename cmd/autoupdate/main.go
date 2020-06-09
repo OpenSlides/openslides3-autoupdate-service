@@ -15,6 +15,9 @@ import (
 	ahttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/agenda"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/mediafile"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/motion"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/user"
 )
 
@@ -29,10 +32,43 @@ func main() {
 		log.Fatalf("Can not initialize data: %v", err)
 	}
 
+	basePerm := restricter.BasePermission(ds)
+
 	restricter := restricter.New(ds, map[string]restricter.Element{
+		"agenda/item":             agenda.NewItem(ds),
+		"agenda/list-of-speakers": basePerm("agenda.can_see_list_of_speakers"),
+
+		"assignments/assignment":        basePerm("assignments.can_see"),
+		"assignments/assignment-poll":   basePerm("assignments.can_see"),
+		"assignments/assignment-option": basePerm("assignments.can_see"),
+		"assignments/assignment-vote":   basePerm("assignments.can_see"),
+
+		"core/projector":          basePerm("core.can_see_projector"),
+		"core/projection-default": basePerm("core.can_see_projector"),
+		"core/projector-message":  basePerm("core.can_see_projector"),
+		"core/countdown":          basePerm("core.can_see_projector"),
+		"core/tag":                restricter.ForAll,
+		"core/config":             restricter.ForAll,
+
+		"mediafiles/mediafile": mediafile.New(ds),
+
+		"motions/category":                     basePerm("motions.can_see"),
+		"motions/statute-paragraph":            basePerm("motions.can_see"),
+		"motions/motion":                       motion.NewMotion(ds),
+		"motions/motion-block":                 motion.NewBlock(ds),
+		"motions/motion-comment-section":       motion.NewCommentSection(ds),
+		"motions/workflow":                     basePerm("motions.can_see"),
+		"motions/motion-change-recommendation": motion.NewChangeRecommendation(ds),
+		"motions/motion-poll":                  basePerm("motions.can_see"),
+		"motions/motion-option":                basePerm("motions.can_see"),
+		"motions/motion-vote":                  basePerm("motions.can_see"),
+		"motions/state":                        basePerm("motions.can_see"),
+
+		"topics/topic": basePerm("agenda.can_see"),
+
 		"users/user":          user.NewUser(ds),
-		"users/group":         restricter.ElementFunc(user.Group),
-		"users/personal_note": restricter.ElementFunc(user.PersonalNote),
+		"users/group":         restricter.ForAll,
+		"users/personal-note": restricter.ElementFunc(user.PersonalNote),
 	})
 
 	service, err := autoupdate.New(ds, restricter)

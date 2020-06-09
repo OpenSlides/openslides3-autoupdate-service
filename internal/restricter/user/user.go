@@ -4,15 +4,17 @@ import (
 	"encoding/json"
 	"fmt"
 	"strconv"
+
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
 // User handels restrictions of users/user elements.
 type User struct {
-	HasPermer
+	restricter.HasPermer
 }
 
 // NewUser creates a new User.
-func NewUser(hasPermer HasPermer) *User {
+func NewUser(hasPermer restricter.HasPermer) *User {
 	return &User{
 		HasPermer: hasPermer,
 	}
