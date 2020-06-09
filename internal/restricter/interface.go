@@ -12,3 +12,8 @@ type Datastore interface {
 type Element interface {
 	Restrict(int, json.RawMessage) (json.RawMessage, error)
 }
+
+// HasPermer tells if a user has a specivic perm.
+type HasPermer interface {
+	HasPerm(uid int, perm string) bool
+}

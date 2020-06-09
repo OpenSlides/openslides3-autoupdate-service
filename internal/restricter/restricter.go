@@ -54,3 +54,21 @@ type ElementFunc func(int, json.RawMessage) (json.RawMessage, error)
 func (f ElementFunc) Restrict(u int, data json.RawMessage) (json.RawMessage, error) {
 	return f(u, data)
 }
+
+// BasePermission returns a generator to create simple Elements that only check
+// one permission.
+func BasePermission(h HasPermer) func(perm string) ElementFunc {
+	return func(perm string) ElementFunc {
+		return func(u int, data json.RawMessage) (json.RawMessage, error) {
+			if h.HasPerm(u, perm) {
+				return data, nil
+			}
+			return nil, nil
+		}
+	}
+}
+
+// ForAll gets read access for everybody.
+var ForAll ElementFunc = func(_ int, data json.RawMessage) (json.RawMessage, error) {
+	return data, nil
+}

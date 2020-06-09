@@ -19,8 +19,9 @@ type hasPerm struct {
 }
 
 func (h *hasPerm) update(data map[string]json.RawMessage) error {
-	h.mu.RLock()
-	defer h.mu.RUnlock()
+	h.mu.Lock()
+	defer h.mu.Unlock()
+
 	for k, v := range data {
 		parts := strings.Split(k, ":")
 		if len(parts) != 2 {
@@ -42,6 +43,9 @@ func (h *hasPerm) update(data map[string]json.RawMessage) error {
 }
 
 func (h *hasPerm) HasPerm(uid int, perm string) bool {
+	h.mu.RLock()
+	defer h.mu.RUnlock()
+
 	if uid == 0 {
 		return h.groupPerm[groupDefaultPK][perm]
 	}
@@ -55,6 +59,28 @@ func (h *hasPerm) HasPerm(uid int, perm string) bool {
 		return h.groupPerm[groupID][perm]
 	}
 	return false
+}
+
+func (h *hasPerm) InGroups(uid int, groups []int) bool {
+	h.mu.RLock()
+	defer h.mu.RUnlock()
+
+	set := make(map[int]bool)
+	for _, gid := range groups {
+		set[gid] = true
+	}
+
+	for _, groupID := range h.userGroup[uid] {
+		if set[groupID] {
+			return true
+		}
+	}
+
+	return h.IsSuperadmin(uid)
+}
+
+func (h *hasPerm) IsSuperadmin(uid int) bool {
+	return h.InGroups(uid, []int{groupAdminPK})
 }
 
 func (h *hasPerm) updateGroupPerm(data json.RawMessage) error {
