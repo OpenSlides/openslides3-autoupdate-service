@@ -57,3 +57,21 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 		return element, nil
 	}
 }
+
+// RequiredSpeakers returns the user ids of a list of speaker objekt.
+func RequiredSpeakers(data json.RawMessage) ([]int, error) {
+	var los struct {
+		Speakers []struct {
+			UserID int `json:"user_id"`
+		} `json:"speakers"`
+	}
+	if err := json.Unmarshal(data, &los); err != nil {
+		return nil, fmt.Errorf("unmarshal list of speaker: %w", err)
+	}
+
+	var uids []int
+	for _, s := range los.Speakers {
+		uids = append(uids, s.UserID)
+	}
+	return uids, nil
+}

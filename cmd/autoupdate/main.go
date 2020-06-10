@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -16,6 +17,7 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/agenda"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/assignment"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/mediafile"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/motion"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/user"
@@ -27,7 +29,15 @@ func main() {
 
 	redisConn := redis.New(getEnv("REDIS_ADDR", "localhost:6379"))
 
-	ds, err := datastore.New(workerAddr, redisConn)
+	requiredUserCallable := map[string]func(json.RawMessage) ([]int, error){
+		"agenda/list-of-speakers":       agenda.RequiredSpeakers,
+		"assignments/assignment":        assignment.RequiredAssignments,
+		"assignments/assignment-option": assignment.RequiredPollOption,
+		"motions/motion":                motion.RequiredMotions,
+		"motions/motion-option":         motion.RequiredPollOption,
+	}
+
+	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallable)
 	if err != nil {
 		log.Fatalf("Can not initialize data: %v", err)
 	}
