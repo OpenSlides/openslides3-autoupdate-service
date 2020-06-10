@@ -18,30 +18,6 @@ type hasPerm struct {
 	userGroup map[int][]int
 }
 
-func (h *hasPerm) update(data map[string]json.RawMessage) error {
-	h.mu.Lock()
-	defer h.mu.Unlock()
-
-	for k, v := range data {
-		parts := strings.Split(k, ":")
-		if len(parts) != 2 {
-			return fmt.Errorf("key %s has wrong format. Expected one `:`", k)
-		}
-
-		var err error
-		switch parts[0] {
-		case "users/user":
-			err = h.updateUserGroup(v)
-		case "users/group":
-			err = h.updateGroupPerm(v)
-		}
-		if err != nil {
-			return fmt.Errorf("update %s: %w", k, err)
-		}
-	}
-	return nil
-}
-
 func (h *hasPerm) HasPerm(uid int, perm string) bool {
 	h.mu.RLock()
 	defer h.mu.RUnlock()
@@ -56,7 +32,9 @@ func (h *hasPerm) HasPerm(uid int, perm string) bool {
 			return true
 		}
 
-		return h.groupPerm[groupID][perm]
+		if h.groupPerm[groupID][perm] {
+			return true
+		}
 	}
 	return false
 }
@@ -80,7 +58,37 @@ func (h *hasPerm) InGroups(uid int, groups []int) bool {
 }
 
 func (h *hasPerm) IsSuperadmin(uid int) bool {
-	return h.InGroups(uid, []int{groupAdminPK})
+	for _, groupID := range h.userGroup[uid] {
+		if groupID == groupAdminPK {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (h *hasPerm) update(data map[string]json.RawMessage) error {
+	h.mu.Lock()
+	defer h.mu.Unlock()
+
+	for k, v := range data {
+		parts := strings.Split(k, ":")
+		if len(parts) != 2 {
+			return fmt.Errorf("key %s has wrong format. Expected one `:`", k)
+		}
+
+		var err error
+		switch parts[0] {
+		case "users/user":
+			err = h.updateUserGroup(v)
+		case "users/group":
+			err = h.updateGroupPerm(v)
+		}
+		if err != nil {
+			return fmt.Errorf("update %s: %w", k, err)
+		}
+	}
+	return nil
 }
 
 func (h *hasPerm) updateGroupPerm(data json.RawMessage) error {
