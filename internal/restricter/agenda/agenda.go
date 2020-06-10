@@ -7,63 +7,53 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
-// Item handels restrictions of agenda/item elements.
-type Item struct {
-	restricter.HasPermer
-}
+// Restrict handels restrictions of agenda/item elements.
+func Restrict(r restricter.HasPermer) restricter.ElementFunc {
+	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
+		if !r.HasPerm(uid, "agenda.can_see") {
+			return nil, nil
+		}
 
-// NewItem creates a new Item.
-func NewItem(hasPermer restricter.HasPermer) *Item {
-	return &Item{
-		HasPermer: hasPermer,
-	}
-}
+		var agenda struct {
+			IsHidden   bool `json:"is_hidden"`
+			IsInternal bool `json:"is_internal"`
+		}
+		if err := json.Unmarshal(element, &agenda); err != nil {
+			return nil, fmt.Errorf("decoding item: %w", err)
+		}
 
-// Restrict restricts the element.
-func (i *Item) Restrict(uid int, element json.RawMessage) (json.RawMessage, error) {
-	if !i.HasPerm(uid, "agenda.can_see") {
-		return nil, nil
-	}
+		canManage := r.HasPerm(uid, "agenda.can_manage")
+		canSeeInternal := r.HasPerm(uid, "agenda.can_see_internal_items")
 
-	var agenda struct {
-		IsHidden   bool `json:"is_hidden"`
-		IsInternal bool `json:"is_internal"`
-	}
-	if err := json.Unmarshal(element, &agenda); err != nil {
-		return nil, fmt.Errorf("decoding item: %w", err)
-	}
+		if !canManage && agenda.IsHidden {
+			return nil, nil
+		}
 
-	canManage := i.HasPerm(uid, "agenda.can_manage")
-	canSeeInternal := i.HasPerm(uid, "agenda.can_see_internal_items")
+		if !canSeeInternal && agenda.IsInternal {
+			return nil, nil
+		}
 
-	if !canManage && agenda.IsHidden {
-		return nil, nil
-	}
+		if canManage && canSeeInternal {
+			return element, nil
+		}
 
-	if !canSeeInternal && agenda.IsInternal {
-		return nil, nil
-	}
+		var agendaData map[string]json.RawMessage
+		if err := json.Unmarshal(element, &agendaData); err != nil {
+			return nil, fmt.Errorf("decoding itemdata: %w", err)
+		}
 
-	if canManage && canSeeInternal {
+		if !canSeeInternal {
+			delete(agendaData, "duration")
+		}
+
+		if !canManage {
+			delete(agendaData, "comment")
+		}
+
+		element, err := json.Marshal(agendaData)
+		if err != nil {
+			return nil, fmt.Errorf("encoding itemdata: %w", err)
+		}
 		return element, nil
 	}
-
-	var agendaData map[string]json.RawMessage
-	if err := json.Unmarshal(element, &agendaData); err != nil {
-		return nil, fmt.Errorf("decoding itemdata: %w", err)
-	}
-
-	if !canSeeInternal {
-		delete(agendaData, "duration")
-	}
-
-	if !canManage {
-		delete(agendaData, "comment")
-	}
-
-	element, err := json.Marshal(agendaData)
-	if err != nil {
-		return nil, fmt.Errorf("encoding itemdata: %w", err)
-	}
-	return element, nil
 }

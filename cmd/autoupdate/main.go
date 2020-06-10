@@ -35,7 +35,7 @@ func main() {
 	basePerm := restricter.BasePermission(ds)
 
 	restricter := restricter.New(ds, map[string]restricter.Element{
-		"agenda/item":             agenda.NewItem(ds),
+		"agenda/item":             agenda.Restrict(ds),
 		"agenda/list-of-speakers": basePerm("agenda.can_see_list_of_speakers"),
 
 		"assignments/assignment":        basePerm("assignments.can_see"),
@@ -50,15 +50,15 @@ func main() {
 		"core/tag":                restricter.ForAll,
 		"core/config":             restricter.ForAll,
 
-		"mediafiles/mediafile": mediafile.New(ds),
+		"mediafiles/mediafile": mediafile.Restrict(ds),
 
 		"motions/category":                     basePerm("motions.can_see"),
 		"motions/statute-paragraph":            basePerm("motions.can_see"),
-		"motions/motion":                       motion.NewMotion(ds),
-		"motions/motion-block":                 motion.NewBlock(ds),
-		"motions/motion-comment-section":       motion.NewCommentSection(ds),
+		"motions/motion":                       motion.Restrict(ds),
+		"motions/motion-block":                 motion.BlockRestrict(ds),
+		"motions/motion-comment-section":       motion.CommentSectionRestrict(ds),
 		"motions/workflow":                     basePerm("motions.can_see"),
-		"motions/motion-change-recommendation": motion.NewChangeRecommendation(ds),
+		"motions/motion-change-recommendation": motion.ChangeRecommendationRestrict(ds),
 		"motions/motion-poll":                  basePerm("motions.can_see"),
 		"motions/motion-option":                basePerm("motions.can_see"),
 		"motions/motion-vote":                  basePerm("motions.can_see"),
@@ -66,9 +66,9 @@ func main() {
 
 		"topics/topic": basePerm("agenda.can_see"),
 
-		"users/user":          user.NewUser(ds),
+		"users/user":          user.Restrict(ds),
 		"users/group":         restricter.ForAll,
-		"users/personal-note": restricter.ElementFunc(user.PersonalNote),
+		"users/personal-note": restricter.ElementFunc(user.PersonalNoteRestrict),
 	})
 
 	service, err := autoupdate.New(ds, restricter)
