@@ -156,14 +156,15 @@ func (r *Redis) ChangedKeys(from, to int) ([]string, error) {
 	return keys, nil
 }
 
-// Data returns the data from redis for specific keys.
+// Data returns the data from redis for specific keys from the full data hash key
 func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 	conn := r.pool.Get()
 	defer conn.Close()
 
-	args := make([]interface{}, len(keys))
+	args := make([]interface{}, len(keys)+1)
+	args[0] = fullDataKey
 	for i := range keys {
-		args[i] = keys[i]
+		args[i+1] = keys[i]
 	}
 
 	rawData, err := redis.StringMap(conn.Do("HMGET", args...))
