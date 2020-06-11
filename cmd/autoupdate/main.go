@@ -32,6 +32,7 @@ func main() {
 	requiredUserCallable := map[string]func(json.RawMessage) ([]int, string, error){
 		"agenda/list-of-speakers":       agenda.RequiredSpeakers,
 		"assignments/assignment":        assignment.RequiredAssignments,
+		"assignments/assignment-poll":   assignment.RequiredPoll,
 		"assignments/assignment-option": assignment.RequiredPollOption,
 		"motions/motion":                motion.RequiredMotions,
 		"motions/motion-option":         motion.RequiredPollOption,

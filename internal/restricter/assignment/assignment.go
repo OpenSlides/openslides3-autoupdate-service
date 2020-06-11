@@ -25,14 +25,24 @@ func RequiredAssignments(data json.RawMessage) ([]int, string, error) {
 		uids = append(uids, u.ID)
 	}
 
-	// TODO
-	// is this still required?
-	// https://github.com/OpenSlides/OpenSlides/blob/fbb0be6fb487b29ceff9f4011e2ccc81ad5daff9/openslides/assignments/apps.py#L91
 	return uids, pCanSee, nil
 }
 
 // RequiredPollOption returns the VoteID of the option.
 func RequiredPollOption(data json.RawMessage) ([]int, string, error) {
+	var option struct {
+		UserID int `json:"user_id"`
+	}
+	if err := json.Unmarshal(data, &option); err != nil {
+		return nil, "", fmt.Errorf("unmarshal assignment poll option: %w", err)
+	}
+
+	return []int{option.UserID}, pCanSee, nil
+
+}
+
+// RequiredPoll returns the VoteID of the option.
+func RequiredPoll(data json.RawMessage) ([]int, string, error) {
 	var option struct {
 		VoteID int `json:"voted_id"`
 	}
