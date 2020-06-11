@@ -73,8 +73,8 @@ func main() {
 		"motions/workflow":                     basePerm(motion.CanSee),
 		"motions/motion-change-recommendation": motion.ChangeRecommendationRestrict(ds),
 		"motions/motion-poll":                  poll.RestrictPoll(ds, motion.CanSee, motion.CanManage),
-		"motions/motion-option":                poll.RestrictPoll(ds, motion.CanSee, motion.CanManage),
-		"motions/motion-vote":                  poll.RestrictPoll(ds, motion.CanSee, motion.CanManage),
+		"motions/motion-option":                poll.RestrictOption(ds, motion.CanSee, motion.CanManage),
+		"motions/motion-vote":                  poll.RestrictVote(ds, motion.CanSee, motion.CanManage),
 		"motions/state":                        basePerm(motion.CanSee),
 
 		"topics/topic": basePerm("agenda.can_see"),

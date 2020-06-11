@@ -38,7 +38,9 @@ func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawM
 		requiredUser: requiredUser{callables: callables},
 	}
 
-	d.update(fd, max)
+	if err := d.update(fd, max); err != nil {
+		return nil, fmt.Errorf("initial datastore update: %w", err)
+	}
 
 	return d, nil
 }

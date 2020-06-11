@@ -30,7 +30,9 @@ func Restrict(r required) restricter.ElementFunc {
 		}
 
 		var motion struct {
-			Submitters  []int    `json:"submitters"`
+			Submitters []struct {
+				UserID int `json:"user_id"`
+			} `json:"submitters"`
 			Restriction []string `json:"state_restriction"`
 			Comments    []struct {
 				ReadGroups []int `json:"read_groups_id"`
@@ -42,8 +44,8 @@ func Restrict(r required) restricter.ElementFunc {
 		}
 
 		var isSumitter bool
-		for _, sid := range motion.Submitters {
-			if sid == uid {
+		for _, s := range motion.Submitters {
+			if s.UserID == uid {
 				isSumitter = true
 				break
 			}
