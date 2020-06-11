@@ -29,7 +29,7 @@ func main() {
 
 	redisConn := redis.New(getEnv("REDIS_ADDR", "localhost:6379"))
 
-	requiredUserCallable := map[string]func(json.RawMessage) ([]int, error){
+	requiredUserCallable := map[string]func(json.RawMessage) ([]int, string, error){
 		"agenda/list-of-speakers":       agenda.RequiredSpeakers,
 		"assignments/assignment":        assignment.RequiredAssignments,
 		"assignments/assignment-option": assignment.RequiredPollOption,

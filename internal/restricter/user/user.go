@@ -9,7 +9,7 @@ import (
 
 type required interface {
 	restricter.HasPermer
-	UserRequired(uid int) bool
+	UserRequired(uid int) []string
 }
 
 // Restrict handels restrictions of users/user elements.
@@ -54,12 +54,15 @@ func Restrict(r required) restricter.ElementFunc {
 			return filter(element, littleDataFields)
 		}
 
-		if !r.UserRequired(user.ID) {
-			return nil, nil
+		for _, perm := range r.UserRequired(user.ID) {
+			if !r.HasPerm(uid, perm) {
+				continue
+			}
+
+			return filter(element, littleDataFields)
 		}
 
-		// TODO: check permission of required user
-		return filter(element, littleDataFields)
+		return nil, nil
 	}
 }
 
