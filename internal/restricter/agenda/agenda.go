@@ -11,6 +11,10 @@ const (
 	pCanSee         = "agenda.can_see"
 	pCanManage      = "agenda.can_manage"
 	pCanSeeInternal = "agenda.can_see_internal_items"
+
+	// CanSeeListOfSpeakers is the permission string if a user can see the list
+	// of speakers.
+	CanSeeListOfSpeakers = "agenda.can_see_list_of_speakers"
 )
 
 // Restrict handels restrictions of agenda/item elements.
