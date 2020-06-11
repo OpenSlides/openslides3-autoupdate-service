@@ -7,10 +7,16 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
+const (
+	pCanSee         = "agenda.can_see"
+	pCanManage      = "agenda.can_manage"
+	pCanSeeInternal = "agenda.can_see_internal_items"
+)
+
 // Restrict handels restrictions of agenda/item elements.
 func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
-		if !r.HasPerm(uid, "agenda.can_see") {
+		if !r.HasPerm(uid, pCanSee) {
 			return nil, nil
 		}
 
@@ -22,8 +28,8 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 			return nil, fmt.Errorf("decoding item: %w", err)
 		}
 
-		canManage := r.HasPerm(uid, "agenda.can_manage")
-		canSeeInternal := r.HasPerm(uid, "agenda.can_see_internal_items")
+		canManage := r.HasPerm(uid, pCanManage)
+		canSeeInternal := r.HasPerm(uid, pCanSeeInternal)
 
 		if !canManage && agenda.IsHidden {
 			return nil, nil
@@ -56,4 +62,22 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 		}
 		return element, nil
 	}
+}
+
+// RequiredSpeakers returns the user ids of a list of speaker objekt.
+func RequiredSpeakers(data json.RawMessage) ([]int, string, error) {
+	var los struct {
+		Speakers []struct {
+			UserID int `json:"user_id"`
+		} `json:"speakers"`
+	}
+	if err := json.Unmarshal(data, &los); err != nil {
+		return nil, "", fmt.Errorf("unmarshal list of speaker: %w", err)
+	}
+
+	var uids []int
+	for _, s := range los.Speakers {
+		uids = append(uids, s.UserID)
+	}
+	return uids, pCanSee, nil
 }

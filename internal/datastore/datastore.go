@@ -18,10 +18,11 @@ type Datastore struct {
 	maxChangeID int
 
 	hasPerm
+	requiredUser
 }
 
 // New returns an initialized Datastore instance.
-func New(osAddr string, redisConn RedisConn) (*Datastore, error) {
+func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawMessage) ([]int, string, error)) (*Datastore, error) {
 	// TODO: Handle case, that data is not ready.
 	fd, min, max, err := redisConn.FullData()
 	if err != nil {
@@ -29,14 +30,15 @@ func New(osAddr string, redisConn RedisConn) (*Datastore, error) {
 	}
 
 	d := &Datastore{
-		osAddr:      osAddr,
-		redisConn:   redisConn,
-		cache:       new(cache),
-		minChangeID: min,
-		maxChangeID: max,
+		osAddr:       osAddr,
+		redisConn:    redisConn,
+		cache:        new(cache),
+		minChangeID:  min,
+		maxChangeID:  max,
+		requiredUser: requiredUser{callables: callables},
 	}
 
-	d.updateCache(fd, max)
+	d.update(fd, max)
 
 	return d, nil
 }
@@ -81,7 +83,7 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 			return nil, 0, fmt.Errorf("receive missing data from %d to %d: %w", d.maxChangeID, changeID-1, err)
 		}
 
-		if err := d.updateCache(data, changeID-1); err != nil {
+		if err := d.update(data, changeID-1); err != nil {
 			return nil, 0, fmt.Errorf("updating cache: %w", err)
 		}
 	}
@@ -91,7 +93,7 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 		return d.KeysChanged()
 	}
 
-	if err := d.updateCache(sData.Elements, changeID); err != nil {
+	if err := d.update(sData.Elements, changeID); err != nil {
 		return nil, 0, fmt.Errorf("updating cache: %w", err)
 	}
 
@@ -113,7 +115,7 @@ func (d *Datastore) GetAll() map[string]json.RawMessage {
 }
 
 // update updates the cache. It is not save for concourent use.
-func (d *Datastore) updateCache(data map[string]json.RawMessage, changeID int) error {
+func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error {
 	d.cache.update(data)
 
 	d.mu.Lock()
@@ -122,6 +124,10 @@ func (d *Datastore) updateCache(data map[string]json.RawMessage, changeID int) e
 
 	if err := d.hasPerm.update(data); err != nil {
 		return fmt.Errorf("updating hasPerm: %w", err)
+	}
+
+	if err := d.requiredUser.update(data); err != nil {
+		return fmt.Errorf("updating requiredUser: %w", err)
 	}
 	return nil
 }

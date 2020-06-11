@@ -3,13 +3,17 @@ package user
 import (
 	"encoding/json"
 	"fmt"
-	"strconv"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
+type required interface {
+	restricter.HasPermer
+	UserRequired(uid int) []string
+}
+
 // Restrict handels restrictions of users/user elements.
-func Restrict(r restricter.HasPermer) restricter.ElementFunc {
+func Restrict(r required) restricter.ElementFunc {
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
 		littleDataFields := []string{
 			"id",
@@ -30,16 +34,34 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 		allDataFields := append(manyDataFields, "default_password")
 		ownDataFields := append(littleDataFields, "email", "gender")
 
+		var user struct {
+			ID int `json:"id"`
+		}
+		if err := json.Unmarshal(element, &user); err != nil {
+			return nil, fmt.Errorf("unmarshal user: %w", err)
+		}
+		if user.ID == uid && !r.HasPerm(uid, "users.can_see_extra_data") {
+			return filter(element, ownDataFields)
+		}
+
 		if r.HasPerm(uid, "users.can_see_name") {
 			if r.HasPerm(uid, "users.can_see_extra_data") {
 				if r.HasPerm(uid, "users.can_manage") {
-					return filter(element, allDataFields, 0, nil)
+					return filter(element, allDataFields)
 				}
-				return filter(element, manyDataFields, 0, nil)
+				return filter(element, manyDataFields)
 			}
-			return filter(element, littleDataFields, uid, ownDataFields)
+			return filter(element, littleDataFields)
 		}
-		// TODO: build list of needed users
+
+		for _, perm := range r.UserRequired(user.ID) {
+			if !r.HasPerm(uid, perm) {
+				continue
+			}
+
+			return filter(element, littleDataFields)
+		}
+
 		return nil, nil
 	}
 }
@@ -64,7 +86,7 @@ func PersonalNoteRestrict(uid int, data json.RawMessage) (json.RawMessage, error
 	return data, nil
 }
 
-func filter(value json.RawMessage, fields []string, uid int, ownfields []string) (json.RawMessage, error) {
+func filter(value json.RawMessage, fields []string) (json.RawMessage, error) {
 	var allData map[string]json.RawMessage
 	if err := json.Unmarshal(value, &allData); err != nil {
 		return nil, fmt.Errorf("unmarshall data: %w", err)
@@ -72,17 +94,7 @@ func filter(value json.RawMessage, fields []string, uid int, ownfields []string)
 
 	filteredData := make(map[string]json.RawMessage, len(fields))
 
-	id, err := strconv.Atoi(string(allData["id"]))
-	if err != nil {
-		return nil, fmt.Errorf("invalid id: %s", allData["id"])
-	}
-
-	useFields := fields
-	if ownfields != nil && uid == id {
-		useFields = ownfields
-	}
-
-	for _, k := range useFields {
+	for _, k := range fields {
 		filteredData[k] = allData[k]
 	}
 

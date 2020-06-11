@@ -7,6 +7,10 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
+const (
+	pCanSee = "mediafile.can_see"
+)
+
 type required interface {
 	restricter.HasPermer
 	IsSuperadmin(uid int) bool
@@ -16,7 +20,7 @@ type required interface {
 // Restrict restricts a mediafile object.
 func Restrict(r required) restricter.ElementFunc {
 	return func(uid int, data json.RawMessage) (json.RawMessage, error) {
-		if !r.HasPerm(uid, "mediafiles.can_see") {
+		if !r.HasPerm(uid, pCanSee) {
 			return nil, nil
 		}
 
