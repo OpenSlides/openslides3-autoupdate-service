@@ -8,8 +8,11 @@ import (
 )
 
 const (
-	pCanSee         = "motion.can_see"
-	pCanManage      = "motion.can_manage"
+	//CanSee is the read permission for motions.
+	CanSee = "motions.can_see"
+
+	// CanManage is the manage permission for motions.
+	CanManage       = "motions.can_manage"
 	pCanSeeInternal = "motions.can_see_internal"
 	pCanManageMeta  = "motions.can_manage_metadata"
 )
@@ -22,12 +25,14 @@ type required interface {
 // Restrict restricts motions/motion.
 func Restrict(r required) restricter.ElementFunc {
 	return func(uid int, data json.RawMessage) (json.RawMessage, error) {
-		if !r.HasPerm(uid, pCanSee) {
+		if !r.HasPerm(uid, CanSee) {
 			return nil, nil
 		}
 
 		var motion struct {
-			Submitters  []int    `json:"submitters"`
+			Submitters []struct {
+				UserID int `json:"user_id"`
+			} `json:"submitters"`
 			Restriction []string `json:"state_restriction"`
 			Comments    []struct {
 				ReadGroups []int `json:"read_groups_id"`
@@ -39,18 +44,18 @@ func Restrict(r required) restricter.ElementFunc {
 		}
 
 		var isSumitter bool
-		for _, sid := range motion.Submitters {
-			if sid == uid {
+		for _, s := range motion.Submitters {
+			if s.UserID == uid {
 				isSumitter = true
 				break
 			}
 		}
 
-		permission := r.HasPerm(uid, pCanManage) || len(motion.Restriction) == 0
+		permission := r.HasPerm(uid, CanManage) || len(motion.Restriction) == 0
 
 		if !permission {
 			for _, value := range motion.Restriction {
-				if (value == pCanSeeInternal || value == pCanManageMeta || value == pCanManage) && r.HasPerm(uid, value) {
+				if (value == pCanSeeInternal || value == pCanManageMeta || value == CanManage) && r.HasPerm(uid, value) {
 					permission = true
 					break
 				}
@@ -102,11 +107,11 @@ func Restrict(r required) restricter.ElementFunc {
 // BlockRestrict restricts motions/motion-block.
 func BlockRestrict(r restricter.HasPermer) restricter.ElementFunc {
 	return func(uid int, data json.RawMessage) (json.RawMessage, error) {
-		if !r.HasPerm(uid, pCanSee) {
+		if !r.HasPerm(uid, CanSee) {
 			return nil, nil
 		}
 
-		if r.HasPerm(uid, pCanManage) {
+		if r.HasPerm(uid, CanManage) {
 			return data, nil
 		}
 
@@ -128,11 +133,11 @@ func BlockRestrict(r restricter.HasPermer) restricter.ElementFunc {
 // CommentSectionRestrict restricts motions/motion-comment-section.
 func CommentSectionRestrict(r required) restricter.ElementFunc {
 	return func(uid int, data json.RawMessage) (json.RawMessage, error) {
-		if !r.HasPerm(uid, pCanSee) {
+		if !r.HasPerm(uid, CanSee) {
 			return nil, nil
 		}
 
-		if r.HasPerm(uid, pCanManage) {
+		if r.HasPerm(uid, CanManage) {
 			return data, nil
 		}
 
@@ -154,11 +159,11 @@ func CommentSectionRestrict(r required) restricter.ElementFunc {
 // ChangeRecommendationRestrict restricts motions/motion-change-recommendation.
 func ChangeRecommendationRestrict(r restricter.HasPermer) restricter.ElementFunc {
 	return func(uid int, data json.RawMessage) (json.RawMessage, error) {
-		if !r.HasPerm(uid, pCanSee) {
+		if !r.HasPerm(uid, CanSee) {
 			return nil, nil
 		}
 
-		if r.HasPerm(uid, pCanManage) {
+		if r.HasPerm(uid, CanManage) {
 			return data, nil
 		}
 
@@ -202,7 +207,7 @@ func RequiredMotions(data json.RawMessage) ([]int, string, error) {
 		uids = append(uids, id)
 	}
 
-	return uids, pCanSee, nil
+	return uids, CanSee, nil
 }
 
 // RequiredPollOption returns the VoteID of the option.
@@ -214,6 +219,6 @@ func RequiredPollOption(data json.RawMessage) ([]int, string, error) {
 		return nil, "", fmt.Errorf("unmarshal motion poll option: %w", err)
 	}
 
-	return []int{option.VoteID}, pCanSee, nil
+	return []int{option.VoteID}, CanSee, nil
 
 }

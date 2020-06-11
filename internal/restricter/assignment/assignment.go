@@ -6,7 +6,11 @@ import (
 )
 
 const (
-	pCanSee = "assignment.can_see"
+	// CanSee is the can see permission string of assignments.
+	CanSee = "assignments.can_see"
+
+	// CanManage is the manage permission string of assignments.
+	CanManage = "assignments.can_manage"
 )
 
 // RequiredAssignments returns the user ids of a assignment element.
@@ -25,7 +29,7 @@ func RequiredAssignments(data json.RawMessage) ([]int, string, error) {
 		uids = append(uids, u.ID)
 	}
 
-	return uids, pCanSee, nil
+	return uids, CanSee, nil
 }
 
 // RequiredPollOption returns the VoteID of the option.
@@ -37,19 +41,19 @@ func RequiredPollOption(data json.RawMessage) ([]int, string, error) {
 		return nil, "", fmt.Errorf("unmarshal assignment poll option: %w", err)
 	}
 
-	return []int{option.UserID}, pCanSee, nil
+	return []int{option.UserID}, CanSee, nil
 
 }
 
 // RequiredPoll returns the VoteID of the option.
 func RequiredPoll(data json.RawMessage) ([]int, string, error) {
 	var option struct {
-		VoteID int `json:"voted_id"`
+		VoteID []int `json:"voted_id"`
 	}
 	if err := json.Unmarshal(data, &option); err != nil {
 		return nil, "", fmt.Errorf("unmarshal assignment poll option: %w", err)
 	}
 
-	return []int{option.VoteID}, pCanSee, nil
+	return option.VoteID, CanSee, nil
 
 }

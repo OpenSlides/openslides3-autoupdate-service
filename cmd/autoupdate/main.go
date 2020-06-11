@@ -18,8 +18,10 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/agenda"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/assignment"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/core"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/mediafile"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/motion"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/poll"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/user"
 )
 
@@ -47,33 +49,33 @@ func main() {
 
 	restricter := restricter.New(ds, map[string]restricter.Element{
 		"agenda/item":             agenda.Restrict(ds),
-		"agenda/list-of-speakers": basePerm("agenda.can_see_list_of_speakers"),
+		"agenda/list-of-speakers": basePerm(agenda.CanSeeListOfSpeakers),
 
-		"assignments/assignment":        basePerm("assignments.can_see"),
-		"assignments/assignment-poll":   basePerm("assignments.can_see"),
-		"assignments/assignment-option": basePerm("assignments.can_see"),
-		"assignments/assignment-vote":   basePerm("assignments.can_see"),
+		"assignments/assignment":        basePerm(assignment.CanSee),
+		"assignments/assignment-poll":   poll.RestrictPoll(ds, assignment.CanSee, assignment.CanManage),
+		"assignments/assignment-option": poll.RestrictOption(ds, assignment.CanSee, assignment.CanManage),
+		"assignments/assignment-vote":   poll.RestrictVote(ds, assignment.CanSee, assignment.CanManage),
 
-		"core/projector":          basePerm("core.can_see_projector"),
-		"core/projection-default": basePerm("core.can_see_projector"),
-		"core/projector-message":  basePerm("core.can_see_projector"),
-		"core/countdown":          basePerm("core.can_see_projector"),
+		"core/projector":          basePerm(core.CanSeeProjector),
+		"core/projection-default": basePerm(core.CanSeeProjector),
+		"core/projector-message":  basePerm(core.CanSeeProjector),
+		"core/countdown":          basePerm(core.CanSeeProjector),
 		"core/tag":                restricter.ForAll,
 		"core/config":             restricter.ForAll,
 
 		"mediafiles/mediafile": mediafile.Restrict(ds),
 
-		"motions/category":                     basePerm("motions.can_see"),
-		"motions/statute-paragraph":            basePerm("motions.can_see"),
+		"motions/category":                     basePerm(motion.CanSee),
+		"motions/statute-paragraph":            basePerm(motion.CanSee),
 		"motions/motion":                       motion.Restrict(ds),
 		"motions/motion-block":                 motion.BlockRestrict(ds),
 		"motions/motion-comment-section":       motion.CommentSectionRestrict(ds),
-		"motions/workflow":                     basePerm("motions.can_see"),
+		"motions/workflow":                     basePerm(motion.CanSee),
 		"motions/motion-change-recommendation": motion.ChangeRecommendationRestrict(ds),
-		"motions/motion-poll":                  basePerm("motions.can_see"),
-		"motions/motion-option":                basePerm("motions.can_see"),
-		"motions/motion-vote":                  basePerm("motions.can_see"),
-		"motions/state":                        basePerm("motions.can_see"),
+		"motions/motion-poll":                  poll.RestrictPoll(ds, motion.CanSee, motion.CanManage),
+		"motions/motion-option":                poll.RestrictOption(ds, motion.CanSee, motion.CanManage),
+		"motions/motion-vote":                  poll.RestrictVote(ds, motion.CanSee, motion.CanManage),
+		"motions/state":                        basePerm(motion.CanSee),
 
 		"topics/topic": basePerm("agenda.can_see"),
 
