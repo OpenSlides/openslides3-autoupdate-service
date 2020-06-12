@@ -47,6 +47,7 @@ func New(datastore Datastore, restricter Restricter) (*Autoupdate, error) {
 			keys, changeID, err := datastore.KeysChanged()
 			if err != nil {
 				log.Printf("Error: Can not receive new data: %v", err)
+				continue
 			}
 
 			tid := a.topic.Publish(keys...)

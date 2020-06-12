@@ -42,8 +42,6 @@ func (h *Handler) handleHealth(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/octet-stream")
-
 	uid, err := h.auther.Auth(r)
 	if err != nil {
 		sendErr(w, fmt.Errorf("authenticate: %w", err))
@@ -61,8 +59,11 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
+	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(200)
 	w.(http.Flusher).Flush()
+	log.Printf("connect user %d with change_id %d", uid, changeID)
+
 	var data map[string]json.RawMessage
 	var all bool
 	var newChangeID int
