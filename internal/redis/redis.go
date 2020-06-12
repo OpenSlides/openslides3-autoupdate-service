@@ -167,14 +167,14 @@ func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 		args[i+1] = keys[i]
 	}
 
-	rawData, err := redis.StringMap(conn.Do("HMGET", args...))
+	rawData, err := redis.ByteSlices(conn.Do("HMGET", args...))
 	if err != nil {
-		return nil, fmt.Errorf("hmget all request: %w", err)
+		return nil, fmt.Errorf("hmget %v request: %w", args, err)
 	}
 
 	data := make(map[string]json.RawMessage, len(rawData))
-	for k, v := range rawData {
-		data[k] = json.RawMessage(v)
+	for i := range rawData {
+		data[keys[i]] = json.RawMessage(rawData[i])
 	}
 	return data, nil
 }

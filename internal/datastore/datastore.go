@@ -4,6 +4,7 @@ package datastore
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"sync"
 )
 
@@ -24,7 +25,7 @@ type Datastore struct {
 // New returns an initialized Datastore instance.
 func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawMessage) ([]int, string, error)) (*Datastore, error) {
 	// TODO: Handle case, that data is not ready.
-	fd, min, max, err := redisConn.FullData()
+	fd, max, min, err := redisConn.FullData()
 	if err != nil {
 		return nil, fmt.Errorf("get startdata from redis: %w", err)
 	}
@@ -131,6 +132,8 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 	if err := d.requiredUser.update(data); err != nil {
 		return fmt.Errorf("updating requiredUser: %w", err)
 	}
+
+	log.Printf("Datastore on change_id %d", changeID)
 	return nil
 }
 
