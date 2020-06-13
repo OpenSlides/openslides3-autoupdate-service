@@ -1,6 +1,7 @@
 package datastore
 
 import (
+	"bytes"
 	"encoding/json"
 	"sync"
 )
@@ -19,7 +20,7 @@ func (c *cache) update(changed map[string]json.RawMessage) {
 	}
 
 	for k, v := range changed {
-		if v == nil {
+		if bytes.Compare(v, []byte(`null`)) == 0 {
 			delete(c.data, k)
 			continue
 		}
@@ -44,16 +45,6 @@ func (c *cache) forKeys(keys ...string) map[string]json.RawMessage {
 		data[key] = append(v[:0:0], v...)
 	}
 	return data
-}
-
-// element returns the element for the key.
-//
-// If a key does not exist in the cache, nil is returned
-func (c *cache) element(key string) json.RawMessage {
-	c.mu.RLock()
-	defer c.mu.RUnlock()
-
-	return c.data[key]
 }
 
 // all returns all data from the cache.

@@ -78,7 +78,7 @@ func TestRequiredUserDelete(t *testing.T) {
 	}
 
 	data2 := map[string]json.RawMessage{
-		"collection:1": nil,
+		"collection:1": []byte(`null`),
 	}
 
 	rq := requiredUser{callables: callables}

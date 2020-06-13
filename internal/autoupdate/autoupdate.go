@@ -3,6 +3,7 @@ package autoupdate
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 
@@ -37,15 +38,15 @@ func New(datastore Datastore, restricter Restricter) (*Autoupdate, error) {
 
 	go func() {
 		for {
-			// TODO: this will not clean up the goroutine when there is no new data.
-			select {
-			case <-a.closed:
-				return
-			default:
-			}
-
-			keys, changeID, err := datastore.KeysChanged()
+			keys, changeID, err := datastore.KeysChanged(a.closed)
 			if err != nil {
+				var closing interface {
+					Closing()
+				}
+				if errors.As(err, &closing) {
+					return
+				}
+
 				log.Printf("Error: Can not receive new data: %v", err)
 				continue
 			}

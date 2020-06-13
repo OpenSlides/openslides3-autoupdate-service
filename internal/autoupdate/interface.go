@@ -7,7 +7,7 @@ import (
 // Datastore holds the current data.
 type Datastore interface {
 	LowestID() int
-	KeysChanged() ([]string, int, error)
+	KeysChanged(chan struct{}) ([]string, int, error)
 	GetMany([]string) map[string]json.RawMessage
 	GetAll() map[string]json.RawMessage
 }

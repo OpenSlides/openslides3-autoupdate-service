@@ -46,23 +46,25 @@ func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawM
 	return d, nil
 }
 
-// LowestID returns the highest known change id.
+// LowestID returns the lowest id in the datastore.
 func (d *Datastore) LowestID() int {
 	d.mu.RLock()
 	defer d.mu.RUnlock()
 
-	return d.maxChangeID
+	return d.minChangeID
 }
 
 // KeysChanged blocks until there is new data. It updates the internal cache and
 // returns the changed keys and the new change id.
-func (d *Datastore) KeysChanged() ([]string, int, error) {
+//
+// If closing is closed then it return nil, 0, nil
+func (d *Datastore) KeysChanged(closing chan struct{}) ([]string, int, error) {
 	var rawData []byte
 	var err error
 	for rawData == nil {
 		// Update() blocks until there is new data. But when there is no new
 		// data for an hour, then it returns with nil.
-		rawData, err = d.redisConn.Update()
+		rawData, err = d.redisConn.Update(closing)
 		if err != nil {
 			return nil, 0, fmt.Errorf("get autoupdate data: %w", err)
 		}
@@ -78,12 +80,20 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 	}
 
 	changeID := sData.ChangeID
+	keys := make([]string, 0, len(sData.Elements))
+	for k := range sData.Elements {
+		keys = append(keys, k)
+	}
 
 	if changeID > d.maxChangeID+1 {
 		// Data is to new. Get the data in between.
 		data, err := d.receive(d.maxChangeID, changeID-1)
 		if err != nil {
 			return nil, 0, fmt.Errorf("receive missing data from %d to %d: %w", d.maxChangeID, changeID-1, err)
+		}
+
+		for k := range data {
+			keys = append(keys, k)
 		}
 
 		if err := d.update(data, changeID-1); err != nil {
@@ -93,17 +103,13 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 
 	if changeID < d.maxChangeID+1 {
 		// Data already known. Try the next.
-		return d.KeysChanged()
+		return d.KeysChanged(closing)
 	}
 
 	if err := d.update(sData.Elements, changeID); err != nil {
 		return nil, 0, fmt.Errorf("updating cache: %w", err)
 	}
 
-	keys := make([]string, 0, len(sData.Elements))
-	for k := range sData.Elements {
-		keys = append(keys, k)
-	}
 	return keys, changeID, nil
 }
 
