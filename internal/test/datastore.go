@@ -28,6 +28,11 @@ func (d *DatastoreMock) LowestID() int {
 	return d.minChangeID
 }
 
+// CurrentID returns the max id if the mock.
+func (d *DatastoreMock) CurrentID() int {
+	return d.maxChangeID
+}
+
 // KeysChanged waits for Changes to be called.
 func (d *DatastoreMock) KeysChanged(closing chan struct{}) ([]string, int, error) {
 	var changes []string
@@ -38,7 +43,11 @@ func (d *DatastoreMock) KeysChanged(closing chan struct{}) ([]string, int, error
 	}
 	d.maxChangeID++
 	return changes, d.maxChangeID, nil
+}
 
+// ChangedKeys does nothing...
+func (d *DatastoreMock) ChangedKeys(from, to int) ([]string, error) {
+	return nil, nil
 }
 
 // GetMany returns the given keys from FullData.

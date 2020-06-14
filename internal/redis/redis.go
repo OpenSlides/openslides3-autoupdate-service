@@ -31,8 +31,7 @@ const (
 
 // Redis holds the connection to redis.
 type Redis struct {
-	pool *redis.Pool
-
+	pool   *redis.Pool
 	lastID string
 }
 
@@ -142,6 +141,10 @@ func (r *Redis) Update(closing chan struct{}) ([]byte, error) {
 		return nil, closingErr{}
 	}
 
+	if id != "" {
+		r.lastID = id
+	}
+
 	if err != nil {
 		if err == errNil {
 			// No new data
@@ -151,9 +154,6 @@ func (r *Redis) Update(closing chan struct{}) ([]byte, error) {
 		return nil, fmt.Errorf("read autoupdate from redis: %w", err)
 	}
 
-	if id != "" {
-		r.lastID = id
-	}
 	return data, nil
 }
 
@@ -186,7 +186,7 @@ func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 
 	rawData, err := redis.ByteSlices(conn.Do("HMGET", args...))
 	if err != nil {
-		return nil, fmt.Errorf("hmget %v request: %w", args, err)
+		return nil, fmt.Errorf("hmget %s %v request: %w", fullDataKey, keys, err)
 	}
 
 	data := make(map[string]json.RawMessage, len(rawData))

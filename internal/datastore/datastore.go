@@ -49,10 +49,15 @@ func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawM
 
 // LowestID returns the lowest id in the datastore.
 func (d *Datastore) LowestID() int {
+	return d.minChangeID
+}
+
+// CurrentID returns the highest id in the datastore.
+func (d *Datastore) CurrentID() int {
 	d.mu.RLock()
 	defer d.mu.RUnlock()
 
-	return d.minChangeID
+	return d.maxChangeID
 }
 
 // KeysChanged blocks until there is new data. It updates the internal cache and
@@ -92,7 +97,6 @@ func (d *Datastore) KeysChanged(closing chan struct{}) ([]string, int, error) {
 
 	if changeID > d.maxChangeID+1 {
 		// Data is to new. Get the data in between.
-		// TODO: what if something was deleted in between? Test it and then remove this comment.
 		data, err := d.receive(d.maxChangeID, changeID-1)
 		if err != nil {
 			return nil, 0, fmt.Errorf("receive missing data from %d to %d: %w", d.maxChangeID, changeID-1, err)
@@ -117,6 +121,16 @@ func (d *Datastore) KeysChanged(closing chan struct{}) ([]string, int, error) {
 	}
 
 	return keys, changeID, nil
+}
+
+// ChangedKeys returns the keys that have changed between from and to from
+// redis. from is not inclusive, to is inclusiv.
+func (d *Datastore) ChangedKeys(from, to int) ([]string, error) {
+	keys, err := d.redisConn.ChangedKeys(from, to)
+	if err != nil {
+		return nil, fmt.Errorf("get changed keys: %w", err)
+	}
+	return keys, err
 }
 
 // GetMany returns the values for the given keys.
@@ -155,6 +169,10 @@ func (d *Datastore) receive(from, to int) (data map[string]json.RawMessage, err 
 	keys, err := d.redisConn.ChangedKeys(from, to)
 	if err != nil {
 		return nil, fmt.Errorf("get changed keys: %w", err)
+	}
+
+	if len(keys) == 0 {
+		return nil, nil
 	}
 
 	data, err = d.redisConn.Data(keys)
