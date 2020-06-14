@@ -188,8 +188,8 @@ func TestHasPermUpdateDeletedUserAndGroup(t *testing.T) {
 	}
 
 	err := hp.update(map[string]json.RawMessage{
-		"users/user:1":  []byte(`null`),
-		"users/group:3": []byte(`null`),
+		"users/user:1":  nil,
+		"users/group:3": nil,
 	})
 
 	if err != nil {
