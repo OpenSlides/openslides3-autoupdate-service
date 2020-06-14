@@ -101,7 +101,9 @@ func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChange
 	deleted := make([]string, 0)
 	for k := range data {
 		if data[k] == nil {
-			deleted = append(deleted, k)
+			if !all {
+				deleted = append(deleted, k)
+			}
 			continue
 		}
 
