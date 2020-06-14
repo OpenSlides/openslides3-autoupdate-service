@@ -79,9 +79,9 @@ func RequiredSpeakers(data json.RawMessage) ([]int, string, error) {
 		return nil, "", fmt.Errorf("unmarshal list of speaker: %w", err)
 	}
 
-	var uids []int
-	for _, s := range los.Speakers {
-		uids = append(uids, s.UserID)
+	uids := make([]int, len(los.Speakers))
+	for i, s := range los.Speakers {
+		uids[i] = s.UserID
 	}
 	return uids, pCanSee, nil
 }

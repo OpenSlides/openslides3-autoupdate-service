@@ -69,17 +69,29 @@ func (r *Redis) FullData() (data map[string]json.RawMessage, max int, min int, e
 	conn := r.pool.Get()
 	defer conn.Close()
 
-	conn.Send("MULTI")
-	conn.Send("HGETALL", fullDataKey)
-	conn.Send("ZREVRANGEBYSCORE", changeIDKey, "+inf", "-inf", "WITHSCORES", "LIMIT", "0", "1")
-	conn.Send("ZSCORE", changeIDKey, lowestChangeIDField)
+	if err := conn.Send("MULTI"); err != nil {
+		return nil, 0, 0, fmt.Errorf("send MULTI to redis: %w", err)
+	}
+
+	if err := conn.Send("HGETALL", fullDataKey); err != nil {
+		return nil, 0, 0, fmt.Errorf("send HGETALL to redis: %w", err)
+	}
+
+	if err := conn.Send("ZREVRANGEBYSCORE", changeIDKey, "+inf", "-inf", "WITHSCORES", "LIMIT", "0", "1"); err != nil {
+		return nil, 0, 0, fmt.Errorf("send ZREVRANGEBYSCORE to redis: %w", err)
+	}
+
+	if err := conn.Send("ZSCORE", changeIDKey, lowestChangeIDField); err != nil {
+		return nil, 0, 0, fmt.Errorf("send ZSCORE to redis: %w", err)
+	}
+
 	resp, err := redis.Values(conn.Do("EXEC"))
 	if err != nil {
 		return nil, 0, 0, fmt.Errorf("executing multi redis commands: %w", err)
 	}
 
 	if len(resp) != 3 {
-		return nil, 0, 0, fmt.Errorf("invalid number of multi responce. Got %d, expected 3", len(resp))
+		return nil, 0, 0, fmt.Errorf("invalid number of multi response. Got %d, expected 3", len(resp))
 	}
 
 	rawData, err := redis.StringMap(resp[0], nil)
@@ -98,12 +110,12 @@ func (r *Redis) FullData() (data map[string]json.RawMessage, max int, min int, e
 	}
 
 	if len(maxChangeIDResp) != 2 {
-		return nil, 0, 0, fmt.Errorf("invalid values in max change id responce. Got %d, expected 2", len(maxChangeIDResp))
+		return nil, 0, 0, fmt.Errorf("invalid values in max change id response, got %d, expected 2", len(maxChangeIDResp))
 	}
 
 	maxChangeID, err := strconv.Atoi(maxChangeIDResp[1])
 	if err != nil {
-		return nil, 0, 0, fmt.Errorf("invalid value in max change id responce, got %s, expected int", maxChangeIDResp[1])
+		return nil, 0, 0, fmt.Errorf("invalid value in max change id response, got %s, expected int", maxChangeIDResp[1])
 	}
 
 	minChangeID, err := redis.Int(resp[2], nil)

@@ -35,7 +35,7 @@ func TestAutoupdateReceiveNewData(t *testing.T) {
 	}
 
 	if id != 2 {
-		t.Errorf("Receive returnd changeID %d, expected %d", id, 2)
+		t.Errorf("Receive returned changeID %d, expected 2", id)
 	}
 
 	if len(data) != 1 {
@@ -73,7 +73,7 @@ func TestAutoupdateReceiveFirstData(t *testing.T) {
 	}
 
 	if id != 2 {
-		t.Errorf("Receive returnd changeID %d, expected %d", id, 2)
+		t.Errorf("Receive returned changeID %d, expected 2", id)
 	}
 
 	if len(data) != 2 {

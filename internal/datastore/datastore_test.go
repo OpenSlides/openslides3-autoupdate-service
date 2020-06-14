@@ -152,7 +152,7 @@ func TestKeysChangedBlocking(t *testing.T) {
 	closing := make(chan struct{})
 	defer close(closing)
 	go func() {
-		ds.KeysChanged(closing)
+		_, _, _ = ds.KeysChanged(closing)
 		close(unblocked)
 	}()
 
@@ -187,7 +187,7 @@ func TestKeysChangedNilDoesNotUnblock(t *testing.T) {
 	closing := make(chan struct{})
 	defer close(closing)
 	go func() {
-		ds.KeysChanged(closing)
+		_, _, _ = ds.KeysChanged(closing)
 		close(unblocked)
 	}()
 
@@ -228,7 +228,7 @@ func TestKeysChangedLowIDDoesNotUnblock(t *testing.T) {
 	closing := make(chan struct{})
 	defer close(closing)
 	go func() {
-		ds.KeysChanged(closing)
+		_, _, _ = ds.KeysChanged(closing)
 		close(unblocked)
 	}()
 

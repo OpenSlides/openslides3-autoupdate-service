@@ -74,5 +74,5 @@ func stream(reply interface{}, err error) (string, []byte, error) {
 			return "", nil, fmt.Errorf("invalid input. Unknown key \"%s\"", key)
 		}
 	}
-	return "", nil, fmt.Errorf("invalid input. `content` not in responce")
+	return "", nil, fmt.Errorf("invalid input. `content` not in response")
 }
