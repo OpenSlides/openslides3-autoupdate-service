@@ -12,7 +12,7 @@ type DatastoreMock struct {
 	changes chan []string
 }
 
-// NewDatastoreMock initializes a DatastoreMock
+// NewDatastoreMock initializes a DatastoreMock.
 func NewDatastoreMock(startID int) *DatastoreMock {
 	changes := make(chan []string, 1)
 	d := &DatastoreMock{

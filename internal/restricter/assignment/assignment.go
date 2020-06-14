@@ -24,9 +24,9 @@ func RequiredAssignments(data json.RawMessage) ([]int, string, error) {
 		return nil, "", fmt.Errorf("unmarshal assignment: %w", err)
 	}
 
-	var uids []int
-	for _, u := range assignment.Users {
-		uids = append(uids, u.ID)
+	uids := make([]int, len(assignment.Users))
+	for i, u := range assignment.Users {
+		uids[i] = u.ID
 	}
 
 	return uids, CanSee, nil
@@ -42,7 +42,6 @@ func RequiredPollOption(data json.RawMessage) ([]int, string, error) {
 	}
 
 	return []int{option.UserID}, CanSee, nil
-
 }
 
 // RequiredPoll returns the VoteID of the option.
@@ -55,5 +54,4 @@ func RequiredPoll(data json.RawMessage) ([]int, string, error) {
 	}
 
 	return option.VoteID, CanSee, nil
-
 }

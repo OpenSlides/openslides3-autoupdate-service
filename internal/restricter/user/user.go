@@ -66,7 +66,7 @@ func Restrict(r required) restricter.ElementFunc {
 	}
 }
 
-// PersonalNoteRestrict is the restricter for users/personal_note
+// PersonalNoteRestrict is the restricter for users/personal_note.
 func PersonalNoteRestrict(uid int, data json.RawMessage) (json.RawMessage, error) {
 	if uid == 0 {
 		return nil, nil

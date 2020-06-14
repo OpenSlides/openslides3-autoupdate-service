@@ -103,10 +103,9 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 		if err != nil {
 			return false, nil, 0, fmt.Errorf("get changed keys from redis: %w", err)
 		}
-
 	}
 
-	// The connection was closed or ther server is exiting.
+	// The connection was closed or the server is exiting.
 	if changedKeys == nil {
 		return false, nil, 0, nil
 	}

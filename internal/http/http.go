@@ -61,7 +61,7 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/octet-stream")
-	w.WriteHeader(200)
+	w.WriteHeader(http.StatusOK)
 	w.(http.Flusher).Flush()
 	log.Printf("connect user %d with change_id %d", uid, changeID)
 

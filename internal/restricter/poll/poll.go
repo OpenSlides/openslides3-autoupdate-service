@@ -7,7 +7,9 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
-// RestrictPoll restricts an element for an assignment or motion poll
+const published = 4
+
+// RestrictPoll restricts an element for an assignment or motion poll.
 func RestrictPoll(r restricter.HasPermer, canSee, canManage string) restricter.ElementFunc {
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
 		if !r.HasPerm(uid, canSee) {
@@ -39,7 +41,7 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string) restricter.E
 		}
 
 		// delete some fields for no managers and unpublished polls.
-		if !(r.HasPerm(uid, canManage) || state == 4) {
+		if !(r.HasPerm(uid, canManage) || state == published) {
 			delete(poll, "votesvalid")
 			delete(poll, "votesinvalid")
 			delete(poll, "votescast")
@@ -76,7 +78,7 @@ func RestrictOption(r restricter.HasPermer, canSee, canManage string) restricter
 		}
 
 		// delete some fields for unpublished options.
-		if state != 4 {
+		if state != published {
 			delete(option, "votesvalid")
 			delete(option, "votesinvalid")
 			delete(option, "votescast")
@@ -91,7 +93,7 @@ func RestrictOption(r restricter.HasPermer, canSee, canManage string) restricter
 	}
 }
 
-// RestrictVote restricts an element for a poll vote
+// RestrictVote restricts an element for a poll vote.
 func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.ElementFunc {
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
 		if !r.HasPerm(uid, canSee) {
@@ -121,7 +123,7 @@ func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.E
 			return nil, fmt.Errorf("unmarshal pollstate: %w", err)
 		}
 
-		if state == 4 {
+		if state == published {
 			return element, nil
 		}
 

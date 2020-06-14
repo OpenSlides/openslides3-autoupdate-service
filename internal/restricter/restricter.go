@@ -16,7 +16,7 @@ type Restricter struct {
 	elements map[string]Element
 }
 
-// New initializes a Restricter
+// New initializes a Restricter.
 func New(datastore Datastore, elements map[string]Element) *Restricter {
 	return &Restricter{
 		datastore: datastore,
@@ -24,8 +24,8 @@ func New(datastore Datastore, elements map[string]Element) *Restricter {
 	}
 }
 
-// Restrict changes the data for the given user.
-// If the user is now allowed to see an element at all, it is replaced with nil.
+// Restrict changes the data for the given user. If the user is now allowed to
+// see an element at all, it is replaced with nil.
 func (r *Restricter) Restrict(uid int, data map[string]json.RawMessage) {
 	for k, v := range data {
 		if v == nil {

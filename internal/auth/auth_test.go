@@ -86,7 +86,6 @@ func TestAuth(t *testing.T) {
 			}
 		})
 	}
-
 }
 
 type WhoAmIMock struct {
@@ -97,7 +96,6 @@ func (wai *WhoAmIMock) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	uid := r.Header.Get("x-test-user")
 	if uid == "" {
 		uid = "null"
-
 	}
 
 	anonymous := "false"
@@ -106,5 +104,4 @@ func (wai *WhoAmIMock) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Fprintf(w, `{"user_id":%s,"guest_enabled":%s,"user":null,"auth_type":"default","permissions":[]}`, uid, anonymous)
-	return
 }

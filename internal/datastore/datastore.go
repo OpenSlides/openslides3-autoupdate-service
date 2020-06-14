@@ -63,7 +63,7 @@ func (d *Datastore) CurrentID() int {
 // KeysChanged blocks until there is new data. It updates the internal cache and
 // returns the changed keys and the new change id.
 //
-// If closing is closed then it return nil, 0, nil
+// If closing is closed then it return nil, 0, nil.
 func (d *Datastore) KeysChanged(closing chan struct{}) ([]string, int, error) {
 	var rawData []byte
 	var err error
@@ -88,7 +88,7 @@ func (d *Datastore) KeysChanged(closing chan struct{}) ([]string, int, error) {
 	changeID := sData.ChangeID
 	keys := make([]string, 0, len(sData.Elements))
 	for k, v := range sData.Elements {
-		if bytes.Compare(v, []byte(`null`)) == 0 {
+		if bytes.Equal(v, []byte(`null`)) {
 			// Deleted elements.
 			sData.Elements[k] = nil
 		}

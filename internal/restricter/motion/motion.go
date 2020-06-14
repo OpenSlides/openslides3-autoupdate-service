@@ -220,5 +220,4 @@ func RequiredPollOption(data json.RawMessage) ([]int, string, error) {
 	}
 
 	return []int{option.VoteID}, CanSee, nil
-
 }
