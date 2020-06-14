@@ -9,6 +9,7 @@ type Datastore interface {
 }
 
 // Element knows how to restrict one element.
+// TODO: Find a better name.
 type Element interface {
 	Restrict(int, json.RawMessage) (json.RawMessage, error)
 }

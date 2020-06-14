@@ -9,7 +9,11 @@ import (
 // Restricter can restrict some data for an user.
 type Restricter struct {
 	datastore Datastore
-	elements  map[string]Element
+
+	// Elements is a dict from a collection-string to a Element. An Element is
+	// an interface, that known how to restrict an element from
+	// collection-string. TODO: Find a better name.
+	elements map[string]Element
 }
 
 // New initializes a Restricter
@@ -21,27 +25,29 @@ func New(datastore Datastore, elements map[string]Element) *Restricter {
 }
 
 // Restrict changes the data for the given user.
+// If the user is now allowed to see an element at all, it is replaced with nil.
 func (r *Restricter) Restrict(uid int, data map[string]json.RawMessage) {
 	for k, v := range data {
+		if v == nil {
+			// Element is "deleted". No need to restrict it.
+			continue
+		}
+
 		parts := strings.Split(k, ":")
 
 		e, ok := r.elements[parts[0]]
 		if !ok {
-			delete(data, k)
+			data[k] = nil
 			continue
 		}
 
 		restricted, err := e.Restrict(uid, v)
 		if err != nil {
 			log.Printf("Can not restrict key %s for user %d: %v", k, uid, err)
-			delete(data, k)
+			data[k] = nil
 			continue
 		}
 
-		if restricted == nil {
-			delete(data, k)
-			continue
-		}
 		data[k] = restricted
 	}
 }

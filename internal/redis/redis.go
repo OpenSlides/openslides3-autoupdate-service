@@ -31,8 +31,7 @@ const (
 
 // Redis holds the connection to redis.
 type Redis struct {
-	pool *redis.Pool
-
+	pool   *redis.Pool
 	lastID string
 }
 
@@ -66,7 +65,7 @@ func (r *Redis) TestConn() error {
 
 // FullData gets all data from redis. It also gets the min and max change id in
 // a atomic way.
-func (r *Redis) FullData() (map[string]json.RawMessage, int, int, error) {
+func (r *Redis) FullData() (data map[string]json.RawMessage, max int, min int, err error) {
 	conn := r.pool.Get()
 	defer conn.Close()
 
@@ -88,7 +87,7 @@ func (r *Redis) FullData() (map[string]json.RawMessage, int, int, error) {
 		return nil, 0, 0, fmt.Errorf("get full_data from redis: %w", err)
 	}
 
-	data := make(map[string]json.RawMessage, len(rawData))
+	data = make(map[string]json.RawMessage, len(rawData))
 	for k, v := range rawData {
 		data[k] = json.RawMessage(v)
 	}
@@ -118,7 +117,7 @@ func (r *Redis) FullData() (map[string]json.RawMessage, int, int, error) {
 // Update returns changed keys.
 //
 // Blocks until there is new data.
-func (r *Redis) Update() ([]byte, error) {
+func (r *Redis) Update(closing chan struct{}) ([]byte, error) {
 	conn := r.pool.Get()
 	defer conn.Close()
 
@@ -127,7 +126,25 @@ func (r *Redis) Update() ([]byte, error) {
 		id = "$"
 	}
 
-	id, data, err := stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", autoupdateBlockTimeout, "STREAMS", autoupdateKey, id))
+	var data []byte
+	var err error
+	received := make(chan struct{})
+
+	go func() {
+		id, data, err = stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", autoupdateBlockTimeout, "STREAMS", autoupdateKey, id))
+		close(received)
+	}()
+
+	select {
+	case <-received:
+	case <-closing:
+		return nil, closingErr{}
+	}
+
+	if id != "" {
+		r.lastID = id
+	}
+
 	if err != nil {
 		if err == errNil {
 			// No new data
@@ -137,9 +154,6 @@ func (r *Redis) Update() ([]byte, error) {
 		return nil, fmt.Errorf("read autoupdate from redis: %w", err)
 	}
 
-	if id != "" {
-		r.lastID = id
-	}
 	return data, nil
 }
 
@@ -156,7 +170,10 @@ func (r *Redis) ChangedKeys(from, to int) ([]string, error) {
 	return keys, nil
 }
 
-// Data returns the data from redis for specific keys from the full data hash key
+// Data returns the data from redis for specific keys from the full data hash
+// key.
+//
+// If a key does not exist, the value in the returned dict is nil.
 func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 	conn := r.pool.Get()
 	defer conn.Close()
@@ -169,7 +186,7 @@ func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 
 	rawData, err := redis.ByteSlices(conn.Do("HMGET", args...))
 	if err != nil {
-		return nil, fmt.Errorf("hmget %v request: %w", args, err)
+		return nil, fmt.Errorf("hmget %s %v request: %w", fullDataKey, keys, err)
 	}
 
 	data := make(map[string]json.RawMessage, len(rawData))
@@ -178,3 +195,8 @@ func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 	}
 	return data, nil
 }
+
+type closingErr struct{}
+
+func (e closingErr) Closing()      {}
+func (e closingErr) Error() string { return "closing" }

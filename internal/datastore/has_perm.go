@@ -3,6 +3,7 @@ package datastore
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 	"strings"
 	"sync"
 )
@@ -77,12 +78,16 @@ func (h *hasPerm) update(data map[string]json.RawMessage) error {
 			return fmt.Errorf("key %s has wrong format. Expected one `:`", k)
 		}
 
-		var err error
+		id, err := strconv.Atoi(parts[1])
+		if err != nil {
+			return fmt.Errorf("key %s has wrong format. Expected id to be int not %s", k, parts[1])
+		}
+
 		switch parts[0] {
 		case "users/user":
-			err = h.updateUserGroup(v)
+			err = h.updateUserGroup(id, v)
 		case "users/group":
-			err = h.updateGroupPerm(v)
+			err = h.updateGroupPerm(id, v)
 		}
 		if err != nil {
 			return fmt.Errorf("update %s: %w", k, err)
@@ -91,36 +96,42 @@ func (h *hasPerm) update(data map[string]json.RawMessage) error {
 	return nil
 }
 
-func (h *hasPerm) updateGroupPerm(data json.RawMessage) error {
+func (h *hasPerm) updateGroupPerm(id int, data json.RawMessage) error {
 	if h.groupPerm == nil {
 		h.groupPerm = make(map[int]map[string]bool)
 	}
 
-	var group struct {
-		ID          int      `json:"id"`
-		Permissions []string `json:"permissions"`
+	if data == nil {
+		// Group deleted.
+		delete(h.groupPerm, id)
+		return nil
 	}
 
+	var group struct {
+		Permissions []string `json:"permissions"`
+	}
 	if err := json.Unmarshal(data, &group); err != nil {
 		return fmt.Errorf("unmarshal group: %w", err)
 	}
 
-	if group.ID == 0 {
-		return fmt.Errorf("group has no id")
-	}
-
 	// Reset perms. It would be faster to reuse the map
-	h.groupPerm[group.ID] = make(map[string]bool)
+	h.groupPerm[id] = make(map[string]bool)
 
 	for _, perm := range group.Permissions {
-		h.groupPerm[group.ID][perm] = true
+		h.groupPerm[id][perm] = true
 	}
 	return nil
 }
 
-func (h *hasPerm) updateUserGroup(data json.RawMessage) error {
+func (h *hasPerm) updateUserGroup(id int, data json.RawMessage) error {
 	if h.userGroup == nil {
 		h.userGroup = make(map[int][]int)
+	}
+
+	if data == nil {
+		// User deleted.
+		delete(h.userGroup, id)
+		return nil
 	}
 
 	var user struct {
@@ -132,14 +143,10 @@ func (h *hasPerm) updateUserGroup(data json.RawMessage) error {
 		return fmt.Errorf("unmarshal user: %w", err)
 	}
 
-	if user.ID == 0 {
-		return fmt.Errorf("user has no id")
-	}
-
-	h.userGroup[user.ID] = user.GroupsID
+	h.userGroup[id] = user.GroupsID
 
 	if len(user.GroupsID) == 0 {
-		h.userGroup[user.ID] = []int{groupDefaultPK}
+		h.userGroup[id] = []int{groupDefaultPK}
 	}
 	return nil
 }

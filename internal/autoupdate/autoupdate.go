@@ -3,6 +3,7 @@ package autoupdate
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 
@@ -19,33 +20,30 @@ type Autoupdate struct {
 	restricter Restricter
 	closed     chan struct{}
 	topic      *topic.Topic
-	smallestID int
 }
 
 // New create a new autoupdate instance.
 func New(datastore Datastore, restricter Restricter) (*Autoupdate, error) {
 	closed := make(chan struct{})
-	smallestID := datastore.LowestID()
 
 	a := &Autoupdate{
 		datastore:  datastore,
-		smallestID: smallestID,
 		closed:     closed,
 		restricter: restricter,
-		topic:      topic.New(topic.WithClosed(closed), topic.WithStartID(uint64(smallestID))),
+		topic:      topic.New(topic.WithClosed(closed), topic.WithStartID(uint64(datastore.CurrentID()))),
 	}
 
 	go func() {
 		for {
-			// TODO: this will not clean up the goroutine when there is no new data.
-			select {
-			case <-a.closed:
-				return
-			default:
-			}
-
-			keys, changeID, err := datastore.KeysChanged()
+			keys, changeID, err := datastore.KeysChanged(a.closed)
 			if err != nil {
+				var closing interface {
+					Closing()
+				}
+				if errors.As(err, &closing) {
+					return
+				}
+
 				log.Printf("Error: Can not receive new data: %v", err)
 				continue
 			}
@@ -85,7 +83,8 @@ func (a *Autoupdate) Close() {
 //
 // The returned data is restricted for the given uid.
 func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, map[string]json.RawMessage, int, error) {
-	if changeID == 0 || changeID < a.smallestID {
+	if changeID == 0 || changeID < a.datastore.LowestID() {
+		// The changeID is lower then the lowest change_id in redis. Return all data.
 		data := a.datastore.GetAll()
 		a.restricter.Restrict(uid, data)
 		return true, data, int(a.topic.LastID()), nil
@@ -93,7 +92,18 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 
 	newChangeID, changedKeys, err := a.topic.Receive(ctx, uint64(changeID))
 	if err != nil {
-		return false, nil, 0, fmt.Errorf("get changed keys: %w", err)
+		var unknownID topic.UnknownIDError
+		if !errors.As(err, &unknownID) {
+			return false, nil, 0, fmt.Errorf("get changed keys from topic: %w", err)
+		}
+
+		// ID is not in memory, ask redis.
+		newChangeID = unknownID.FirstID
+		changedKeys, err = a.datastore.ChangedKeys(changeID, int(newChangeID))
+		if err != nil {
+			return false, nil, 0, fmt.Errorf("get changed keys from redis: %w", err)
+		}
+
 	}
 
 	// The connection was closed or ther server is exiting.
@@ -101,7 +111,7 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 		return false, nil, 0, nil
 	}
 
-	data := a.datastore.GetAll()
+	data := a.datastore.GetMany(changedKeys)
 	a.restricter.Restrict(uid, data)
-	return false, a.datastore.GetMany(changedKeys), int(newChangeID), nil
+	return false, data, int(newChangeID), nil
 }

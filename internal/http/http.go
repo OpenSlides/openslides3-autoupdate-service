@@ -1,6 +1,7 @@
 package http
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -71,12 +72,18 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	for {
 		all, data, newChangeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
 		if err != nil {
+			var closing interface {
+				Closing()
+			}
+			if errors.As(err, &closing) {
+				// Server is closing. Close connection.
+				return
+			}
+			if errors.Is(err, context.Canceled) {
+				// Client closed connection.
+				return
+			}
 			sendErr(w, err)
-			return
-		}
-
-		if data == nil {
-			// Closing.
 			return
 		}
 
@@ -94,11 +101,14 @@ func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChange
 	deleted := make([]string, 0)
 	for k := range data {
 		if data[k] == nil {
-			deleted = append(deleted, k)
-		} else {
-			collection := strings.Split(k, ":")[0]
-			changed[collection] = append(changed[collection], data[k])
+			if !all {
+				deleted = append(deleted, k)
+			}
+			continue
 		}
+
+		collection := strings.Split(k, ":")[0]
+		changed[collection] = append(changed[collection], data[k])
 	}
 
 	format := struct {

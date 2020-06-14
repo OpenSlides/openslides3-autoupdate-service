@@ -46,16 +46,6 @@ func (c *cache) forKeys(keys ...string) map[string]json.RawMessage {
 	return data
 }
 
-// element returns the element for the key.
-//
-// If a key does not exist in the cache, nil is returned
-func (c *cache) element(key string) json.RawMessage {
-	c.mu.RLock()
-	defer c.mu.RUnlock()
-
-	return c.data[key]
-}
-
 // all returns all data from the cache.
 //
 // Creates a copy of all data.
