@@ -170,7 +170,10 @@ func (r *Redis) ChangedKeys(from, to int) ([]string, error) {
 	return keys, nil
 }
 
-// Data returns the data from redis for specific keys from the full data hash key
+// Data returns the data from redis for specific keys from the full data hash
+// key.
+//
+// If a key does not exist, the value in the returned dict is nil.
 func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 	conn := r.pool.Get()
 	defer conn.Close()

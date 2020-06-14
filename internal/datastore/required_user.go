@@ -1,7 +1,6 @@
 package datastore
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"strings"
@@ -45,7 +44,7 @@ func (r *requiredUser) update(data map[string]json.RawMessage) error {
 
 		usersChanged = true
 
-		if bytes.Compare(v, []byte(`null`)) == 0 {
+		if v == nil {
 			delete(r.requiredUser, k)
 			delete(r.requiredPerm, k)
 			continue

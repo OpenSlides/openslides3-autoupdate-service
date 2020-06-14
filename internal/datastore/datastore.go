@@ -2,6 +2,7 @@
 package datastore
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -81,12 +82,17 @@ func (d *Datastore) KeysChanged(closing chan struct{}) ([]string, int, error) {
 
 	changeID := sData.ChangeID
 	keys := make([]string, 0, len(sData.Elements))
-	for k := range sData.Elements {
+	for k, v := range sData.Elements {
+		if bytes.Compare(v, []byte(`null`)) == 0 {
+			// Deleted elements.
+			sData.Elements[k] = nil
+		}
 		keys = append(keys, k)
 	}
 
 	if changeID > d.maxChangeID+1 {
 		// Data is to new. Get the data in between.
+		// TODO: what if something was deleted in between? Test it and then remove this comment.
 		data, err := d.receive(d.maxChangeID, changeID-1)
 		if err != nil {
 			return nil, 0, fmt.Errorf("receive missing data from %d to %d: %w", d.maxChangeID, changeID-1, err)

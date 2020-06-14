@@ -1,7 +1,6 @@
 package datastore
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"strconv"
@@ -102,8 +101,8 @@ func (h *hasPerm) updateGroupPerm(id int, data json.RawMessage) error {
 		h.groupPerm = make(map[int]map[string]bool)
 	}
 
-	if bytes.Compare(data, []byte(`null`)) == 0 {
-		// group deleted
+	if data == nil {
+		// Group deleted.
 		delete(h.groupPerm, id)
 		return nil
 	}
@@ -129,8 +128,8 @@ func (h *hasPerm) updateUserGroup(id int, data json.RawMessage) error {
 		h.userGroup = make(map[int][]int)
 	}
 
-	if bytes.Compare(data, []byte(`null`)) == 0 {
-		// user deleted
+	if data == nil {
+		// User deleted.
 		delete(h.userGroup, id)
 		return nil
 	}

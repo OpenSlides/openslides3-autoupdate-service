@@ -1,7 +1,6 @@
 package datastore
 
 import (
-	"bytes"
 	"encoding/json"
 	"sync"
 )
@@ -20,7 +19,7 @@ func (c *cache) update(changed map[string]json.RawMessage) {
 	}
 
 	for k, v := range changed {
-		if bytes.Compare(v, []byte(`null`)) == 0 {
+		if v == nil {
 			delete(c.data, k)
 			continue
 		}
