@@ -22,13 +22,14 @@ func TestAutoupdateFirstData(t *testing.T) {
 
 	restricter := new(test.RestricterMock)
 
-	a, err := autoupdate.New(datastore, restricter)
+	closed := make(chan struct{})
+	defer close(closed)
+	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
-	defer a.Close()
 
-	srv := httptest.NewServer(ahttp.New(a, auther, 0))
+	srv := httptest.NewServer(ahttp.New(a, auther, 0, nil))
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -54,13 +55,14 @@ func TestAuth(t *testing.T) {
 
 	restricter := new(test.RestricterMock)
 
-	a, err := autoupdate.New(datastore, restricter)
+	closed := make(chan struct{})
+	defer close(closed)
+	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
-	defer a.Close()
 
-	srv := httptest.NewServer(ahttp.New(a, auther, 0))
+	srv := httptest.NewServer(ahttp.New(a, auther, 0, nil))
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())

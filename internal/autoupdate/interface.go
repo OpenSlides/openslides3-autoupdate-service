@@ -8,7 +8,7 @@ import (
 type Datastore interface {
 	LowestID() int
 	CurrentID() int
-	KeysChanged(chan struct{}) ([]string, int, error)
+	KeysChanged(<-chan struct{}) ([]string, int, error)
 	GetMany([]string) map[string]json.RawMessage
 	GetAll() map[string]json.RawMessage
 	ChangedKeys(from, to int) ([]string, error)

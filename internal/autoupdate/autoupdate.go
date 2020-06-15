@@ -18,14 +18,12 @@ import (
 type Autoupdate struct {
 	datastore  Datastore
 	restricter Restricter
-	closed     chan struct{}
+	closed     <-chan struct{}
 	topic      *topic.Topic
 }
 
 // New create a new autoupdate instance.
-func New(datastore Datastore, restricter Restricter) (*Autoupdate, error) {
-	closed := make(chan struct{})
-
+func New(datastore Datastore, restricter Restricter, closed <-chan struct{}) (*Autoupdate, error) {
 	a := &Autoupdate{
 		datastore:  datastore,
 		closed:     closed,
@@ -66,13 +64,6 @@ func New(datastore Datastore, restricter Restricter) (*Autoupdate, error) {
 	}()
 
 	return a, nil
-}
-
-// Close stops the autoupdate service.
-//
-// This method is not save for concurrent use. It can only be called once.
-func (a *Autoupdate) Close() {
-	close(a.closed)
 }
 
 // Receive returns all changed data and the new changeid since the given change

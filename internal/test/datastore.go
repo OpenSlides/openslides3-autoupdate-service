@@ -34,7 +34,7 @@ func (d *DatastoreMock) CurrentID() int {
 }
 
 // KeysChanged waits for Changes to be called.
-func (d *DatastoreMock) KeysChanged(closing chan struct{}) ([]string, int, error) {
+func (d *DatastoreMock) KeysChanged(closing <-chan struct{}) ([]string, int, error) {
 	var changes []string
 	select {
 	case changes = <-d.changes:
