@@ -98,22 +98,32 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 
 func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChangeID, toChangeID int) error {
 	changed := make(map[string][]json.RawMessage)
-	deleted := make([]string, 0)
+	deleted := make(map[string][]int)
 	for k := range data {
+		parts := strings.Split(k, ":")
+		if len(parts) != 2 {
+			return fmt.Errorf("invalid key %s, expected exacly one `:`", k)
+		}
+
+		collection := parts[0]
+		id, err := strconv.Atoi(parts[1])
+		if err != nil {
+			return fmt.Errorf("invalid key %s, id is not a number", k)
+		}
+
 		if data[k] == nil {
 			if !all {
-				deleted = append(deleted, k)
+				deleted[collection] = append(deleted[collection], id)
 			}
 			continue
 		}
 
-		collection := strings.Split(k, ":")[0]
 		changed[collection] = append(changed[collection], data[k])
 	}
 
 	format := struct {
 		Changed      map[string][]json.RawMessage `json:"changed"`
-		Deleted      []string                     `json:"deleted"`
+		Deleted      map[string][]int             `json:"deleted"`
 		FromChangeID int                          `json:"from_change_id"`
 		ToChangeID   int                          `json:"to_change_id"`
 		AllData      bool                         `json:"all_data"`
