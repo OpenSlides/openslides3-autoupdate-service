@@ -10,7 +10,7 @@ import (
 const published = 4
 
 // RestrictPoll restricts an element for an assignment or motion poll.
-func RestrictPoll(r restricter.HasPermer, canSee, canManage string) restricter.ElementFunc {
+func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFiels []string) restricter.ElementFunc {
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
 		if !r.HasPerm(uid, canSee) {
 			return nil, nil
@@ -46,6 +46,9 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string) restricter.E
 			delete(poll, "votesinvalid")
 			delete(poll, "votescast")
 			delete(poll, "voted_id")
+			for _, field := range restrictedFiels {
+				delete(poll, field)
+			}
 		}
 
 		data, err := json.Marshal(poll)
@@ -79,10 +82,9 @@ func RestrictOption(r restricter.HasPermer, canSee, canManage string) restricter
 
 		// delete some fields for unpublished options.
 		if state != published {
-			delete(option, "votesvalid")
-			delete(option, "votesinvalid")
-			delete(option, "votescast")
-			delete(option, "voted_id")
+			delete(option, "yes")
+			delete(option, "no")
+			delete(option, "abstain")
 		}
 
 		data, err := json.Marshal(option)

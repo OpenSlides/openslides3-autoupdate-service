@@ -52,7 +52,7 @@ func main() {
 		"agenda/list-of-speakers": basePerm(agenda.CanSeeListOfSpeakers),
 
 		"assignments/assignment":        basePerm(assignment.CanSee),
-		"assignments/assignment-poll":   poll.RestrictPoll(ds, assignment.CanSee, assignment.CanManage),
+		"assignments/assignment-poll":   poll.RestrictPoll(ds, assignment.CanSee, assignment.CanManage, []string{"amount_global_no", "amount_global_abstain"}),
 		"assignments/assignment-option": poll.RestrictOption(ds, assignment.CanSee, assignment.CanManage),
 		"assignments/assignment-vote":   poll.RestrictVote(ds, assignment.CanSee, assignment.CanManage),
 
@@ -72,7 +72,7 @@ func main() {
 		"motions/motion-comment-section":       motion.CommentSectionRestrict(ds),
 		"motions/workflow":                     basePerm(motion.CanSee),
 		"motions/motion-change-recommendation": motion.ChangeRecommendationRestrict(ds),
-		"motions/motion-poll":                  poll.RestrictPoll(ds, motion.CanSee, motion.CanManage),
+		"motions/motion-poll":                  poll.RestrictPoll(ds, motion.CanSee, motion.CanManage, nil),
 		"motions/motion-option":                poll.RestrictOption(ds, motion.CanSee, motion.CanManage),
 		"motions/motion-vote":                  poll.RestrictVote(ds, motion.CanSee, motion.CanManage),
 		"motions/state":                        basePerm(motion.CanSee),
