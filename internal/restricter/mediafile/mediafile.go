@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	pCanSee = "mediafile.can_see"
+	pCanSee = "mediafiles.can_see"
 )
 
 type required interface {
@@ -41,12 +41,21 @@ func Restrict(r required) restricter.ElementFunc {
 			if accessGroups {
 				return data, nil
 			}
-		case []int:
-			if r.InGroups(uid, accessGroups) {
+		case []interface{}:
+			ints := make([]int, len(accessGroups))
+			for i, g := range accessGroups {
+				j, ok := g.(int)
+				if !ok {
+					return nil, fmt.Errorf("mediafile.inherited_access_groups_id[%d] has type %T, expected int", i, g)
+				}
+
+				ints[i] = j
+			}
+			if r.InGroups(uid, ints) {
 				return data, nil
 			}
 		default:
-			return nil, fmt.Errorf("invalid type %T for mediafile.inherited_access_groups_id", accessGroups)
+			return nil, fmt.Errorf("mediafile.inherited_access_groups_id has invalid type %T", accessGroups)
 		}
 		return nil, nil
 	}
