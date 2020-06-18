@@ -28,7 +28,7 @@ func TestAutoupdateFirstData(t *testing.T) {
 	}
 	defer a.Close()
 
-	srv := httptest.NewServer(ahttp.New(a, auther))
+	srv := httptest.NewServer(ahttp.New(a, auther, 0))
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -60,7 +60,7 @@ func TestAuth(t *testing.T) {
 	}
 	defer a.Close()
 
-	srv := httptest.NewServer(ahttp.New(a, auther))
+	srv := httptest.NewServer(ahttp.New(a, auther, 0))
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())

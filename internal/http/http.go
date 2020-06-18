@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 )
@@ -19,14 +20,16 @@ type Handler struct {
 	autoupdate *autoupdate.Autoupdate
 	mux        *http.ServeMux
 	auther     Auther
+	keepAlive  int
 }
 
 // New create a new Handler with the correct urls.
-func New(autoupdate *autoupdate.Autoupdate, auther Auther) *Handler {
+func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int) *Handler {
 	h := &Handler{
 		autoupdate: autoupdate,
 		mux:        http.NewServeMux(),
 		auther:     auther,
+		keepAlive:  keepAlive,
 	}
 	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
 	h.mux.Handle("/system/health", http.HandlerFunc(h.handleHealth))
@@ -68,9 +71,31 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	var data map[string]json.RawMessage
 	var all bool
 	var newChangeID int
+	ticker := new(time.Ticker)
+	if h.keepAlive > 0 {
+		ticker = time.NewTicker(time.Duration(h.keepAlive) * time.Second)
+		defer ticker.Stop()
+	}
 
 	for {
-		all, data, newChangeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
+		event := make(chan struct{})
+		go func() {
+			all, data, newChangeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
+			close(event)
+		}()
+
+		select {
+		case <-ticker.C:
+			if err := sendKeepAlive(w); err != nil {
+				sendErr(w, err)
+			}
+			continue
+		case <-event:
+			// Received autoupdate event.
+			// TODO: Reset ticker. This will be possible in go 1.15 that will be released in august:
+			//       https://tip.golang.org/doc/go1.15#time
+		}
+
 		if err != nil {
 			var closing interface {
 				Closing()
@@ -91,7 +116,6 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 			sendErr(w, err)
 			return
 		}
-		w.(http.Flusher).Flush()
 		changeID = newChangeID
 	}
 }
@@ -138,6 +162,7 @@ func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChange
 	if err := json.NewEncoder(w).Encode(format); err != nil {
 		return fmt.Errorf("encode and send output data: %w", err)
 	}
+	w.(http.Flusher).Flush()
 	return nil
 }
 
@@ -156,4 +181,11 @@ func sendErr(w io.Writer, err error) {
 
 	log.Printf("Internal Error: %v", err)
 	fmt.Fprintln(w, `{"error": {"type": "InternalError", "msg": "Ups, something went wrong!"}}`)
+	w.(http.Flusher).Flush()
+}
+
+func sendKeepAlive(w io.Writer) error {
+	_, err := fmt.Fprintln(w, `{}`)
+	w.(http.Flusher).Flush()
+	return err
 }
