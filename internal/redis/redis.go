@@ -3,6 +3,7 @@ package redis
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"strconv"
 	"time"
 
@@ -23,6 +24,13 @@ const (
 	// autoupdateKey is the keyname of the redis streams where the worker inform
 	// about changed data.
 	autoupdateKey = "autoupdate"
+
+	// cacheReayKey is the name of the redis key that tells, that the cache is
+	// ready to use.
+	cacheReadyKey = "cache_ready"
+
+	// readyWait is the duration to wait to check again if the cache is ready.
+	readyWait = 1 * time.Second
 
 	// blockTimeout is the time in miliseconds, how long the xread command will
 	// block.
@@ -68,6 +76,26 @@ func (r *Redis) TestConn() error {
 func (r *Redis) FullData() (data map[string]json.RawMessage, max int, min int, err error) {
 	conn := r.pool.Get()
 	defer conn.Close()
+
+	var ready string
+	for {
+		ready, err = redis.String(conn.Do("GET", cacheReadyKey))
+		if err != nil && err != redis.ErrNil {
+			return nil, 0, 0, fmt.Errorf("get ready: %w", err)
+		}
+
+		if ready == "" {
+			log.Printf("Cache not ready. Try again in %d seconds", readyWait/time.Second)
+			time.Sleep(readyWait)
+			continue
+		}
+
+		if ready == "ok" {
+			break
+		}
+
+		return nil, 0, 0, fmt.Errorf("redis command get ready returned `%s`", ready)
+	}
 
 	if err := conn.Send("MULTI"); err != nil {
 		return nil, 0, 0, fmt.Errorf("send MULTI to redis: %w", err)
