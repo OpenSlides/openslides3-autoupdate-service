@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -29,19 +28,23 @@ import (
 func main() {
 	listenAddr := getEnv("LISTEN_HTTP_ADDR", ":8002")
 	workerAddr := getEnv("WORKER_ADDR", "http://localhost:8000")
-	keepAliveRaw := getEnv("KEEP_ALIVE_DURATION", "0")
+	keepAliveRaw := getEnv("KEEP_ALIVE_DURATION", "30")
+	redisAddr := getEnv("REDIS_ADDR", "localhost:6379")
+
 	keepAlive, err := strconv.Atoi(keepAliveRaw)
 	if err != nil {
 		log.Fatalf("Invalid value for KEEP_ALIVE_DURATION, got %s, expected an int: %v", keepAliveRaw, err)
 	}
 
-	redisConn := redis.New(getEnv("REDIS_ADDR", "localhost:6379"))
+	redisConn := redis.New(redisAddr)
+	log.Printf("Connected to Redis at %s", redisAddr)
 
 	requiredUserCallable := openslidesRequiredUsers()
 	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallable)
 	if err != nil {
 		log.Fatalf("Can not initialize data: %v", err)
 	}
+	log.Printf("Connected to OpenSlides at %s", workerAddr)
 
 	osRestricters := openslidesRestricters(ds)
 	restricter := restricter.New(ds, osRestricters)
@@ -53,6 +56,9 @@ func main() {
 
 	auth := auth.New(workerAddr)
 	handler := ahttp.New(service, auth, keepAlive)
+	if keepAlive > 0 {
+		log.Printf("Keep Alive Interval: %d seconds", keepAlive)
+	}
 
 	srv := &http.Server{Addr: listenAddr, Handler: handler}
 	defer func() {
@@ -63,7 +69,7 @@ func main() {
 	}()
 
 	go func() {
-		fmt.Printf("Listen on %s\n", listenAddr)
+		log.Printf("Listen on %s", listenAddr)
 		if err := srv.ListenAndServe(); err != http.ErrServerClosed {
 			log.Fatalf("HTTP server failed: %v", err)
 		}
