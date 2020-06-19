@@ -1,6 +1,5 @@
 * Projector
 * Notify
-* Startup with incomplete redis data
 * Prune autoupdate topic from time to time.
 
 
