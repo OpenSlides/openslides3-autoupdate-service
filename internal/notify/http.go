@@ -64,75 +64,60 @@ func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
 	w.(http.Flusher).Flush()
 
 	encoder := json.NewEncoder(w)
-	var rMails []string
 	var err error
 
-	ticker := new(time.Ticker)
-	if n.keepAlive > 0 {
-		ticker = time.NewTicker(time.Duration(n.keepAlive) * time.Second)
-		defer ticker.Stop()
-	}
-
 	for {
-		event := make(chan struct{})
-		go func() {
-			tid, rMails, err = n.topic.Receive(r.Context(), tid)
-			close(event)
-		}()
-
-		select {
-		case <-ticker.C:
-			if err := sendKeepAlive(w); err != nil {
-				return err
-			}
-			continue
-		case <-event:
-			// Received autoupdate event.
-			// TODO: Reset ticker. This will be possible in go 1.15 that will be released in august:
-			//       https://tip.golang.org/doc/go1.15#time
-		}
-
+		tid, err = n.autoupdateLoop(w, r, tid, userID, cid, encoder)
 		if err != nil {
-			var closing interface {
-				Closing()
-			}
-			if errors.As(err, &closing) {
-				return nil
-			}
-
-			if errors.Is(err, context.Canceled) {
-				return nil
-			}
-			return fmt.Errorf("receiving message: %w", err)
+			return err
 		}
-
-		for _, rMail := range rMails {
-			var m mail
-			if err := json.Unmarshal([]byte(rMail), &m); err != nil {
-				return fmt.Errorf("decoding message: %w", err)
-			}
-
-			if !m.forMe(userID, cid) {
-				continue
-			}
-
-			out := struct {
-				SenderUserID    int             `json:"sender_user_id"`
-				SenderChannelID string          `json:"sender_channel_id"`
-				Message         json.RawMessage `json:"message"`
-			}{
-				m.From.uid(),
-				m.From.String(),
-				m.Message,
-			}
-
-			if err := encoder.Encode(out); err != nil {
-				return fmt.Errorf("sending message: %w", err)
-			}
-		}
-
-		w.(http.Flusher).Flush()
 	}
+}
+
+func (n *Notify) autoupdateLoop(w http.ResponseWriter, r *http.Request, tid uint64, uid int, cid channelID, encoder *json.Encoder) (uint64, error) {
+	ctx, cancel := context.WithTimeout(r.Context(), time.Duration(n.keepAlive)*time.Second)
+	defer cancel()
+
+	var rMails []string
+	var err error
+	tid, rMails, err = n.topic.Receive(ctx, tid)
+	if err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			if err := sendKeepAlive(w); err != nil {
+				return 0, err
+			}
+			return tid, nil
+		}
+		return 0, fmt.Errorf("receiving message: %w", err)
+	}
+
+	for _, rMail := range rMails {
+		var m mail
+		if err := json.Unmarshal([]byte(rMail), &m); err != nil {
+			return 0, fmt.Errorf("decoding message: %w", err)
+		}
+
+		if !m.forMe(uid, cid) {
+			continue
+		}
+
+		out := struct {
+			SenderUserID    int             `json:"sender_user_id"`
+			SenderChannelID string          `json:"sender_channel_id"`
+			Message         json.RawMessage `json:"message"`
+		}{
+			m.From.uid(),
+			m.From.String(),
+			m.Message,
+		}
+
+		if err := encoder.Encode(out); err != nil {
+			return 0, fmt.Errorf("sending message: %w", err)
+		}
+	}
+
+	w.(http.Flusher).Flush()
+	return tid, nil
 }
 
 // errHandleFunc is like a http.Handler, but has a error as return value.
@@ -144,6 +129,17 @@ type errHandleFunc func(w http.ResponseWriter, r *http.Request) error
 
 func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err := f(w, r); err != nil {
+		var closing interface {
+			Closing()
+		}
+		if errors.As(err, &closing) {
+			return
+		}
+
+		if errors.Is(err, context.Canceled) {
+			return
+		}
+
 		var clientError interface {
 			ClientError() string
 			Error() string
