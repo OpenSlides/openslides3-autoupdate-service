@@ -14,6 +14,7 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
 	ahttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/agenda"
@@ -48,21 +49,24 @@ func main() {
 
 	osRestricters := openslidesRestricters(ds)
 	restricter := restricter.New(ds, osRestricters)
+	auth := auth.New(workerAddr)
 
-	service, err := autoupdate.New(ds, restricter)
+	closed := make(chan struct{})
+	service, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	auth := auth.New(workerAddr)
-	handler := ahttp.New(service, auth, keepAlive)
+	notifyService := notify.New(redisConn, auth, keepAlive, closed)
+
+	handler := ahttp.New(service, auth, keepAlive, notifyService)
 	if keepAlive > 0 {
 		log.Printf("Keep Alive Interval: %d seconds", keepAlive)
 	}
 
 	srv := &http.Server{Addr: listenAddr, Handler: handler}
 	defer func() {
-		service.Close()
+		close(closed)
 		if err := srv.Shutdown(context.Background()); err != nil {
 			log.Printf("Error on HTTP server shutdown: %v", err)
 		}

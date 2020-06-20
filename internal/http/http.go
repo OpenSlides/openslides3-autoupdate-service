@@ -24,7 +24,7 @@ type Handler struct {
 }
 
 // New create a new Handler with the correct urls.
-func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int) *Handler {
+func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int, addHandler http.Handler) *Handler {
 	h := &Handler{
 		autoupdate: autoupdate,
 		mux:        http.NewServeMux(),
@@ -33,6 +33,9 @@ func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int) *Handl
 	}
 	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
 	h.mux.Handle("/system/health", http.HandlerFunc(h.handleHealth))
+	if addHandler != nil {
+		h.mux.Handle("/", addHandler)
+	}
 	return h
 }
 

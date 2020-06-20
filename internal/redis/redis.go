@@ -34,13 +34,17 @@ const (
 
 	// blockTimeout is the time in miliseconds, how long the xread command will
 	// block.
-	autoupdateBlockTimeout = "3600000" // One Hour
+	blockTimeout = "3600000" // One Hour
+
+	// notifyKey is the name of the notify stream name.
+	notifyKey = "notify"
 )
 
 // Redis holds the connection to redis.
 type Redis struct {
-	pool   *redis.Pool
-	lastID string
+	pool             *redis.Pool
+	lastAutoupdateID string
+	lastNotifyID     string
 }
 
 // New create a new Redis instance.
@@ -157,11 +161,11 @@ func (r *Redis) FullData() (data map[string]json.RawMessage, max int, min int, e
 // Update returns changed keys.
 //
 // Blocks until there is new data.
-func (r *Redis) Update(closing chan struct{}) ([]byte, error) {
+func (r *Redis) Update(closing <-chan struct{}) ([]byte, error) {
 	conn := r.pool.Get()
 	defer conn.Close()
 
-	id := r.lastID
+	id := r.lastAutoupdateID
 	if id == "" {
 		id = "$"
 	}
@@ -171,18 +175,18 @@ func (r *Redis) Update(closing chan struct{}) ([]byte, error) {
 	received := make(chan struct{})
 
 	go func() {
-		id, data, err = stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", autoupdateBlockTimeout, "STREAMS", autoupdateKey, id))
+		id, data, err = stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", blockTimeout, "STREAMS", autoupdateKey, id))
 		close(received)
 	}()
 
 	select {
 	case <-received:
 	case <-closing:
-		return nil, closingErr{}
+		return nil, closingError{}
 	}
 
 	if id != "" {
-		r.lastID = id
+		r.lastAutoupdateID = id
 	}
 
 	if err != nil {
@@ -236,7 +240,54 @@ func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 	return data, nil
 }
 
-type closingErr struct{}
+// SendNotify publishes a notify message in redis.
+func (r *Redis) SendNotify(message string) error {
+	conn := r.pool.Get()
+	defer conn.Close()
 
-func (e closingErr) Closing()      {}
-func (e closingErr) Error() string { return "closing" }
+	_, err := conn.Do("XADD", notifyKey, "*", "content", message)
+	if err != nil {
+		return fmt.Errorf("xadd: %w", err)
+	}
+	return nil
+}
+
+// ReceiveNotify returns the next notify message.
+func (r *Redis) ReceiveNotify(closing <-chan struct{}) (message string, err error) {
+	conn := r.pool.Get()
+	defer conn.Close()
+
+	id := r.lastNotifyID
+	if id == "" {
+		id = "$"
+	}
+
+	var data []byte
+	received := make(chan struct{})
+
+	go func() {
+		id, data, err = stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", blockTimeout, "STREAMS", notifyKey, id))
+		close(received)
+	}()
+
+	select {
+	case <-received:
+	case <-closing:
+		return "", closingError{}
+	}
+
+	if id != "" {
+		r.lastNotifyID = id
+	}
+
+	if err != nil {
+		if err == errNil {
+			// No new data
+			return "", nil
+		}
+
+		return "", fmt.Errorf("read notify from redis: %w", err)
+	}
+
+	return string(data), nil
+}

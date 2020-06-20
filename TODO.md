@@ -1,6 +1,5 @@
 * Projector
-* Notify
-* Prune autoupdate topic from time to time.
+* Prune autoupdate topic and notify topic from time to time.
 
 
 * Delete TODO.md and KONZEPT.md

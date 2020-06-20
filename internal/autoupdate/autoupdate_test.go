@@ -18,11 +18,12 @@ func TestAutoupdateReceiveNewData(t *testing.T) {
 	datastore.Change([]string{"user:1"})
 	restricter := new(test.RestricterMock)
 
-	a, err := autoupdate.New(datastore, restricter)
+	closed := make(chan struct{})
+	defer close(closed)
+	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
-	defer a.Close()
 
 	all, data, id, err := a.Receive(context.Background(), 1, 1)
 
@@ -56,11 +57,12 @@ func TestAutoupdateReceiveFirstData(t *testing.T) {
 
 	restricter := new(test.RestricterMock)
 
-	a, err := autoupdate.New(datastore, restricter)
+	closed := make(chan struct{})
+	defer close(closed)
+	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
-	defer a.Close()
 
 	all, data, id, err := a.Receive(context.Background(), 1, 0)
 

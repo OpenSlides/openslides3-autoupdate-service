@@ -38,6 +38,8 @@ go build ./cmd/autoupdate && ./autoupdate
 
 ## Example requests with curl
 
+### Autoupdate
+
 To get all data:
 
 ```
@@ -56,6 +58,60 @@ id. Afterwards the session cookie can be used with curl:
 ```
 curl --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" localhost:8002/system/autoupdate
 ```
+
+### Notify
+
+The notify system needs logged-in users. A seesion cookies has to be created and
+used. See the --cookie flag above.
+
+To listen for messages:
+
+```
+curl localhost:8002/system/notify
+```
+
+It returns a message like this one to tell the channel id:
+
+`{"channelID": "lVbO2irQ:1:0"}`
+
+The value of channelID is just a string. The format may change in the future.
+Currently the first part is a random string that is constant for a server
+instance. The second part is the user id. The last part is a counter.
+
+If a message is received, it has the format:
+
+```
+{
+  "sender_user_id": int -> User id of the sender.
+  "sender_channel_id": string -> Channel id of the sender.
+  "message": json -> message send by the sender.
+}
+```
+
+From time to time the server sends empty keep alive messages. A keep alive
+message is an empfy json object.
+
+
+To listen for messages:
+
+```
+curl localhost:8002/system/notify/send -d '{"channel_id":"foo:1:0", "to_all":true, "message": "some json"}'
+```
+
+The body has to be a valid json object with at least the fields `channel_id` and
+`message`.
+
+```
+{
+  "channel_id": string -> channel_id of the sender.
+  "message": json -> valid json containing the message.
+  "to_all": bool -> If true, message is send to every connection.
+  "to_users": list[int] -> List of user ids that should receive the message.
+  "to_channels": list[string] -> List of channel ids that should receive the message.
+}
+```
+
+Make sure the message does not contain any newline!
 
 
 ## Run Test

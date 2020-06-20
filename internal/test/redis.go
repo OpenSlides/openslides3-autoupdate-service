@@ -26,7 +26,7 @@ func (r *RedisMock) FullData() (data map[string]json.RawMessage, max int, min in
 }
 
 // Update waits for Send() to be called and returned the send data.
-func (r *RedisMock) Update(closing chan struct{}) ([]byte, error) {
+func (r *RedisMock) Update(closing <-chan struct{}) ([]byte, error) {
 	select {
 	case <-closing:
 		return nil, closingErr{}

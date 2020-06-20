@@ -64,7 +64,7 @@ func (d *Datastore) CurrentID() int {
 // returns the changed keys and the new change id.
 //
 // If closing is closed then it return nil, 0, nil.
-func (d *Datastore) KeysChanged(closing chan struct{}) ([]string, int, error) {
+func (d *Datastore) KeysChanged(closing <-chan struct{}) ([]string, int, error) {
 	var rawData []byte
 	var err error
 	for rawData == nil {

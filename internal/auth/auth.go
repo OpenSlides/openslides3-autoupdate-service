@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 	"time"
@@ -13,6 +14,11 @@ const (
 	whoAmIPath    = "/apps/users/whoami/"
 	whoamITimeout = 2 * time.Second
 )
+
+type userIDKey string
+
+// UserIDKey is the key of the request.Context where the user id is saved to.
+const UserIDKey userIDKey = "user_id"
 
 // Auth authentivates a request using the whoami view.
 type Auth struct {
@@ -39,6 +45,11 @@ func (a *Auth) Auth(r *http.Request) (int, error) {
 		return 0, fmt.Errorf("build whoami url: %w", err)
 	}
 
+	req.Method = http.MethodGet
+	req.Body = nil
+	req.ContentLength = 0
+
+	// This is inspired by httputil.ReverseProxy
 	resp, err := http.DefaultTransport.RoundTrip(req)
 	if err != nil {
 		return 0, fmt.Errorf("send whoami request: %w", err)
@@ -63,4 +74,21 @@ func (a *Auth) Auth(r *http.Request) (int, error) {
 	}
 
 	return *respData.UserID, nil
+}
+
+// Middleware adds the user id into the request.Context
+func (a *Auth) Middleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		uid, err := a.Auth(r)
+		if err != nil {
+			log.Printf("Auth.Middleware: can not authenticate request: %v", err)
+			http.Error(w, "Ups, something went wrong", 500)
+			return
+		}
+
+		ctx := context.WithValue(r.Context(), UserIDKey, uid)
+		r = r.WithContext(ctx)
+
+		next.ServeHTTP(w, r)
+	})
 }
