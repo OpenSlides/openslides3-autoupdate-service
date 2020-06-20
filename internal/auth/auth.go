@@ -79,7 +79,6 @@ func (a *Auth) Auth(r *http.Request) (int, error) {
 // Middleware adds the user id into the request.Context
 func (a *Auth) Middleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// TODO: Fix a.Auth for post requests.
 		uid, err := a.Auth(r)
 		if err != nil {
 			log.Printf("Auth.Middleware: can not authenticate request: %v", err)

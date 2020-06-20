@@ -1,6 +1,7 @@
 package notify
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -33,7 +34,7 @@ func (n *Notify) handleSend(w http.ResponseWriter, r *http.Request) error {
 	}
 
 	if from.From.uid() != userID {
-		return invalidRequestError{fmt.Errorf("the given channel id is not valid")}
+		return invalidRequestError{fmt.Errorf("invalid channel id")}
 	}
 
 	if err := n.backend.SendNotify(string(m)); err != nil {
@@ -70,6 +71,10 @@ func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
 				Closing()
 			}
 			if errors.As(err, &closing) {
+				return nil
+			}
+
+			if errors.Is(err, context.Canceled) {
 				return nil
 			}
 			return fmt.Errorf("receiving message: %w", err)
@@ -118,7 +123,12 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			Error() string
 		}
 		if errors.As(err, &clientError) {
-			fmt.Fprintf(w, `{"error": {"type": "%s", "msg": "%s"}}`, clientError.ClientError(), clientError.Error())
+			fmt.Fprintf(
+				w,
+				`{"error": {"type": "%s", "msg": "%s"}}`,
+				clientError.ClientError(),
+				clientError.Error(),
+			)
 			fmt.Fprintln(w)
 			return
 		}
