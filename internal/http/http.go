@@ -71,56 +71,35 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	w.(http.Flusher).Flush()
 	log.Printf("connect user %d with change_id %d", uid, changeID)
 
-	var data map[string]json.RawMessage
-	var all bool
-	var newChangeID int
-	ticker := new(time.Ticker)
-	if h.keepAlive > 0 {
-		ticker = time.NewTicker(time.Duration(h.keepAlive) * time.Second)
-		defer ticker.Stop()
-	}
-
+	var cid int
 	for {
-		event := make(chan struct{})
-		go func() {
-			all, data, newChangeID, err = h.autoupdate.Receive(r.Context(), uid, changeID)
-			close(event)
-		}()
-
-		select {
-		case <-ticker.C:
-			if err := sendKeepAlive(w); err != nil {
-				sendErr(w, err)
-			}
-			continue
-		case <-event:
-			// Received autoupdate event.
-			// TODO: Reset ticker. This will be possible in go 1.15 that will be released in august:
-			//       https://tip.golang.org/doc/go1.15#time
-		}
-
+		cid, err = h.autoupdateLoop(w, r, cid, uid)
 		if err != nil {
-			var closing interface {
-				Closing()
-			}
-			if errors.As(err, &closing) {
-				// Server is closing. Close connection.
-				return
-			}
-			if errors.Is(err, context.Canceled) {
-				// Client closed connection.
-				return
-			}
 			sendErr(w, err)
 			return
 		}
-
-		if err := sendData(w, all, data, changeID, newChangeID); err != nil {
-			sendErr(w, err)
-			return
-		}
-		changeID = newChangeID
 	}
+}
+
+func (h *Handler) autoupdateLoop(w http.ResponseWriter, r *http.Request, cid, uid int) (int, error) {
+	ctx, cancel := context.WithTimeout(r.Context(), time.Duration(h.keepAlive)*time.Second)
+	defer cancel()
+
+	all, data, newChangeID, err := h.autoupdate.Receive(ctx, uid, cid)
+	if err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			if err := sendKeepAlive(w); err != nil {
+				return 0, err
+			}
+			return cid, nil
+		}
+		return 0, err
+	}
+
+	if err := sendData(w, all, data, cid, newChangeID); err != nil {
+		return 0, err
+	}
+	return newChangeID, nil
 }
 
 func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChangeID, toChangeID int) error {
@@ -172,6 +151,19 @@ func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChange
 // internalErr sends a nonsense error message to the client and logs the real
 // message to stdout.
 func sendErr(w io.Writer, err error) {
+	var closing interface {
+		Closing()
+	}
+	if errors.As(err, &closing) {
+		// Server is closing. Close connection.
+		return
+	}
+
+	if errors.Is(err, context.Canceled) {
+		// Client closed connection.
+		return
+	}
+
 	var clientError interface {
 		ClientError() string
 		Error() string
