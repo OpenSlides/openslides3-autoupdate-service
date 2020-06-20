@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
+	"strconv"
 	"syscall"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
@@ -28,10 +28,85 @@ import (
 func main() {
 	listenAddr := getEnv("LISTEN_HTTP_ADDR", ":8002")
 	workerAddr := getEnv("WORKER_ADDR", "http://localhost:8000")
+	keepAliveRaw := getEnv("KEEP_ALIVE_DURATION", "30")
+	redisAddr := getEnv("REDIS_ADDR", "localhost:6379")
 
-	redisConn := redis.New(getEnv("REDIS_ADDR", "localhost:6379"))
+	keepAlive, err := strconv.Atoi(keepAliveRaw)
+	if err != nil {
+		log.Fatalf("Invalid value for KEEP_ALIVE_DURATION, got %s, expected an int: %v", keepAliveRaw, err)
+	}
 
-	requiredUserCallable := map[string]func(json.RawMessage) ([]int, string, error){
+	redisConn := redis.New(redisAddr)
+	log.Printf("Connected to Redis at %s", redisAddr)
+
+	requiredUserCallable := openslidesRequiredUsers()
+	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallable)
+	if err != nil {
+		log.Fatalf("Can not initialize data: %v", err)
+	}
+	log.Printf("Connected to OpenSlides at %s", workerAddr)
+
+	osRestricters := openslidesRestricters(ds)
+	restricter := restricter.New(ds, osRestricters)
+
+	service, err := autoupdate.New(ds, restricter)
+	if err != nil {
+		log.Fatalf("Can not create autoupdate service: %v", err)
+	}
+
+	auth := auth.New(workerAddr)
+	handler := ahttp.New(service, auth, keepAlive)
+	if keepAlive > 0 {
+		log.Printf("Keep Alive Interval: %d seconds", keepAlive)
+	}
+
+	srv := &http.Server{Addr: listenAddr, Handler: handler}
+	defer func() {
+		service.Close()
+		if err := srv.Shutdown(context.Background()); err != nil {
+			log.Printf("Error on HTTP server shutdown: %v", err)
+		}
+	}()
+
+	go func() {
+		log.Printf("Listen on %s", listenAddr)
+		if err := srv.ListenAndServe(); err != http.ErrServerClosed {
+			log.Fatalf("HTTP server failed: %v", err)
+		}
+	}()
+
+	waitForShutdown()
+}
+
+// waitForShutdown blocks until the service exists.
+//
+// It listens on SIGINT and SIGTERM. If the signal is received for a second
+// time, the process is killed with statuscode 1.
+func waitForShutdown() {
+	sigint := make(chan os.Signal, 1)
+	// syscall.SIGTERM is not pressent on all plattforms. Since the autoupdate
+	// service is only run on linux, this is ok. If other plattforms should be
+	// supported, os.Interrupt should be used instead.
+	signal.Notify(sigint, syscall.SIGINT, syscall.SIGTERM)
+	<-sigint
+	go func() {
+		<-sigint
+		os.Exit(1)
+	}()
+}
+
+// getEnv returns the value of the environment variable env. If it is empty, the
+// defaultValue is used.
+func getEnv(env, devaultValue string) string {
+	value := os.Getenv(env)
+	if value == "" {
+		return devaultValue
+	}
+	return value
+}
+
+func openslidesRequiredUsers() map[string]func(json.RawMessage) ([]int, string, error) {
+	return map[string]func(json.RawMessage) ([]int, string, error){
 		"agenda/list-of-speakers":       agenda.RequiredSpeakers,
 		"assignments/assignment":        assignment.RequiredAssignments,
 		"assignments/assignment-poll":   assignment.RequiredPoll,
@@ -39,15 +114,11 @@ func main() {
 		"motions/motion":                motion.RequiredMotions,
 		"motions/motion-option":         motion.RequiredPollOption,
 	}
+}
 
-	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallable)
-	if err != nil {
-		log.Fatalf("Can not initialize data: %v", err)
-	}
-
+func openslidesRestricters(ds *datastore.Datastore) map[string]restricter.Element {
 	basePerm := restricter.BasePermission(ds)
-
-	restricter := restricter.New(ds, map[string]restricter.Element{
+	return map[string]restricter.Element{
 		"agenda/item":             agenda.Restrict(ds),
 		"agenda/list-of-speakers": basePerm(agenda.CanSeeListOfSpeakers),
 
@@ -82,57 +153,5 @@ func main() {
 		"users/user":          user.Restrict(ds),
 		"users/group":         restricter.ForAll,
 		"users/personal-note": restricter.ElementFunc(user.PersonalNoteRestrict),
-	})
-
-	service, err := autoupdate.New(ds, restricter)
-	if err != nil {
-		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
-
-	auth := auth.New(workerAddr)
-	handler := ahttp.New(service, auth)
-
-	srv := &http.Server{Addr: listenAddr, Handler: handler}
-	defer func() {
-		service.Close()
-		if err := srv.Shutdown(context.Background()); err != nil {
-			log.Printf("Error on HTTP server shutdown: %v", err)
-		}
-	}()
-
-	go func() {
-		fmt.Printf("Listen on %s\n", listenAddr)
-		if err := srv.ListenAndServe(); err != http.ErrServerClosed {
-			log.Fatalf("HTTP server failed: %v", err)
-		}
-	}()
-
-	waitForShutdown()
-}
-
-// waitForShutdown blocks until the service exists.
-//
-// It listens on SIGINT and SIGTERM. If the signal is received for a second
-// time, the process is killed with statuscode 1.
-func waitForShutdown() {
-	sigint := make(chan os.Signal, 1)
-	// syscall.SIGTERM is not pressent on all plattforms. Since the autoupdate
-	// service is only run on linux, this is ok. If other plattforms should be
-	// supported, os.Interrupt should be used instead.
-	signal.Notify(sigint, syscall.SIGINT, syscall.SIGTERM)
-	<-sigint
-	go func() {
-		<-sigint
-		os.Exit(1)
-	}()
-}
-
-// getEnv returns the value of the environment variable env. If it is empty, the
-// defaultValue is used.
-func getEnv(env, devaultValue string) string {
-	value := os.Getenv(env)
-	if value == "" {
-		return devaultValue
-	}
-	return value
 }

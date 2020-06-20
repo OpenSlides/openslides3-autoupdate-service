@@ -73,3 +73,6 @@ The service can be configured with the following environment variables:
 * `LISTEN_HTTP_ADDR`: Host and port on which the services listen on (Default: `:8002`).
 * `REDIS_ADDR`: Host and port of the redis service (Default: `localhost:6379`).
 * `WORKER_ADDR`: Host and port of the OpenSlides worker (Default: `http://localhost:8000`).
+* `KEEP_ALIVE_DURATION`: Time in seconds how often a keep alive packet is sent
+  to the client. The value `0` means not to send any keep alive packages.
+  (Default: `30`).
