@@ -33,7 +33,9 @@ func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int, addHan
 	}
 	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
 	h.mux.Handle("/system/health", http.HandlerFunc(h.handleHealth))
-	h.mux.Handle("/", addHandler)
+	if addHandler != nil {
+		h.mux.Handle("/", addHandler)
+	}
 	return h
 }
 
