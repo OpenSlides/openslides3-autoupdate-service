@@ -5,9 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
@@ -64,8 +66,32 @@ func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
 	encoder := json.NewEncoder(w)
 	var rMails []string
 	var err error
+
+	ticker := new(time.Ticker)
+	if n.keepAlive > 0 {
+		ticker = time.NewTicker(time.Duration(n.keepAlive) * time.Second)
+		defer ticker.Stop()
+	}
+
 	for {
-		tid, rMails, err = n.topic.Receive(r.Context(), tid)
+		event := make(chan struct{})
+		go func() {
+			tid, rMails, err = n.topic.Receive(r.Context(), tid)
+			close(event)
+		}()
+
+		select {
+		case <-ticker.C:
+			if err := sendKeepAlive(w); err != nil {
+				return err
+			}
+			continue
+		case <-event:
+			// Received autoupdate event.
+			// TODO: Reset ticker. This will be possible in go 1.15 that will be released in august:
+			//       https://tip.golang.org/doc/go1.15#time
+		}
+
 		if err != nil {
 			var closing interface {
 				Closing()
@@ -136,4 +162,10 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Internal Error: %v", err)
 		fmt.Fprintln(w, `{"error": {"type": "InternalError", "msg": "Ups, something went wrong!"}}`)
 	}
+}
+
+func sendKeepAlive(w io.Writer) error {
+	_, err := fmt.Fprintln(w, `{}`)
+	w.(http.Flusher).Flush()
+	return err
 }

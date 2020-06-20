@@ -78,6 +78,20 @@ The value of channelID is just a string. The format may change in the future.
 Currently the first part is a random string that is constant for a server
 instance. The second part is the user id. The last part is a counter.
 
+If a message is received, it has the format:
+
+```
+{
+  "sender_user_id": int -> User id of the sender.
+  "sender_channel_id": string -> Channel id of the sender.
+  "message": json -> message send by the sender.
+}
+```
+
+From time to time the server sends empty keep alive messages. A keep alive
+message is an empfy json object.
+
+
 To listen for messages:
 
 ```
@@ -96,6 +110,8 @@ The body has to be a valid json object with at least the fields `channel_id` and
   "to_channels": list[string] -> List of channel ids that should receive the message.
 }
 ```
+
+Make sure the message does not contain any newline!
 
 
 ## Run Test

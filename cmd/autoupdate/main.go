@@ -57,7 +57,7 @@ func main() {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	notifyService := notify.New(redisConn, auth, closed)
+	notifyService := notify.New(redisConn, auth, keepAlive, closed)
 
 	handler := ahttp.New(service, auth, keepAlive, notifyService)
 	if keepAlive > 0 {
