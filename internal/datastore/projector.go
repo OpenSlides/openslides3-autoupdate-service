@@ -7,17 +7,18 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 	"github.com/ostcar/topic"
 )
 
-type projector struct {
+type projectors struct {
 	mu         sync.RWMutex
 	projectors map[int]*projectorData
 	closed     <-chan struct{}
-	callables  map[string]ProjectorCallable
+	callables  map[string]projector.Callable
 }
 
-func (p *projector) update(data map[string]json.RawMessage) error {
+func (p *projectors) update(data map[string]json.RawMessage) error {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 

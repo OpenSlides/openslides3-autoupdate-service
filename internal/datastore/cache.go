@@ -28,12 +28,22 @@ func (c *cache) update(changed map[string]json.RawMessage) {
 	}
 }
 
+// get returns one element from the cache.
+//
+// Creates NOT a copy of all data. TODO: Is it neccessary to make a copy?
+func (c *cache) get(key string) json.RawMessage {
+	c.mu.RLock()
+	defer c.mu.RUnlock()
+
+	return c.data[key]
+}
+
 // forkeys returns all data for the given keys.
 //
 // If a key does not exist in the cache, the returned data contains that key
 // with a nil value.
 //
-// Creates a copy of all data.
+// Creates a copy of all data. TODO: Is it neccessary to make a copy?
 func (c *cache) forKeys(keys ...string) map[string]json.RawMessage {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
@@ -48,7 +58,7 @@ func (c *cache) forKeys(keys ...string) map[string]json.RawMessage {
 
 // all returns all data from the cache.
 //
-// Creates a copy of all data.
+// Creates a copy of all data. TODO: Is it neccessary to make a copy?
 func (c *cache) all() map[string]json.RawMessage {
 	c.mu.RLock()
 	defer c.mu.RUnlock()

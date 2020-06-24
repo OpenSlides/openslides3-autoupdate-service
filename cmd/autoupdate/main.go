@@ -17,12 +17,14 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/mediafile"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/motion"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/poll"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/topic"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/user"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
 	ahttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
@@ -165,5 +167,11 @@ func openslidesRestricters(ds *datastore.Datastore) map[string]restricter.Elemen
 		"users/user":          user.Restrict(ds),
 		"users/group":         restricter.ForAll,
 		"users/personal-note": restricter.ElementFunc(user.PersonalNoteRestrict),
+	}
+}
+
+func openslidesProjectorCallables(ds *datastore.Datastore) map[string]projector.Callable {
+	return map[string]projector.Callable{
+		"topics/topic": topic.Slide(ds),
 	}
 }

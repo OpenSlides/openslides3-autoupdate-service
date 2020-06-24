@@ -22,7 +22,7 @@ type Datastore struct {
 
 	hasPerm
 	requiredUser
-	projector
+	projectors
 }
 
 // New returns an initialized Datastore instance.
@@ -135,6 +135,11 @@ func (d *Datastore) ChangedKeys(from, to int) ([]string, error) {
 	return keys, err
 }
 
+// Get returns one value from the cache. Returns nil, if the key does not exist.
+func (d *Datastore) Get(key string) json.RawMessage {
+	return d.cache.get(key)
+}
+
 // GetMany returns the values for the given keys.
 func (d *Datastore) GetMany(keys []string) map[string]json.RawMessage {
 	return d.cache.forKeys(keys...)
@@ -161,7 +166,7 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 		return fmt.Errorf("updating requiredUser: %w", err)
 	}
 
-	if err := d.projector.update(data); err != nil {
+	if err := d.projectors.update(data); err != nil {
 		return fmt.Errorf("update projectors: %w", err)
 	}
 
