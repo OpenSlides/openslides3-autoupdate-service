@@ -11,6 +11,13 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/agenda"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/assignment"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/core"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/mediafile"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/motion"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/poll"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/user"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
@@ -18,13 +25,6 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/agenda"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/assignment"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/core"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/mediafile"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/motion"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/poll"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/user"
 )
 
 func main() {
