@@ -84,7 +84,8 @@ If a message is received, it has the format:
 {
   "sender_user_id": int -> User id of the sender.
   "sender_channel_id": string -> Channel id of the sender.
-  "message": json -> message send by the sender.
+  "name": string -> Name of the message.
+  "message": json -> Message send by the sender.
 }
 ```
 
@@ -104,14 +105,13 @@ The body has to be a valid json object with at least the fields `channel_id` and
 ```
 {
   "channel_id": string -> channel_id of the sender.
+  "Name": string -> Name of the message.
   "message": json -> valid json containing the message.
   "to_all": bool -> If true, message is send to every connection.
   "to_users": list[int] -> List of user ids that should receive the message.
   "to_channels": list[string] -> List of channel ids that should receive the message.
 }
 ```
-
-Make sure the message does not contain any newline!
 
 
 ## Run Test

@@ -1,6 +1,7 @@
 package notify
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
@@ -43,13 +44,20 @@ func (n *Notify) handleSend(w http.ResponseWriter, r *http.Request) error {
 		return invalidRequestError{fmt.Errorf("notify does not have required field `name`")}
 	}
 
-	if err := n.backend.SendNotify(string(m)); err != nil {
+	var buf *bytes.Buffer
+	if err := json.Compact(buf, m); err != nil {
+		return invalidRequestError{fmt.Errorf("json is invalid: %w", err)}
+	}
+
+	if err := n.backend.SendNotify(buf.String()); err != nil {
 		return fmt.Errorf("sending message: %w", err)
 	}
 	return nil
 }
 
 func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
+	w.Header().Set("Content-Type", "application/octet-stream")
+
 	userID, ok := r.Context().Value(auth.UserIDKey).(int)
 	if !ok || userID == 0 {
 		return authRequiredError{}
@@ -58,7 +66,7 @@ func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
 	cid := n.cIDGen.generate(userID)
 	tid := n.topic.LastID()
 
-	if _, err := fmt.Fprintf(w, `{"channelID": "%s"}`, cid); err != nil {
+	if _, err := fmt.Fprintf(w, `{"channel_id": "%s"}`, cid); err != nil {
 		return err
 	}
 
