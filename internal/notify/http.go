@@ -55,6 +55,10 @@ func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
 		return authRequiredError{}
 	}
 
+	w.Header().Set("Content-Type", "application/octet-stream")
+	w.WriteHeader(http.StatusOK)
+	w.(http.Flusher).Flush()
+
 	cid := n.cIDGen.generate(userID)
 	tid := n.topic.LastID()
 
