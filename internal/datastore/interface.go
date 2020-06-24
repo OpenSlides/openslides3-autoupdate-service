@@ -11,3 +11,8 @@ type RedisConn interface {
 	ChangedKeys(from, to int) ([]string, error)
 	Data(keys []string) (map[string]json.RawMessage, error)
 }
+
+// ProjectorCallable knows how to build the projector data for an element.
+type ProjectorCallable interface {
+	Build(element json.RawMessage, pid int) (json.RawMessage, error)
+}

@@ -13,7 +13,9 @@ func TestDatastoreLowestID(t *testing.T) {
 	r := &test.RedisMock{
 		Min: 5,
 	}
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -33,14 +35,14 @@ func TestKeysChangedNormal(t *testing.T) {
 	r := test.NewRedisMock()
 	r.Max = 5
 
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
 
 	r.Send(data)
-	closing := make(chan struct{})
-	defer close(closing)
 	keys, chID, err := ds.KeysChanged(closing)
 
 	if err != nil {
@@ -69,14 +71,14 @@ func TestKeysChangedDelete(t *testing.T) {
 	}
 	r.Max = 5
 
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
 
 	r.Send(data)
-	closing := make(chan struct{})
-	defer close(closing)
 	keys, chID, err := ds.KeysChanged(closing)
 
 	if err != nil {
@@ -110,14 +112,14 @@ func TestKeysChangedSkippedChangeID(t *testing.T) {
 	r.Max = 5
 	r.ChangedKeysResult = []string{"elements/element:2"}
 
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
 
 	r.Send(data)
-	closing := make(chan struct{})
-	defer close(closing)
 	keys, chID, err := ds.KeysChanged(closing)
 
 	if err != nil {
@@ -143,14 +145,14 @@ func TestKeysChangedBlocking(t *testing.T) {
 	r := test.NewRedisMock()
 	r.Max = 5
 
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
 
 	unblocked := make(chan struct{})
-	closing := make(chan struct{})
-	defer close(closing)
 	go func() {
 		_, _, _ = ds.KeysChanged(closing)
 		close(unblocked)
@@ -178,14 +180,14 @@ func TestKeysChangedNilDoesNotUnblock(t *testing.T) {
 	r := test.NewRedisMock()
 	r.Max = 5
 
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
 
 	unblocked := make(chan struct{})
-	closing := make(chan struct{})
-	defer close(closing)
 	go func() {
 		_, _, _ = ds.KeysChanged(closing)
 		close(unblocked)
@@ -219,14 +221,14 @@ func TestKeysChangedLowIDDoesNotUnblock(t *testing.T) {
 	r := test.NewRedisMock()
 	r.Max = 5
 
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
 
 	unblocked := make(chan struct{})
-	closing := make(chan struct{})
-	defer close(closing)
 	go func() {
 		_, _, _ = ds.KeysChanged(closing)
 		close(unblocked)
@@ -260,7 +262,9 @@ func TestGetMany(t *testing.T) {
 		"elements/element:3": []byte(`{"id": 3}`),
 	}
 
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -281,7 +285,9 @@ func TestGetAll(t *testing.T) {
 		"elements/element:3": []byte(`{"id": 3}`),
 	}
 
-	ds, err := datastore.New("Addr", r, nil)
+	closing := make(chan struct{})
+	defer close(closing)
+	ds, err := datastore.New("Addr", r, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}

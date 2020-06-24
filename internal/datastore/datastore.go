@@ -15,16 +15,18 @@ type Datastore struct {
 	redisConn   RedisConn
 	cache       *cache
 	minChangeID int
+	closed      <-chan struct{}
 
 	mu          sync.RWMutex
 	maxChangeID int
 
 	hasPerm
 	requiredUser
+	projector
 }
 
 // New returns an initialized Datastore instance.
-func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawMessage) ([]int, string, error)) (*Datastore, error) {
+func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawMessage) ([]int, string, error), closed <-chan struct{}) (*Datastore, error) {
 	fd, max, min, err := redisConn.FullData()
 	if err != nil {
 		return nil, fmt.Errorf("get startdata from redis: %w", err)
@@ -37,6 +39,7 @@ func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawM
 		minChangeID:  min,
 		maxChangeID:  max,
 		requiredUser: requiredUser{callables: callables},
+		closed:       closed,
 	}
 
 	if err := d.update(fd, max); err != nil {
@@ -156,6 +159,10 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 
 	if err := d.requiredUser.update(data); err != nil {
 		return fmt.Errorf("updating requiredUser: %w", err)
+	}
+
+	if err := d.projector.update(data); err != nil {
+		return fmt.Errorf("update projectors: %w", err)
 	}
 
 	log.Printf("Datastore on change_id %d", changeID)

@@ -49,7 +49,8 @@ func main() {
 	log.Printf("Connected to Redis at %s", redisAddr)
 
 	requiredUserCallable := openslidesRequiredUsers()
-	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallable)
+	closed := make(chan struct{})
+	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallable, closed)
 	if err != nil {
 		log.Fatalf("Can not initialize data: %v", err)
 	}
@@ -59,7 +60,6 @@ func main() {
 	restricter := restricter.New(ds, osRestricters)
 	auth := auth.New(workerAddr)
 
-	closed := make(chan struct{})
 	service, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
 		log.Fatalf("Can not create autoupdate service: %v", err)
