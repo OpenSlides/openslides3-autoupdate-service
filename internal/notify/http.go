@@ -39,6 +39,10 @@ func (n *Notify) handleSend(w http.ResponseWriter, r *http.Request) error {
 		return invalidRequestError{fmt.Errorf("invalid channel id")}
 	}
 
+	if from.Name == "" {
+		return invalidRequestError{fmt.Errorf("notify does not have required field `name`")}
+	}
+
 	if err := n.backend.SendNotify(string(m)); err != nil {
 		return fmt.Errorf("sending message: %w", err)
 	}
@@ -75,8 +79,12 @@ func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
 }
 
 func (n *Notify) autoupdateLoop(w http.ResponseWriter, r *http.Request, tid uint64, uid int, cid channelID, encoder *json.Encoder) (uint64, error) {
-	ctx, cancel := context.WithTimeout(r.Context(), time.Duration(n.keepAlive)*time.Second)
-	defer cancel()
+	ctx := r.Context()
+	if n.keepAlive > 0 {
+		var cancel func()
+		ctx, cancel = context.WithTimeout(r.Context(), time.Duration(n.keepAlive)*time.Second)
+		defer cancel()
+	}
 
 	var rMails []string
 	var err error
@@ -104,10 +112,12 @@ func (n *Notify) autoupdateLoop(w http.ResponseWriter, r *http.Request, tid uint
 		out := struct {
 			SenderUserID    int             `json:"sender_user_id"`
 			SenderChannelID string          `json:"sender_channel_id"`
+			Name            string          `json:"name"`
 			Message         json.RawMessage `json:"message"`
 		}{
 			m.From.uid(),
 			m.From.String(),
+			m.Name,
 			m.Message,
 		}
 
