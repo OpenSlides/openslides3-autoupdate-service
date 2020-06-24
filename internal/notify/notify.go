@@ -64,6 +64,7 @@ type mail struct {
 	ToAll      bool            `json:"to_all"`
 	ToUsers    []int           `json:"to_users"`
 	ToChannels []string        `json:"to_channels"`
+	Name       string          `json:"name"`
 	Message    json.RawMessage `json:"message"`
 }
 
