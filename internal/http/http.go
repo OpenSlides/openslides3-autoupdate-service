@@ -84,8 +84,12 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) autoupdateLoop(w http.ResponseWriter, r *http.Request, cid, uid int) (int, error) {
-	ctx, cancel := context.WithTimeout(r.Context(), time.Duration(h.keepAlive)*time.Second)
-	defer cancel()
+	ctx := r.Context()
+	if h.keepAlive > 0 {
+		var cancel func()
+		ctx, cancel = context.WithTimeout(ctx, time.Duration(h.keepAlive)*time.Second)
+		defer cancel()
+	}
 
 	all, data, newChangeID, err := h.autoupdate.Receive(ctx, uid, cid)
 	if err != nil {
@@ -168,34 +172,39 @@ func (h *Handler) handleProjector(w http.ResponseWriter, r *http.Request) {
 	}
 
 	encoder := json.NewEncoder(w)
-
 	var tid uint64
-	var data map[int]json.RawMessage
-
 	for {
-		tid, data, err = h.autoupdate.Projectors(r.Context(), tid, projectorIDs)
+		tid, err = h.projectorLoop(r.Context(), w, encoder, tid, projectorIDs)
 		if err != nil {
-			var closing interface {
-				Closing()
-			}
-			if errors.As(err, &closing) {
-				// Server is closing. Close connection.
-				return
-			}
-			if errors.Is(err, context.Canceled) {
-				// Client closed connection.
-				return
-			}
 			sendErr(w, err)
 			return
 		}
-
-		if err := encoder.Encode(data); err != nil {
-			sendErr(w, err)
-			return
-		}
-		w.(http.Flusher).Flush()
 	}
+}
+
+func (h *Handler) projectorLoop(ctx context.Context, w io.Writer, encoder *json.Encoder, tid uint64, pids []int) (uint64, error) {
+	if h.keepAlive > 0 {
+		var cancel func()
+		ctx, cancel = context.WithTimeout(ctx, time.Duration(h.keepAlive)*time.Second)
+		defer cancel()
+	}
+
+	ntid, data, err := h.autoupdate.Projectors(ctx, tid, pids)
+	if err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			if err := sendKeepAlive(w); err != nil {
+				return 0, err
+			}
+			return tid, nil
+		}
+		return 0, err
+	}
+
+	if err := encoder.Encode(data); err != nil {
+		return 0, nil
+	}
+	w.(http.Flusher).Flush()
+	return ntid, nil
 }
 
 // internalErr sends a nonsense error message to the client and logs the real

@@ -59,6 +59,16 @@ id. Afterwards the session cookie can be used with curl:
 curl --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" localhost:8002/system/autoupdate
 ```
 
+
+### Projector
+
+To register a list of projectors:
+
+```
+curl localhost:8002/system/projector?projector_ids=1,2,3
+```
+
+
 ### Notify
 
 The notify system needs logged-in users. A seesion cookies has to be created and
