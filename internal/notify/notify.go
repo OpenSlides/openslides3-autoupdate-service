@@ -5,6 +5,7 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/ostcar/topic"
 )
@@ -52,6 +53,7 @@ func (n *Notify) listen() {
 			}
 
 			log.Printf("Notify: Can not receive data from backend: %v", err)
+			time.Sleep(5 * time.Second)
 			continue
 		}
 
