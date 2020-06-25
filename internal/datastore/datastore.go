@@ -25,7 +25,6 @@ type Datastore struct {
 
 // New returns an initialized Datastore instance.
 func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawMessage) ([]int, string, error)) (*Datastore, error) {
-	// TODO: Handle case, that data is not ready.
 	fd, max, min, err := redisConn.FullData()
 	if err != nil {
 		return nil, fmt.Errorf("get startdata from redis: %w", err)
