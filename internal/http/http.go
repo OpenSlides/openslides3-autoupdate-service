@@ -58,7 +58,7 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	rawChangeID := r.URL.Query().Get("change_id")
-	changeID := 0
+	var changeID int
 	if rawChangeID != "" {
 		var err error
 		changeID, err = strconv.Atoi(rawChangeID)
@@ -73,9 +73,8 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 	w.(http.Flusher).Flush()
 	log.Printf("connect user %d with change_id %d", uid, changeID)
 
-	var cid int
 	for {
-		cid, err = h.autoupdateLoop(w, r, cid, uid)
+		changeID, err = h.autoupdateLoop(w, r, changeID, uid)
 		if err != nil {
 			sendErr(w, err)
 			return
