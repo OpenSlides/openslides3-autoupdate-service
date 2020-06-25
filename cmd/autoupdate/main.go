@@ -173,6 +173,8 @@ func openslidesRestricters(ds *datastore.Datastore) map[string]restricter.Elemen
 
 func openslidesProjectorCallables() map[string]projector.Callable {
 	return map[string]projector.Callable{
-		"topics/topic": topic.Slide(),
+		"mediafiles/mediafile": mediafile.Slide(),
+		"topics/topic":         topic.Slide(),
+		"users/user":           user.Slide(),
 	}
 }

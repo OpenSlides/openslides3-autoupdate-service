@@ -1,5 +1,9 @@
 * Projector
- * Add slides
+ * Agenda
+ * Assignment
+ * Core
+ * Motion
+
 * Prune autoupdate topic, notify topic and projector from time to time.
 
 
