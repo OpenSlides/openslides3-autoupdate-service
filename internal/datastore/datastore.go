@@ -25,7 +25,6 @@ type Datastore struct {
 
 // New returns an initialized Datastore instance.
 func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawMessage) ([]int, string, error)) (*Datastore, error) {
-	// TODO: Handle case, that data is not ready.
 	fd, max, min, err := redisConn.FullData()
 	if err != nil {
 		return nil, fmt.Errorf("get startdata from redis: %w", err)
@@ -107,7 +106,7 @@ func (d *Datastore) KeysChanged(closing <-chan struct{}) ([]string, int, error) 
 		}
 
 		if err := d.update(data, changeID-1); err != nil {
-			return nil, 0, fmt.Errorf("updating cache: %w", err)
+			return nil, 0, fmt.Errorf("updating cache from %d to %d: %w", d.maxChangeID, changeID-1, err)
 		}
 	}
 

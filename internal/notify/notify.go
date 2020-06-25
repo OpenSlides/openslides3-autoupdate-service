@@ -5,6 +5,7 @@ import (
 	"errors"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/ostcar/topic"
 )
@@ -29,8 +30,8 @@ func New(backend Backend, auth Auther, keepAlive int, closed <-chan struct{}) *N
 		closed:    closed,
 		keepAlive: keepAlive,
 	}
-	n.mux.Handle("/system/notify", auth.Middleware(errHandleFunc(n.handleNotify)))
-	n.mux.Handle("/system/notify/send", auth.Middleware(errHandleFunc(n.handleSend)))
+	n.mux.Handle("/system/notify", errHandleFunc(auth.Middleware(n.handleNotify)))
+	n.mux.Handle("/system/notify/send", errHandleFunc(auth.Middleware(n.handleSend)))
 
 	go n.listen()
 	// TODO prune topic
@@ -52,6 +53,7 @@ func (n *Notify) listen() {
 			}
 
 			log.Printf("Notify: Can not receive data from backend: %v", err)
+			time.Sleep(5 * time.Second)
 			continue
 		}
 

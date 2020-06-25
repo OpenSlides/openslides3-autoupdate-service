@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/ostcar/topic"
 )
@@ -42,7 +43,8 @@ func New(datastore Datastore, restricter Restricter, closed <-chan struct{}) (*A
 					return
 				}
 
-				log.Printf("Error: Can not receive new data: %v", err)
+				log.Printf("Autoupdate: Can not receive new data: %v", err)
+				time.Sleep(5 * time.Second)
 				continue
 			}
 

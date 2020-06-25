@@ -9,6 +9,7 @@ import (
 	"os/signal"
 	"strconv"
 	"syscall"
+	"time"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
@@ -38,6 +39,13 @@ func main() {
 	}
 
 	redisConn := redis.New(redisAddr)
+	for {
+		if err := redisConn.TestConn(); err == nil {
+			break
+		}
+		log.Printf("Can not connect to redis at %s. Retry...", redisAddr)
+		time.Sleep(time.Second)
+	}
 	log.Printf("Connected to Redis at %s", redisAddr)
 
 	requiredUserCallable := openslidesRequiredUsers()

@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"net/url"
 	"time"
@@ -77,18 +76,16 @@ func (a *Auth) Auth(r *http.Request) (int, error) {
 }
 
 // Middleware adds the user id into the request.Context
-func (a *Auth) Middleware(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+func (a *Auth) Middleware(next func(w http.ResponseWriter, r *http.Request) error) func(w http.ResponseWriter, r *http.Request) error {
+	return func(w http.ResponseWriter, r *http.Request) error {
 		uid, err := a.Auth(r)
 		if err != nil {
-			log.Printf("Auth.Middleware: can not authenticate request: %v", err)
-			http.Error(w, "Ups, something went wrong", 500)
-			return
+			return fmt.Errorf("authenticate request")
 		}
 
 		ctx := context.WithValue(r.Context(), UserIDKey, uid)
 		r = r.WithContext(ctx)
 
-		next.ServeHTTP(w, r)
-	})
+		return next(w, r)
+	}
 }
