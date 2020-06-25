@@ -107,7 +107,7 @@ func (d *Datastore) KeysChanged(closing <-chan struct{}) ([]string, int, error) 
 		}
 
 		if err := d.update(data, changeID-1); err != nil {
-			return nil, 0, fmt.Errorf("updating cache: %w", err)
+			return nil, 0, fmt.Errorf("updating cache from %d to %d: %w", d.maxChangeID, changeID-1, err)
 		}
 	}
 

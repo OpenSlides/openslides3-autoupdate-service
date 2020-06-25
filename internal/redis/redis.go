@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/garyburd/redigo/redis"
@@ -211,7 +212,14 @@ func (r *Redis) ChangedKeys(from, to int) ([]string, error) {
 	if err != nil {
 		return nil, fmt.Errorf("get changed keys from redis: %w", err)
 	}
-	return keys, nil
+
+	var cleanedKeys []string
+	for _, key := range keys {
+		if !strings.HasPrefix(key, "_config:") {
+			cleanedKeys = append(cleanedKeys, key)
+		}
+	}
+	return cleanedKeys, nil
 }
 
 // Data returns the data from redis for specific keys from the full data hash
