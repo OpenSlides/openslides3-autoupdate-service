@@ -9,8 +9,8 @@ import (
 )
 
 // Slide renders "topics/topic".
-func Slide(ds projector.Datastore) projector.CallableFunc {
-	return func(e json.RawMessage, pid int) (json.RawMessage, error) {
+func Slide() projector.CallableFunc {
+	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
 		var element struct {
 			ID int `json:"id"`
 		}

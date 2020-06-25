@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"log"
 	"sync"
+
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 )
 
 // Datastore holds the connection to OpenSlides and Redis.
@@ -26,7 +28,7 @@ type Datastore struct {
 }
 
 // New returns an initialized Datastore instance.
-func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawMessage) ([]int, string, error), closed <-chan struct{}) (*Datastore, error) {
+func New(osAddr string, redisConn RedisConn, requiredUsers map[string]func(json.RawMessage) ([]int, string, error), projectorSlides map[string]projector.Callable, closed <-chan struct{}) (*Datastore, error) {
 	fd, max, min, err := redisConn.FullData()
 	if err != nil {
 		return nil, fmt.Errorf("get startdata from redis: %w", err)
@@ -38,9 +40,12 @@ func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawM
 		cache:        new(cache),
 		minChangeID:  min,
 		maxChangeID:  max,
-		requiredUser: requiredUser{callables: callables},
+		requiredUser: requiredUser{callables: requiredUsers},
 		closed:       closed,
 	}
+
+	// TODO: fix circular dependency between datastore and projector.
+	d.projectors = projectors{ds: d, callables: projectorSlides, closed: closed}
 
 	if err := d.update(fd, max); err != nil {
 		return nil, fmt.Errorf("initial datastore update: %w", err)

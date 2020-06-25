@@ -50,9 +50,10 @@ func main() {
 	}
 	log.Printf("Connected to Redis at %s", redisAddr)
 
-	requiredUserCallable := openslidesRequiredUsers()
+	requiredUserCallables := openslidesRequiredUsers()
+	projectorCallables := openslidesProjectorCallables()
 	closed := make(chan struct{})
-	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallable, closed)
+	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallables, projectorCallables, closed)
 	if err != nil {
 		log.Fatalf("Can not initialize data: %v", err)
 	}
@@ -170,8 +171,8 @@ func openslidesRestricters(ds *datastore.Datastore) map[string]restricter.Elemen
 	}
 }
 
-func openslidesProjectorCallables(ds *datastore.Datastore) map[string]projector.Callable {
+func openslidesProjectorCallables() map[string]projector.Callable {
 	return map[string]projector.Callable{
-		"topics/topic": topic.Slide(ds),
+		"topics/topic": topic.Slide(),
 	}
 }

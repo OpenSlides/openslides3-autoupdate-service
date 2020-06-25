@@ -1,6 +1,8 @@
 package datastore
 
 import (
+	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"strconv"
@@ -13,14 +15,42 @@ import (
 
 type projectors struct {
 	mu         sync.RWMutex
-	projectors map[int]*projectorData
+	projectors map[int]json.RawMessage
 	closed     <-chan struct{}
 	callables  map[string]projector.Callable
+	topic      *topic.Topic
+	ds         *Datastore
+}
+
+// Projectors returns the data of every changed projector.
+//
+// Blocks untils the service or the context is closed or at least one projector
+// has changed.
+func (p *projectors) Projectors(ctx context.Context, tid uint64) (uint64, map[int]json.RawMessage, error) {
+	ntid, changedIDs, err := p.topic.Receive(ctx, tid)
+	if err != nil {
+		return 0, nil, fmt.Errorf("receiving from projector topic: %w", err)
+	}
+
+	p.mu.RLock()
+	defer p.mu.RUnlock()
+
+	data := make(map[int]json.RawMessage, len(changedIDs))
+	for _, rid := range changedIDs {
+		id := int(rid[0])
+		data[id] = p.projectors[id]
+	}
+	return ntid, data, nil
 }
 
 func (p *projectors) update(data map[string]json.RawMessage) error {
 	p.mu.Lock()
 	defer p.mu.Unlock()
+
+	if p.topic == nil {
+		p.topic = topic.New(topic.WithClosed(p.closed))
+		p.projectors = make(map[int]json.RawMessage)
+	}
 
 	for k, v := range data {
 		parts := strings.Split(k, ":")
@@ -45,11 +75,13 @@ func (p *projectors) update(data map[string]json.RawMessage) error {
 		}
 
 		if _, ok := p.projectors[id]; !ok {
-			// New projector, create it.
-			p.projectors[id] = &projectorData{
-				topic: topic.New(topic.WithClosed(p.closed)),
-			}
+			p.projectors[id] = nil
 		}
+	}
+
+	var changed []string
+	for id := range p.projectors {
+		v := p.ds.Get(fmt.Sprintf("core/projector:%d", id))
 
 		// Update projector
 		var elements struct {
@@ -72,9 +104,10 @@ func (p *projectors) update(data map[string]json.RawMessage) error {
 			c, ok := p.callables[namer.Name]
 			if !ok {
 				ped[i].Error = fmt.Sprintf("unknown projector element %s", namer.Name)
+				continue
 			}
 
-			data, err := c.Build(element, id)
+			data, err := c.Build(p.ds, element, id)
 			if err != nil {
 				ped[i].Error = err.Error()
 				continue
@@ -84,24 +117,35 @@ func (p *projectors) update(data map[string]json.RawMessage) error {
 			ped[i].Data = data
 		}
 
-		pData, err := json.Marshal(ped)
+		rendered, err := json.Marshal(ped)
 		if err != nil {
 			return fmt.Errorf("decoding projector elements %w", err)
 		}
 
-		p.projectors[id].elements = pData
-		p.projectors[id].topic.Publish()
+		if bytes.Equal(p.projectors[id], rendered) {
+			continue
+		}
+
+		p.projectors[id] = rendered
+		changed = append(changed, string(id))
 	}
+
+	if len(changed) == 0 {
+		// No changed data.
+		return nil
+	}
+
+	p.topic.Publish(changed...)
 	return nil
 }
 
 type projectorData struct {
-	topic    *topic.Topic
-	elements json.RawMessage
+	elements []json.RawMessage
+	rendered json.RawMessage
 }
 
 type projectorElementData struct {
-	Element json.RawMessage `json:"element"`
-	Data    json.RawMessage `json:"data"`
+	Element json.RawMessage `json:"element,omitempty"`
+	Data    json.RawMessage `json:"data,omitempty"`
 	Error   string          `json:"error,omitempty"`
 }

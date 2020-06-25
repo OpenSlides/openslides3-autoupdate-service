@@ -33,6 +33,7 @@ func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int, addHan
 	}
 	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
 	h.mux.Handle("/system/health", http.HandlerFunc(h.handleHealth))
+	h.mux.Handle("/system/projector", http.HandlerFunc(h.handleProjector))
 	if addHandler != nil {
 		h.mux.Handle("/", addHandler)
 	}
@@ -149,6 +150,54 @@ func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChange
 	return nil
 }
 
+func (h *Handler) handleProjector(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	// The uid is not needed. But this makes sure the user is authenticated or
+	// anonymous is enabled.
+	_, err := h.auther.Auth(r)
+	if err != nil {
+		sendErr(w, fmt.Errorf("authenticate: %w", err))
+		return
+	}
+
+	projectorIDs, err := projectorIDs(r.URL.Query().Get("projector_ids"))
+	if err != nil {
+		sendErr(w, err)
+		return
+	}
+
+	encoder := json.NewEncoder(w)
+
+	var tid uint64
+	var data map[int]json.RawMessage
+
+	for {
+		tid, data, err = h.autoupdate.Projectors(r.Context(), tid, projectorIDs)
+		if err != nil {
+			var closing interface {
+				Closing()
+			}
+			if errors.As(err, &closing) {
+				// Server is closing. Close connection.
+				return
+			}
+			if errors.Is(err, context.Canceled) {
+				// Client closed connection.
+				return
+			}
+			sendErr(w, err)
+			return
+		}
+
+		if err := encoder.Encode(data); err != nil {
+			sendErr(w, err)
+			return
+		}
+		w.(http.Flusher).Flush()
+	}
+}
+
 // internalErr sends a nonsense error message to the client and logs the real
 // message to stdout.
 func sendErr(w io.Writer, err error) {
@@ -184,4 +233,18 @@ func sendKeepAlive(w io.Writer) error {
 	_, err := fmt.Fprintln(w, `{}`)
 	w.(http.Flusher).Flush()
 	return err
+}
+
+func projectorIDs(raw string) ([]int, error) {
+	parts := strings.Split(raw, ",")
+	ids := make([]int, len(parts))
+	for i, rpid := range parts {
+		id, err := strconv.Atoi(rpid)
+		if err != nil {
+			return nil, invalidRequestError{fmt.Errorf("projector_ids has to be a list of ints not `%s`", raw)}
+		}
+
+		ids[i] = id
+	}
+	return ids, nil
 }
