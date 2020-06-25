@@ -49,6 +49,8 @@ func (h *Handler) handleHealth(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/octet-stream")
+
 	uid, err := h.auther.Auth(r)
 	if err != nil {
 		sendErr(w, fmt.Errorf("authenticate: %w", err))
