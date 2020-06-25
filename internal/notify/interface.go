@@ -10,5 +10,5 @@ type Backend interface {
 
 // Auther authenticates a request.
 type Auther interface {
-	Middleware(http.Handler) http.Handler
+	Middleware(func(w http.ResponseWriter, r *http.Request) error) func(w http.ResponseWriter, r *http.Request) error
 }
