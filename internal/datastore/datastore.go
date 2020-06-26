@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"log"
 	"sync"
+
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 )
 
 // Datastore holds the connection to OpenSlides and Redis.
@@ -15,16 +17,19 @@ type Datastore struct {
 	redisConn   RedisConn
 	cache       *cache
 	minChangeID int
+	closed      <-chan struct{}
 
 	mu          sync.RWMutex
 	maxChangeID int
 
 	hasPerm
 	requiredUser
+	projectors
+	config
 }
 
 // New returns an initialized Datastore instance.
-func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawMessage) ([]int, string, error)) (*Datastore, error) {
+func New(osAddr string, redisConn RedisConn, requiredUsers map[string]func(json.RawMessage) ([]int, string, error), projectorSlides map[string]projector.Callable, closed <-chan struct{}) (*Datastore, error) {
 	fd, max, min, err := redisConn.FullData()
 	if err != nil {
 		return nil, fmt.Errorf("get startdata from redis: %w", err)
@@ -36,8 +41,12 @@ func New(osAddr string, redisConn RedisConn, callables map[string]func(json.RawM
 		cache:        new(cache),
 		minChangeID:  min,
 		maxChangeID:  max,
-		requiredUser: requiredUser{callables: callables},
+		requiredUser: requiredUser{callables: requiredUsers},
+		closed:       closed,
 	}
+
+	// TODO: fix circular dependency between datastore and projector.
+	d.projectors = projectors{ds: d, callables: projectorSlides, closed: closed}
 
 	if err := d.update(fd, max); err != nil {
 		return nil, fmt.Errorf("initial datastore update: %w", err)
@@ -132,6 +141,11 @@ func (d *Datastore) ChangedKeys(from, to int) ([]string, error) {
 	return keys, err
 }
 
+// Get returns one value from the cache. Returns nil, if the key does not exist.
+func (d *Datastore) Get(key string) json.RawMessage {
+	return d.cache.get(key)
+}
+
 // GetMany returns the values for the given keys.
 func (d *Datastore) GetMany(keys []string) map[string]json.RawMessage {
 	return d.cache.forKeys(keys...)
@@ -156,6 +170,14 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 
 	if err := d.requiredUser.update(data); err != nil {
 		return fmt.Errorf("updating requiredUser: %w", err)
+	}
+
+	if err := d.config.update(data); err != nil {
+		return fmt.Errorf("updating config: %w", err)
+	}
+
+	if err := d.projectors.update(data); err != nil {
+		return fmt.Errorf("update projectors: %w", err)
 	}
 
 	log.Printf("Datastore on change_id %d", changeID)

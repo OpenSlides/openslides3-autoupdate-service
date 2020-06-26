@@ -1,5 +1,9 @@
 * Projector
-* Prune autoupdate topic and notify topic from time to time.
+ * Agenda
+ * Assignment
+ * Motion
+
+* Prune autoupdate topic, notify topic and projector from time to time.
 
 
 * Delete TODO.md and KONZEPT.md

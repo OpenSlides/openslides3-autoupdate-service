@@ -107,3 +107,33 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 	a.restricter.Restrict(uid, data)
 	return false, data, int(newChangeID), nil
 }
+
+// Projectors returns the renderd data for a list of projectors. The attribute
+// pids i sthe list of requested projectors. Only the projectors that changed
+// are returned.
+//
+// The attribute tid tells the last version the caller has seen. 0 Means, no
+// data has to be seen, so all requested projectors are returned.
+//
+// This method blocks until the service is closed, the given context exists or
+// there are data to return.
+func (a *Autoupdate) Projectors(ctx context.Context, tid uint64, pids []int) (ntid uint64, data map[int]json.RawMessage, err error) {
+	rdata := make(map[int]json.RawMessage)
+	for len(rdata) == 0 {
+		ntid, data, err = a.datastore.Projectors(ctx, tid)
+		if err != nil {
+			return 0, nil, err
+		}
+
+		for _, pid := range pids {
+			v, ok := data[pid]
+			if !ok {
+				// Requested projector does not exist.
+				continue
+			}
+
+			rdata[pid] = v
+		}
+	}
+	return ntid, rdata, nil
+}

@@ -1,6 +1,9 @@
 package test
 
-import "encoding/json"
+import (
+	"context"
+	"encoding/json"
+)
 
 // DatastoreMock implements the autoupdate.Datastore interface.
 type DatastoreMock struct {
@@ -67,4 +70,9 @@ func (d *DatastoreMock) GetAll() map[string]json.RawMessage {
 // Change sends an update event for KeysChanged.
 func (d *DatastoreMock) Change(keys []string) {
 	d.changes <- keys
+}
+
+// Projectors does currently nothing.
+func (d *DatastoreMock) Projectors(ctx context.Context, tid uint64) (uint64, map[int]json.RawMessage, error) {
+	return 0, nil, nil
 }

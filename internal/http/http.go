@@ -33,6 +33,7 @@ func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int, addHan
 	}
 	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
 	h.mux.Handle("/system/health", http.HandlerFunc(h.handleHealth))
+	h.mux.Handle("/system/projector", http.HandlerFunc(h.handleProjector))
 	if addHandler != nil {
 		h.mux.Handle("/", addHandler)
 	}
@@ -83,8 +84,12 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) autoupdateLoop(w http.ResponseWriter, r *http.Request, cid, uid int) (int, error) {
-	ctx, cancel := context.WithTimeout(r.Context(), time.Duration(h.keepAlive)*time.Second)
-	defer cancel()
+	ctx := r.Context()
+	if h.keepAlive > 0 {
+		var cancel func()
+		ctx, cancel = context.WithTimeout(ctx, time.Duration(h.keepAlive)*time.Second)
+		defer cancel()
+	}
 
 	all, data, newChangeID, err := h.autoupdate.Receive(ctx, uid, cid)
 	if err != nil {
@@ -149,6 +154,59 @@ func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChange
 	return nil
 }
 
+func (h *Handler) handleProjector(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	// The uid is not needed. But this makes sure the user is authenticated or
+	// anonymous is enabled.
+	_, err := h.auther.Auth(r)
+	if err != nil {
+		sendErr(w, fmt.Errorf("authenticate: %w", err))
+		return
+	}
+
+	projectorIDs, err := projectorIDs(r.URL.Query().Get("projector_ids"))
+	if err != nil {
+		sendErr(w, err)
+		return
+	}
+
+	encoder := json.NewEncoder(w)
+	var tid uint64
+	for {
+		tid, err = h.projectorLoop(r.Context(), w, encoder, tid, projectorIDs)
+		if err != nil {
+			sendErr(w, err)
+			return
+		}
+	}
+}
+
+func (h *Handler) projectorLoop(ctx context.Context, w io.Writer, encoder *json.Encoder, tid uint64, pids []int) (uint64, error) {
+	if h.keepAlive > 0 {
+		var cancel func()
+		ctx, cancel = context.WithTimeout(ctx, time.Duration(h.keepAlive)*time.Second)
+		defer cancel()
+	}
+
+	ntid, data, err := h.autoupdate.Projectors(ctx, tid, pids)
+	if err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			if err := sendKeepAlive(w); err != nil {
+				return 0, err
+			}
+			return tid, nil
+		}
+		return 0, err
+	}
+
+	if err := encoder.Encode(data); err != nil {
+		return 0, nil
+	}
+	w.(http.Flusher).Flush()
+	return ntid, nil
+}
+
 // internalErr sends a nonsense error message to the client and logs the real
 // message to stdout.
 func sendErr(w io.Writer, err error) {
@@ -184,4 +242,18 @@ func sendKeepAlive(w io.Writer) error {
 	_, err := fmt.Fprintln(w, `{}`)
 	w.(http.Flusher).Flush()
 	return err
+}
+
+func projectorIDs(raw string) ([]int, error) {
+	parts := strings.Split(raw, ",")
+	ids := make([]int, len(parts))
+	for i, rpid := range parts {
+		id, err := strconv.Atoi(rpid)
+		if err != nil {
+			return nil, invalidRequestError{fmt.Errorf("projector_ids has to be a list of ints not `%s`", raw)}
+		}
+
+		ids[i] = id
+	}
+	return ids, nil
 }

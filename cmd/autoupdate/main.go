@@ -11,20 +11,22 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/agenda"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/assignment"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/core"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/mediafile"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/motion"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/poll"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/topic"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/user"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
 	ahttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/agenda"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/assignment"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/core"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/mediafile"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/motion"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/poll"
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter/user"
 )
 
 func main() {
@@ -48,8 +50,10 @@ func main() {
 	}
 	log.Printf("Connected to Redis at %s", redisAddr)
 
-	requiredUserCallable := openslidesRequiredUsers()
-	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallable)
+	requiredUserCallables := openslidesRequiredUsers()
+	projectorCallables := openslidesProjectorCallables()
+	closed := make(chan struct{})
+	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallables, projectorCallables, closed)
 	if err != nil {
 		log.Fatalf("Can not initialize data: %v", err)
 	}
@@ -59,7 +63,6 @@ func main() {
 	restricter := restricter.New(ds, osRestricters)
 	auth := auth.New(workerAddr)
 
-	closed := make(chan struct{})
 	service, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
 		log.Fatalf("Can not create autoupdate service: %v", err)
@@ -165,5 +168,16 @@ func openslidesRestricters(ds *datastore.Datastore) map[string]restricter.Elemen
 		"users/user":          user.Restrict(ds),
 		"users/group":         restricter.ForAll,
 		"users/personal-note": restricter.ElementFunc(user.PersonalNoteRestrict),
+	}
+}
+
+func openslidesProjectorCallables() map[string]projector.Callable {
+	return map[string]projector.Callable{
+		"mediafiles/mediafile":   mediafile.Slide(),
+		"core/countdown":         core.CountdownSlide(),
+		"core/projector-message": core.MessageSlide(),
+		"core/clock":             core.ClockSlide(),
+		"topics/topic":           topic.Slide(),
+		"users/user":             user.Slide(),
 	}
 }
