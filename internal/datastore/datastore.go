@@ -25,6 +25,7 @@ type Datastore struct {
 	hasPerm
 	requiredUser
 	projectors
+	config
 }
 
 // New returns an initialized Datastore instance.
@@ -169,6 +170,10 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 
 	if err := d.requiredUser.update(data); err != nil {
 		return fmt.Errorf("updating requiredUser: %w", err)
+	}
+
+	if err := d.config.update(data); err != nil {
+		return fmt.Errorf("updating config: %w", err)
 	}
 
 	if err := d.projectors.update(data); err != nil {

@@ -11,16 +11,9 @@ import (
 // Slide renders "topics/topic".
 func Slide() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
-		var element struct {
-			ID int `json:"id"`
-		}
-		if err := json.Unmarshal(e, &element); err != nil {
-			return nil, fmt.Errorf("decoding element")
-		}
-
-		rTopic := ds.Get("topics/topic:" + strconv.Itoa(element.ID))
-		if rTopic == nil {
-			return nil, fmt.Errorf("topics/topic:%d does not exist", element.ID)
+		t, err := projector.ModelFromElement(ds, e, "topics/topic")
+		if err != nil {
+			return nil, fmt.Errorf("getting topics/topic: %w", err)
 		}
 
 		var topic struct {
@@ -28,19 +21,19 @@ func Slide() projector.CallableFunc {
 			Text         string `json:"text"`
 			AgendaItemID int    `json:"agenda_item_id"`
 		}
-		if err := json.Unmarshal(rTopic, &topic); err != nil {
+		if err := json.Unmarshal(t, &topic); err != nil {
 			return nil, fmt.Errorf("decoding topic")
 		}
 
-		rItem := ds.Get("agenda/item:" + strconv.Itoa(topic.AgendaItemID))
-		if rItem == nil {
+		i := ds.Get("agenda/item:" + strconv.Itoa(topic.AgendaItemID))
+		if i == nil {
 			return nil, fmt.Errorf("agenda/item:%d does not exist", topic.AgendaItemID)
 		}
 
 		var item struct {
 			Number string `json:"item_number"`
 		}
-		if err := json.Unmarshal(rItem, &item); err != nil {
+		if err := json.Unmarshal(i, &item); err != nil {
 			return nil, fmt.Errorf("decoding item: %w", err)
 		}
 
