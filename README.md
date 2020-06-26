@@ -62,7 +62,7 @@ curl --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" localhost:8
 
 ### Projector
 
-To register a list of projectors:
+To get the projector data for a list of projectors:
 
 ```
 curl localhost:8002/system/projector?projector_ids=1,2,3
