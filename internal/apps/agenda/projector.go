@@ -3,6 +3,7 @@ package agenda
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"sort"
 
@@ -129,12 +130,13 @@ func ListOfSpeakersSlide() projector.CallableFunc {
 			return nil, fmt.Errorf("id is required for list of speakers slide")
 		}
 
-		l := ds.Get(fmt.Sprintf("%s:%d", "agenda/list-of-speakers", element.ID))
-		if l == nil {
-			return nil, fmt.Errorf("model %s:%d does not exist", "agenda/list-of-speakers", element.ID)
+		var los listOfSpeakers
+
+		if err := ds.Get("agenda/list-of-speakers", element.ID, &los); err != nil {
+			return nil, fmt.Errorf("getting list of speakers: %w", err)
 		}
 
-		return listOfSpeakerSlideData(ds, l)
+		return listOfSpeakerSlideData(ds, los)
 	}
 }
 
@@ -145,37 +147,41 @@ type formattedSpeaker struct {
 	EndTime json.RawMessage `json:"end_time"`
 }
 
-func listOfSpeakerSlideData(ds projector.Datastore, l json.RawMessage) (json.RawMessage, error) {
-	var los listOfSpeakers
-	if err := json.Unmarshal(l, &los); err != nil {
-		return nil, fmt.Errorf("decoding list of speakers: %w", err)
-	}
-
+func titleInformation(ds projector.Datastore, los listOfSpeakers) (map[string]string, error) {
 	titleInformation := los.TitleInformation
-	contentObject := ds.Get(fmt.Sprintf("%s:%d", los.ContentObject.Collection, los.ContentObject.ID))
-
-	// Set titleInformation["_agenda_item_number"].
-	if contentObject != nil {
-		// contentObject does exist.
-		var object struct {
-			AgendaItemID int `json:"agenda_item_id"`
-		}
-		if err := json.Unmarshal(contentObject, &object); err != nil {
-			return nil, fmt.Errorf("decoding content object: %w", err)
-		}
-
-		i := ds.Get(fmt.Sprintf("%s:%d", "agenda/item", object.AgendaItemID))
-		if i != nil {
-			var item struct {
-				Number string `json:"item_number"`
-			}
-			if err := json.Unmarshal(i, &item); err != nil {
-				return nil, fmt.Errorf("decoding item: %w", err)
-			}
-			titleInformation["_agenda_item_number"] = item.Number
-		}
+	var contentObject struct {
+		AgendaItemID int `json:"agenda_item_id"`
 	}
+	if err := ds.Get(los.ContentObject.Collection, los.ContentObject.ID, &contentObject); err != nil {
+		var doesNotExist interface {
+			DoesNotExist()
+		}
+		if errors.As(err, &doesNotExist) {
+			// Content Object does not exist.
+			return titleInformation, nil
+		}
+		return nil, fmt.Errorf("getting content object: %w", err)
+	}
+	// contentObject does exist.
+	// Set titleInformation["_agenda_item_number"].
+	var item struct {
+		Number string `json:"item_number"`
+	}
+	if err := ds.Get("agenda/item", contentObject.AgendaItemID, &item); err != nil {
+		var doesNotExist interface {
+			DoesNotExist()
+		}
+		if errors.As(err, &doesNotExist) {
+			// Agenda item does not exist.
+			return titleInformation, nil
+		}
+		return nil, fmt.Errorf("getting content object: %w", err)
+	}
+	titleInformation["_agenda_item_number"] = item.Number
+	return titleInformation, nil
+}
 
+func listOfSpeakerSlideData(ds projector.Datastore, los listOfSpeakers) (json.RawMessage, error) {
 	var showLastSpeakers int
 	if err := ds.ConfigValue("agenda_show_last_speakers", &showLastSpeakers); err != nil {
 		return nil, fmt.Errorf("loading agenda_show_last_speakers: %w", err)
@@ -239,6 +245,11 @@ func listOfSpeakerSlideData(ds projector.Datastore, l json.RawMessage) (json.Raw
 		speakersFinished = make([]formattedSpeaker, 0)
 	}
 
+	ti, err := titleInformation(ds, los)
+	if err != nil {
+		return nil, fmt.Errorf("get title information: %w", err)
+	}
+
 	out := struct {
 		Waiting                 []formattedSpeaker `json:"waiting"`
 		Current                 *formattedSpeaker  `json:"current"`
@@ -251,7 +262,7 @@ func listOfSpeakerSlideData(ds projector.Datastore, l json.RawMessage) (json.Raw
 		currentSpeaker,
 		speakersFinished,
 		los.ContentObject.Collection,
-		titleInformation,
+		ti,
 		los.Closed,
 	}
 	b, err := json.Marshal(out)
@@ -271,11 +282,10 @@ func CurrentListOfSpeakersSlide() projector.CallableFunc {
 
 		los, err := currentListOfSpeakers(ds, rp)
 		if err != nil {
+			if err == errNoListOfSpeakers {
+				return []byte(`{}`), nil
+			}
 			return nil, fmt.Errorf("getting current list of speakers: %w", err)
-		}
-
-		if los == nil {
-			return []byte(`{}`), nil
 		}
 
 		return listOfSpeakerSlideData(ds, los)
@@ -283,22 +293,27 @@ func CurrentListOfSpeakersSlide() projector.CallableFunc {
 }
 
 func referenceProjector(ds projector.Datastore, id int) (json.RawMessage, error) {
-	t := ds.Get(fmt.Sprintf("%s:%d", "core/projector", id))
 	var thisProjector struct {
 		ReferenceID int `json:"reference_projector_id"`
 	}
-	if err := json.Unmarshal(t, &thisProjector); err != nil {
-		return nil, fmt.Errorf("decoding projector: %w", err)
+	if err := ds.Get("core/projector", id, &thisProjector); err != nil {
+		return nil, fmt.Errorf("getting projector: %w", err)
 	}
+
 	referenceID := id
 	if thisProjector.ReferenceID != 0 {
 		referenceID = thisProjector.ReferenceID
 	}
 
-	return ds.Get(fmt.Sprintf("%s:%d", "core/projector", referenceID)), nil
+	var reference json.RawMessage
+
+	if err := ds.Get("core/projector", referenceID, &reference); err != nil {
+		return nil, fmt.Errorf("getting projector: %w", err)
+	}
+	return reference, nil
 }
 
-func currentListOfSpeakers(ds projector.Datastore, p json.RawMessage) (json.RawMessage, error) {
+func currentListOfSpeakers(ds projector.Datastore, p json.RawMessage) (listOfSpeakers, error) {
 	var projector struct {
 		Elements []struct {
 			Name string `json:"name"`
@@ -306,46 +321,52 @@ func currentListOfSpeakers(ds projector.Datastore, p json.RawMessage) (json.RawM
 		}
 	}
 	if err := json.Unmarshal(p, &projector); err != nil {
-		return nil, fmt.Errorf("decoding projector: %w", err)
+		return listOfSpeakers{}, fmt.Errorf("decoding projector: %w", err)
 	}
 
-	var los json.RawMessage
+	var los listOfSpeakers
 	for _, element := range projector.Elements {
 		if element.ID == 0 {
-			continue
-		}
-
-		m := ds.Get(fmt.Sprintf("%s:%d", element.Name, element.ID))
-		if m == nil {
 			continue
 		}
 
 		var model struct {
 			LosID int `json:"list_of_speakers_id"`
 		}
-		if err := json.Unmarshal(m, &model); err != nil {
-			// Ignore invalid models.
-			continue
+		if err := ds.Get(element.Name, element.ID, &model); err != nil {
+			var doesNotExist interface {
+				DoesNotExist()
+			}
+			if errors.As(err, &doesNotExist) {
+				continue
+			}
+			return listOfSpeakers{}, fmt.Errorf("getting element: %w", err)
 		}
 
-		los = ds.Get(fmt.Sprintf("%s:%d", "agenda/list-of-speakers", model.LosID))
-		if los != nil {
-			break
+		if err := ds.Get("agenda/list-of-speakers", model.LosID, &los); err != nil {
+			var doesNotExist interface {
+				DoesNotExist()
+			}
+			if errors.As(err, &doesNotExist) {
+				continue
+			}
+			return listOfSpeakers{}, fmt.Errorf("getting list of speakers: %w", err)
 		}
+		return los, nil
 	}
-	return los, nil
+	return listOfSpeakers{}, errNoListOfSpeakers
 }
 
 // CurrentSpeakerChyronSlide renders the current list of speaker chyron.
 func CurrentSpeakerChyronSlide() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
-		p := ds.Get(fmt.Sprintf("%s:%d", "core/projector", pid))
 		var projector struct {
 			BColor json.RawMessage `json:"chyron_background_color"`
 			FColor json.RawMessage `json:"chyron_font_color"`
 		}
-		if err := json.Unmarshal(p, &projector); err != nil {
-			return nil, fmt.Errorf("decoding projector: %w", err)
+
+		if err := ds.Get("core/projector", pid, &projector); err != nil {
+			return nil, fmt.Errorf("getting projector: %w", err)
 		}
 
 		currentSpeaker := make(map[string]json.RawMessage)
@@ -357,22 +378,16 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 			return nil, fmt.Errorf("getting reference projector: %w", err)
 		}
 
-		l, err := currentListOfSpeakers(ds, rp)
+		los, err := currentListOfSpeakers(ds, rp)
 		if err != nil {
-			return nil, fmt.Errorf("getting current list of speakers: %w", err)
-		}
-
-		if l == nil {
-			b, err := json.Marshal(currentSpeaker)
-			if err != nil {
-				return nil, fmt.Errorf("encoding projector: %w", err)
+			if err == errNoListOfSpeakers {
+				b, err := json.Marshal(currentSpeaker)
+				if err != nil {
+					return nil, fmt.Errorf("encoding projector: %w", err)
+				}
+				return b, nil
 			}
-			return b, nil
-		}
-
-		var los listOfSpeakers
-		if err := json.Unmarshal(l, &los); err != nil {
-			return nil, fmt.Errorf("decoding list of speakers: %w", err)
+			return nil, fmt.Errorf("getting current list of speakers: %w", err)
 		}
 
 		var current string

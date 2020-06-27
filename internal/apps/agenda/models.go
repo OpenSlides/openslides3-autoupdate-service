@@ -1,6 +1,9 @@
 package agenda
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"errors"
+)
 
 type agendaItem struct {
 	ID               int               `json:"id"`
@@ -29,3 +32,5 @@ type listOfSpeakers struct {
 	} `json:"speakers"`
 	Closed json.RawMessage `json:"closed"`
 }
+
+var errNoListOfSpeakers = errors.New("list of speakers does not exist")

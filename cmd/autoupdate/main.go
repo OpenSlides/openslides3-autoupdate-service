@@ -182,11 +182,17 @@ func openslidesProjectorCallables() map[string]projector.Callable {
 		"assignments/assignment":      assignment.Slide(),
 		"assignments/assignment-poll": assignment.PollSlide(),
 
-		"mediafiles/mediafile":   mediafile.Slide(),
 		"core/countdown":         core.CountdownSlide(),
 		"core/projector-message": core.MessageSlide(),
 		"core/clock":             core.ClockSlide(),
-		"topics/topic":           topic.Slide(),
-		"users/user":             user.Slide(),
+
+		"mediafiles/mediafile": mediafile.Slide(),
+
+		//"motions/motion": motion.Slide(),
+		// "motions/motion-block":
+		// "motions/motion-poll":
+
+		"topics/topic": topic.Slide(),
+		"users/user":   user.Slide(),
 	}
 }

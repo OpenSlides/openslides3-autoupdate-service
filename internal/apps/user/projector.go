@@ -27,9 +27,8 @@ func Slide() projector.CallableFunc {
 	}
 }
 
+// GetUserName returns the display name for an user id.
 func GetUserName(ds projector.Datastore, uid int) (string, error) {
-	u := ds.Get(fmt.Sprintf("users/user:%d", uid))
-
 	var user struct {
 		Username  string `json:"username"`
 		Title     string `json:"title"`
@@ -37,7 +36,8 @@ func GetUserName(ds projector.Datastore, uid int) (string, error) {
 		LastName  string `json:"last_name"`
 		Level     string `json:"structure_level"`
 	}
-	if err := json.Unmarshal(u, &user); err != nil {
+
+	if err := ds.Get("users/user", uid, &user); err != nil {
 		return "", fmt.Errorf("decoding user: %w", err)
 	}
 
