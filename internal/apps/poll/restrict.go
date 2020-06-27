@@ -7,7 +7,8 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
-const published = 4
+// StatePublished is the state of a poll, when it is published.
+const StatePublished = 4
 
 // RestrictPoll restricts an element for an assignment or motion poll.
 func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFiels []string) restricter.ElementFunc {
@@ -40,8 +41,8 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			return nil, fmt.Errorf("unmarshal poll state: %w", err)
 		}
 
-		// delete some fields for no managers and unpublished polls.
-		if !(r.HasPerm(uid, canManage) || state == published) {
+		// Delete some fields for no managers and unpublished polls.
+		if !(r.HasPerm(uid, canManage) || state == StatePublished) {
 			delete(poll, "votesvalid")
 			delete(poll, "votesinvalid")
 			delete(poll, "votescast")
@@ -81,7 +82,7 @@ func RestrictOption(r restricter.HasPermer, canSee, canManage string) restricter
 		}
 
 		// delete some fields for unpublished options.
-		if state != published {
+		if state != StatePublished {
 			delete(option, "yes")
 			delete(option, "no")
 			delete(option, "abstain")
@@ -125,7 +126,7 @@ func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.E
 			return nil, fmt.Errorf("unmarshal pollstate: %w", err)
 		}
 
-		if state == published {
+		if state == StatePublished {
 			return element, nil
 		}
 
