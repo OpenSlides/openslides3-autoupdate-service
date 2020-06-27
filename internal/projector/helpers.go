@@ -16,7 +16,7 @@ func ModelFromElement(ds Datastore, e json.RawMessage, collection string) (json.
 
 	m := ds.Get(fmt.Sprintf("%s:%d", collection, element.ID))
 	if m == nil {
-		return nil, fmt.Errorf("model %s:%ddoes not exist", collection, element.ID)
+		return nil, fmt.Errorf("model %s:%d does not exist", collection, element.ID)
 	}
 	return m, nil
 }

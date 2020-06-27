@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"strings"
 	"sync"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
@@ -149,6 +150,21 @@ func (d *Datastore) Get(key string) json.RawMessage {
 // GetMany returns the values for the given keys.
 func (d *Datastore) GetMany(keys []string) map[string]json.RawMessage {
 	return d.cache.forKeys(keys...)
+}
+
+// GetCollection gets all elements of one collection.
+func (d *Datastore) GetCollection(collection string) []json.RawMessage {
+	// TODO: maybe build an index?
+
+	var elements []json.RawMessage
+	prefix := collection + ":"
+	for key, value := range d.cache.all() {
+		if !strings.HasPrefix(key, prefix) {
+			continue
+		}
+		elements = append(elements, value)
+	}
+	return elements
 }
 
 // GetAll returns all data.

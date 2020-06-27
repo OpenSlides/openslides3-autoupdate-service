@@ -4,8 +4,9 @@ import "encoding/json"
 
 // Datastore are the methods a usual projector slide needs.
 type Datastore interface {
+	GetCollection(string) []json.RawMessage
 	Get(string) json.RawMessage
-	ConfigValue(string) json.RawMessage
+	ConfigValue(string, interface{}) error
 }
 
 // Callable knows how to build the projector data for an element.

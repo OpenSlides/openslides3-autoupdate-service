@@ -49,9 +49,9 @@ func (c *config) update(data map[string]json.RawMessage) error {
 	return nil
 }
 
-func (c *config) ConfigValue(key string) json.RawMessage {
+func (c *config) ConfigValue(key string, v interface{}) error {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
 
-	return c.values[key]
+	return json.Unmarshal(c.values[key], v)
 }
