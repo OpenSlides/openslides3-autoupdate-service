@@ -335,3 +335,65 @@ func currentListOfSpeakers(ds projector.Datastore, p json.RawMessage) (json.RawM
 	}
 	return los, nil
 }
+
+// CurrentSpeakerChyronSlide renders the current list of speaker chyron.
+func CurrentSpeakerChyronSlide() projector.CallableFunc {
+	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
+		p := ds.Get(fmt.Sprintf("%s:%d", "core/projector", pid))
+		var projector struct {
+			BColor json.RawMessage `json:"chyron_background_color"`
+			FColor json.RawMessage `json:"chyron_font_color"`
+		}
+		if err := json.Unmarshal(p, &projector); err != nil {
+			return nil, fmt.Errorf("decoding projector: %w", err)
+		}
+
+		currentSpeaker := make(map[string]json.RawMessage)
+		currentSpeaker["background_color"] = projector.BColor
+		currentSpeaker["font_color"] = projector.FColor
+
+		rp, err := referenceProjector(ds, pid)
+		if err != nil {
+			return nil, fmt.Errorf("getting reference projector: %w", err)
+		}
+
+		l, err := currentListOfSpeakers(ds, rp)
+		if err != nil {
+			return nil, fmt.Errorf("getting current list of speakers: %w", err)
+		}
+
+		if l == nil {
+			b, err := json.Marshal(currentSpeaker)
+			if err != nil {
+				return nil, fmt.Errorf("encoding projector: %w", err)
+			}
+			return b, nil
+		}
+
+		var los listOfSpeakers
+		if err := json.Unmarshal(l, &los); err != nil {
+			return nil, fmt.Errorf("decoding list of speakers: %w", err)
+		}
+
+		var current string
+		for _, speaker := range los.Speakers {
+			if !bytes.Equal(speaker.BeginTime, []byte("null")) && bytes.Equal(speaker.EndTime, []byte("null")) {
+				current, err = user.GetUserName(ds, speaker.UserID)
+				if err != nil {
+					return nil, fmt.Errorf("getting username: %w", err)
+				}
+				break
+			}
+		}
+
+		if current != "" {
+			currentSpeaker["current_speaker"] = []byte(`"` + current + `"`)
+		}
+
+		b, err := json.Marshal(currentSpeaker)
+		if err != nil {
+			return nil, fmt.Errorf("encoding projector: %w", err)
+		}
+		return b, nil
+	}
+}

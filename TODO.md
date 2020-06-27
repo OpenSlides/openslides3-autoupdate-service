@@ -1,5 +1,4 @@
 * Projector
- * Agenda
  * Assignment
  * Motion
  * Test creation and deletion of projectors
