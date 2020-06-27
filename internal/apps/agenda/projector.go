@@ -1,24 +1,14 @@
 package agenda
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"sort"
 
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/user"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 )
-
-type agendaItem struct {
-	ID               int               `json:"id"`
-	ParentID         int               `json:"parent_id"`
-	Weight           int               `json:"weight"`
-	Type             int               `json:"type"`
-	TitleInformation map[string]string `json:"title_information"`
-	ItemNumber       string            `json:"item_number"`
-	ContentObject    struct {
-		Collection string `json:"collection"`
-	} `json:"content_object"`
-}
 
 type treeInfo struct {
 	TitleInformation map[string]string `json:"title_information"`
@@ -123,4 +113,147 @@ func getFlatTree(agendaItems map[int]agendaItem, parentID int) ([]treeInfo, erro
 	buildTree(children[parentID], 0)
 
 	return tree, nil
+}
+
+// ListOfSpeakersSlide renders a list of speakers.
+func ListOfSpeakersSlide() projector.CallableFunc {
+	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
+		var element struct {
+			ID int `json:"id"`
+		}
+		if err := json.Unmarshal(e, &element); err != nil {
+			return nil, fmt.Errorf("decoding element: %w", err)
+		}
+
+		if element.ID == 0 {
+			return nil, fmt.Errorf("id is required for list of speakers slide")
+		}
+
+		return listOfSpeakerSlideData(ds, element.ID)
+	}
+}
+
+type formattedSpeaker struct {
+	User    string          `json:"user"`
+	Marked  json.RawMessage `json:"marked"`
+	Weight  int             `json:"weight"`
+	EndTime json.RawMessage `json:"end_time"`
+}
+
+func listOfSpeakerSlideData(ds projector.Datastore, id int) (json.RawMessage, error) {
+	l := ds.Get(fmt.Sprintf("%s:%d", "agenda/list-of-speakers", id))
+	if l == nil {
+		return nil, fmt.Errorf("model %s:%d does not exist", "agenda/list-of-speakers", id)
+	}
+
+	var los listOfSpeakers
+	if err := json.Unmarshal(l, &los); err != nil {
+		return nil, fmt.Errorf("decoding list of speakers: %w", err)
+	}
+
+	titleInformation := los.TitleInformation
+	contentObject := ds.Get(fmt.Sprintf("%s:%d", los.ContentObject.Collection, los.ContentObject.ID))
+
+	// Set titleInformation["_agenda_item_number"].
+	if contentObject != nil {
+		// contentObject does exist.
+		var object struct {
+			AgendaItemID int `json:"agenda_item_id"`
+		}
+		if err := json.Unmarshal(contentObject, &object); err != nil {
+			return nil, fmt.Errorf("decoding content object: %w", err)
+		}
+
+		i := ds.Get(fmt.Sprintf("%s:%d", "agenda/item", object.AgendaItemID))
+		if i != nil {
+			var item struct {
+				Number string `json:"item_number"`
+			}
+			if err := json.Unmarshal(i, &item); err != nil {
+				return nil, fmt.Errorf("decoding item: %w", err)
+			}
+			titleInformation["_agenda_item_number"] = item.Number
+		}
+	}
+
+	var showLastSpeakers int
+	if err := ds.ConfigValue("agenda_show_last_speakers", &showLastSpeakers); err != nil {
+		return nil, fmt.Errorf("loading agenda_show_last_speakers: %w", err)
+	}
+
+	var speakersWaiting []formattedSpeaker
+	var speakersFinished []formattedSpeaker
+	var currentSpeaker *formattedSpeaker
+	for _, speaker := range los.Speakers {
+		username, err := user.GetUserName(ds, speaker.UserID)
+		if err != nil {
+			return nil, fmt.Errorf("getting username: %w", err)
+		}
+		fs := formattedSpeaker{
+			User:    username,
+			Marked:  speaker.Marked,
+			Weight:  speaker.Weight,
+			EndTime: speaker.EndTime,
+		}
+
+		if bytes.Equal(speaker.BeginTime, []byte("null")) && bytes.Equal(speaker.EndTime, []byte("null")) {
+			speakersWaiting = append(speakersWaiting, fs)
+			continue
+		}
+
+		if bytes.Equal(speaker.EndTime, []byte("null")) {
+			currentSpeaker = &fs
+		}
+
+		if showLastSpeakers > 0 {
+			speakersFinished = append(speakersFinished, fs)
+		}
+	}
+
+	sort.Slice(speakersWaiting, func(i, j int) bool {
+		return speakersWaiting[i].Weight < speakersWaiting[j].Weight
+	})
+
+	if showLastSpeakers > 0 {
+		sort.Slice(speakersFinished, func(i, j int) bool {
+			return speakersFinished[i].Weight < speakersFinished[j].Weight
+		})
+
+		l := len(speakersFinished)
+		speakersFinished = speakersFinished[l-showLastSpeakers : l]
+	}
+
+	var showNextSpeakers int
+	if err := ds.ConfigValue("agenda_show_next_speakers", &showNextSpeakers); err != nil {
+		return nil, fmt.Errorf("loading agenda_show_next_speakers: %w", err)
+	}
+
+	if showLastSpeakers != -1 {
+		speakersWaiting = speakersWaiting[0:showLastSpeakers]
+	}
+
+	if speakersFinished == nil {
+		speakersFinished = make([]formattedSpeaker, 0)
+	}
+
+	out := struct {
+		Waiting                 []formattedSpeaker `json:"waiting"`
+		Current                 *formattedSpeaker  `json:"current"`
+		Finished                []formattedSpeaker `json:"finished"`
+		ContentObjectCollection string             `json:"content_object_collection"`
+		TitleInformation        map[string]string  `json:"title_information"`
+		Closed                  json.RawMessage    `json:"closed"`
+	}{
+		speakersWaiting,
+		currentSpeaker,
+		speakersFinished,
+		los.ContentObject.Collection,
+		titleInformation,
+		los.Closed,
+	}
+	b, err := json.Marshal(out)
+	if err != nil {
+		return nil, fmt.Errorf("encoding outgoing data: %w", err)
+	}
+	return b, nil
 }

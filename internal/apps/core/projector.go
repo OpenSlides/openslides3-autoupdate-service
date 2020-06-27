@@ -25,7 +25,9 @@ func CountdownSlide() projector.CallableFunc {
 			return nil, fmt.Errorf("decoding countdown: %w", err)
 		}
 
-		countdown.WarningTime = ds.ConfigValue("agenda_countdown_warning_time")
+		if err := ds.ConfigValue("agenda_countdown_warning_time", &countdown.WarningTime); err != nil {
+			return nil, fmt.Errorf("getting warning time: %w", err)
+		}
 
 		out, err := json.Marshal(countdown)
 		if err != nil {

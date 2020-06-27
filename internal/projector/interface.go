@@ -6,7 +6,7 @@ import "encoding/json"
 type Datastore interface {
 	GetCollection(string) []json.RawMessage
 	Get(string) json.RawMessage
-	ConfigValue(string) json.RawMessage
+	ConfigValue(string, interface{}) error
 }
 
 // Callable knows how to build the projector data for an element.

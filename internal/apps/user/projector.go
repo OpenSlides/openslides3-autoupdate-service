@@ -18,7 +18,7 @@ func Slide() projector.CallableFunc {
 			return nil, fmt.Errorf("decoding element: %w", err)
 		}
 
-		name, err := getUserName(ds, element.ID)
+		name, err := GetUserName(ds, element.ID)
 		if err != nil {
 			return nil, fmt.Errorf("get username: %w", err)
 		}
@@ -27,7 +27,7 @@ func Slide() projector.CallableFunc {
 	}
 }
 
-func getUserName(ds projector.Datastore, uid int) (string, error) {
+func GetUserName(ds projector.Datastore, uid int) (string, error) {
 	u := ds.Get(fmt.Sprintf("users/user:%d", uid))
 
 	var user struct {
