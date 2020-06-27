@@ -179,7 +179,8 @@ func openslidesProjectorCallables() map[string]projector.Callable {
 		"agenda/current-list-of-speakers-overlay": agenda.CurrentListOfSpeakersSlide(),
 		"agenda/current-speaker-chyron":           agenda.CurrentSpeakerChyronSlide(),
 
-		"assignments/assignment": assignment.Slide(),
+		"assignments/assignment":      assignment.Slide(),
+		"assignments/assignment-poll": assignment.PollSlide(),
 
 		"mediafiles/mediafile":   mediafile.Slide(),
 		"core/countdown":         core.CountdownSlide(),

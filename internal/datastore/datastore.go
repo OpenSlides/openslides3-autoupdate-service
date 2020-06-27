@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -162,6 +163,32 @@ func (d *Datastore) GetCollection(collection string) []json.RawMessage {
 		if !strings.HasPrefix(key, prefix) {
 			continue
 		}
+		elements = append(elements, value)
+	}
+	return elements
+}
+
+// GetModels returns each element from collection that is in the ids slide.
+func (d *Datastore) GetModels(collection string, ids []int) []json.RawMessage {
+	// TODO: maybe build an index?
+
+	set := make(map[int]bool)
+	for _, id := range ids {
+		set[id] = true
+	}
+
+	var elements []json.RawMessage
+	for key, value := range d.cache.all() {
+		parts := strings.Split(key, ":")
+		if len(parts) != 2 || parts[0] != collection {
+			continue
+		}
+
+		id, err := strconv.Atoi(parts[1])
+		if err != nil || !set[id] {
+			continue
+		}
+
 		elements = append(elements, value)
 	}
 	return elements
