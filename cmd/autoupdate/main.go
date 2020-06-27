@@ -174,9 +174,9 @@ func openslidesRestricters(ds *datastore.Datastore) map[string]restricter.Elemen
 func openslidesProjectorCallables() map[string]projector.Callable {
 	return map[string]projector.Callable{
 
-		"agenda/item-list":        agenda.ItemListSlide(),
-		"agenda/list-of-speakers": agenda.ListOfSpeakersSlide(),
-		// 	"agenda/current-list-of-speakers":
+		"agenda/item-list":                agenda.ItemListSlide(),
+		"agenda/list-of-speakers":         agenda.ListOfSpeakersSlide(),
+		"agenda/current-list-of-speakers": agenda.CurrentListOfSpeakersSlide(),
 		// 	"agenda/current-list-of-speakers-overlay":
 		// 	"agenda/current-speaker-chyron":
 

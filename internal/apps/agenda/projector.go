@@ -129,7 +129,12 @@ func ListOfSpeakersSlide() projector.CallableFunc {
 			return nil, fmt.Errorf("id is required for list of speakers slide")
 		}
 
-		return listOfSpeakerSlideData(ds, element.ID)
+		l := ds.Get(fmt.Sprintf("%s:%d", "agenda/list-of-speakers", element.ID))
+		if l == nil {
+			return nil, fmt.Errorf("model %s:%d does not exist", "agenda/list-of-speakers", element.ID)
+		}
+
+		return listOfSpeakerSlideData(ds, l)
 	}
 }
 
@@ -140,12 +145,7 @@ type formattedSpeaker struct {
 	EndTime json.RawMessage `json:"end_time"`
 }
 
-func listOfSpeakerSlideData(ds projector.Datastore, id int) (json.RawMessage, error) {
-	l := ds.Get(fmt.Sprintf("%s:%d", "agenda/list-of-speakers", id))
-	if l == nil {
-		return nil, fmt.Errorf("model %s:%d does not exist", "agenda/list-of-speakers", id)
-	}
-
+func listOfSpeakerSlideData(ds projector.Datastore, l json.RawMessage) (json.RawMessage, error) {
 	var los listOfSpeakers
 	if err := json.Unmarshal(l, &los); err != nil {
 		return nil, fmt.Errorf("decoding list of speakers: %w", err)
@@ -203,6 +203,7 @@ func listOfSpeakerSlideData(ds projector.Datastore, id int) (json.RawMessage, er
 
 		if bytes.Equal(speaker.EndTime, []byte("null")) {
 			currentSpeaker = &fs
+			continue
 		}
 
 		if showLastSpeakers > 0 {
@@ -219,8 +220,10 @@ func listOfSpeakerSlideData(ds projector.Datastore, id int) (json.RawMessage, er
 			return speakersFinished[i].Weight < speakersFinished[j].Weight
 		})
 
-		l := len(speakersFinished)
-		speakersFinished = speakersFinished[l-showLastSpeakers : l]
+		l := len(speakersFinished) - showLastSpeakers
+		if l > 0 {
+			speakersFinished = speakersFinished[l:]
+		}
 	}
 
 	var showNextSpeakers int
@@ -228,8 +231,8 @@ func listOfSpeakerSlideData(ds projector.Datastore, id int) (json.RawMessage, er
 		return nil, fmt.Errorf("loading agenda_show_next_speakers: %w", err)
 	}
 
-	if showLastSpeakers != -1 {
-		speakersWaiting = speakersWaiting[0:showLastSpeakers]
+	if showNextSpeakers != -1 {
+		speakersWaiting = speakersWaiting[0:showNextSpeakers]
 	}
 
 	if speakersFinished == nil {
@@ -256,4 +259,79 @@ func listOfSpeakerSlideData(ds projector.Datastore, id int) (json.RawMessage, er
 		return nil, fmt.Errorf("encoding outgoing data: %w", err)
 	}
 	return b, nil
+}
+
+// CurrentListOfSpeakersSlide renders the current list of speakers.
+func CurrentListOfSpeakersSlide() projector.CallableFunc {
+	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
+		rp, err := referenceProjector(ds, pid)
+		if err != nil {
+			return nil, fmt.Errorf("getting reference projector: %w", err)
+		}
+
+		los, err := currentListOfSpeakers(ds, rp)
+		if err != nil {
+			return nil, fmt.Errorf("getting current list of speakers: %w", err)
+		}
+
+		if los == nil {
+			return []byte(`{}`), nil
+		}
+
+		return listOfSpeakerSlideData(ds, los)
+	}
+}
+
+func referenceProjector(ds projector.Datastore, id int) (json.RawMessage, error) {
+	t := ds.Get(fmt.Sprintf("%s:%d", "core/projector", id))
+	var thisProjector struct {
+		ReferenceID int `json:"reference_projector_id"`
+	}
+	if err := json.Unmarshal(t, &thisProjector); err != nil {
+		return nil, fmt.Errorf("decoding projector: %w", err)
+	}
+	referenceID := id
+	if thisProjector.ReferenceID != 0 {
+		referenceID = thisProjector.ReferenceID
+	}
+
+	return ds.Get(fmt.Sprintf("%s:%d", "core/projector", referenceID)), nil
+}
+
+func currentListOfSpeakers(ds projector.Datastore, p json.RawMessage) (json.RawMessage, error) {
+	var projector struct {
+		Elements []struct {
+			Name string `json:"name"`
+			ID   int    `josn:"id"`
+		}
+	}
+	if err := json.Unmarshal(p, &projector); err != nil {
+		return nil, fmt.Errorf("decoding projector: %w", err)
+	}
+
+	var los json.RawMessage
+	for _, element := range projector.Elements {
+		if element.ID == 0 {
+			continue
+		}
+
+		m := ds.Get(fmt.Sprintf("%s:%d", element.Name, element.ID))
+		if m == nil {
+			continue
+		}
+
+		var model struct {
+			LosID int `json:"list_of_speakers_id"`
+		}
+		if err := json.Unmarshal(m, &model); err != nil {
+			// Ignore invalid models.
+			continue
+		}
+
+		los = ds.Get(fmt.Sprintf("%s:%d", "agenda/list-of-speakers", model.LosID))
+		if los != nil {
+			break
+		}
+	}
+	return los, nil
 }
