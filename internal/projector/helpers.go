@@ -1,22 +1,56 @@
 package projector
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 )
 
 // ModelFromElement returns a model from the element.id.
-func ModelFromElement(ds Datastore, e json.RawMessage, collection string) (json.RawMessage, error) {
+func ModelFromElement(ds Datastore, e json.RawMessage, collection string, v interface{}) error {
 	var element struct {
 		ID int `json:"id"`
 	}
 	if err := json.Unmarshal(e, &element); err != nil {
-		return nil, fmt.Errorf("decoding element: %w", err)
+		return fmt.Errorf("decoding element: %w", err)
 	}
 
-	m := ds.Get(fmt.Sprintf("%s:%d", collection, element.ID))
-	if m == nil {
-		return nil, fmt.Errorf("model %s:%d does not exist", collection, element.ID)
+	if err := ds.Get(collection, element.ID, v); err != nil {
+		return fmt.Errorf("get model: %w", err)
 	}
-	return m, nil
+	return nil
+}
+
+// OptionalInt is a type that can be null or an int.
+type OptionalInt struct {
+	value int
+	exist bool
+}
+
+// Value returns the value of the type. Returns 0 if it does not exist.
+func (o *OptionalInt) Value() int {
+	return o.value
+}
+
+// Null returns true, if, the value does not exist.
+func (o *OptionalInt) Null() bool {
+	return !o.exist
+}
+
+// UnmarshalJSON builds this type from json.
+func (o *OptionalInt) UnmarshalJSON(b []byte) error {
+	if bytes.Equal(b, []byte(`null`)) {
+		o.exist = false
+		return nil
+	}
+
+	return json.Unmarshal(b, &o.value)
+}
+
+// MarshalJSON decodes the type to json.
+func (o *OptionalInt) MarshalJSON() ([]byte, error) {
+	if o.Null() {
+		return []byte(`null`), nil
+	}
+	return json.Marshal(o.value)
 }

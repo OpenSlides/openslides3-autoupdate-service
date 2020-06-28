@@ -1,5 +1,8 @@
 * Projector
  * Motion
+  * Cleanup motion slide
+  * Motion block
+  * motion poll
  * Test creation and deletion of projectors
 
 * Prune autoupdate topic, notify topic and projector from time to time.

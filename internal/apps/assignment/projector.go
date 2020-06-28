@@ -15,11 +15,6 @@ import (
 // Slide renders a an assignment.
 func Slide() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
-		a, err := projector.ModelFromElement(ds, e, "assignments/assignment")
-		if err != nil {
-			return nil, fmt.Errorf("getting assignments/assignment: %w", err)
-		}
-
 		var assignment struct {
 			Title          json.RawMessage `json:"title"`
 			Phase          json.RawMessage `json:"phase"`
@@ -31,8 +26,8 @@ func Slide() projector.CallableFunc {
 				Weight int `json:"weight"`
 			} `json:"assignment_related_users"`
 		}
-		if err := json.Unmarshal(a, &assignment); err != nil {
-			return nil, fmt.Errorf("decoding assignment: %w", err)
+		if err := projector.ModelFromElement(ds, e, "assignments/assignment", &assignment); err != nil {
+			return nil, fmt.Errorf("getting assignments/assignment: %w", err)
 		}
 
 		sort.Slice(assignment.RelatedUsers, func(i, j int) bool {
@@ -72,14 +67,9 @@ func Slide() projector.CallableFunc {
 // PollSlide renders a an assignment poll.
 func PollSlide() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
-		p, err := projector.ModelFromElement(ds, e, "assignments/assignment-poll")
-		if err != nil {
-			return nil, fmt.Errorf("getting assignments/assignment-poll: %w", err)
-		}
-
 		var pollInfo map[string]json.RawMessage
-		if err := json.Unmarshal(p, &pollInfo); err != nil {
-			return nil, fmt.Errorf("decoding poll: %w", err)
+		if err := projector.ModelFromElement(ds, e, "assignments/assignment-poll", &pollInfo); err != nil {
+			return nil, fmt.Errorf("getting assignments/assignment-poll: %w", err)
 		}
 
 		assignmentID, err := strconv.Atoi(string(pollInfo["assignment_id"]))
@@ -92,12 +82,11 @@ func PollSlide() projector.CallableFunc {
 			return nil, fmt.Errorf("decoding poll state: %w", err)
 		}
 
-		a := ds.Get(fmt.Sprintf("%s:%d", "assignments/assignment", assignmentID))
 		var assignment struct {
 			Title string `json:"title"`
 		}
-		if err := json.Unmarshal(a, &assignment); err != nil {
-			return nil, fmt.Errorf("decoding assignment: %w", err)
+		if err := ds.Get("assignments/assignment", assignmentID, &assignment); err != nil {
+			return nil, fmt.Errorf("getting assignment: %w", err)
 		}
 
 		pollData := make(map[string]json.RawMessage)

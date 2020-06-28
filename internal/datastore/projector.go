@@ -81,13 +81,11 @@ func (p *projectors) update(data map[string]json.RawMessage) error {
 
 	var changed []string
 	for id := range p.projectors {
-		v := p.ds.Get(fmt.Sprintf("core/projector:%d", id))
-
-		// Update projector
 		var elements struct {
 			Elements []json.RawMessage `json:"elements"`
 		}
-		if err := json.Unmarshal(v, &elements); err != nil {
+
+		if err := p.ds.Get("core/projector", id, &elements); err != nil {
 			return fmt.Errorf("decoding projector elements: %w", err)
 		}
 

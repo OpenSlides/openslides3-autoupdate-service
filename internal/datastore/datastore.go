@@ -143,9 +143,16 @@ func (d *Datastore) ChangedKeys(from, to int) ([]string, error) {
 	return keys, err
 }
 
-// Get returns one value from the cache. Returns nil, if the key does not exist.
-func (d *Datastore) Get(key string) json.RawMessage {
-	return d.cache.get(key)
+// Get sets the attribute v to the value the collection:id. Returns an error
+// with the method `DoesNotExist()` if the value does not exist.
+//
+// v has to be a pointer.
+func (d *Datastore) Get(collection string, id int, v interface{}) error {
+	e := d.cache.get(fmt.Sprintf("%s:%d", collection, id))
+	if e == nil {
+		return doesNotExist(fmt.Sprintf("%s:%d", collection, id))
+	}
+	return json.Unmarshal(e, v)
 }
 
 // GetMany returns the values for the given keys.
