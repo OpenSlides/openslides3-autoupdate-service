@@ -188,7 +188,7 @@ func openslidesProjectorCallables() map[string]projector.Callable {
 
 		"mediafiles/mediafile": mediafile.Slide(),
 
-		//"motions/motion": motion.Slide(),
+		"motions/motion": motion.Slide(),
 		// "motions/motion-block":
 		// "motions/motion-poll":
 
