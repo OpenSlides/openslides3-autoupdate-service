@@ -117,12 +117,12 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 //
 // This method blocks until the service is closed, the given context exists or
 // there are data to return.
-func (a *Autoupdate) Projectors(ctx context.Context, tid uint64, pids []int) (ntid uint64, data map[int]json.RawMessage, err error) {
+func (a *Autoupdate) Projectors(ctx context.Context, tid uint64, pids []int) (ntid uint64, data map[int]json.RawMessage, cid int, err error) {
 	rdata := make(map[int]json.RawMessage)
 	for len(rdata) == 0 {
 		ntid, data, err = a.datastore.Projectors(ctx, tid)
 		if err != nil {
-			return 0, nil, err
+			return 0, nil, 0, err
 		}
 
 		for _, pid := range pids {
@@ -135,5 +135,5 @@ func (a *Autoupdate) Projectors(ctx context.Context, tid uint64, pids []int) (nt
 			rdata[pid] = v
 		}
 	}
-	return ntid, rdata, nil
+	return ntid, rdata, int(a.topic.LastID()), nil
 }

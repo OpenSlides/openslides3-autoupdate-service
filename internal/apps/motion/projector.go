@@ -276,10 +276,6 @@ func Slide() projector.CallableFunc {
 			out["recommender"] = buf
 		}
 
-		for k, v := range out {
-			fmt.Println(k, string(v))
-		}
-
 		encoded, err := json.Marshal(out)
 		if err != nil {
 			return nil, fmt.Errorf("encode motion data: %w", err)
