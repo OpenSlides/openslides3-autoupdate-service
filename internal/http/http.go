@@ -189,7 +189,7 @@ func (h *Handler) projectorLoop(ctx context.Context, w io.Writer, encoder *json.
 		defer cancel()
 	}
 
-	ntid, data, err := h.autoupdate.Projectors(ctx, tid, pids)
+	ntid, data, cid, err := h.autoupdate.Projectors(ctx, tid, pids)
 	if err != nil {
 		if errors.Is(err, context.DeadlineExceeded) {
 			if err := sendKeepAlive(w); err != nil {
@@ -200,7 +200,15 @@ func (h *Handler) projectorLoop(ctx context.Context, w io.Writer, encoder *json.
 		return 0, err
 	}
 
-	if err := encoder.Encode(data); err != nil {
+	out := struct {
+		CID  int                     `json:"change_id"`
+		Data map[int]json.RawMessage `json:"data"`
+	}{
+		cid,
+		data,
+	}
+
+	if err := encoder.Encode(out); err != nil {
 		return 0, nil
 	}
 	w.(http.Flusher).Flush()
