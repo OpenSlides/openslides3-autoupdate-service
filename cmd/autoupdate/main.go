@@ -30,10 +30,10 @@ import (
 )
 
 func main() {
-	listenAddr := getEnv("LISTEN_HTTP_ADDR", ":8002")
-	workerAddr := getEnv("WORKER_ADDR", "http://localhost:8000")
+	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
+	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
 	keepAliveRaw := getEnv("KEEP_ALIVE_DURATION", "30")
-	redisAddr := getEnv("REDIS_ADDR", "localhost:6379")
+	redisAddr := getEnv("MESSAGE_BUS_HOST", "localhost") + ":" + getEnv("MESSAGE_BUS_PORT", "6379")
 
 	keepAlive, err := strconv.Atoi(keepAliveRaw)
 	if err != nil {
