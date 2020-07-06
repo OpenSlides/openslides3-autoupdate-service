@@ -136,9 +136,14 @@ go test ./...
 
 The service can be configured with the following environment variables:
 
-* `LISTEN_HTTP_ADDR`: Host and port on which the services listen on (Default: `:8002`).
-* `REDIS_ADDR`: Host and port of the redis service (Default: `localhost:6379`).
-* `WORKER_ADDR`: Host and port of the OpenSlides worker (Default: `http://localhost:8000`).
+* `AUTOUPDATE_PORT`:Port to listen on. The default is `8002`.
+* `AUTOUPDATE_HOST`: The device where the service starts. The default is an
+  empty string which starts the service on every device.
+* `MESSAGE_BUS_HOST`: Host of the redis server. The default is `localhost`.
+* `MESSAGE_BUS_PORT`: Port of the redis server. The default is `6379`.
+* `WORKER_HOST`: Host of the OpenSlides worker (Default: `localhost`).
+* `WORKER_PORT`: Port of the OpenSlides worker (Default: `8000`).
+* `WORKER_PROTOCOL`: Protocol of the OpenSlides worker (Default: `http`).
 * `KEEP_ALIVE_DURATION`: Time in seconds how often a keep alive packet is sent
   to the client. The value `0` means not to send any keep alive packages.
   (Default: `30`).
