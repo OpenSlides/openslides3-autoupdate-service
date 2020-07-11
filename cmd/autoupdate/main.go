@@ -27,6 +27,8 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
+	"golang.org/x/net/http2"
+	"golang.org/x/net/http2/h2c"
 )
 
 func main() {
@@ -75,7 +77,10 @@ func main() {
 		log.Printf("Keep Alive Interval: %d seconds", keepAlive)
 	}
 
-	srv := &http.Server{Addr: listenAddr, Handler: handler}
+	srv := &http.Server{
+		Addr:    listenAddr,
+		Handler: h2c.NewHandler(handler, &http2.Server{}),
+	}
 	defer func() {
 		close(closed)
 		if err := srv.Shutdown(context.Background()); err != nil {
