@@ -29,7 +29,7 @@ func TestAutoupdateFirstData(t *testing.T) {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
 
-	srv := httptest.NewServer(ahttp.New(a, auther, 0, nil))
+	srv := httptest.NewServer(ahttp.New(a, auther, nil))
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -62,7 +62,7 @@ func TestAuth(t *testing.T) {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
 
-	srv := httptest.NewServer(ahttp.New(a, auther, 0, nil))
+	srv := httptest.NewServer(ahttp.New(a, auther, nil))
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())

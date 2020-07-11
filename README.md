@@ -99,9 +99,6 @@ If a message is received, it has the format:
 }
 ```
 
-From time to time the server sends empty keep alive messages. A keep alive
-message is an empfy json object.
-
 
 To send a messages:
 
@@ -144,6 +141,3 @@ The service can be configured with the following environment variables:
 * `WORKER_HOST`: Host of the OpenSlides worker (Default: `localhost`).
 * `WORKER_PORT`: Port of the OpenSlides worker (Default: `8000`).
 * `WORKER_PROTOCOL`: Protocol of the OpenSlides worker (Default: `http`).
-* `KEEP_ALIVE_DURATION`: Time in seconds how often a keep alive packet is sent
-  to the client. The value `0` means not to send any keep alive packages.
-  (Default: `30`).

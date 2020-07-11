@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"strconv"
 	"syscall"
 	"time"
 
@@ -34,13 +33,7 @@ import (
 func main() {
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
 	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
-	keepAliveRaw := getEnv("KEEP_ALIVE_DURATION", "30")
 	redisAddr := getEnv("MESSAGE_BUS_HOST", "localhost") + ":" + getEnv("MESSAGE_BUS_PORT", "6379")
-
-	keepAlive, err := strconv.Atoi(keepAliveRaw)
-	if err != nil {
-		log.Fatalf("Invalid value for KEEP_ALIVE_DURATION, got %s, expected an int: %v", keepAliveRaw, err)
-	}
 
 	redisConn := redis.New(redisAddr)
 	for {
@@ -70,12 +63,9 @@ func main() {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	notifyService := notify.New(redisConn, auth, keepAlive, closed)
+	notifyService := notify.New(redisConn, auth, closed)
 
-	handler := ahttp.New(service, auth, keepAlive, notifyService)
-	if keepAlive > 0 {
-		log.Printf("Keep Alive Interval: %d seconds", keepAlive)
-	}
+	handler := ahttp.New(service, auth, notifyService)
 
 	srv := &http.Server{
 		Addr:    listenAddr,
