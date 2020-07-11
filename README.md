@@ -43,20 +43,20 @@ go build ./cmd/autoupdate && ./autoupdate
 To get all data:
 
 ```
-curl localhost:8002/system/autoupdate
+curl --http2 localhost:8002/system/autoupdate
 ```
 
 To get all data after a change id:
 
 ```
-curl localhost:8002/system/autoupdate?change_id=133188953000
+curl --http2 localhost:8002/system/autoupdate?change_id=133188953000
 ```
 
 To test an authenticated request, login to OpenSlides and find the given session
 id. Afterwards the session cookie can be used with curl:
 
 ```
-curl --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" localhost:8002/system/autoupdate
+curl --http2 --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" localhost:8002/system/autoupdate
 ```
 
 
@@ -65,7 +65,7 @@ curl --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" localhost:8
 To get the projector data for a list of projectors:
 
 ```
-curl localhost:8002/system/projector?projector_ids=1,2,3
+curl --http2 localhost:8002/system/projector?projector_ids=1,2,3
 ```
 
 
@@ -77,7 +77,7 @@ used. See the --cookie flag above.
 To listen for messages:
 
 ```
-curl localhost:8002/system/notify
+curl --http2 localhost:8002/system/notify
 ```
 
 It returns a message like this one to tell the channel id:
@@ -103,19 +103,19 @@ From time to time the server sends empty keep alive messages. A keep alive
 message is an empfy json object.
 
 
-To listen for messages:
+To send a messages:
 
 ```
-curl localhost:8002/system/notify/send -d '{"channel_id":"foo:1:0", "to_all":true, "message": "some json"}'
+curl localhost:8002/system/notify/send -d '{"channel_id":"foo:1:0", "name":"title", "to_all":true, "message": "some json"}'
 ```
 
-The body has to be a valid json object with at least the fields `channel_id` and
-`message`.
+The body has to be a valid json object with at least the fields `channel_id`,
+`name`, and `message`.
 
 ```
 {
   "channel_id": string -> channel_id of the sender.
-  "Name": string -> Name of the message.
+  "name": string -> Name of the message.
   "message": json -> valid json containing the message.
   "to_all": bool -> If true, message is send to every connection.
   "to_users": list[int] -> List of user ids that should receive the message.

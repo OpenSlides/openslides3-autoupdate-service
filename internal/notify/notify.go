@@ -30,7 +30,7 @@ func New(backend Backend, auth Auther, keepAlive int, closed <-chan struct{}) *N
 		closed:    closed,
 		keepAlive: keepAlive,
 	}
-	n.mux.Handle("/system/notify", errHandleFunc(auth.Middleware(n.handleNotify)))
+	n.mux.Handle("/system/notify", errHandleFunc(http2Only(auth.Middleware(n.handleNotify))))
 	n.mux.Handle("/system/notify/send", errHandleFunc(auth.Middleware(n.handleSend)))
 
 	go n.listen()

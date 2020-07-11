@@ -31,9 +31,9 @@ func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int, addHan
 		auther:     auther,
 		keepAlive:  keepAlive,
 	}
-	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
-	h.mux.Handle("/system/health", http.HandlerFunc(h.handleHealth))
-	h.mux.Handle("/system/projector", http.HandlerFunc(h.handleProjector))
+	h.mux.Handle("/system/autoupdate", http2Only(http.HandlerFunc(h.handleAutoupdate)))
+	h.mux.Handle("/system/health", http2Only(http.HandlerFunc(h.handleHealth)))
+	h.mux.Handle("/system/projector", http2Only(http.HandlerFunc(h.handleProjector)))
 	if addHandler != nil {
 		h.mux.Handle("/", addHandler)
 	}
@@ -264,4 +264,14 @@ func projectorIDs(raw string) ([]int, error) {
 		ids[i] = id
 	}
 	return ids, nil
+}
+
+func http2Only(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !r.ProtoAtLeast(2, 0) {
+			http.Error(w, "Only http2 is supported", http.StatusBadRequest)
+			return
+		}
+		h.ServeHTTP(w, r)
+	})
 }

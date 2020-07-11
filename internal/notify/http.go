@@ -183,3 +183,12 @@ func sendKeepAlive(w io.Writer) error {
 	w.(http.Flusher).Flush()
 	return err
 }
+
+func http2Only(next errHandleFunc) errHandleFunc {
+	return func(w http.ResponseWriter, r *http.Request) error {
+		if !r.ProtoAtLeast(2, 0) {
+			return invalidRequestError{fmt.Errorf("Only http2 is supported")}
+		}
+		return next(w, r)
+	}
+}
