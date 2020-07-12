@@ -98,9 +98,8 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 		}
 	}
 
-	// The connection was closed or the server is exiting.
-	if changedKeys == nil {
-		return false, nil, 0, nil
+	if len(changedKeys) == 0 {
+		return false, nil, int(newChangeID), nil
 	}
 
 	data := a.datastore.GetMany(changedKeys)

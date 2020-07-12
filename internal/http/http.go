@@ -66,7 +66,6 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	w.Header().Set("Content-Type", "application/octet-stream")
 	w.WriteHeader(http.StatusOK)
 	w.(http.Flusher).Flush()
 	log.Printf("connect user %d with change_id %d", uid, changeID)
@@ -84,6 +83,10 @@ func (h *Handler) autoupdateLoop(w http.ResponseWriter, r *http.Request, cid, ui
 	all, data, newChangeID, err := h.autoupdate.Receive(r.Context(), uid, cid)
 	if err != nil {
 		return 0, err
+	}
+
+	if len(data) == 0 {
+		return newChangeID, nil
 	}
 
 	if err := sendData(w, all, data, cid, newChangeID); err != nil {
