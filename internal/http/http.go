@@ -28,9 +28,9 @@ func New(autoupdate *autoupdate.Autoupdate, auther Auther, addHandler http.Handl
 		mux:        http.NewServeMux(),
 		auther:     auther,
 	}
-	h.mux.Handle("/system/autoupdate", http2Only(http.HandlerFunc(h.handleAutoupdate)))
-	h.mux.Handle("/system/health", http2Only(http.HandlerFunc(h.handleHealth)))
-	h.mux.Handle("/system/projector", http2Only(http.HandlerFunc(h.handleProjector)))
+	h.mux.Handle("/system/autoupdate", validRequest(http.HandlerFunc(h.handleAutoupdate)))
+	h.mux.Handle("/system/health", validRequest(http.HandlerFunc(h.handleHealth)))
+	h.mux.Handle("/system/projector", validRequest(http.HandlerFunc(h.handleProjector)))
 	if addHandler != nil {
 		h.mux.Handle("/", addHandler)
 	}
@@ -232,12 +232,20 @@ func projectorIDs(raw string) ([]int, error) {
 	return ids, nil
 }
 
-func http2Only(h http.Handler) http.Handler {
+func validRequest(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Only allow http2 requests.
 		if !r.ProtoAtLeast(2, 0) {
 			http.Error(w, "Only http2 is supported", http.StatusBadRequest)
 			return
 		}
+
+		// Only allow GET or POST requests.
+		if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
+			http.Error(w, "Only GET or POST requests are supported", http.StatusMethodNotAllowed)
+			return
+		}
+
 		h.ServeHTTP(w, r)
 	})
 }
