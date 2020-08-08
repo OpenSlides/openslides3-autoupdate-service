@@ -73,14 +73,14 @@ func (d *Datastore) CurrentID() int {
 // KeysChanged blocks until there is new data. It updates the internal cache and
 // returns the changed keys and the new change id.
 //
-// If closing is closed then it return nil, 0, nil.
-func (d *Datastore) KeysChanged(closing <-chan struct{}) ([]string, int, error) {
+// If the datastore is closed then it return nil, 0, nil.
+func (d *Datastore) KeysChanged() ([]string, int, error) {
 	var rawData []byte
 	var err error
 	for rawData == nil {
 		// Update() blocks until there is new data. But when there is no new
 		// data for an hour, then it returns with nil.
-		rawData, err = d.redisConn.Update(closing)
+		rawData, err = d.redisConn.Update(d.closed)
 		if err != nil {
 			return nil, 0, fmt.Errorf("get autoupdate data: %w", err)
 		}
@@ -123,7 +123,7 @@ func (d *Datastore) KeysChanged(closing <-chan struct{}) ([]string, int, error) 
 
 	if changeID < d.maxChangeID+1 {
 		// Data already known. Try the next.
-		return d.KeysChanged(closing)
+		return d.KeysChanged()
 	}
 
 	if err := d.update(sData.Elements, changeID); err != nil {

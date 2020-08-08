@@ -34,7 +34,7 @@ func New(datastore Datastore, restricter Restricter, closed <-chan struct{}) (*A
 
 	go func() {
 		for {
-			keys, changeID, err := datastore.KeysChanged(a.closed)
+			keys, changeID, err := datastore.KeysChanged()
 			if err != nil {
 				var closing interface {
 					Closing()

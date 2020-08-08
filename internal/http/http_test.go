@@ -16,16 +16,15 @@ import (
 
 func TestAutoupdateFirstData(t *testing.T) {
 	auther := new(test.AutherMock)
-	datastore := test.NewDatastoreMock(1)
+	closed := make(chan struct{})
+	defer close(closed)
+	datastore := test.NewDatastoreMock(1, closed)
 	datastore.FullData = map[string]json.RawMessage{
 		"user:1": []byte("hello world1"),
 		"user:2": []byte("hello world2"),
 	}
 
 	restricter := new(test.RestricterMock)
-
-	closed := make(chan struct{})
-	defer close(closed)
 
 	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
@@ -63,12 +62,12 @@ func TestAutoupdateFirstData(t *testing.T) {
 
 func TestAuth(t *testing.T) {
 	auther := new(test.AutherMock)
-	datastore := test.NewDatastoreMock(1)
+	closed := make(chan struct{})
+	defer close(closed)
+	datastore := test.NewDatastoreMock(1, closed)
 
 	restricter := new(test.RestricterMock)
 
-	closed := make(chan struct{})
-	defer close(closed)
 	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
