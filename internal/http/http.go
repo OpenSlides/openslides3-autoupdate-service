@@ -10,7 +10,6 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
-	"time"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 )
@@ -20,20 +19,18 @@ type Handler struct {
 	autoupdate *autoupdate.Autoupdate
 	mux        *http.ServeMux
 	auther     Auther
-	keepAlive  int
 }
 
 // New create a new Handler with the correct urls.
-func New(autoupdate *autoupdate.Autoupdate, auther Auther, keepAlive int, addHandler http.Handler) *Handler {
+func New(autoupdate *autoupdate.Autoupdate, auther Auther, addHandler http.Handler) *Handler {
 	h := &Handler{
 		autoupdate: autoupdate,
 		mux:        http.NewServeMux(),
 		auther:     auther,
-		keepAlive:  keepAlive,
 	}
-	h.mux.Handle("/system/autoupdate", http.HandlerFunc(h.handleAutoupdate))
-	h.mux.Handle("/system/health", http.HandlerFunc(h.handleHealth))
-	h.mux.Handle("/system/projector", http.HandlerFunc(h.handleProjector))
+	h.mux.Handle("/system/autoupdate", validRequest(http.HandlerFunc(h.handleAutoupdate)))
+	h.mux.Handle("/system/health", validRequest(http.HandlerFunc(h.handleHealth)))
+	h.mux.Handle("/system/projector", validRequest(http.HandlerFunc(h.handleProjector)))
 	if addHandler != nil {
 		h.mux.Handle("/", addHandler)
 	}
@@ -84,21 +81,8 @@ func (h *Handler) handleAutoupdate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) autoupdateLoop(w http.ResponseWriter, r *http.Request, cid, uid int) (int, error) {
-	ctx := r.Context()
-	if h.keepAlive > 0 {
-		var cancel func()
-		ctx, cancel = context.WithTimeout(ctx, time.Duration(h.keepAlive)*time.Second)
-		defer cancel()
-	}
-
-	all, data, newChangeID, err := h.autoupdate.Receive(ctx, uid, cid)
+	all, data, newChangeID, err := h.autoupdate.Receive(r.Context(), uid, cid)
 	if err != nil {
-		if errors.Is(err, context.DeadlineExceeded) {
-			if err := sendKeepAlive(w); err != nil {
-				return 0, err
-			}
-			return cid, nil
-		}
 		return 0, err
 	}
 
@@ -183,20 +167,8 @@ func (h *Handler) handleProjector(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) projectorLoop(ctx context.Context, w io.Writer, encoder *json.Encoder, tid uint64, pids []int) (uint64, error) {
-	if h.keepAlive > 0 {
-		var cancel func()
-		ctx, cancel = context.WithTimeout(ctx, time.Duration(h.keepAlive)*time.Second)
-		defer cancel()
-	}
-
 	ntid, data, cid, err := h.autoupdate.Projectors(ctx, tid, pids)
 	if err != nil {
-		if errors.Is(err, context.DeadlineExceeded) {
-			if err := sendKeepAlive(w); err != nil {
-				return 0, err
-			}
-			return tid, nil
-		}
 		return 0, err
 	}
 
@@ -246,12 +218,6 @@ func sendErr(w io.Writer, err error) {
 	w.(http.Flusher).Flush()
 }
 
-func sendKeepAlive(w io.Writer) error {
-	_, err := fmt.Fprintln(w, `{}`)
-	w.(http.Flusher).Flush()
-	return err
-}
-
 func projectorIDs(raw string) ([]int, error) {
 	parts := strings.Split(raw, ",")
 	ids := make([]int, len(parts))
@@ -264,4 +230,22 @@ func projectorIDs(raw string) ([]int, error) {
 		ids[i] = id
 	}
 	return ids, nil
+}
+
+func validRequest(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Only allow http2 requests.
+		if !r.ProtoAtLeast(2, 0) {
+			http.Error(w, "Only http2 is supported", http.StatusBadRequest)
+			return
+		}
+
+		// Only allow GET or POST requests.
+		if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
+			http.Error(w, "Only GET or POST requests are supported", http.StatusMethodNotAllowed)
+			return
+		}
+
+		h.ServeHTTP(w, r)
+	})
 }

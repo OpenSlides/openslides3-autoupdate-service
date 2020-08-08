@@ -6,11 +6,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"time"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
@@ -87,23 +85,10 @@ func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
 }
 
 func (n *Notify) autoupdateLoop(w http.ResponseWriter, r *http.Request, tid uint64, uid int, cid channelID, encoder *json.Encoder) (uint64, error) {
-	ctx := r.Context()
-	if n.keepAlive > 0 {
-		var cancel func()
-		ctx, cancel = context.WithTimeout(r.Context(), time.Duration(n.keepAlive)*time.Second)
-		defer cancel()
-	}
-
 	var rMails []string
 	var err error
-	tid, rMails, err = n.topic.Receive(ctx, tid)
+	tid, rMails, err = n.topic.Receive(r.Context(), tid)
 	if err != nil {
-		if errors.Is(err, context.DeadlineExceeded) {
-			if err := sendKeepAlive(w); err != nil {
-				return 0, err
-			}
-			return tid, nil
-		}
 		return 0, fmt.Errorf("receiving message: %w", err)
 	}
 
@@ -178,8 +163,18 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func sendKeepAlive(w io.Writer) error {
-	_, err := fmt.Fprintln(w, `{}`)
-	w.(http.Flusher).Flush()
-	return err
+func validRequest(next errHandleFunc) errHandleFunc {
+	return func(w http.ResponseWriter, r *http.Request) error {
+		// Only allow http2 requests.
+		if !r.ProtoAtLeast(2, 0) {
+			return invalidRequestError{fmt.Errorf("Only http2 is supported")}
+		}
+
+		// Only allow GET or POST requests.
+		if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
+			return invalidRequestError{fmt.Errorf("Only GET or POST requests are supported")}
+		}
+
+		return next(w, r)
+	}
 }
