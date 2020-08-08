@@ -109,7 +109,9 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 		// Data is to new. Get the data in between.
 		if changeID > d.maxChangeID+100 {
 			// Data is match to new. Probably redis was reset.
-			d.reset()
+			if err := d.reset(); err != nil {
+				return nil, 0, fmt.Errorf("reset: %w", err)
+			}
 			return nil, 0, resetError{}
 		}
 
@@ -261,8 +263,6 @@ func (d *Datastore) receive(from, to int) (data map[string]json.RawMessage, err 
 
 // reset clears the datasotre and initializes it with new data.
 func (d *Datastore) reset() error {
-	d.mu.Lock()
-	defer d.mu.Unlock()
 
 	fd, max, min, err := d.redisConn.FullData()
 	if err != nil {
@@ -271,7 +271,9 @@ func (d *Datastore) reset() error {
 
 	d.cache = new(cache)
 	d.minChangeID = min
+	d.mu.Lock()
 	d.maxChangeID = max
+	d.mu.Unlock()
 
 	if err := d.update(fd, max); err != nil {
 		return fmt.Errorf("initial datastore update: %w", err)
