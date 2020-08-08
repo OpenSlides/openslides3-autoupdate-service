@@ -237,17 +237,17 @@ func projectorIDs(raw string) ([]int, error) {
 
 func validRequest(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// Only allow http2 requests.
-		if !r.ProtoAtLeast(2, 0) {
-			http.Error(w, "Only http2 is supported", http.StatusBadRequest)
-			return
-		}
+		// // Only allow http2 requests.
+		// if !r.ProtoAtLeast(2, 0) {
+		// 	http.Error(w, "Only http2 is supported", http.StatusBadRequest)
+		// 	return
+		// }
 
-		// Only allow GET or POST requests.
-		if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
-			http.Error(w, "Only GET or POST requests are supported", http.StatusMethodNotAllowed)
-			return
-		}
+		// // Only allow GET or POST requests.
+		// if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
+		// 	http.Error(w, "Only GET or POST requests are supported", http.StatusMethodNotAllowed)
+		// 	return
+		// }
 
 		h.ServeHTTP(w, r)
 	})

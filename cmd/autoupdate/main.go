@@ -69,13 +69,13 @@ func main() {
 	handler := autoupdatehttp.New(service, auth, notifyService)
 
 	// Create tls http2 server.
-	srv := &http.Server{Handler: handler}
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
-	ln, err := tlsListener(listenAddr)
-	if err != nil {
-		log.Fatalf("Can not create tls listener: %v", err)
-	}
-	defer ln.Close()
+	srv := &http.Server{Addr: listenAddr, Handler: handler}
+	// ln, err := tlsListener(listenAddr)
+	// if err != nil {
+	// 	log.Fatalf("Can not create tls listener: %v", err)
+	// }
+	// defer ln.Close()
 
 	defer func() {
 		close(closed)
@@ -86,7 +86,7 @@ func main() {
 
 	go func() {
 		fmt.Printf("Listen on %s\n", listenAddr)
-		if err := srv.Serve(ln); err != nil {
+		if err := srv.ListenAndServe(); err != nil {
 			log.Fatalf("HTTP Server failed: %v", err)
 		}
 	}()
