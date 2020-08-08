@@ -107,6 +107,12 @@ func (d *Datastore) KeysChanged() ([]string, int, error) {
 
 	if changeID > d.maxChangeID+1 {
 		// Data is to new. Get the data in between.
+		if changeID > d.maxChangeID+100 {
+			// Data is match to new. Probably redis was reset.
+			d.reset()
+			return nil, 0, resetError{}
+		}
+
 		data, err := d.receive(d.maxChangeID, changeID-1)
 		if err != nil {
 			return nil, 0, fmt.Errorf("receive missing data from %d to %d: %w", d.maxChangeID, changeID-1, err)
@@ -150,7 +156,7 @@ func (d *Datastore) ChangedKeys(from, to int) ([]string, error) {
 func (d *Datastore) Get(collection string, id int, v interface{}) error {
 	e := d.cache.get(fmt.Sprintf("%s:%d", collection, id))
 	if e == nil {
-		return doesNotExist(fmt.Sprintf("%s:%d", collection, id))
+		return doesNotExistError(fmt.Sprintf("%s:%d", collection, id))
 	}
 	return json.Unmarshal(e, v)
 }
@@ -251,4 +257,25 @@ func (d *Datastore) receive(from, to int) (data map[string]json.RawMessage, err 
 		return nil, fmt.Errorf("get data: %w", err)
 	}
 	return data, nil
+}
+
+// reset clears the datasotre and initializes it with new data.
+func (d *Datastore) reset() error {
+	d.mu.Lock()
+	defer d.mu.Unlock()
+
+	fd, max, min, err := d.redisConn.FullData()
+	if err != nil {
+		return fmt.Errorf("get startdata from redis: %w", err)
+	}
+
+	d.cache = new(cache)
+	d.minChangeID = min
+	d.maxChangeID = max
+
+	if err := d.update(fd, max); err != nil {
+		return fmt.Errorf("initial datastore update: %w", err)
+	}
+
+	return nil
 }

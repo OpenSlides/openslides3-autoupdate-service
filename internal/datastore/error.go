@@ -2,10 +2,18 @@ package datastore
 
 import "fmt"
 
-type doesNotExist string
+type doesNotExistError string
 
-func (e doesNotExist) Error() string {
+func (e doesNotExistError) Error() string {
 	return fmt.Sprintf("%s does not exist", string(e))
 }
 
-func (e doesNotExist) DoesNotExist() {}
+func (e doesNotExistError) DoesNotExist() {}
+
+type resetError struct{}
+
+func (e resetError) Error() string {
+	return "reset needed"
+}
+
+func (e resetError) Reset() {}
