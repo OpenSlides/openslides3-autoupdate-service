@@ -1,6 +1,12 @@
 // Package test contains helper functions to test the other packages.
 package test
 
+import (
+	"encoding/json"
+	"reflect"
+	"testing"
+)
+
 // CmpIntSlice returns true, if both slices have the same values.
 func CmpIntSlice(a, b []int) bool {
 	if len(a) != len(b) {
@@ -39,3 +45,18 @@ type closingErr struct{}
 
 func (e closingErr) Closing()      {}
 func (e closingErr) Error() string { return "closing" }
+
+// ExpectEqualJSON tests, that a and b are the same json elements.
+func ExpectEqualJSON(t *testing.T, a, b []byte) {
+	var aenc interface{}
+	var benc interface{}
+	if err := json.Unmarshal(a, &aenc); err != nil {
+		t.Fatalf("a is invalid json: %v", err)
+	}
+	if err := json.Unmarshal(b, &benc); err != nil {
+		t.Fatalf("b is invalid json: %v", err)
+	}
+	if !reflect.DeepEqual(aenc, benc) {
+		t.Errorf("json not equal: %s\n %s", a, b)
+	}
+}
