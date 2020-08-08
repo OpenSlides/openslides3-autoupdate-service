@@ -163,11 +163,18 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func http2Only(next errHandleFunc) errHandleFunc {
+func validRequest(next errHandleFunc) errHandleFunc {
 	return func(w http.ResponseWriter, r *http.Request) error {
+		// Only allow http2 requests.
 		if !r.ProtoAtLeast(2, 0) {
 			return invalidRequestError{fmt.Errorf("Only http2 is supported")}
 		}
+
+		// Only allow GET or POST requests.
+		if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
+			return invalidRequestError{fmt.Errorf("Only GET or POST requests are supported")}
+		}
+
 		return next(w, r)
 	}
 }

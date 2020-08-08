@@ -28,7 +28,7 @@ func New(backend Backend, auth Auther, closed <-chan struct{}) *Notify {
 		topic:   topic.New(topic.WithClosed(closed)),
 		closed:  closed,
 	}
-	n.mux.Handle("/system/notify", errHandleFunc(http2Only(auth.Middleware(n.handleNotify))))
+	n.mux.Handle("/system/notify", errHandleFunc(validRequest(auth.Middleware(n.handleNotify))))
 	n.mux.Handle("/system/notify/send", errHandleFunc(auth.Middleware(n.handleSend)))
 
 	go n.listen()
