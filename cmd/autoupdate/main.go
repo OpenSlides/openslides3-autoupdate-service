@@ -2,12 +2,15 @@ package main
 
 import (
 	"context"
+	"crypto/tls"
 	"encoding/json"
+	"fmt"
 	"log"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
-	"strconv"
+	"path"
 	"syscall"
 	"time"
 
@@ -22,7 +25,7 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
-	ahttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
+	autoupdatehttp "github.com/OpenSlides/openslides3-autoupdate-service/internal/http"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
@@ -30,15 +33,8 @@ import (
 )
 
 func main() {
-	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
 	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
-	keepAliveRaw := getEnv("KEEP_ALIVE_DURATION", "30")
 	redisAddr := getEnv("MESSAGE_BUS_HOST", "localhost") + ":" + getEnv("MESSAGE_BUS_PORT", "6379")
-
-	keepAlive, err := strconv.Atoi(keepAliveRaw)
-	if err != nil {
-		log.Fatalf("Invalid value for KEEP_ALIVE_DURATION, got %s, expected an int: %v", keepAliveRaw, err)
-	}
 
 	redisConn := redis.New(redisAddr)
 	for {
@@ -48,7 +44,7 @@ func main() {
 		log.Printf("Can not connect to redis at %s. Retry...", redisAddr)
 		time.Sleep(time.Second)
 	}
-	log.Printf("Connected to Redis at %s", redisAddr)
+	fmt.Printf("Connected to Redis at %s\n", redisAddr)
 
 	requiredUserCallables := openslidesRequiredUsers()
 	projectorCallables := openslidesProjectorCallables()
@@ -57,7 +53,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Can not initialize data: %v", err)
 	}
-	log.Printf("Connected to OpenSlides at %s", workerAddr)
+	fmt.Printf("Connected to OpenSlides at %s\n", workerAddr)
 
 	osRestricters := openslidesRestricters(ds)
 	restricter := restricter.New(ds, osRestricters)
@@ -68,14 +64,19 @@ func main() {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	notifyService := notify.New(redisConn, auth, keepAlive, closed)
+	notifyService := notify.New(redisConn, auth, closed)
 
-	handler := ahttp.New(service, auth, keepAlive, notifyService)
-	if keepAlive > 0 {
-		log.Printf("Keep Alive Interval: %d seconds", keepAlive)
+	handler := autoupdatehttp.New(service, auth, notifyService)
+
+	// Create tls http2 server.
+	srv := &http.Server{Handler: handler}
+	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
+	ln, err := tlsListener(listenAddr)
+	if err != nil {
+		log.Fatalf("Can not create tls listener: %v", err)
 	}
+	defer ln.Close()
 
-	srv := &http.Server{Addr: listenAddr, Handler: handler}
 	defer func() {
 		close(closed)
 		if err := srv.Shutdown(context.Background()); err != nil {
@@ -84,9 +85,9 @@ func main() {
 	}()
 
 	go func() {
-		log.Printf("Listen on %s", listenAddr)
-		if err := srv.ListenAndServe(); err != http.ErrServerClosed {
-			log.Fatalf("HTTP server failed: %v", err)
+		fmt.Printf("Listen on %s\n", listenAddr)
+		if err := srv.Serve(ln); err != nil {
+			log.Fatalf("HTTP Server failed: %v", err)
 		}
 	}()
 
@@ -118,6 +119,67 @@ func getEnv(env, devaultValue string) string {
 		return devaultValue
 	}
 	return value
+}
+
+const (
+	generalCertName = "cert.pem"
+	generalKeyName  = "key.pem"
+	specialCertName = "autoupdate.pem"
+	specialKeyName  = "autoupdate-key.pem"
+)
+
+func getCert() (tls.Certificate, error) {
+	certDir := getEnv("CERT_DIR", "")
+	if certDir == "" {
+		cert, err := autoupdatehttp.GenerateCert()
+		if err != nil {
+			return tls.Certificate{}, fmt.Errorf("creating new certificate: %w", err)
+		}
+		fmt.Println("Use inmemory self signed certificate")
+		return cert, nil
+	}
+	certFile := path.Join(certDir, specialCertName)
+	if _, err := os.Stat(certFile); os.IsNotExist(err) {
+		certFile2 := path.Join(certDir, generalCertName)
+		if _, err := os.Stat(certFile); os.IsNotExist(err) {
+			return tls.Certificate{}, fmt.Errorf("%s or %s has to exist", certFile, certFile2)
+		}
+		certFile = certFile2
+	}
+
+	keyFile := path.Join(certDir, specialKeyName)
+	if _, err := os.Stat(keyFile); os.IsNotExist(err) {
+		keyFile2 := path.Join(certDir, generalKeyName)
+		if _, err := os.Stat(keyFile); os.IsNotExist(err) {
+			return tls.Certificate{}, fmt.Errorf("%s or %s has to exist", keyFile, keyFile2)
+		}
+		keyFile = keyFile2
+	}
+
+	cert, err := tls.LoadX509KeyPair(certFile, keyFile)
+	if err != nil {
+		return tls.Certificate{}, fmt.Errorf("loading certificates from %s and %s: %w", certFile, keyFile, err)
+	}
+	fmt.Printf("Use certificate %s with key %s\n", certFile, keyFile)
+
+	return cert, nil
+}
+
+func tlsListener(listenAddr string) (net.Listener, error) {
+	cert, err := getCert()
+	if err != nil {
+		return nil, fmt.Errorf("get certificate: %w", err)
+	}
+
+	tlsConf := new(tls.Config)
+	tlsConf.NextProtos = []string{"h2"}
+	tlsConf.Certificates = []tls.Certificate{cert}
+
+	ln, err := net.Listen("tcp", listenAddr)
+	if err != nil {
+		return nil, fmt.Errorf("create tcp listener: %w", err)
+	}
+	return tls.NewListener(ln, tlsConf), nil
 }
 
 func openslidesRequiredUsers() map[string]func(json.RawMessage) ([]int, string, error) {

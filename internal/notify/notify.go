@@ -12,25 +12,23 @@ import (
 
 // Notify is a service to send messages between clients.
 type Notify struct {
-	mux       *http.ServeMux
-	backend   Backend
-	auther    Auther
-	topic     *topic.Topic
-	closed    <-chan struct{}
-	cIDGen    cIDGen
-	keepAlive int
+	mux     *http.ServeMux
+	backend Backend
+	auther  Auther
+	topic   *topic.Topic
+	closed  <-chan struct{}
+	cIDGen  cIDGen
 }
 
 // New returns an initializes Notify object.
-func New(backend Backend, auth Auther, keepAlive int, closed <-chan struct{}) *Notify {
+func New(backend Backend, auth Auther, closed <-chan struct{}) *Notify {
 	n := &Notify{
-		mux:       http.NewServeMux(),
-		backend:   backend,
-		topic:     topic.New(topic.WithClosed(closed)),
-		closed:    closed,
-		keepAlive: keepAlive,
+		mux:     http.NewServeMux(),
+		backend: backend,
+		topic:   topic.New(topic.WithClosed(closed)),
+		closed:  closed,
 	}
-	n.mux.Handle("/system/notify", errHandleFunc(auth.Middleware(n.handleNotify)))
+	n.mux.Handle("/system/notify", errHandleFunc(validRequest(auth.Middleware(n.handleNotify))))
 	n.mux.Handle("/system/notify/send", errHandleFunc(auth.Middleware(n.handleSend)))
 
 	go n.listen()

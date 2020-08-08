@@ -1,8 +1,10 @@
 package http_test
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
+	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -24,28 +26,38 @@ func TestAutoupdateFirstData(t *testing.T) {
 
 	closed := make(chan struct{})
 	defer close(closed)
+
 	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
 
-	srv := httptest.NewServer(ahttp.New(a, auther, 0, nil))
+	srv := httptest.NewUnstartedServer(ahttp.New(a, auther, nil))
+	srv.EnableHTTP2 = true
+	srv.StartTLS()
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, srv.URL+"/system/autoupdate", nil)
 	if err != nil {
 		t.Fatalf("Can not create request: %v", err)
 	}
-	resp, err := http.DefaultClient.Do(req)
+
+	resp, err := srv.Client().Do(req)
 	if err != nil {
 		t.Fatalf("Can not send request: %v", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		t.Errorf("Handler returned status %s, expected 200, %s", resp.Status, http.StatusText(200))
+		body, err := ioutil.ReadAll(resp.Body)
+		if err != nil {
+			body = []byte("no body")
+		}
+		body = bytes.TrimSpace(body)
+		t.Errorf("Handler returned status %s: `%s`, expected 200, %s", resp.Status, body, http.StatusText(200))
 	}
 }
 
@@ -62,7 +74,9 @@ func TestAuth(t *testing.T) {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
 
-	srv := httptest.NewServer(ahttp.New(a, auther, 0, nil))
+	srv := httptest.NewUnstartedServer(ahttp.New(a, auther, nil))
+	srv.EnableHTTP2 = true
+	srv.StartTLS()
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())
@@ -71,7 +85,7 @@ func TestAuth(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Can not create request: %v", err)
 	}
-	resp, err := http.DefaultClient.Do(req)
+	resp, err := srv.Client().Do(req)
 	if err != nil {
 		t.Fatalf("Can not send request: %v", err)
 	}

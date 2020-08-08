@@ -1,4 +1,4 @@
-FROM golang:1.14-alpine as builder
+FROM golang:1.14.6-alpine3.12 as builder
 LABEL maintainer="OpenSlides Team <info@openslides.com>"
 WORKDIR /root/
 
@@ -17,7 +17,7 @@ RUN go build ./cmd/autoupdate
 
 
 ######## Start a new stage from scratch #######
-FROM alpine:latest
+FROM alpine:3.12.0
 WORKDIR /root/
 
 # Copy the Pre-built binary file from the previous stage
