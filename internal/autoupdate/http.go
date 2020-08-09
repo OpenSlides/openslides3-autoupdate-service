@@ -16,11 +16,6 @@ import (
 func (a *Autoupdate) HandleAutoupdate(w http.ResponseWriter, r *http.Request) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 
-	uid, ok := r.Context().Value(auth.UserIDKey).(int)
-	if !ok || uid == 0 {
-		return authRequiredError{}
-	}
-
 	rawChangeID := r.URL.Query().Get("change_id")
 	var changeID int
 	if rawChangeID != "" {
@@ -33,6 +28,9 @@ func (a *Autoupdate) HandleAutoupdate(w http.ResponseWriter, r *http.Request) er
 
 	w.WriteHeader(http.StatusOK)
 	w.(http.Flusher).Flush()
+
+	// Retrive uid from request. 0 for anonymous.
+	uid := r.Context().Value(auth.UserIDKey).(int)
 	log.Printf("connect user %d with change_id %d", uid, changeID)
 
 	for {

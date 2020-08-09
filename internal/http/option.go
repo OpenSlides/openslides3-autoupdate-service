@@ -8,18 +8,29 @@ import (
 // Option for http.New()
 type Option func(*Handler)
 
-// WithNotify adds routes for the notify package.
-func WithNotify(n *notify.Notify) Option {
-	return func(h *Handler) {
-		h.mux.Handle("/system/notify", errHandleFunc(h.middleware(n.HandleNotify)))
-		h.mux.Handle("/system/notify/send", errHandleFunc(h.middleware(n.HandleSend)))
-	}
-}
-
 // WithAutoupdate adds routes for the autoupdate package.
 func WithAutoupdate(a *autoupdate.Autoupdate) Option {
 	return func(h *Handler) {
-		h.mux.Handle("/system/autoupdate", errHandleFunc(h.middleware(a.HandleAutoupdate)))
-		h.mux.Handle("/system/projector", errHandleFunc(h.middleware(a.HandleProjector)))
+		addErrHandleFunc(h, "/system/autoupdate", a.HandleAutoupdate)
+		addErrHandleFunc(h, "/system/projector", a.HandleProjector)
 	}
+}
+
+// WithNotify adds routes for the notify package.
+func WithNotify(n *notify.Notify) Option {
+	return func(h *Handler) {
+		addErrHandleFunc(h, "/system/notify", n.HandleNotify)
+		addErrHandleFunc(h, "/system/notify/send", n.HandleSend)
+	}
+}
+
+// WithErrHandleFunc adds a http.errHandleFunc to the Handler.
+func WithErrHandleFunc(pattern string, handler errHandleFunc) Option {
+	return func(h *Handler) {
+		addErrHandleFunc(h, pattern, handler)
+	}
+}
+
+func addErrHandleFunc(h *Handler, pattern string, handler errHandleFunc) {
+	h.mux.Handle(pattern, errHandleFunc(h.middleware(handler)))
 }

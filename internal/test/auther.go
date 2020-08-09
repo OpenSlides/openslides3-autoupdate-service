@@ -16,9 +16,9 @@ type AutherMock struct {
 // Middleware returns a mock auth errorHandleFunc.
 func (a *AutherMock) Middleware(next func(w http.ResponseWriter, r *http.Request) error) func(w http.ResponseWriter, r *http.Request) error {
 	return func(w http.ResponseWriter, r *http.Request) error {
+		a.AuthCalled = true
 		ctx := context.WithValue(r.Context(), auth.UserIDKey, a.UID)
 		r = r.WithContext(ctx)
-
 		return next(w, r)
 	}
 }
