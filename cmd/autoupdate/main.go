@@ -59,14 +59,14 @@ func main() {
 	restricter := restricter.New(ds, osRestricters)
 	auth := auth.New(workerAddr)
 
-	service, err := autoupdate.New(ds, restricter, closed)
+	a, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	notifyService := notify.New(redisConn, auth, closed)
+	n := notify.New(redisConn, closed)
 
-	handler := autoupdatehttp.New(service, auth, notifyService)
+	handler := autoupdatehttp.New(auth, autoupdatehttp.WithAutoupdate(a), autoupdatehttp.WithNotify(n))
 
 	// Create tls http2 server.
 	srv := &http.Server{Handler: handler}

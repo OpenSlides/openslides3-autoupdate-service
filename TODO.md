@@ -10,5 +10,5 @@
 * Don't send all error messages of slides to user.
 
 
-* Delete TODO.md and KONZEPT.md
+* Delete TODO.md
 * Use a release of ostcar/topic

@@ -75,7 +75,7 @@ func (a *Auth) Auth(r *http.Request) (int, error) {
 	return *respData.UserID, nil
 }
 
-// Middleware adds the user id into the request.Context
+// Middleware adds the user id into the request.Context.
 func (a *Auth) Middleware(next func(w http.ResponseWriter, r *http.Request) error) func(w http.ResponseWriter, r *http.Request) error {
 	return func(w http.ResponseWriter, r *http.Request) error {
 		uid, err := a.Auth(r)
