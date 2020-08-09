@@ -2,22 +2,16 @@ package notify
 
 import (
 	"bytes"
-	"context"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
 
-func (n *Notify) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	n.mux.ServeHTTP(w, r)
-}
-
-func (n *Notify) handleSend(w http.ResponseWriter, r *http.Request) error {
+// HandleSend is an http.ErrorHandlerFunc for sending a notify message.
+func (n *Notify) HandleSend(w http.ResponseWriter, r *http.Request) error {
 	userID, ok := r.Context().Value(auth.UserIDKey).(int)
 	if !ok || userID == 0 {
 		return authRequiredError{}
@@ -53,7 +47,8 @@ func (n *Notify) handleSend(w http.ResponseWriter, r *http.Request) error {
 	return nil
 }
 
-func (n *Notify) handleNotify(w http.ResponseWriter, r *http.Request) error {
+// HandleNotify is an http.ErrorHandlerFunc for receiving notify messages.
+func (n *Notify) HandleNotify(w http.ResponseWriter, r *http.Request) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 
 	userID, ok := r.Context().Value(auth.UserIDKey).(int)
@@ -121,60 +116,4 @@ func (n *Notify) autoupdateLoop(w http.ResponseWriter, r *http.Request, tid uint
 
 	w.(http.Flusher).Flush()
 	return tid, nil
-}
-
-// errHandleFunc is like a http.Handler, but has a error as return value.
-//
-// If the returned error implements the clientError interface, then the error
-// message is sent to the client. In other cases the error is interpredet as an
-// internal error and logged to stdout.
-type errHandleFunc func(w http.ResponseWriter, r *http.Request) error
-
-func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	if err := f(w, r); err != nil {
-		var closing interface {
-			Closing()
-		}
-		if errors.As(err, &closing) {
-			return
-		}
-
-		if errors.Is(err, context.Canceled) {
-			return
-		}
-
-		var clientError interface {
-			ClientError() string
-			Error() string
-		}
-		if errors.As(err, &clientError) {
-			fmt.Fprintf(
-				w,
-				`{"error": {"type": "%s", "msg": "%s"}}`,
-				clientError.ClientError(),
-				clientError.Error(),
-			)
-			fmt.Fprintln(w)
-			return
-		}
-
-		log.Printf("Internal Error: %v", err)
-		fmt.Fprintln(w, `{"error": {"type": "InternalError", "msg": "Ups, something went wrong!"}}`)
-	}
-}
-
-func validRequest(next errHandleFunc) errHandleFunc {
-	return func(w http.ResponseWriter, r *http.Request) error {
-		// Only allow http2 requests.
-		if !r.ProtoAtLeast(2, 0) {
-			return invalidRequestError{fmt.Errorf("Only http2 is supported")}
-		}
-
-		// Only allow GET or POST requests.
-		if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
-			return invalidRequestError{fmt.Errorf("Only GET or POST requests are supported")}
-		}
-
-		return next(w, r)
-	}
 }
