@@ -59,12 +59,14 @@ func (n *Notify) HandleNotify(w http.ResponseWriter, r *http.Request) error {
 	cid := n.cIDGen.generate(userID)
 	tid := n.topic.LastID()
 
+	w.WriteHeader(http.StatusOK)
+
 	if _, err := fmt.Fprintf(w, `{"channel_id": "%s"}`, cid); err != nil {
-		return err
+		return noStatusCodeError{err}
 	}
 
 	if _, err := fmt.Fprintln(w); err != nil {
-		return err
+		return noStatusCodeError{err}
 	}
 	w.(http.Flusher).Flush()
 
@@ -74,7 +76,7 @@ func (n *Notify) HandleNotify(w http.ResponseWriter, r *http.Request) error {
 	for {
 		tid, err = n.autoupdateLoop(w, r, tid, userID, cid, encoder)
 		if err != nil {
-			return err
+			return noStatusCodeError{err}
 		}
 	}
 }

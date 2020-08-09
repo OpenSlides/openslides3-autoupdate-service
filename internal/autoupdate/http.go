@@ -22,7 +22,7 @@ func (a *Autoupdate) HandleAutoupdate(w http.ResponseWriter, r *http.Request) er
 		var err error
 		changeID, err = strconv.Atoi(rawChangeID)
 		if err != nil {
-			return fmt.Errorf("change id has to be a number not %s", rawChangeID)
+			return invalidRequestError{fmt.Sprintf("Change id has to be a number not %s", rawChangeID)}
 		}
 	}
 
@@ -36,11 +36,11 @@ func (a *Autoupdate) HandleAutoupdate(w http.ResponseWriter, r *http.Request) er
 	for {
 		all, data, newChangeID, err := a.Receive(r.Context(), uid, changeID)
 		if err != nil {
-			return err
+			return noStatusCodeError{err}
 		}
 
 		if err := sendData(w, all, data, changeID, newChangeID); err != nil {
-			return err
+			return noStatusCodeError{err}
 		}
 		changeID = newChangeID
 	}
@@ -101,12 +101,15 @@ func (a *Autoupdate) HandleProjector(w http.ResponseWriter, r *http.Request) err
 		return err
 	}
 
+	w.WriteHeader(http.StatusOK)
+	w.(http.Flusher).Flush()
+
 	encoder := json.NewEncoder(w)
 	var tid uint64
 	for {
 		ntid, data, cid, err := a.Projectors(r.Context(), tid, projectorIDs)
 		if err != nil {
-			return err
+			return noStatusCodeError{err}
 		}
 
 		out := struct {
@@ -118,7 +121,7 @@ func (a *Autoupdate) HandleProjector(w http.ResponseWriter, r *http.Request) err
 		}
 
 		if err := encoder.Encode(out); err != nil {
-			return err
+			return noStatusCodeError{err}
 		}
 		w.(http.Flusher).Flush()
 		tid = ntid
@@ -131,7 +134,7 @@ func projectorIDs(raw string) ([]int, error) {
 	for i, rpid := range parts {
 		id, err := strconv.Atoi(rpid)
 		if err != nil {
-			return nil, invalidRequestError{fmt.Errorf("projector_ids has to be a list of ints not `%s`", raw)}
+			return nil, invalidRequestError{fmt.Sprintf("projector_ids has to be a list of ints not `%s`", raw)}
 		}
 
 		ids[i] = id

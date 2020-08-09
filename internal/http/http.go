@@ -61,11 +61,22 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		var noStatusErr interface {
+			NoStatus()
+		}
+		var status bool
+		if !errors.As(err, &noStatusErr) {
+			status = true
+		}
+
 		var clientError interface {
 			ClientError() string
 			Error() string
 		}
 		if errors.As(err, &clientError) {
+			if status {
+				w.WriteHeader(http.StatusBadRequest)
+			}
 			fmt.Fprintf(
 				w,
 				`{"error": {"type": "%s", "msg": "%s"}}`,
@@ -76,6 +87,9 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		if status {
+			w.WriteHeader(http.StatusInternalServerError)
+		}
 		log.Printf("Internal Error: %v", err)
 		fmt.Fprintln(w, `{"error": {"type": "InternalError", "msg": "Ups, something went wrong!"}}`)
 	}
