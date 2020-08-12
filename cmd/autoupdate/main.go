@@ -77,21 +77,19 @@ func main() {
 	}
 	defer ln.Close()
 
-	defer func() {
-		close(closed)
-		if err := srv.Shutdown(context.Background()); err != nil {
-			log.Printf("Error on HTTP server shutdown: %v", err)
-		}
-	}()
-
 	go func() {
 		fmt.Printf("Listen on %s\n", listenAddr)
-		if err := srv.Serve(ln); err != nil {
+		if err := srv.Serve(ln); err != http.ErrServerClosed {
 			log.Fatalf("HTTP Server failed: %v", err)
 		}
 	}()
 
 	waitForShutdown()
+
+	close(closed)
+	if err := srv.Shutdown(context.Background()); err != nil {
+		log.Printf("Error on HTTP server shutdown: %v", err)
+	}
 }
 
 // waitForShutdown blocks until the service exists.
