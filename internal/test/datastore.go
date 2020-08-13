@@ -1,5 +1,6 @@
 package test
 
+//go:generate  sh -c "go run gen_db/main.go > db.json.go && go fmt db.json.go"
 import (
 	"context"
 	"encoding/json"
@@ -21,7 +22,14 @@ type DatastoreMock struct {
 // NewDatastoreMock initializes a DatastoreMock.
 func NewDatastoreMock(startID int) *DatastoreMock {
 	changes := make(chan []string, 1)
+
+	fdCopy := make(map[string]json.RawMessage, len(exampleData))
+	for k, v := range exampleData {
+		fdCopy[k] = v
+	}
+
 	d := &DatastoreMock{
+		FullData:    fdCopy,
 		changes:     changes,
 		minChangeID: startID,
 		maxChangeID: startID,
