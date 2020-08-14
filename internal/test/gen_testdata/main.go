@@ -43,7 +43,28 @@ type export struct {
 		IDs  []int  `json:"ids"`
 		Perm string `json:"perm"`
 	} `json:"required_users"`
-	//TODO projector
+	Projector []struct {
+		Data    rawString `json:"data"`
+		Element rawString `json:"element"`
+	} `json:"projectors"`
+}
+
+type rawString struct {
+	str string
+}
+
+func (s *rawString) UnmarshalJSON(data []byte) error {
+	var b json.RawMessage
+	if err := json.Unmarshal(data, &b); err != nil {
+		return fmt.Errorf("decoding raw string: %w", err)
+	}
+
+	s.str = string(b)
+	return nil
+}
+
+func (s *rawString) String() string {
+	return string(s.str)
 }
 
 type allData map[string]json.RawMessage
@@ -128,6 +149,20 @@ var exampleRequiredUser = map[string]permIDs{
 	},
 	{{- end}}
 }
+
+type projectorData struct {
+	Data    json.RawMessage
+	Element json.RawMessage
+}
+
+var exampleProjector = []projectorData{
+	{{- range $row := .ExampleProjector }}
+	{
+		[]byte({{$.Escape}}{{$row.Data}}{{$.Escape}}),
+		[]byte({{$.Escape}}{{$row.Element}}{{$.Escape}}),
+	},
+	{{- end}}
+}
 `
 
 func writeData(e export) error {
@@ -178,6 +213,7 @@ func writeData(e export) error {
 		"ExampleData":           strExampleData,
 		"ExampleRestrictedData": strRestrictedData,
 		"ExampleRequiredUser":   strRequiredUser,
+		"ExampleProjector":      e.Projector,
 	}
 
 	if err := t.Execute(replacer{w: f}, data); err != nil {

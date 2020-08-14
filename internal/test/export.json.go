@@ -115,8 +115,8 @@ var exampleData = map[string]json.RawMessage{
         "id": 6,
         "item_number": "",
         "title_information": {
-          "title": "Änderungsantrag zu Leadmotion1",
-          "identifier": "Ä-1"
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1"
         },
         "comment": null,
         "closed": false,
@@ -384,8 +384,8 @@ var exampleData = map[string]json.RawMessage{
 	"agenda/list-of-speakers:9": []byte(`{
         "id": 9,
         "title_information": {
-          "title": "Änderungsantrag zu Leadmotion1",
-          "identifier": "Ä-1"
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1"
         },
         "speakers": [],
         "closed": false,
@@ -1868,7 +1868,7 @@ var exampleData = map[string]json.RawMessage{
         "data": {
           "defaultValue": false,
           "inputType": "boolean",
-          "label": "Show hint »first speech« in the list of speakers management view",
+          "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
           "helpText": "",
           "choices": null,
           "weight": 234,
@@ -2321,7 +2321,7 @@ var exampleData = map[string]json.RawMessage{
 	"core/config:93": []byte(`{
         "id": 93,
         "key": "motions_amendments_prefix",
-        "value": "Ä-",
+        "value": "\u00c4-",
         "data": {
           "defaultValue": "-",
           "inputType": "string",
@@ -2910,8 +2910,8 @@ var exampleData = map[string]json.RawMessage{
       }`),
 	"motions/motion:2": []byte(`{
         "id": 2,
-        "identifier": "Ä-1",
-        "title": "Änderungsantrag zu Leadmotion1",
+        "identifier": "\u00c4-1",
+        "title": "\u00c4nderungsantrag zu Leadmotion1",
         "text": "",
         "amendment_paragraphs": [
           "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -3751,8 +3751,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "id": 6,
           "item_number": "",
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "comment": null,
           "closed": false,
@@ -4020,8 +4020,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"agenda/list-of-speakers:9": []byte(`{
           "id": 9,
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "speakers": [],
           "closed": false,
@@ -5505,7 +5505,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "data": {
             "defaultValue": false,
             "inputType": "boolean",
-            "label": "Show hint »first speech« in the list of speakers management view",
+            "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
             "helpText": "",
             "choices": null,
             "weight": 234,
@@ -5958,7 +5958,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:93": []byte(`{
           "id": 93,
           "key": "motions_amendments_prefix",
-          "value": "Ä-",
+          "value": "\u00c4-",
           "data": {
             "defaultValue": "-",
             "inputType": "string",
@@ -6549,8 +6549,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
-          "identifier": "Ä-1",
-          "title": "Änderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
           "text": "",
           "amendment_paragraphs": [
             "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -7083,283 +7083,283 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "vote_weight": "1.000000",
-          "first_name": "",
-          "gender": "",
+          "username": "admin",
+          "last_email_send": null,
           "is_active": true,
-          "is_present": false,
-          "number": "",
-          "email": "",
-          "title": "",
-          "auth_type": "default",
+          "about_me": "",
+          "vote_weight": "1.000000",
           "default_password": "admin",
+          "number": "",
+          "structure_level": "",
+          "title": "",
+          "last_name": "Administrator",
+          "comment": "",
+          "is_committee": false,
+          "email": "",
+          "id": 1,
+          "first_name": "",
+          "auth_type": "default",
+          "is_present": false,
           "groups_id": [
             2
           ],
-          "username": "admin",
-          "last_name": "Administrator",
-          "is_committee": false,
-          "about_me": "",
-          "id": 1,
-          "structure_level": "",
-          "last_email_send": null,
-          "comment": ""
+          "gender": ""
         }`),
 		"users/user:2": []byte(`{
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
-          "gender": "",
-          "is_active": true,
-          "is_present": false,
-          "number": "",
-          "email": "",
-          "title": "",
-          "auth_type": "default",
-          "default_password": "8NpbvXCBDr",
-          "groups_id": [],
           "username": "candidate1",
-          "last_name": "",
-          "is_committee": false,
-          "about_me": "",
-          "id": 2,
-          "structure_level": "",
           "last_email_send": null,
-          "comment": ""
+          "is_active": true,
+          "about_me": "",
+          "vote_weight": "1.000000",
+          "default_password": "8NpbvXCBDr",
+          "number": "",
+          "structure_level": "",
+          "title": "",
+          "last_name": "",
+          "comment": "",
+          "is_committee": false,
+          "email": "",
+          "id": 2,
+          "first_name": "candidate1",
+          "auth_type": "default",
+          "is_present": false,
+          "groups_id": [],
+          "gender": ""
         }`),
 		"users/user:3": []byte(`{
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
-          "gender": "",
-          "is_active": true,
-          "is_present": false,
-          "number": "",
-          "email": "",
-          "title": "",
-          "auth_type": "default",
-          "default_password": "5YLEHrUUTG",
-          "groups_id": [],
           "username": "candidate2",
-          "last_name": "",
-          "is_committee": false,
-          "about_me": "",
-          "id": 3,
-          "structure_level": "",
           "last_email_send": null,
-          "comment": ""
+          "is_active": true,
+          "about_me": "",
+          "vote_weight": "1.000000",
+          "default_password": "5YLEHrUUTG",
+          "number": "",
+          "structure_level": "",
+          "title": "",
+          "last_name": "",
+          "comment": "",
+          "is_committee": false,
+          "email": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "auth_type": "default",
+          "is_present": false,
+          "groups_id": [],
+          "gender": ""
         }`),
 		"users/user:4": []byte(`{
-          "vote_weight": "1.000000",
-          "first_name": "a",
-          "gender": "",
+          "username": "a",
+          "last_email_send": null,
           "is_active": true,
-          "is_present": true,
-          "number": "",
-          "email": "",
-          "title": "",
-          "auth_type": "default",
+          "about_me": "",
+          "vote_weight": "1.000000",
           "default_password": "a",
+          "number": "",
+          "structure_level": "",
+          "title": "",
+          "last_name": "",
+          "comment": "",
+          "is_committee": false,
+          "email": "",
+          "id": 4,
+          "first_name": "a",
+          "auth_type": "default",
+          "is_present": true,
           "groups_id": [
             3
           ],
-          "username": "a",
-          "last_name": "",
-          "is_committee": false,
-          "about_me": "",
-          "id": 4,
-          "structure_level": "",
-          "last_email_send": null,
-          "comment": ""
+          "gender": ""
         }`),
 		"users/user:5": []byte(`{
-          "vote_weight": "1.000000",
-          "first_name": "b",
-          "gender": "",
+          "username": "b",
+          "last_email_send": null,
           "is_active": true,
-          "is_present": true,
-          "number": "",
-          "email": "",
-          "title": "",
-          "auth_type": "default",
+          "about_me": "",
+          "vote_weight": "1.000000",
           "default_password": "b",
+          "number": "",
+          "structure_level": "",
+          "title": "",
+          "last_name": "",
+          "comment": "",
+          "is_committee": false,
+          "email": "",
+          "id": 5,
+          "first_name": "b",
+          "auth_type": "default",
+          "is_present": true,
           "groups_id": [
             3
           ],
-          "username": "b",
-          "last_name": "",
-          "is_committee": false,
-          "about_me": "",
-          "id": 5,
-          "structure_level": "",
-          "last_email_send": null,
-          "comment": ""
+          "gender": ""
         }`),
 		"users/user:6": []byte(`{
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
-          "gender": "",
-          "is_active": true,
-          "is_present": true,
-          "number": "3",
-          "email": "",
-          "title": "title",
-          "auth_type": "default",
-          "default_password": "ZdbyxFDWpp",
-          "groups_id": [],
           "username": "speaker1",
-          "last_name": "the last name",
-          "is_committee": false,
-          "about_me": "",
-          "id": 6,
-          "structure_level": "layer X",
           "last_email_send": null,
-          "comment": ""
+          "is_active": true,
+          "about_me": "",
+          "vote_weight": "1.000000",
+          "default_password": "ZdbyxFDWpp",
+          "number": "3",
+          "structure_level": "layer X",
+          "title": "title",
+          "last_name": "the last name",
+          "comment": "",
+          "is_committee": false,
+          "email": "",
+          "id": 6,
+          "first_name": "speaker1",
+          "auth_type": "default",
+          "is_present": true,
+          "groups_id": [],
+          "gender": ""
         }`),
 		"users/user:7": []byte(`{
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
-          "gender": "",
-          "is_active": true,
-          "is_present": true,
-          "number": "",
-          "email": "",
-          "title": "",
-          "auth_type": "default",
-          "default_password": "5HZr2zPM3x",
-          "groups_id": [],
           "username": "speaker2",
-          "last_name": "",
-          "is_committee": false,
-          "about_me": "",
-          "id": 7,
-          "structure_level": "",
           "last_email_send": null,
-          "comment": ""
+          "is_active": true,
+          "about_me": "",
+          "vote_weight": "1.000000",
+          "default_password": "5HZr2zPM3x",
+          "number": "",
+          "structure_level": "",
+          "title": "",
+          "last_name": "",
+          "comment": "",
+          "is_committee": false,
+          "email": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "auth_type": "default",
+          "is_present": true,
+          "groups_id": [],
+          "gender": ""
         }`),
 		"users/user:8": []byte(`{
-          "vote_weight": "1.000000",
-          "first_name": "not required",
-          "gender": "",
-          "is_active": true,
-          "is_present": true,
-          "number": "",
-          "email": "",
-          "title": "",
-          "auth_type": "default",
-          "default_password": "hq59FcgwLc",
-          "groups_id": [],
           "username": "not required",
-          "last_name": "",
-          "is_committee": false,
-          "about_me": "",
-          "id": 8,
-          "structure_level": "",
           "last_email_send": null,
-          "comment": ""
+          "is_active": true,
+          "about_me": "",
+          "vote_weight": "1.000000",
+          "default_password": "hq59FcgwLc",
+          "number": "",
+          "structure_level": "",
+          "title": "",
+          "last_name": "",
+          "comment": "",
+          "is_committee": false,
+          "email": "",
+          "id": 8,
+          "first_name": "not required",
+          "auth_type": "default",
+          "is_present": true,
+          "groups_id": [],
+          "gender": ""
         }`),
 	},
 	2: {
 		"agenda/item:1": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 2,
           "is_internal": false,
-          "tags_id": [],
-          "title_information": {
-            "title": "Topic"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 2,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "Topic"
+          },
+          "id": 1,
+          "item_number": ""
         }`),
 		"agenda/item:3": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 8,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Internal"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 8,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Internal"
+          },
+          "id": 3,
+          "item_number": ""
         }`),
 		"agenda/item:5": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 14,
           "is_internal": true,
+          "duration": null,
+          "content_object": {
+            "collection": "motions/motion",
+            "id": 1
+          },
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 14,
+          "level": 1,
+          "closed": false,
           "tags_id": [],
+          "type": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "closed": false,
-          "level": 1,
-          "content_object": {
-            "collection": "motions/motion",
-            "id": 1
-          },
-          "id": 5
+          "id": 5,
+          "item_number": ""
         }`),
 		"agenda/item:6": []byte(`{
-          "is_hidden": false,
-          "duration": 0,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 16,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 1,
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 16,
+          "level": 1,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          },
+          "id": 6,
+          "item_number": ""
         }`),
 		"agenda/item:7": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 6,
-          "item_number": "",
-          "weight": 18,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Public",
-            "identifier": "2"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 2,
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7
+          "parent_id": 6,
+          "is_hidden": false,
+          "weight": 18,
+          "level": 2,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "id": 7,
+          "item_number": ""
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -7548,8 +7548,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"agenda/list-of-speakers:9": []byte(`{
           "id": 9,
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "speakers": [],
           "closed": false,
@@ -9011,7 +9011,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "data": {
             "defaultValue": false,
             "inputType": "boolean",
-            "label": "Show hint »first speech« in the list of speakers management view",
+            "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
             "helpText": "",
             "choices": null,
             "weight": 234,
@@ -9464,7 +9464,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:93": []byte(`{
           "id": 93,
           "key": "motions_amendments_prefix",
-          "value": "Ä-",
+          "value": "\u00c4-",
           "data": {
             "defaultValue": "-",
             "inputType": "string",
@@ -9911,8 +9911,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
-          "identifier": "Ä-1",
-          "title": "Änderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
           "text": "",
           "amendment_paragraphs": [
             "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -10417,221 +10417,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "Administrator",
-          "title": "",
-          "is_committee": false,
+          "username": "admin",
           "first_name": "",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             2
           ],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "admin",
-          "id": 1
+          "id": 1,
+          "last_name": "Administrator",
+          "gender": ""
         }`),
 		"users/user:2": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "id": 2,
+          "username": "candidate1",
           "first_name": "candidate1",
+          "number": "",
+          "is_committee": false,
+          "email": "",
           "structure_level": "",
           "about_me": "",
-          "groups_id": [],
-          "gender": "",
+          "vote_weight": "1.000000",
           "is_present": false,
-          "number": "",
-          "email": "",
-          "username": "candidate1",
-          "id": 2
+          "groups_id": [],
+          "title": "",
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:3": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate2",
           "first_name": "candidate2",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate2",
-          "id": 3
+          "id": 3,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:4": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "a",
           "first_name": "a",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "a",
-          "id": 4
+          "id": 4,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:5": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "b",
           "first_name": "b",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "b",
-          "id": 5
+          "id": 5,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:6": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "the last name",
-          "title": "title",
-          "is_committee": false,
+          "username": "speaker1",
           "first_name": "speaker1",
+          "number": "3",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "layer X",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "title",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "3",
-          "username": "speaker1",
-          "id": 6
+          "id": 6,
+          "last_name": "the last name",
+          "gender": ""
         }`),
 		"users/user:7": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "speaker2",
           "first_name": "speaker2",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "speaker2",
-          "id": 7
+          "id": 7,
+          "last_name": "",
+          "gender": ""
         }`),
 	},
 	3: {
 		"agenda/item:1": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 2,
           "is_internal": false,
-          "tags_id": [],
-          "title_information": {
-            "title": "Topic"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 2,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "Topic"
+          },
+          "id": 1,
+          "item_number": ""
         }`),
 		"agenda/item:3": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 8,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Internal"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 8,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Internal"
+          },
+          "id": 3,
+          "item_number": ""
         }`),
 		"agenda/item:5": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 14,
           "is_internal": true,
+          "duration": null,
+          "content_object": {
+            "collection": "motions/motion",
+            "id": 1
+          },
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 14,
+          "level": 1,
+          "closed": false,
           "tags_id": [],
+          "type": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "closed": false,
-          "level": 1,
-          "content_object": {
-            "collection": "motions/motion",
-            "id": 1
-          },
-          "id": 5
+          "id": 5,
+          "item_number": ""
         }`),
 		"agenda/item:6": []byte(`{
-          "is_hidden": false,
-          "duration": 0,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 16,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 1,
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 16,
+          "level": 1,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          },
+          "id": 6,
+          "item_number": ""
         }`),
 		"agenda/item:7": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 6,
-          "item_number": "",
-          "weight": 18,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Public",
-            "identifier": "2"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 2,
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7
+          "parent_id": 6,
+          "is_hidden": false,
+          "weight": 18,
+          "level": 2,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "id": 7,
+          "item_number": ""
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -10820,8 +10820,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"agenda/list-of-speakers:9": []byte(`{
           "id": 9,
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "speakers": [],
           "closed": false,
@@ -12283,7 +12283,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "data": {
             "defaultValue": false,
             "inputType": "boolean",
-            "label": "Show hint »first speech« in the list of speakers management view",
+            "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
             "helpText": "",
             "choices": null,
             "weight": 234,
@@ -12736,7 +12736,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:93": []byte(`{
           "id": 93,
           "key": "motions_amendments_prefix",
-          "value": "Ä-",
+          "value": "\u00c4-",
           "data": {
             "defaultValue": "-",
             "inputType": "string",
@@ -13183,8 +13183,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
-          "identifier": "Ä-1",
-          "title": "Änderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
           "text": "",
           "amendment_paragraphs": [
             "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -13689,221 +13689,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "Administrator",
-          "title": "",
-          "is_committee": false,
+          "username": "admin",
           "first_name": "",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             2
           ],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "admin",
-          "id": 1
+          "id": 1,
+          "last_name": "Administrator",
+          "gender": ""
         }`),
 		"users/user:2": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate1",
           "first_name": "candidate1",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate1",
-          "id": 2
+          "id": 2,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:3": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "id": 3,
+          "username": "candidate2",
           "first_name": "candidate2",
+          "number": "",
+          "is_committee": false,
+          "email": "",
           "structure_level": "",
           "about_me": "",
-          "groups_id": [],
-          "gender": "",
+          "vote_weight": "1.000000",
           "is_present": false,
-          "number": "",
-          "email": "",
-          "username": "candidate2",
-          "id": 3
+          "groups_id": [],
+          "title": "",
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:4": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "a",
           "first_name": "a",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "a",
-          "id": 4
+          "id": 4,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:5": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "b",
           "first_name": "b",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "b",
-          "id": 5
+          "id": 5,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:6": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "the last name",
-          "title": "title",
-          "is_committee": false,
+          "username": "speaker1",
           "first_name": "speaker1",
+          "number": "3",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "layer X",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "title",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "3",
-          "username": "speaker1",
-          "id": 6
+          "id": 6,
+          "last_name": "the last name",
+          "gender": ""
         }`),
 		"users/user:7": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "speaker2",
           "first_name": "speaker2",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "speaker2",
-          "id": 7
+          "id": 7,
+          "last_name": "",
+          "gender": ""
         }`),
 	},
 	4: {
 		"agenda/item:1": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 2,
           "is_internal": false,
-          "tags_id": [],
-          "title_information": {
-            "title": "Topic"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 2,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "Topic"
+          },
+          "id": 1,
+          "item_number": ""
         }`),
 		"agenda/item:3": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 8,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Internal"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 8,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Internal"
+          },
+          "id": 3,
+          "item_number": ""
         }`),
 		"agenda/item:5": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 14,
           "is_internal": true,
+          "duration": null,
+          "content_object": {
+            "collection": "motions/motion",
+            "id": 1
+          },
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 14,
+          "level": 1,
+          "closed": false,
           "tags_id": [],
+          "type": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "closed": false,
-          "level": 1,
-          "content_object": {
-            "collection": "motions/motion",
-            "id": 1
-          },
-          "id": 5
+          "id": 5,
+          "item_number": ""
         }`),
 		"agenda/item:6": []byte(`{
-          "is_hidden": false,
-          "duration": 0,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 16,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 1,
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 16,
+          "level": 1,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          },
+          "id": 6,
+          "item_number": ""
         }`),
 		"agenda/item:7": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 6,
-          "item_number": "",
-          "weight": 18,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Public",
-            "identifier": "2"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 2,
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7
+          "parent_id": 6,
+          "is_hidden": false,
+          "weight": 18,
+          "level": 2,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "id": 7,
+          "item_number": ""
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -14092,8 +14092,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"agenda/list-of-speakers:9": []byte(`{
           "id": 9,
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "speakers": [],
           "closed": false,
@@ -15563,7 +15563,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "data": {
             "defaultValue": false,
             "inputType": "boolean",
-            "label": "Show hint »first speech« in the list of speakers management view",
+            "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
             "helpText": "",
             "choices": null,
             "weight": 234,
@@ -16016,7 +16016,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:93": []byte(`{
           "id": 93,
           "key": "motions_amendments_prefix",
-          "value": "Ä-",
+          "value": "\u00c4-",
           "data": {
             "defaultValue": "-",
             "inputType": "string",
@@ -16544,8 +16544,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
-          "identifier": "Ä-1",
-          "title": "Änderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
           "text": "",
           "amendment_paragraphs": [
             "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -17072,221 +17072,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "Administrator",
-          "title": "",
-          "is_committee": false,
+          "username": "admin",
           "first_name": "",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             2
           ],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "admin",
-          "id": 1
+          "id": 1,
+          "last_name": "Administrator",
+          "gender": ""
         }`),
 		"users/user:2": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate1",
           "first_name": "candidate1",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate1",
-          "id": 2
+          "id": 2,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:3": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate2",
           "first_name": "candidate2",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate2",
-          "id": 3
+          "id": 3,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:4": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "id": 4,
+          "username": "a",
           "first_name": "a",
+          "number": "",
+          "is_committee": false,
+          "email": "",
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "is_present": true,
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "email": "",
-          "username": "a",
-          "id": 4
+          "title": "",
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:5": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "b",
           "first_name": "b",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "b",
-          "id": 5
+          "id": 5,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:6": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "the last name",
-          "title": "title",
-          "is_committee": false,
+          "username": "speaker1",
           "first_name": "speaker1",
+          "number": "3",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "layer X",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "title",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "3",
-          "username": "speaker1",
-          "id": 6
+          "id": 6,
+          "last_name": "the last name",
+          "gender": ""
         }`),
 		"users/user:7": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "speaker2",
           "first_name": "speaker2",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "speaker2",
-          "id": 7
+          "id": 7,
+          "last_name": "",
+          "gender": ""
         }`),
 	},
 	5: {
 		"agenda/item:1": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 2,
           "is_internal": false,
-          "tags_id": [],
-          "title_information": {
-            "title": "Topic"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 2,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "Topic"
+          },
+          "id": 1,
+          "item_number": ""
         }`),
 		"agenda/item:3": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 8,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Internal"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 8,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Internal"
+          },
+          "id": 3,
+          "item_number": ""
         }`),
 		"agenda/item:5": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 14,
           "is_internal": true,
+          "duration": null,
+          "content_object": {
+            "collection": "motions/motion",
+            "id": 1
+          },
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 14,
+          "level": 1,
+          "closed": false,
           "tags_id": [],
+          "type": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "closed": false,
-          "level": 1,
-          "content_object": {
-            "collection": "motions/motion",
-            "id": 1
-          },
-          "id": 5
+          "id": 5,
+          "item_number": ""
         }`),
 		"agenda/item:6": []byte(`{
-          "is_hidden": false,
-          "duration": 0,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 16,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 1,
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 16,
+          "level": 1,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          },
+          "id": 6,
+          "item_number": ""
         }`),
 		"agenda/item:7": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 6,
-          "item_number": "",
-          "weight": 18,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Public",
-            "identifier": "2"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 2,
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7
+          "parent_id": 6,
+          "is_hidden": false,
+          "weight": 18,
+          "level": 2,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "id": 7,
+          "item_number": ""
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -17475,8 +17475,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"agenda/list-of-speakers:9": []byte(`{
           "id": 9,
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "speakers": [],
           "closed": false,
@@ -18938,7 +18938,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "data": {
             "defaultValue": false,
             "inputType": "boolean",
-            "label": "Show hint »first speech« in the list of speakers management view",
+            "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
             "helpText": "",
             "choices": null,
             "weight": 234,
@@ -19391,7 +19391,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:93": []byte(`{
           "id": 93,
           "key": "motions_amendments_prefix",
-          "value": "Ä-",
+          "value": "\u00c4-",
           "data": {
             "defaultValue": "-",
             "inputType": "string",
@@ -19870,8 +19870,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
-          "identifier": "Ä-1",
-          "title": "Änderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
           "text": "",
           "amendment_paragraphs": [
             "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -20386,221 +20386,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "Administrator",
-          "title": "",
-          "is_committee": false,
+          "username": "admin",
           "first_name": "",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             2
           ],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "admin",
-          "id": 1
+          "id": 1,
+          "last_name": "Administrator",
+          "gender": ""
         }`),
 		"users/user:2": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate1",
           "first_name": "candidate1",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate1",
-          "id": 2
+          "id": 2,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:3": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate2",
           "first_name": "candidate2",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate2",
-          "id": 3
+          "id": 3,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:4": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "a",
           "first_name": "a",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "a",
-          "id": 4
+          "id": 4,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:5": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "id": 5,
+          "username": "b",
           "first_name": "b",
+          "number": "",
+          "is_committee": false,
+          "email": "",
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "is_present": true,
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "email": "",
-          "username": "b",
-          "id": 5
+          "title": "",
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:6": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "the last name",
-          "title": "title",
-          "is_committee": false,
+          "username": "speaker1",
           "first_name": "speaker1",
+          "number": "3",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "layer X",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "title",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "3",
-          "username": "speaker1",
-          "id": 6
+          "id": 6,
+          "last_name": "the last name",
+          "gender": ""
         }`),
 		"users/user:7": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "speaker2",
           "first_name": "speaker2",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "speaker2",
-          "id": 7
+          "id": 7,
+          "last_name": "",
+          "gender": ""
         }`),
 	},
 	6: {
 		"agenda/item:1": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 2,
           "is_internal": false,
-          "tags_id": [],
-          "title_information": {
-            "title": "Topic"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 2,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "Topic"
+          },
+          "id": 1,
+          "item_number": ""
         }`),
 		"agenda/item:3": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 8,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Internal"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 8,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Internal"
+          },
+          "id": 3,
+          "item_number": ""
         }`),
 		"agenda/item:5": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 14,
           "is_internal": true,
+          "duration": null,
+          "content_object": {
+            "collection": "motions/motion",
+            "id": 1
+          },
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 14,
+          "level": 1,
+          "closed": false,
           "tags_id": [],
+          "type": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "closed": false,
-          "level": 1,
-          "content_object": {
-            "collection": "motions/motion",
-            "id": 1
-          },
-          "id": 5
+          "id": 5,
+          "item_number": ""
         }`),
 		"agenda/item:6": []byte(`{
-          "is_hidden": false,
-          "duration": 0,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 16,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 1,
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 16,
+          "level": 1,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          },
+          "id": 6,
+          "item_number": ""
         }`),
 		"agenda/item:7": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 6,
-          "item_number": "",
-          "weight": 18,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Public",
-            "identifier": "2"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 2,
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7
+          "parent_id": 6,
+          "is_hidden": false,
+          "weight": 18,
+          "level": 2,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "id": 7,
+          "item_number": ""
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -20789,8 +20789,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"agenda/list-of-speakers:9": []byte(`{
           "id": 9,
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "speakers": [],
           "closed": false,
@@ -22252,7 +22252,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "data": {
             "defaultValue": false,
             "inputType": "boolean",
-            "label": "Show hint »first speech« in the list of speakers management view",
+            "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
             "helpText": "",
             "choices": null,
             "weight": 234,
@@ -22705,7 +22705,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:93": []byte(`{
           "id": 93,
           "key": "motions_amendments_prefix",
-          "value": "Ä-",
+          "value": "\u00c4-",
           "data": {
             "defaultValue": "-",
             "inputType": "string",
@@ -23152,8 +23152,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
-          "identifier": "Ä-1",
-          "title": "Änderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
           "text": "",
           "amendment_paragraphs": [
             "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -23658,221 +23658,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "Administrator",
-          "title": "",
-          "is_committee": false,
+          "username": "admin",
           "first_name": "",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             2
           ],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "admin",
-          "id": 1
+          "id": 1,
+          "last_name": "Administrator",
+          "gender": ""
         }`),
 		"users/user:2": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate1",
           "first_name": "candidate1",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate1",
-          "id": 2
+          "id": 2,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:3": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate2",
           "first_name": "candidate2",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate2",
-          "id": 3
+          "id": 3,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:4": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "a",
           "first_name": "a",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "a",
-          "id": 4
+          "id": 4,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:5": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "b",
           "first_name": "b",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "b",
-          "id": 5
+          "id": 5,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:6": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "the last name",
-          "title": "title",
-          "is_committee": false,
+          "id": 6,
+          "username": "speaker1",
           "first_name": "speaker1",
+          "number": "3",
+          "is_committee": false,
+          "email": "",
           "structure_level": "layer X",
           "about_me": "",
-          "groups_id": [],
-          "gender": "",
+          "vote_weight": "1.000000",
           "is_present": true,
-          "number": "3",
-          "email": "",
-          "username": "speaker1",
-          "id": 6
+          "groups_id": [],
+          "title": "title",
+          "last_name": "the last name",
+          "gender": ""
         }`),
 		"users/user:7": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "speaker2",
           "first_name": "speaker2",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "speaker2",
-          "id": 7
+          "id": 7,
+          "last_name": "",
+          "gender": ""
         }`),
 	},
 	7: {
 		"agenda/item:1": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 2,
           "is_internal": false,
-          "tags_id": [],
-          "title_information": {
-            "title": "Topic"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 2,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "Topic"
+          },
+          "id": 1,
+          "item_number": ""
         }`),
 		"agenda/item:3": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 8,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Internal"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 8,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Internal"
+          },
+          "id": 3,
+          "item_number": ""
         }`),
 		"agenda/item:5": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 14,
           "is_internal": true,
+          "duration": null,
+          "content_object": {
+            "collection": "motions/motion",
+            "id": 1
+          },
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 14,
+          "level": 1,
+          "closed": false,
           "tags_id": [],
+          "type": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "closed": false,
-          "level": 1,
-          "content_object": {
-            "collection": "motions/motion",
-            "id": 1
-          },
-          "id": 5
+          "id": 5,
+          "item_number": ""
         }`),
 		"agenda/item:6": []byte(`{
-          "is_hidden": false,
-          "duration": 0,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 16,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 1,
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 16,
+          "level": 1,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          },
+          "id": 6,
+          "item_number": ""
         }`),
 		"agenda/item:7": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 6,
-          "item_number": "",
-          "weight": 18,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Public",
-            "identifier": "2"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 2,
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7
+          "parent_id": 6,
+          "is_hidden": false,
+          "weight": 18,
+          "level": 2,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "id": 7,
+          "item_number": ""
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -24061,8 +24061,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"agenda/list-of-speakers:9": []byte(`{
           "id": 9,
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "speakers": [],
           "closed": false,
@@ -25524,7 +25524,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "data": {
             "defaultValue": false,
             "inputType": "boolean",
-            "label": "Show hint »first speech« in the list of speakers management view",
+            "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
             "helpText": "",
             "choices": null,
             "weight": 234,
@@ -25977,7 +25977,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:93": []byte(`{
           "id": 93,
           "key": "motions_amendments_prefix",
-          "value": "Ä-",
+          "value": "\u00c4-",
           "data": {
             "defaultValue": "-",
             "inputType": "string",
@@ -26424,8 +26424,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
-          "identifier": "Ä-1",
-          "title": "Änderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
           "text": "",
           "amendment_paragraphs": [
             "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -26930,221 +26930,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "Administrator",
-          "title": "",
-          "is_committee": false,
+          "username": "admin",
           "first_name": "",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             2
           ],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "admin",
-          "id": 1
+          "id": 1,
+          "last_name": "Administrator",
+          "gender": ""
         }`),
 		"users/user:2": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate1",
           "first_name": "candidate1",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate1",
-          "id": 2
+          "id": 2,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:3": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate2",
           "first_name": "candidate2",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate2",
-          "id": 3
+          "id": 3,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:4": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "a",
           "first_name": "a",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "a",
-          "id": 4
+          "id": 4,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:5": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "b",
           "first_name": "b",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "b",
-          "id": 5
+          "id": 5,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:6": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "the last name",
-          "title": "title",
-          "is_committee": false,
+          "username": "speaker1",
           "first_name": "speaker1",
+          "number": "3",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "layer X",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "title",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "3",
-          "username": "speaker1",
-          "id": 6
+          "id": 6,
+          "last_name": "the last name",
+          "gender": ""
         }`),
 		"users/user:7": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "id": 7,
+          "username": "speaker2",
           "first_name": "speaker2",
+          "number": "",
+          "is_committee": false,
+          "email": "",
           "structure_level": "",
           "about_me": "",
-          "groups_id": [],
-          "gender": "",
+          "vote_weight": "1.000000",
           "is_present": true,
-          "number": "",
-          "email": "",
-          "username": "speaker2",
-          "id": 7
+          "groups_id": [],
+          "title": "",
+          "last_name": "",
+          "gender": ""
         }`),
 	},
 	8: {
 		"agenda/item:1": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 2,
           "is_internal": false,
-          "tags_id": [],
-          "title_information": {
-            "title": "Topic"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 2,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "Topic"
+          },
+          "id": 1,
+          "item_number": ""
         }`),
 		"agenda/item:3": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": null,
-          "item_number": "",
-          "weight": 8,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Internal"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 0,
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3
+          "parent_id": null,
+          "is_hidden": false,
+          "weight": 8,
+          "level": 0,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Internal"
+          },
+          "id": 3,
+          "item_number": ""
         }`),
 		"agenda/item:5": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 14,
           "is_internal": true,
+          "duration": null,
+          "content_object": {
+            "collection": "motions/motion",
+            "id": 1
+          },
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 14,
+          "level": 1,
+          "closed": false,
           "tags_id": [],
+          "type": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "closed": false,
-          "level": 1,
-          "content_object": {
-            "collection": "motions/motion",
-            "id": 1
-          },
-          "id": 5
+          "id": 5,
+          "item_number": ""
         }`),
 		"agenda/item:6": []byte(`{
-          "is_hidden": false,
-          "duration": 0,
-          "parent_id": 3,
-          "item_number": "",
-          "weight": 16,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
-          },
-          "type": 1,
-          "closed": false,
-          "level": 1,
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6
+          "parent_id": 3,
+          "is_hidden": false,
+          "weight": 16,
+          "level": 1,
+          "closed": false,
+          "tags_id": [],
+          "type": 1,
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          },
+          "id": 6,
+          "item_number": ""
         }`),
 		"agenda/item:7": []byte(`{
-          "is_hidden": false,
-          "duration": null,
-          "parent_id": 6,
-          "item_number": "",
-          "weight": 18,
           "is_internal": true,
-          "tags_id": [],
-          "title_information": {
-            "title": "Public",
-            "identifier": "2"
-          },
-          "type": 2,
-          "closed": false,
-          "level": 2,
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7
+          "parent_id": 6,
+          "is_hidden": false,
+          "weight": 18,
+          "level": 2,
+          "closed": false,
+          "tags_id": [],
+          "type": 2,
+          "title_information": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "id": 7,
+          "item_number": ""
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -27333,8 +27333,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"agenda/list-of-speakers:9": []byte(`{
           "id": 9,
           "title_information": {
-            "title": "Änderungsantrag zu Leadmotion1",
-            "identifier": "Ä-1"
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
           },
           "speakers": [],
           "closed": false,
@@ -28796,7 +28796,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "data": {
             "defaultValue": false,
             "inputType": "boolean",
-            "label": "Show hint »first speech« in the list of speakers management view",
+            "label": "Show hint \u00bbfirst speech\u00ab in the list of speakers management view",
             "helpText": "",
             "choices": null,
             "weight": 234,
@@ -29249,7 +29249,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:93": []byte(`{
           "id": 93,
           "key": "motions_amendments_prefix",
-          "value": "Ä-",
+          "value": "\u00c4-",
           "data": {
             "defaultValue": "-",
             "inputType": "string",
@@ -29696,8 +29696,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
-          "identifier": "Ä-1",
-          "title": "Änderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
           "text": "",
           "amendment_paragraphs": [
             "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
@@ -30202,131 +30202,131 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "Administrator",
-          "title": "",
-          "is_committee": false,
+          "username": "admin",
           "first_name": "",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             2
           ],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "admin",
-          "id": 1
+          "id": 1,
+          "last_name": "Administrator",
+          "gender": ""
         }`),
 		"users/user:2": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate1",
           "first_name": "candidate1",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate1",
-          "id": 2
+          "id": 2,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:3": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "candidate2",
           "first_name": "candidate2",
+          "number": "",
+          "is_committee": false,
+          "is_present": false,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": false,
-          "number": "",
-          "username": "candidate2",
-          "id": 3
+          "id": 3,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:4": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "a",
           "first_name": "a",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "a",
-          "id": 4
+          "id": 4,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:5": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "b",
           "first_name": "b",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [
             3
           ],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "b",
-          "id": 5
+          "id": 5,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:6": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "the last name",
-          "title": "title",
-          "is_committee": false,
+          "username": "speaker1",
           "first_name": "speaker1",
+          "number": "3",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "layer X",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "title",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "3",
-          "username": "speaker1",
-          "id": 6
+          "id": 6,
+          "last_name": "the last name",
+          "gender": ""
         }`),
 		"users/user:7": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "username": "speaker2",
           "first_name": "speaker2",
+          "number": "",
+          "is_committee": false,
+          "is_present": true,
           "structure_level": "",
           "about_me": "",
+          "vote_weight": "1.000000",
+          "title": "",
           "groups_id": [],
-          "gender": "",
-          "is_present": true,
-          "number": "",
-          "username": "speaker2",
-          "id": 7
+          "id": 7,
+          "last_name": "",
+          "gender": ""
         }`),
 		"users/user:8": []byte(`{
-          "vote_weight": "1.000000",
-          "last_name": "",
-          "title": "",
-          "is_committee": false,
+          "id": 8,
+          "username": "not required",
           "first_name": "not required",
+          "number": "",
+          "is_committee": false,
+          "email": "",
           "structure_level": "",
           "about_me": "",
-          "groups_id": [],
-          "gender": "",
+          "vote_weight": "1.000000",
           "is_present": true,
-          "number": "",
-          "email": "",
-          "username": "not required",
-          "id": 8
+          "groups_id": [],
+          "title": "",
+          "last_name": "",
+          "gender": ""
         }`),
 	},
 }
@@ -30428,5 +30428,423 @@ var exampleRequiredUser = map[string]permIDs{
 	"motions/motion:3": {
 		"motions.can_see",
 		[]int{1},
+	},
+}
+
+type projectorData struct {
+	Data    json.RawMessage
+	Element json.RawMessage
+}
+
+var exampleProjector = []projectorData{
+	{
+		[]byte(`{
+        "identifier": null,
+        "title": "Leadmotion1",
+        "submitters": [
+          "a"
+        ],
+        "preamble": "The assembly may decide:",
+        "amendment_paragraphs": null,
+        "base_motion": null,
+        "base_statute": null,
+        "is_child": false,
+        "show_meta_box": false,
+        "show_referring_motions": true,
+        "change_recommendations": [],
+        "amendments": [
+          {
+            "id": 2,
+            "identifier": "\u00c4-1",
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "amendment_paragraphs": [
+              "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+            ],
+            "merge_amendment_into_diff": 0,
+            "merge_amendment_into_final": 0
+          }
+        ],
+        "line_length": 85,
+        "line_numbering_mode": "outside",
+        "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
+        "reason": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
+        "recommendation": "Permission",
+        "recommendation_extension": "if [motion:2] is acepted",
+        "referenced_motions": {
+          "2": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          }
+        },
+        "recommender": "ABK",
+        "recommendation_referencing_motions": null
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "identifier": "2",
+        "title": "Public",
+        "submitters": [
+          "Administrator"
+        ],
+        "preamble": "The assembly may decide:",
+        "amendment_paragraphs": null,
+        "base_motion": null,
+        "base_statute": null,
+        "is_child": false,
+        "show_meta_box": false,
+        "show_referring_motions": true,
+        "change_recommendations": [],
+        "amendments": [],
+        "line_length": 85,
+        "line_numbering_mode": "outside",
+        "text": "<p>a</p>",
+        "reason": "<p>a</p>",
+        "recommendation_referencing_motions": null
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": 3
+      }`),
+	},
+	{
+		[]byte(`{
+        "identifier": "\u00c4-1",
+        "title": "\u00c4nderungsantrag zu Leadmotion1",
+        "submitters": [
+          "Administrator"
+        ],
+        "preamble": "The assembly may decide:",
+        "amendment_paragraphs": [
+          "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+        ],
+        "base_motion": {
+          "identifier": null,
+          "title": "Leadmotion1",
+          "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+        },
+        "base_statute": null,
+        "is_child": true,
+        "show_meta_box": false,
+        "show_referring_motions": true,
+        "change_recommendations": [],
+        "amendments": [],
+        "line_length": 85,
+        "line_numbering_mode": "outside",
+        "text": "",
+        "reason": "",
+        "recommendation_referencing_motions": [
+          {
+            "title": "Leadmotion1",
+            "identifier": null
+          }
+        ]
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "title": "block",
+        "motions": [
+          {
+            "title": "Leadmotion1",
+            "identifier": null,
+            "recommendation": {
+              "name": "Permission",
+              "css_class": "lightblue"
+            },
+            "recommendation_extension": "if [motion:2] is acepted"
+          },
+          {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          }
+        ],
+        "referenced_motions": {
+          "2": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1"
+          }
+        }
+      }`),
+		[]byte(`{
+        "name": "motions/motion-block",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "title": "block internal",
+        "motions": [
+          {
+            "title": "Public",
+            "identifier": "2"
+          }
+        ],
+        "referenced_motions": {}
+      }`),
+		[]byte(`{
+        "name": "motions/motion-block",
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "user": "a"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 4
+      }`),
+	},
+	{
+		[]byte(`{
+        "user": "b"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 5
+      }`),
+	},
+	{
+		[]byte(`{
+        "user": "candidate1"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "user": "candidate2"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 3
+      }`),
+	},
+	{
+		[]byte(`{
+        "user": "not required"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 8
+      }`),
+	},
+	{
+		[]byte(`{
+        "user": "speaker2"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 7
+      }`),
+	},
+	{
+		[]byte(`{
+        "user": "Administrator"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "user": "title speaker1 the last name (layer X)"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 6
+      }`),
+	},
+	{
+		[]byte(`{
+        "description": "",
+        "running": true,
+        "countdown_time": 1597141855.090748,
+        "warning_time": 0
+      }`),
+		[]byte(`{
+        "name": "core/countdown",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "id": 1,
+        "message": "<p>test</p>"
+      }`),
+		[]byte(`{
+        "name": "core/projector-message",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "title": "Assignment",
+        "phase": 0,
+        "open_posts": 1,
+        "description": "",
+        "assignment_related_users": [
+          {
+            "user": "candidate1"
+          },
+          {
+            "user": "candidate2"
+          }
+        ],
+        "number_poll_candidates": false
+      }`),
+		[]byte(`{
+        "name": "assignments/assignment",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "motion": {
+          "title": "Public",
+          "identifier": "2"
+        },
+        "poll": {
+          "title": "Abstimmung",
+          "type": "named",
+          "pollmethod": "YNA",
+          "state": 4,
+          "onehundred_percent_base": "YNA",
+          "majority_method": "simple",
+          "options": [
+            {
+              "yes": 0.0,
+              "no": 1.0,
+              "abstain": 0.0
+            }
+          ],
+          "votesvalid": "1.000000",
+          "votesinvalid": "0.000000",
+          "votescast": "1.000000"
+        }
+      }`),
+		[]byte(`{
+        "name": "motions/motion-poll",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "motion": {
+          "title": "Public",
+          "identifier": "2"
+        },
+        "poll": {
+          "title": "Abstimmung (2)",
+          "type": "pseudoanonymous",
+          "pollmethod": "YNA",
+          "state": 4,
+          "onehundred_percent_base": "YNA",
+          "majority_method": "simple",
+          "options": [
+            {
+              "yes": 1.0,
+              "no": 0.0,
+              "abstain": 0.0
+            }
+          ],
+          "votesvalid": "1.000000",
+          "votesinvalid": "0.000000",
+          "votescast": "1.000000"
+        }
+      }`),
+		[]byte(`{
+        "name": "motions/motion-poll",
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "assignment": {
+          "title": "Assignment"
+        },
+        "poll": {
+          "title": "Wahlgang",
+          "type": "named",
+          "pollmethod": "votes",
+          "votes_amount": 1,
+          "description": "",
+          "state": 2,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "options": [
+            {
+              "user": {
+                "short_name": "candidate1"
+              }
+            },
+            {
+              "user": {
+                "short_name": "candidate2"
+              }
+            }
+          ]
+        }
+      }`),
+		[]byte(`{
+        "name": "assignments/assignment-poll",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "path": "A.txt",
+        "mimetype": "text/plain",
+        "media_url_prefix": "/media/"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "path": "folder/A.txt",
+        "mimetype": "text/plain",
+        "media_url_prefix": "/media/"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": 4
+      }`),
+	},
+	{
+		[]byte(`{
+        "path": "folder/",
+        "mimetype": "",
+        "media_url_prefix": "/media/"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "path": "folder/in.jpg",
+        "mimetype": "image/jpeg",
+        "media_url_prefix": "/media/"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": 3
+      }`),
 	},
 }

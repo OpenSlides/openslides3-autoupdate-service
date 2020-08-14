@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"testing"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/test"
@@ -58,6 +59,33 @@ func TestRequiredUser(t *testing.T) {
 			if !test.CmpIntSlice(ids, tt.ExpectIDs) {
 				t.Errorf("RequiredUser returned ids %v, expected %v", ids, tt.ExpectIDs)
 			}
+		})
+	}
+}
+
+func TestProjector(t *testing.T) {
+	callabes := openslidesProjectorCallables()
+	ds := test.NewDatastoreMock(0)
+
+	for _, tt := range test.ExampleProjector() {
+		t.Run(tt.Name, func(t *testing.T) {
+			// if tt.Name != "Dataset0" {
+			// 	return
+			// }
+			c, ok := callabes[tt.ElementName]
+			if !ok {
+				t.Fatalf("No callable for Element `%s`", tt.ElementName)
+			}
+
+			got, err := c.Build(ds, tt.Element, 1)
+			if err != nil {
+				t.Errorf("ProjectorCallable returned unexpected error: %v", err)
+			}
+
+			if !bytes.Equal(got, tt.Expected) {
+				t.Errorf("ProjectorCallable returned %s, expected %s", got, tt.Expected)
+			}
+
 		})
 	}
 }

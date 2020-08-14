@@ -63,6 +63,34 @@ func ExampleRequiredUser() []RequiredUserDataset {
 	return rus
 }
 
+// ProjectorDataset is a test case.
+type ProjectorDataset struct {
+	Name        string
+	ElementName string
+	Element     json.RawMessage
+	Expected    json.RawMessage
+}
+
+// ExampleProjector returns test cases.
+func ExampleProjector() []ProjectorDataset {
+	var pds []ProjectorDataset
+	for i, data := range exampleProjector {
+		var element struct {
+			Name string `json:"name"`
+		}
+		json.Unmarshal(data.Element, &element)
+
+		pd := ProjectorDataset{
+			Name:        fmt.Sprintf("Dataset%d", i),
+			Element:     data.Element,
+			ElementName: element.Name,
+			Expected:    data.Data,
+		}
+		pds = append(pds, pd)
+	}
+	return pds
+}
+
 func permsForUser() map[int]*HasPermMock {
 	r := make(map[int]*HasPermMock)
 Outer:
