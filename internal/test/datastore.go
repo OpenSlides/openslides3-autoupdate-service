@@ -1,6 +1,6 @@
 package test
 
-//go:generate  sh -c "go run gen_db/main.go > db.json.go && go fmt db.json.go"
+//go:generate  sh -c "go run gen_testdata/main.go && go fmt export.json.go"
 import (
 	"context"
 	"encoding/json"

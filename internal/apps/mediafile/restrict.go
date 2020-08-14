@@ -29,34 +29,44 @@ func Restrict(r required) restricter.ElementFunc {
 		}
 
 		var media struct {
-			InheritedAccess interface{} `json:"inherited_access_groups_id"`
+			InheritedAccess boolOrIntSlice `json:"inherited_access_groups_id"`
 		}
 
 		if err := json.Unmarshal(data, &media); err != nil {
 			return nil, fmt.Errorf("decoding mediafile: %w", err)
 		}
 
-		switch accessGroups := media.InheritedAccess.(type) {
-		case bool:
-			if accessGroups {
+		if accessGroups := media.InheritedAccess; accessGroups.isBool() {
+			if accessGroups.b {
 				return data, nil
 			}
-		case []interface{}:
-			ints := make([]int, len(accessGroups))
-			for i, g := range accessGroups {
-				j, ok := g.(int)
-				if !ok {
-					return nil, fmt.Errorf("mediafile.inherited_access_groups_id[%d] has type %T, expected int", i, g)
-				}
+			return nil, nil
+		}
 
-				ints[i] = j
-			}
-			if r.InGroups(uid, ints) {
-				return data, nil
-			}
-		default:
-			return nil, fmt.Errorf("mediafile.inherited_access_groups_id has invalid type %T", accessGroups)
+		if r.InGroups(uid, media.InheritedAccess.iList) {
+			return data, nil
 		}
 		return nil, nil
 	}
+}
+
+type boolOrIntSlice struct {
+	b     bool
+	iList []int
+}
+
+func (e *boolOrIntSlice) UnmarshalJSON(data []byte) error {
+	if err := json.Unmarshal(data, &e.b); err == nil {
+		return nil
+	}
+
+	if err := json.Unmarshal(data, &e.iList); err != nil {
+		return fmt.Errorf("unmarshal boolOrIntSlice: %w", err)
+	}
+
+	return nil
+}
+
+func (e *boolOrIntSlice) isBool() bool {
+	return e.iList == nil
 }
