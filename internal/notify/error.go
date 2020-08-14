@@ -34,4 +34,8 @@ func (e noStatusCodeError) Error() string {
 	return e.wrapped.Error()
 }
 
+func (e noStatusCodeError) Unwrap() error {
+	return e.wrapped
+}
+
 func (e noStatusCodeError) NoStatus() {}
