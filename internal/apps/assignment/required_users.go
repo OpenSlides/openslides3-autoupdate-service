@@ -38,12 +38,17 @@ func RequiredPollOption(data json.RawMessage) ([]int, string, error) {
 
 // RequiredPoll returns the VoteID of the option.
 func RequiredPoll(data json.RawMessage) ([]int, string, error) {
-	var option struct {
+	var poll struct {
 		VoteID []int `json:"voted_id"`
+		State  int   `json:"state"`
 	}
-	if err := json.Unmarshal(data, &option); err != nil {
+	if err := json.Unmarshal(data, &poll); err != nil {
 		return nil, "", fmt.Errorf("unmarshal assignment poll option: %w", err)
 	}
 
-	return option.VoteID, CanSee, nil
+	if poll.State != 4 {
+		return nil, CanSee, nil
+	}
+
+	return poll.VoteID, CanSee, nil
 }

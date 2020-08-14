@@ -37,6 +37,32 @@ func ExampleRestrictedData() []RestrictedDataset {
 	return dsl
 }
 
+// RequiredUserDataset is a testcase.
+type RequiredUserDataset struct {
+	Name       string
+	Collection string
+	Element    json.RawMessage
+	ExpectPerm string
+	ExpectIDs  []int
+}
+
+// ExampleRequiredUser returns testcases to test required users.
+func ExampleRequiredUser() []RequiredUserDataset {
+	var rus []RequiredUserDataset
+	for elementID, data := range exampleRequiredUser {
+		collection := elementID[:strings.Index(elementID, ":")]
+		ru := RequiredUserDataset{
+			Name:       elementID,
+			Collection: collection,
+			Element:    exampleData[elementID],
+			ExpectPerm: data.perm,
+			ExpectIDs:  data.ids,
+		}
+		rus = append(rus, ru)
+	}
+	return rus
+}
+
 func permsForUser() map[int]*HasPermMock {
 	r := make(map[int]*HasPermMock)
 Outer:

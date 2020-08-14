@@ -34,3 +34,30 @@ func TestRestrictedData(t *testing.T) {
 		})
 	}
 }
+
+func TestRequiredUser(t *testing.T) {
+	required := openslidesRequiredUsers()
+
+	for _, tt := range test.ExampleRequiredUser() {
+		t.Run(tt.Name, func(t *testing.T) {
+			r, ok := required[tt.Collection]
+			if !ok {
+				// No required users for element.
+				return
+			}
+
+			ids, perm, err := r(tt.Element)
+			if err != nil {
+				t.Errorf("RequiredUser returned unexpected error: %v", err)
+			}
+
+			if perm != tt.ExpectPerm {
+				t.Errorf("RequiredUser returned perm %s, expected %s", perm, tt.ExpectPerm)
+			}
+
+			if !test.CmpIntSlice(ids, tt.ExpectIDs) {
+				t.Errorf("RequiredUser returned ids %v, expected %v", ids, tt.ExpectIDs)
+			}
+		})
+	}
+}

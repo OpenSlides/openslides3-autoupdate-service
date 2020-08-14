@@ -9,27 +9,27 @@ import (
 
 // Restrict handels restrictions of users/user elements.
 func Restrict(r restricter.HasPermer) restricter.ElementFunc {
+	littleDataFields := []string{
+		"id",
+		"username",
+		"title",
+		"first_name",
+		"last_name",
+		"structure_level",
+		"number",
+		"about_me",
+		"groups_id",
+		"is_present",
+		"is_committee",
+		"vote_weight",
+		"gender",
+	}
+
+	manyDataFields := append(littleDataFields, "email", "last_email_send", "comment", "is_active", "auth_type")
+	allDataFields := append(manyDataFields, "default_password")
+	ownDataFields := append(littleDataFields, "email")
+
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
-		littleDataFields := []string{
-			"id",
-			"username",
-			"title",
-			"first_name",
-			"last_name",
-			"structure_level",
-			"number",
-			"about_me",
-			"groups_id",
-			"is_present",
-			"is_committee",
-			"vote_weight",
-			"gender",
-		}
-
-		manyDataFields := append(littleDataFields, "email", "last_email_send", "comment", "is_active", "auth_type")
-		allDataFields := append(manyDataFields, "default_password")
-		ownDataFields := append(littleDataFields, "email")
-
 		var user struct {
 			ID int `json:"id"`
 		}

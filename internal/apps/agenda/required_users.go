@@ -20,5 +20,5 @@ func RequiredSpeakers(data json.RawMessage) ([]int, string, error) {
 	for i, s := range los.Speakers {
 		uids[i] = s.UserID
 	}
-	return uids, pCanSeeInternal, nil
+	return uids, CanSeeListOfSpeakers, nil
 }
