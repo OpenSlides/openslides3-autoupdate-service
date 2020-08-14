@@ -10,8 +10,9 @@ import (
 
 // Handler handels client requests to the autoupdate service.
 type Handler struct {
-	mux    *http.ServeMux
-	auther Auther
+	mux        *http.ServeMux
+	auther     Auther
+	forceHTTP2 bool
 }
 
 // New create a new Handler with the correct urls.
@@ -95,14 +96,19 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// validRequestMiddleware ensures http2 GET and POST requests.
-func validRequestMiddleware(next errHandleFunc) errHandleFunc {
+func http2Middleware(next errHandleFunc) errHandleFunc {
 	return func(w http.ResponseWriter, r *http.Request) error {
 		// Only allow http2 requests.
 		if !r.ProtoAtLeast(2, 0) {
 			return invalidRequestError{fmt.Errorf("Only http2 is supported")}
 		}
 
+		return next(w, r)
+	}
+}
+
+func getOrPOSTMiddleware(next errHandleFunc) errHandleFunc {
+	return func(w http.ResponseWriter, r *http.Request) error {
 		// Only allow GET or POST requests.
 		if !(r.Method == http.MethodPost || r.Method == http.MethodGet) {
 			return invalidRequestError{fmt.Errorf("Only GET or POST requests are supported")}
@@ -114,5 +120,10 @@ func validRequestMiddleware(next errHandleFunc) errHandleFunc {
 
 // middleware combines all necessary middlewares.
 func (h *Handler) middleware(next errHandleFunc) errHandleFunc {
-	return h.auther.Middleware(validRequestMiddleware(next))
+	r := h.auther.Middleware(getOrPOSTMiddleware(next))
+
+	if h.forceHTTP2 {
+		r = http2Middleware(r)
+	}
+	return r
 }

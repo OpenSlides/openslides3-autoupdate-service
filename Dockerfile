@@ -23,6 +23,8 @@ WORKDIR /root/
 # Copy the Pre-built binary file from the previous stage
 COPY --from=builder /root/autoupdate .
 
+ENV FORCE_HTTP2 yes
+
 EXPOSE 8002
 
 CMD ./autoupdate
