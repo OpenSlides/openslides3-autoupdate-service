@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"net/url"
 	"time"
 )
 
@@ -31,25 +30,21 @@ func New(workerAddr string) *Auth {
 	}
 }
 
-// Auth returns a user id for a given request.
-func (a *Auth) Auth(r *http.Request) (int, error) {
+func (a *Auth) whoami(r *http.Request) (int, error) {
 	ctx, close := context.WithTimeout(r.Context(), whoamITimeout)
 	defer close()
-	req := r.Clone(ctx)
-	req.Close = false
 
-	var err error
-	req.URL, err = url.Parse(a.addr + whoAmIPath)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, a.addr+whoAmIPath, nil)
 	if err != nil {
-		return 0, fmt.Errorf("build whoami url: %w", err)
+		return 0, fmt.Errorf("creating whoami request: %w", err)
 	}
 
-	req.Method = http.MethodGet
-	req.Body = nil
-	req.ContentLength = 0
+	// Write cookies from the original request to the whoami request.
+	for _, c := range r.Cookies() {
+		req.AddCookie(c)
+	}
 
-	// This is inspired by httputil.ReverseProxy
-	resp, err := http.DefaultTransport.RoundTrip(req)
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return 0, fmt.Errorf("send whoami request: %w", err)
 	}
@@ -78,7 +73,7 @@ func (a *Auth) Auth(r *http.Request) (int, error) {
 // Middleware adds the user id into the request.Context.
 func (a *Auth) Middleware(next func(w http.ResponseWriter, r *http.Request) error) func(w http.ResponseWriter, r *http.Request) error {
 	return func(w http.ResponseWriter, r *http.Request) error {
-		uid, err := a.Auth(r)
+		uid, err := a.whoami(r)
 		if err != nil {
 			return fmt.Errorf("authenticate request")
 		}

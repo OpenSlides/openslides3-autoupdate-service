@@ -1,12 +1,10 @@
-package auth_test
+package auth
 
 import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"testing"
-
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
 
 func TestAuth(t *testing.T) {
@@ -14,7 +12,7 @@ func TestAuth(t *testing.T) {
 	srv := httptest.NewServer(whoami)
 	defer srv.Close()
 
-	auth := auth.New(srv.URL)
+	auth := New(srv.URL)
 
 	for _, tt := range []struct {
 		name             string
@@ -55,7 +53,7 @@ func TestAuth(t *testing.T) {
 			"specific user",
 			func() *http.Request {
 				r, err := http.NewRequest("GET", "openslides.com/service/autoupdate", nil)
-				r.Header.Set("x-test-user", "1")
+				r.AddCookie(&http.Cookie{Name: "test-auth-cookie", Value: "1"})
 				if err != nil {
 					t.Fatalf("Can not create request: %v", err)
 				}
@@ -69,7 +67,7 @@ func TestAuth(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			whoami.anonymous = tt.anonymousEnabled
 
-			uid, err := auth.Auth(tt.request())
+			uid, err := auth.whoami(tt.request())
 			if tt.err {
 				if err == nil {
 					t.Errorf("Auth did not returned expected error")
@@ -93,9 +91,12 @@ type WhoAmIMock struct {
 }
 
 func (wai *WhoAmIMock) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	uid := r.Header.Get("x-test-user")
-	if uid == "" {
-		uid = "null"
+	uid := "null"
+
+	c, _ := r.Cookie("test-auth-cookie")
+
+	if c != nil {
+		uid = c.Value
 	}
 
 	anonymous := "false"
