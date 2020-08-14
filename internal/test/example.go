@@ -8,29 +8,30 @@ import (
 
 // RestrictedDataset is a used for a test.
 type RestrictedDataset struct {
-	Name     string
-	UID      int
-	Permer   *HasPermMock
-	Element  json.RawMessage
-	Expected json.RawMessage
+	Name       string
+	UID        int
+	Permer     *HasPermMock
+	Collection string
+	Element    json.RawMessage
+	Expected   json.RawMessage
 }
 
 // ExampleRestrictedData returns a list of Data for restricted data tests for an user.
-func ExampleRestrictedData(element string) []RestrictedDataset {
+func ExampleRestrictedData() []RestrictedDataset {
 	permers := permsForUser()
 	var dsl []RestrictedDataset
 	for uid, restrictedData := range exampleRestrictedData {
 		for elementID, elment := range exampleData {
-			if strings.HasPrefix(elementID, element+":") {
-				ds := RestrictedDataset{
-					Name:     fmt.Sprintf("User%d-Element-%s", uid, elementID),
-					UID:      uid,
-					Permer:   permers[uid],
-					Element:  elment,
-					Expected: restrictedData[elementID],
-				}
-				dsl = append(dsl, ds)
+			collection := elementID[:strings.Index(elementID, ":")]
+			ds := RestrictedDataset{
+				Name:       fmt.Sprintf("User%d-Element-%s", uid, elementID),
+				UID:        uid,
+				Collection: collection,
+				Permer:     permers[uid],
+				Element:    elment,
+				Expected:   restrictedData[elementID],
 			}
+			dsl = append(dsl, ds)
 		}
 	}
 	return dsl

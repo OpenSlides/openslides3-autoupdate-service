@@ -11,14 +11,8 @@ const (
 	pCanSee = "mediafiles.can_see"
 )
 
-type required interface {
-	restricter.HasPermer
-	IsSuperadmin(uid int) bool
-	InGroups(uid int, groups []int) bool
-}
-
 // Restrict restricts a mediafile object.
-func Restrict(r required) restricter.ElementFunc {
+func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 	return func(uid int, data json.RawMessage) (json.RawMessage, error) {
 		if !r.HasPerm(uid, pCanSee) {
 			return nil, nil

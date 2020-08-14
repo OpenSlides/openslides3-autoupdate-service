@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 	"text/template"
 )
 
@@ -36,9 +37,12 @@ func main() {
 }
 
 type export struct {
-	All           allData          `json:"all_data"`
-	Restricted    restricted       `json:"restricted_data"`
-	RequiredUsers map[string][]int `json:"required_users"`
+	All           allData    `json:"all_data"`
+	Restricted    restricted `json:"restricted_data"`
+	RequiredUsers map[string]struct {
+		IDs  []int  `json:"ids"`
+		Perm string `json:"perm"`
+	} `json:"required_users"`
 	//TODO projector
 }
 
@@ -110,6 +114,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 	},
 	{{- end}}
 }
+
+type permIDs struct{
+	perm string
+	ids  []int
+}
+
+var exampleRequiredUser = map[string]permIDs{
+	{{- range $key, $data := .ExampleRequiredUser}}
+	"{{$key}}": {
+		"{{$data.Perm}}",
+		[]int{ {{$data.IDs}} },
+	},
+	{{- end}}
+}
 `
 
 func writeData(e export) error {
@@ -141,10 +159,25 @@ func writeData(e export) error {
 		}
 	}
 
+	strRequiredUser := make(map[string]struct {
+		Perm string
+		IDs  string
+	}, len(e.RequiredUsers))
+	for k, data := range e.RequiredUsers {
+		strRequiredUser[k] = struct {
+			Perm string
+			IDs  string
+		}{
+			data.Perm,
+			intsToStr(data.IDs),
+		}
+	}
+
 	data := map[string]interface{}{
 		"Escape":                string(escape),
 		"ExampleData":           strExampleData,
 		"ExampleRestrictedData": strRestrictedData,
+		"ExampleRequiredUser":   strRequiredUser,
 	}
 
 	if err := t.Execute(replacer{w: f}, data); err != nil {
@@ -169,4 +202,12 @@ func (r replacer) Write(p []byte) (n int, err error) {
 		}
 	}
 	return r.w.Write(p)
+}
+
+func intsToStr(ints []int) string {
+	var s string
+	for _, i := range ints {
+		s += fmt.Sprintf("%d,", i)
+	}
+	return strings.TrimSuffix(s, ",")
 }

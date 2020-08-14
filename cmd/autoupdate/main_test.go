@@ -1,16 +1,16 @@
-package mediafile_test
+package main
 
 import (
 	"testing"
 
-	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/mediafile"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/test"
 )
 
-func TestRestrict(t *testing.T) {
-	for _, tt := range test.ExampleRestrictedData("mediafiles/mediafile") {
+func TestRestrictedData(t *testing.T) {
+	for _, tt := range test.ExampleRestrictedData() {
 		t.Run(tt.Name, func(t *testing.T) {
-			r := mediafile.Restrict(tt.Permer)
+			restricters := openslidesRestricters(tt.Permer)
+			r := restricters[tt.Collection]
 
 			got, err := r.Restrict(tt.UID, tt.Element)
 			if err != nil {

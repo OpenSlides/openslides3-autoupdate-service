@@ -17,4 +17,7 @@ type Element interface {
 // HasPermer tells if a user has a specivic perm.
 type HasPermer interface {
 	HasPerm(uid int, perm string) bool
+	IsSuperadmin(uid int) bool
+	InGroups(uid int, groups []int) bool
+	UserRequired(uid int) []string
 }

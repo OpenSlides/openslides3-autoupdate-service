@@ -38,3 +38,21 @@ func (h *HasPermMock) InGroups(_ int, groups []int) bool {
 	}
 	return false
 }
+
+// UserRequired returns nil
+func (h *HasPermMock) UserRequired(uid int) []string {
+	perms := make(map[string]bool)
+	for _, e := range exampleRequiredUser {
+		for _, id := range e.ids {
+			if id == uid {
+				perms[e.perm] = true
+			}
+		}
+	}
+
+	keys := make([]string, 0, len(perms))
+	for k := range perms {
+		keys = append(keys, k)
+	}
+	return keys
+}
