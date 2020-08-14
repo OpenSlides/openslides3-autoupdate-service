@@ -170,3 +170,4 @@ The service can be configured with the following environment variables:
 * `WORKER_HOST`: Host of the OpenSlides worker (Default: `localhost`).
 * `WORKER_PORT`: Port of the OpenSlides worker (Default: `8000`).
 * `WORKER_PROTOCOL`: Protocol of the OpenSlides worker (Default: `http`).
+* `FORCE_HTTP2`: Force the use of http2 (Default: not).

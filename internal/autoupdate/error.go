@@ -1,23 +1,11 @@
-package notify
-
-import "fmt"
-
-type authRequiredError struct{}
-
-func (e authRequiredError) Error() string {
-	return "Only authenticated users can use the notify system."
-}
-
-func (e authRequiredError) ClientError() string {
-	return "auth_required"
-}
+package autoupdate
 
 type invalidRequestError struct {
-	err error
+	msg string
 }
 
 func (e invalidRequestError) Error() string {
-	return fmt.Sprintf("The request body is invalid: %v", e.err)
+	return e.msg
 }
 
 func (e invalidRequestError) ClientError() string {

@@ -10,5 +10,5 @@
 * Remove cyrcular dependency between projector-slides and datastore.
 
 
-* Delete TODO.md and KONZEPT.md
+* Delete TODO.md
 * Use a release of ostcar/topic

@@ -125,7 +125,7 @@ func (p *projectors) update(data map[string]json.RawMessage) error {
 		}
 
 		p.projectors[id] = rendered
-		changed = append(changed, string(id))
+		changed = append(changed, string(rune(id)))
 	}
 
 	if len(changed) == 0 {

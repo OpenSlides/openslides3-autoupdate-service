@@ -59,39 +59,42 @@ func main() {
 	restricter := restricter.New(ds, osRestricters)
 	auth := auth.New(workerAddr)
 
-	service, err := autoupdate.New(ds, restricter, closed)
+	a, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	notifyService := notify.New(redisConn, auth, closed)
+	n := notify.New(redisConn, closed)
 
-	handler := autoupdatehttp.New(service, auth, notifyService)
+	var forceHTTP bool
+	if getEnv("FORCE_HTTP2", "") != "" {
+		forceHTTP = true
+	}
+
+	handler := autoupdatehttp.New(auth, autoupdatehttp.WithForceHTTP2(forceHTTP), autoupdatehttp.WithAutoupdate(a), autoupdatehttp.WithNotify(n))
 
 	// Create tls http2 server.
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
-	srv := &http.Server{Addr: listenAddr, Handler: handler}
-	// ln, err := tlsListener(listenAddr)
-	// if err != nil {
-	// 	log.Fatalf("Can not create tls listener: %v", err)
-	// }
-	// defer ln.Close()
-
-	defer func() {
-		close(closed)
-		if err := srv.Shutdown(context.Background()); err != nil {
-			log.Printf("Error on HTTP server shutdown: %v", err)
-		}
-	}()
+	srv := &http.Server{Handler: handler}
+	ln, err := tlsListener(listenAddr)
+	if err != nil {
+		log.Fatalf("Can not create tls listener: %v", err)
+	}
+	defer ln.Close()
 
 	go func() {
 		fmt.Printf("Listen on %s\n", listenAddr)
-		if err := srv.ListenAndServe(); err != nil {
+		if err := srv.Serve(ln); err != http.ErrServerClosed {
 			log.Fatalf("HTTP Server failed: %v", err)
 		}
 	}()
 
 	waitForShutdown()
+
+	close(closed)
+	if err := srv.Shutdown(context.Background()); err != nil {
+		log.Printf("Error on HTTP server shutdown: %v", err)
+	}
 }
 
 // waitForShutdown blocks until the service exists.

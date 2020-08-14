@@ -1,4 +1,4 @@
-FROM golang:1.14.6-alpine3.12 as builder
+FROM golang:1.15.0-alpine3.12 as builder
 LABEL maintainer="OpenSlides Team <info@openslides.com>"
 WORKDIR /root/
 
@@ -22,6 +22,8 @@ WORKDIR /root/
 
 # Copy the Pre-built binary file from the previous stage
 COPY --from=builder /root/autoupdate .
+
+ENV FORCE_HTTP2 yes
 
 EXPOSE 8002
 
