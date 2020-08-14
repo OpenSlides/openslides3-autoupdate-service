@@ -66,7 +66,12 @@ func main() {
 
 	n := notify.New(redisConn, closed)
 
-	handler := autoupdatehttp.New(auth, autoupdatehttp.WithAutoupdate(a), autoupdatehttp.WithNotify(n))
+	var forceHTTP bool
+	if getEnv("FORCE_HTTP2", "") != "" {
+		forceHTTP = true
+	}
+
+	handler := autoupdatehttp.New(auth, autoupdatehttp.WithForceHTTP2(forceHTTP), autoupdatehttp.WithAutoupdate(a), autoupdatehttp.WithNotify(n))
 
 	// Create tls http2 server.
 	srv := &http.Server{Handler: handler}

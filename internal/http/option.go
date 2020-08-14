@@ -8,6 +8,13 @@ import (
 // Option for http.New()
 type Option func(*Handler)
 
+// WithForceHTTP2 force http2.
+func WithForceHTTP2(force bool) Option {
+	return func(h *Handler) {
+		h.forceHTTP2 = force
+	}
+}
+
 // WithAutoupdate adds routes for the autoupdate package.
 func WithAutoupdate(a *autoupdate.Autoupdate) Option {
 	return func(h *Handler) {
