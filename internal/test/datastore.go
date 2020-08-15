@@ -135,7 +135,7 @@ func (d *DatastoreMock) Projectors(ctx context.Context, tid uint64) (uint64, map
 }
 
 // ConfigValue sets v to the value of config value key.
-func (d *DatastoreMock) ConfigValue(key string, v interface{}) error {
+func (d *DatastoreMock) ConfigValue(key string, value interface{}) error {
 	for k, v := range d.FullData {
 		parts := strings.Split(k, ":")
 		if len(parts) != 2 {
@@ -162,7 +162,7 @@ func (d *DatastoreMock) ConfigValue(key string, v interface{}) error {
 			continue
 		}
 
-		return json.Unmarshal(decoded.Value, &v)
+		return json.Unmarshal(decoded.Value, value)
 	}
 	return nil
 }

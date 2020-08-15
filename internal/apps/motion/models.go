@@ -28,8 +28,8 @@ type motion struct {
 
 type amendment struct {
 	Title            json.RawMessage       `json:"title"`
-	Identifier       json.RawMessage       `tag:"identifier"`
-	Paragraphs       json.RawMessage       `tag:"amendment_paragraphs"`
+	Identifier       json.RawMessage       `json:"identifier"`
+	Paragraphs       json.RawMessage       `json:"amendment_paragraphs"`
 	StateID          projector.OptionalInt `json:"state_id"`
 	RecommendationID projector.OptionalInt `json:"recommendation_id"`
 }

@@ -81,7 +81,7 @@ func ExampleProjector() []ProjectorDataset {
 		json.Unmarshal(data.Element, &element)
 
 		pd := ProjectorDataset{
-			Name:        fmt.Sprintf("Dataset%d", i),
+			Name:        fmt.Sprintf("Dataset%d-%s", i, element.Name),
 			Element:     data.Element,
 			ElementName: element.Name,
 			Expected:    data.Data,

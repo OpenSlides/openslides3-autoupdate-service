@@ -52,7 +52,7 @@ func Slide() projector.CallableFunc {
 			"title":                    assignment.Title,
 			"phase":                    assignment.Phase,
 			"open_posts":               assignment.OpenPosts,
-			"desciption":               assignment.Description,
+			"description":              assignment.Description,
 			"assignment_related_users": dru,
 			"number_poll_candidates":   assignment.PullCandidates,
 		}
@@ -131,7 +131,9 @@ func PollSlide() projector.CallableFunc {
 			}
 
 			data := map[string]interface{}{
-				"user": username,
+				"user": map[string]string{
+					"short_name": username,
+				},
 			}
 			if pollState == poll.StatePublished {
 				yes, err := strconv.ParseFloat(option.Yes, 32)
