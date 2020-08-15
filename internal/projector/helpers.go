@@ -44,6 +44,7 @@ func (o *OptionalInt) UnmarshalJSON(b []byte) error {
 		return nil
 	}
 
+	o.exist = true
 	return json.Unmarshal(b, &o.value)
 }
 

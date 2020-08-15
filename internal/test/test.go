@@ -57,6 +57,14 @@ func ExpectEqualJSON(t *testing.T, a, b []byte) {
 		t.Fatalf("b is invalid json: %v", err)
 	}
 	if !reflect.DeepEqual(aenc, benc) {
-		t.Errorf("json not equal: %s\n %s", a, b)
+		ap, err := json.MarshalIndent(aenc, "", "  ")
+		if err != nil {
+			t.Fatalf("remarshalling a: %v", err)
+		}
+		bp, err := json.MarshalIndent(benc, "", "  ")
+		if err != nil {
+			t.Fatalf("remarshalling b: %v", err)
+		}
+		t.Errorf("json not equal: %s\n %s", ap, bp)
 	}
 }

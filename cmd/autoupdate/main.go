@@ -196,7 +196,7 @@ func openslidesRequiredUsers() map[string]func(json.RawMessage) ([]int, string, 
 	}
 }
 
-func openslidesRestricters(ds *datastore.Datastore) map[string]restricter.Element {
+func openslidesRestricters(ds restricter.HasPermer) map[string]restricter.Element {
 	basePerm := restricter.BasePermission(ds)
 	return map[string]restricter.Element{
 		"agenda/item":             agenda.Restrict(ds),
