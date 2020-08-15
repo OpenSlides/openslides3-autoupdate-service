@@ -98,8 +98,8 @@ func Slide() projector.CallableFunc {
 		}
 		out["base_motion"] = baseMotion
 
-		var changeRecommendations json.RawMessage
-		var amendments json.RawMessage
+		var changeRecommendations json.RawMessage = []byte("[]")
+		var amendments json.RawMessage = []byte("[]")
 		if isNull(m.StatuteParagraphID) && !(!isNull(m.ParentID) && !isNull(m.AmendmentParagraphs)) {
 			lChangeRecommendations := make([]json.RawMessage, 0)
 			for _, id := range m.ChangeRecommendationIDs {
@@ -152,7 +152,7 @@ func Slide() projector.CallableFunc {
 
 				out := struct {
 					ID         int             `json:"id"`
-					Identifier json.RawMessage `json:"identifer"`
+					Identifier json.RawMessage `json:"identifier"`
 					Title      json.RawMessage `json:"title"`
 					Paragraphs json.RawMessage `json:"amendment_paragraphs"`
 					IntoDiff   int             `json:"merge_amendment_into_diff"`
@@ -194,7 +194,7 @@ func Slide() projector.CallableFunc {
 		if err := ds.ConfigValue("motions_disable_sidebox_on_projector", &buf); err != nil {
 			return nil, fmt.Errorf("getting motions_disable_sidebox_on_projector: %w", err)
 		}
-		out["show_meta_box"] = buf
+		out["show_meta_box"] = jsonNot(buf)
 
 		buf = buf[0:0:0]
 		if err := ds.ConfigValue("motions_line_length", &buf); err != nil {
@@ -270,6 +270,7 @@ func Slide() projector.CallableFunc {
 			if isNull(m.StatuteParagraphID) {
 				recommenderConfig = "motions_recommendations_by"
 			}
+			buf = buf[0:0:0]
 			if err := ds.ConfigValue(recommenderConfig, &buf); err != nil {
 				return nil, fmt.Errorf("getting %s: %w", recommenderConfig, err)
 			}
@@ -435,4 +436,16 @@ func mergedIntoFinal(ds projector.Datastore, a amendment) (int, error) {
 
 func isNull(b []byte) bool {
 	return bytes.Equal(b, []byte("null"))
+}
+
+func jsonNot(v json.RawMessage) json.RawMessage {
+	t := []byte("true")
+	f := []byte("false")
+	if bytes.Equal(v, t) {
+		return f
+	}
+	if bytes.Equal(v, f) {
+		return t
+	}
+	return v
 }

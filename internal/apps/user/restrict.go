@@ -7,33 +7,29 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
-type required interface {
-	restricter.HasPermer
-	UserRequired(uid int) []string
-}
-
 // Restrict handels restrictions of users/user elements.
-func Restrict(r required) restricter.ElementFunc {
+func Restrict(r restricter.HasPermer) restricter.ElementFunc {
+	littleDataFields := []string{
+		"id",
+		"username",
+		"title",
+		"first_name",
+		"last_name",
+		"structure_level",
+		"number",
+		"about_me",
+		"groups_id",
+		"is_present",
+		"is_committee",
+		"vote_weight",
+		"gender",
+	}
+
+	manyDataFields := append(littleDataFields, "email", "last_email_send", "comment", "is_active", "auth_type")
+	allDataFields := append(manyDataFields, "default_password")
+	ownDataFields := append(littleDataFields, "email")
+
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
-		littleDataFields := []string{
-			"id",
-			"username",
-			"title",
-			"first_name",
-			"last_name",
-			"structure_level",
-			"number",
-			"about_me",
-			"groups_id",
-			"is_present",
-			"is_committee",
-			"vote_weight",
-		}
-
-		manyDataFields := append(littleDataFields, "gender", "email", "last_email_send", "comment", "is_active", "auth_type")
-		allDataFields := append(manyDataFields, "default_password")
-		ownDataFields := append(littleDataFields, "email", "gender")
-
 		var user struct {
 			ID int `json:"id"`
 		}

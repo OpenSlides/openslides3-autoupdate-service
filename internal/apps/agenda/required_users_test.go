@@ -36,7 +36,7 @@ func TestRequiredUsersListOfSpeakers(t *testing.T) {
 	if len(ids) != 1 || ids[0] != 1 {
 		t.Errorf("RequiredSpeakers retunred %v, expected [1]", ids)
 	}
-	if perm != "agenda.can_see_internal_items" {
-		t.Errorf("RequiredSpeakers retuned perm %s, expected agenda.can_see_internal_items", perm)
+	if perm != "agenda.can_see_list_of_speakers" {
+		t.Errorf("RequiredSpeakers retuned perm %s, expected agenda.can_see_list_of_speakers", perm)
 	}
 }
