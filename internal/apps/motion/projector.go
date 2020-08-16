@@ -34,11 +34,16 @@ func Slide() projector.CallableFunc {
 			return nil, fmt.Errorf("get motion submitters: %w", err)
 		}
 
-		isChild := jsonBool(isNull(m.ParentID))
+		isChild := jsonBool(!isNull(m.ParentID))
 
 		baseStatute, err := slideBaseStatute(ds, &m)
 		if err != nil {
 			return nil, fmt.Errorf("get motion base statute: %w", err)
+		}
+
+		baseMotion, err := slideBaseMotion(ds, &m)
+		if err != nil {
+			return nil, fmt.Errorf("get base motion: %w", err)
 		}
 
 		changeRecommendations, err := slideChangeRecommendations(ds, &m)
@@ -83,7 +88,8 @@ func Slide() projector.CallableFunc {
 			"amendment_paragraphs":   m.AmendmentParagraphs,
 			"submitters":             submitters,
 			"is_child":               isChild,
-			"base_motion":            baseStatute,
+			"base_statute":           baseStatute,
+			"base_motion":            baseMotion,
 			"change_recommendations": changeRecommendations,
 			"amendments":             amendments,
 			"show_meta_box":          showMetaBox,
@@ -263,6 +269,32 @@ func slideBaseStatute(ds projector.Datastore, m *motion) (json.RawMessage, error
 	return b, nil
 }
 
+func slideBaseMotion(ds projector.Datastore, m *motion) (json.RawMessage, error) {
+	if !isNull(m.StatuteParagraphID) || isNull(m.ParentID) || isNull(m.AmendmentParagraphs) {
+		return []byte("null"), nil
+	}
+
+	var pid int
+	if err := json.Unmarshal(m.ParentID, &pid); err != nil {
+		return nil, fmt.Errorf("decoding parent id: %w", err)
+	}
+
+	var parent struct {
+		Identifier json.RawMessage `json:"identifier"`
+		Title      json.RawMessage `json:"title"`
+		Text       json.RawMessage `json:"text"`
+	}
+	if err := ds.Get("motions/motion", pid, &parent); err != nil {
+		return nil, fmt.Errorf("getting parent motion: %w", err)
+	}
+	b, err := json.Marshal(parent)
+	if err != nil {
+		return nil, fmt.Errorf("decoding parent: %w", err)
+	}
+	return b, nil
+
+}
+
 func slideChangeRecommendations(ds projector.Datastore, m *motion) (json.RawMessage, error) {
 	if !isNull(m.StatuteParagraphID) || (!isNull(m.ParentID) && !isNull(m.AmendmentParagraphs)) {
 		return []byte("[]"), nil
@@ -380,12 +412,12 @@ func slideShowReason(ds projector.Datastore, m *motion) (bool, error) {
 }
 
 func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMessage, error) {
-	var b bool
-	if err := ds.ConfigValue("motions_hide_referring_motions", &b); err != nil {
+	var hideRMotion bool
+	if err := ds.ConfigValue("motions_hide_referring_motions", &hideRMotion); err != nil {
 		return false, nil, fmt.Errorf("getting motions_hide_referring_motions: %w", err)
 	}
 
-	if b {
+	if hideRMotion {
 		return false, nil, nil
 	}
 

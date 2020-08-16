@@ -77,6 +77,10 @@ func TestProjector(t *testing.T) {
 				t.Skip()
 			}
 
+			if tt.Name != "Dataset2-motions/motion" {
+				return
+			}
+
 			c, ok := callabes[tt.ElementName]
 			if !ok {
 				t.Fatalf("No callable for Element `%s`", tt.ElementName)
