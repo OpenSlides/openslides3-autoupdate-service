@@ -1,6 +1,5 @@
 * Projector
  * Motion
-  * Cleanup motion slide
   * Motion block
   * motion poll
  * Test creation and deletion of projectors
