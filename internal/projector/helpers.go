@@ -55,3 +55,43 @@ func (o *OptionalInt) MarshalJSON() ([]byte, error) {
 	}
 	return json.Marshal(o.value)
 }
+
+// OptionalStr is a type that can be null or an string.
+type OptionalStr struct {
+	value string
+	exist bool
+}
+
+// NewOptionalStr returns an OptionalStr from a golang string.
+func NewOptionalStr(s string) *OptionalStr {
+	return &OptionalStr{value: s, exist: true}
+}
+
+// Value returns the value of the type. Returns "" if it does not exist.
+func (o *OptionalStr) Value() string {
+	return o.value
+}
+
+// Null returns true, if, the value does not exist.
+func (o *OptionalStr) Null() bool {
+	return !o.exist
+}
+
+// UnmarshalJSON builds this type from json.
+func (o *OptionalStr) UnmarshalJSON(b []byte) error {
+	if bytes.Equal(b, []byte(`null`)) {
+		o.exist = false
+		return nil
+	}
+
+	o.exist = true
+	return json.Unmarshal(b, &o.value)
+}
+
+// MarshalJSON decodes the type to json.
+func (o *OptionalStr) MarshalJSON() ([]byte, error) {
+	if o.Null() {
+		return []byte(`null`), nil
+	}
+	return json.Marshal(o.value)
+}
