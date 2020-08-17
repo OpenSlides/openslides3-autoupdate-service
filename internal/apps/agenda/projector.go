@@ -12,9 +12,9 @@ import (
 )
 
 type treeInfo struct {
-	TitleInformation map[string]string `json:"title_information"`
-	Collection       string            `json:"collection"`
-	Depth            int               `json:"depth"`
+	TitleInformation map[string]*projector.OptionalStr `json:"title_information"`
+	Collection       string                            `json:"collection"`
+	Depth            int                               `json:"depth"`
 }
 
 // ItemListSlide renders a list of items.
@@ -49,7 +49,7 @@ func ItemListSlide() projector.CallableFunc {
 					continue
 				}
 				titleInformation := item.TitleInformation
-				titleInformation["_agenda_item_number"] = item.ItemNumber
+				titleInformation["_agenda_item_number"] = projector.NewOptionalStr(item.ItemNumber)
 				agendaItems = append(agendaItems, treeInfo{
 					TitleInformation: titleInformation,
 					Collection:       item.ContentObject.Collection,
@@ -102,7 +102,7 @@ func getFlatTree(agendaItems map[int]agendaItem, parentID int) ([]treeInfo, erro
 		for _, itemID := range itemIDs {
 			item := agendaItems[itemID]
 			titleInformation := item.TitleInformation
-			titleInformation["_agenda_item_number"] = item.ItemNumber
+			titleInformation["_agenda_item_number"] = projector.NewOptionalStr(item.ItemNumber)
 			tree = append(tree, treeInfo{
 				TitleInformation: titleInformation,
 				Collection:       item.ContentObject.Collection,
@@ -141,13 +141,13 @@ func ListOfSpeakersSlide() projector.CallableFunc {
 }
 
 type formattedSpeaker struct {
-	User    string          `json:"user"`
-	Marked  json.RawMessage `json:"marked"`
-	Weight  int             `json:"weight"`
-	EndTime json.RawMessage `json:"end_time"`
+	User    string                 `json:"user"`
+	Marked  json.RawMessage        `json:"marked"`
+	Weight  *projector.OptionalInt `json:"weight"`
+	EndTime json.RawMessage        `json:"end_time"`
 }
 
-func titleInformation(ds projector.Datastore, los listOfSpeakers) (map[string]string, error) {
+func titleInformation(ds projector.Datastore, los listOfSpeakers) (map[string]*projector.OptionalStr, error) {
 	titleInformation := los.TitleInformation
 	var contentObject struct {
 		AgendaItemID int `json:"agenda_item_id"`
@@ -177,7 +177,7 @@ func titleInformation(ds projector.Datastore, los listOfSpeakers) (map[string]st
 		}
 		return nil, fmt.Errorf("getting content object: %w", err)
 	}
-	titleInformation["_agenda_item_number"] = item.Number
+	titleInformation["_agenda_item_number"] = projector.NewOptionalStr(item.Number)
 	return titleInformation, nil
 }
 
@@ -187,7 +187,7 @@ func listOfSpeakerSlideData(ds projector.Datastore, los listOfSpeakers) (json.Ra
 		return nil, fmt.Errorf("loading agenda_show_last_speakers: %w", err)
 	}
 
-	var speakersWaiting []formattedSpeaker
+	var speakersWaiting []formattedSpeaker = make([]formattedSpeaker, 0)
 	var speakersFinished []formattedSpeaker
 	var currentSpeaker *formattedSpeaker
 	for _, speaker := range los.Speakers {
@@ -218,12 +218,12 @@ func listOfSpeakerSlideData(ds projector.Datastore, los listOfSpeakers) (json.Ra
 	}
 
 	sort.Slice(speakersWaiting, func(i, j int) bool {
-		return speakersWaiting[i].Weight < speakersWaiting[j].Weight
+		return speakersWaiting[i].Weight.Value() < speakersWaiting[j].Weight.Value()
 	})
 
 	if showLastSpeakers > 0 {
 		sort.Slice(speakersFinished, func(i, j int) bool {
-			return speakersFinished[i].Weight < speakersFinished[j].Weight
+			return speakersFinished[i].Weight.Value() < speakersFinished[j].Weight.Value()
 		})
 
 		l := len(speakersFinished) - showLastSpeakers
@@ -251,12 +251,12 @@ func listOfSpeakerSlideData(ds projector.Datastore, los listOfSpeakers) (json.Ra
 	}
 
 	out := struct {
-		Waiting                 []formattedSpeaker `json:"waiting"`
-		Current                 *formattedSpeaker  `json:"current"`
-		Finished                []formattedSpeaker `json:"finished"`
-		ContentObjectCollection string             `json:"content_object_collection"`
-		TitleInformation        map[string]string  `json:"title_information"`
-		Closed                  json.RawMessage    `json:"closed"`
+		Waiting                 []formattedSpeaker                `json:"waiting"`
+		Current                 *formattedSpeaker                 `json:"current"`
+		Finished                []formattedSpeaker                `json:"finished"`
+		ContentObjectCollection string                            `json:"content_object_collection"`
+		TitleInformation        map[string]*projector.OptionalStr `json:"title_information"`
+		Closed                  json.RawMessage                   `json:"closed"`
 	}{
 		speakersWaiting,
 		currentSpeaker,
