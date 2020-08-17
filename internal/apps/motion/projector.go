@@ -129,6 +129,10 @@ func Slide() projector.CallableFunc {
 			out["reason"] = m.Reason
 		}
 
+		if err := slideRecommendation(out, ds, &m); err != nil {
+			return nil, fmt.Errorf("get recommendation: %w", err)
+		}
+
 		encoded, err := json.Marshal(out)
 		if err != nil {
 			return nil, fmt.Errorf("encode motion data: %w", err)
@@ -423,19 +427,19 @@ func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMes
 
 	var v []json.RawMessage
 	for _, rm := range ds.GetCollection("motions/motion") {
-		var m motion
-		if err := json.Unmarshal(rm, &m); err != nil {
+		var im motion
+		if err := json.Unmarshal(rm, &im); err != nil {
 			return false, nil, fmt.Errorf("decoding motion: %w", err)
 		}
 
-		if m.RecommendationID.Null() || isNull(m.RecommendationExtension) {
+		if im.RecommendationID.Null() || isNull(im.RecommendationExtension) {
 			continue
 		}
 
 		var state struct {
 			ShowExtension bool `json:"show_recommendation_extension_field"`
 		}
-		if err := ds.Get("motions/state", m.RecommendationID.Value(), &state); err != nil {
+		if err := ds.Get("motions/state", im.RecommendationID.Value(), &state); err != nil {
 			// TODO: if state does not exist, better error message.
 			return false, nil, fmt.Errorf("getting state: %w", err)
 		}
@@ -445,7 +449,7 @@ func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMes
 
 		r := regexp.MustCompile(`\[motion:(\d+)\]`)
 		ids := make(map[int]bool)
-		for _, match := range r.FindAllSubmatch(m.RecommendationExtension, -1) {
+		for _, match := range r.FindAllSubmatch(im.RecommendationExtension, -1) {
 			id, err := strconv.Atoi(string(match[1]))
 			if err != nil {
 				return false, nil, fmt.Errorf("invalid id: %w", err)
@@ -458,8 +462,8 @@ func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMes
 				Title      json.RawMessage `json:"title"`
 				Identifier json.RawMessage `json:"identifier"`
 			}{
-				m.Title,
-				m.Identifier,
+				im.Title,
+				im.Identifier,
 			}
 
 			b, err := json.Marshal(out)
