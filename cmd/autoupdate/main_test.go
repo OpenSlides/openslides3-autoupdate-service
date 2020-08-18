@@ -67,6 +67,7 @@ func TestProjector(t *testing.T) {
 	defer close(closed)
 	callabes := openslidesProjectorCallables()
 	ds := test.NewDatastoreMock(0, closed)
+	ds.FullData = test.ExampleData()
 
 	todoList := map[string]bool{
 		"motions/motion-poll": true,

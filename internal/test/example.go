@@ -6,6 +6,15 @@ import (
 	"strings"
 )
 
+// ExampleData returns a full database with example data.
+func ExampleData() map[string]json.RawMessage {
+	fdCopy := make(map[string]json.RawMessage, len(exampleData))
+	for k, v := range exampleData {
+		fdCopy[k] = v
+	}
+	return fdCopy
+}
+
 // RestrictedDataset is a used for a test.
 type RestrictedDataset struct {
 	Name       string

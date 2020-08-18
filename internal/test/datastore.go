@@ -24,13 +24,8 @@ type DatastoreMock struct {
 func NewDatastoreMock(startID int, closed <-chan struct{}) *DatastoreMock {
 	changes := make(chan []string, 1)
 
-	fdCopy := make(map[string]json.RawMessage, len(exampleData))
-	for k, v := range exampleData {
-		fdCopy[k] = v
-	}
-
 	d := &DatastoreMock{
-		FullData:    fdCopy,
+		FullData:    make(map[string]json.RawMessage),
 		changes:     changes,
 		minChangeID: startID,
 		maxChangeID: startID,
