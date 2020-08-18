@@ -5861,116 +5861,116 @@
       ],
       "users/user": [
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
-          "email": "",
-          "username": "a",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "a",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": true,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "vote_weight": "1.000000",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
+          "title": "",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
+          "title": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
           "first_name": "candidate1",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         },
         {
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         },
         {
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }
       ],
       "users/group": [
@@ -6088,103 +6088,103 @@
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }
       ],
       "agenda/list-of-speakers": [
@@ -9299,116 +9299,116 @@
       ],
       "users/user": [
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
-          "email": "",
-          "username": "b",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "b",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": true,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
+          "vote_weight": "1.000000",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
+          "title": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
           "first_name": "candidate1",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         },
         {
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         },
         {
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }
       ],
       "users/group": [
@@ -9513,103 +9513,103 @@
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }
       ],
       "agenda/list-of-speakers": [
@@ -12666,116 +12666,116 @@
       ],
       "users/user": [
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
+          "title": "",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
-          "email": "",
-          "username": "candidate1",
           "first_name": "candidate1",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "candidate1",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": false,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
+          "vote_weight": "1.000000",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         },
         {
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         },
         {
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }
       ],
       "users/group": [
@@ -12880,103 +12880,103 @@
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }
       ],
       "agenda/list-of-speakers": [
@@ -15990,116 +15990,116 @@
       ],
       "users/user": [
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
+          "title": "",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
+          "title": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
           "first_name": "candidate1",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
-          "email": "",
-          "username": "candidate2",
           "first_name": "candidate2",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "candidate2",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": false,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "vote_weight": "1.000000",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         },
         {
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         },
         {
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }
       ],
       "users/group": [
@@ -16204,103 +16204,103 @@
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }
       ],
       "agenda/list-of-speakers": [
@@ -19314,131 +19314,131 @@
       ],
       "users/user": [
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
+          "title": "",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
+          "title": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
           "first_name": "candidate1",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 8,
-          "email": "",
-          "username": "not required",
           "first_name": "not required",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "not required",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
-        },
-        {
+          "is_present": true,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
           "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
+          "id": 8,
           "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "Administrator",
+          "groups_id": [],
+          "username": "speaker2",
+          "title": "",
+          "is_present": true,
+          "vote_weight": "1.000000",
           "about_me": "",
+          "number": "",
           "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
+        },
+        {
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         },
         {
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }
       ],
       "users/group": [
@@ -19543,103 +19543,103 @@
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }
       ],
       "agenda/list-of-speakers": [
@@ -22653,116 +22653,116 @@
       ],
       "users/user": [
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
+          "title": "",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
+          "title": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
           "first_name": "candidate1",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
-        },
-        {
+          "gender": "",
+          "structure_level": "",
           "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "email": "",
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         },
         {
-          "last_name": "Administrator",
+          "groups_id": [],
+          "first_name": "speaker2",
+          "username": "speaker2",
+          "title": "",
+          "is_present": true,
           "about_me": "",
+          "number": "",
+          "email": "",
           "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "vote_weight": "1.000000",
+          "is_committee": false
+        },
+        {
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         },
         {
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }
       ],
       "users/group": [
@@ -22867,103 +22867,103 @@
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }
       ],
       "agenda/list-of-speakers": [
@@ -25977,178 +25977,178 @@
       ],
       "users/user": [
         {
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "a",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [
-            3
-          ],
-          "id": 4,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "a",
+          "number": "",
+          "comment": "",
+          "default_password": "a",
+          "id": 4,
+          "first_name": "a",
+          "email": "",
           "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
           "about_me": "",
           "auth_type": "default",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false
-        },
-        {
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "b",
-          "title": "",
-          "structure_level": "",
           "last_name": "",
+          "last_email_send": null,
           "groups_id": [
             3
           ],
-          "id": 5,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
+          "title": "",
+          "gender": "",
+          "structure_level": ""
+        },
+        {
           "username": "b",
-          "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
+          "number": "",
+          "comment": "",
+          "default_password": "b",
+          "id": 5,
           "first_name": "b",
-          "number": "",
-          "is_committee": false
+          "email": "",
+          "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
+          "about_me": "",
+          "auth_type": "default",
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [
+            3
+          ],
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         },
         {
-          "gender": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "default_password": "8NpbvXCBDr",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 2,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "candidate1",
-          "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
+          "number": "",
+          "comment": "",
+          "default_password": "8NpbvXCBDr",
+          "id": 2,
           "first_name": "candidate1",
-          "number": "",
-          "is_committee": false
+          "email": "",
+          "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": false,
+          "about_me": "",
+          "auth_type": "default",
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         },
         {
-          "gender": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "default_password": "5YLEHrUUTG",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 3,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "candidate2",
-          "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
+          "number": "",
+          "comment": "",
+          "default_password": "5YLEHrUUTG",
+          "id": 3,
           "first_name": "candidate2",
-          "number": "",
-          "is_committee": false
-        },
-        {
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "hq59FcgwLc",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 8,
           "email": "",
-          "comment": "",
-          "last_email_send": null,
-          "username": "not required",
           "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
-          "first_name": "not required",
-          "number": "",
-          "is_committee": false
-        },
-        {
-          "gender": "",
-          "is_present": true,
           "vote_weight": "1.000000",
-          "default_password": "5HZr2zPM3x",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 7,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
-          "username": "speaker2",
-          "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
-          "first_name": "speaker2",
-          "number": "",
-          "is_committee": false
-        },
-        {
-          "gender": "",
+          "is_committee": false,
           "is_present": false,
-          "vote_weight": "1.000000",
-          "default_password": "admin",
+          "about_me": "",
+          "auth_type": "default",
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [],
           "title": "",
-          "structure_level": "",
+          "gender": "",
+          "structure_level": ""
+        },
+        {
+          "username": "not required",
+          "number": "",
+          "comment": "",
+          "default_password": "hq59FcgwLc",
+          "id": 8,
+          "first_name": "not required",
+          "email": "",
+          "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
+          "about_me": "",
+          "auth_type": "default",
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "",
+          "gender": "",
+          "structure_level": ""
+        },
+        {
+          "username": "speaker2",
+          "number": "",
+          "comment": "",
+          "default_password": "5HZr2zPM3x",
+          "id": 7,
+          "first_name": "speaker2",
+          "email": "",
+          "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
+          "about_me": "",
+          "auth_type": "default",
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "",
+          "gender": "",
+          "structure_level": ""
+        },
+        {
+          "username": "admin",
+          "number": "",
+          "comment": "",
+          "default_password": "admin",
+          "id": 1,
+          "first_name": "",
+          "email": "",
+          "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": false,
+          "about_me": "",
+          "auth_type": "default",
           "last_name": "Administrator",
+          "last_email_send": null,
           "groups_id": [
             2
           ],
-          "id": 1,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
-          "username": "admin",
-          "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
-          "first_name": "",
-          "number": "",
-          "is_committee": false
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         },
         {
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "ZdbyxFDWpp",
-          "title": "title",
-          "structure_level": "layer X",
-          "last_name": "the last name",
-          "groups_id": [],
-          "id": 6,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "speaker1",
+          "number": "3",
+          "comment": "",
+          "default_password": "ZdbyxFDWpp",
+          "id": 6,
+          "first_name": "speaker1",
+          "email": "",
           "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
           "about_me": "",
           "auth_type": "default",
-          "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false
+          "last_name": "the last name",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "title",
+          "gender": "",
+          "structure_level": "layer X"
         }
       ],
       "users/group": [
@@ -29650,116 +29650,116 @@
       ],
       "users/user": [
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
+          "title": "",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
+          "title": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "about_me": "",
+          "number": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
           "first_name": "candidate1",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         },
         {
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         },
         {
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         },
         {
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
-          "email": "",
-          "username": "speaker1",
           "first_name": "speaker1",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "3",
+          "username": "speaker1",
           "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "is_present": true,
+          "about_me": "",
+          "number": "3",
+          "email": "",
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "vote_weight": "1.000000",
+          "is_committee": false
         }
       ],
       "users/group": [
@@ -29864,103 +29864,103 @@
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         },
         {
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }
       ],
       "agenda/list-of-speakers": [
@@ -30923,6 +30923,29 @@
   "projectors": [
     {
       "data": {
+        "error": "unknwown slide None"
+      },
+      "element": {}
+    },
+    {
+      "data": {
+        "error": "unknwown slide unknown"
+      },
+      "element": {
+        "name": "unknown"
+      }
+    },
+    {
+      "data": {
+        "error": "unknwown slide None"
+      },
+      "element": {
+        "name": [],
+        "id": 2
+      }
+    },
+    {
+      "data": {
         "items": [
           {
             "title_information": {
@@ -30955,6 +30978,13 @@
       "element": {
         "name": "agenda/item-list",
         "only_main_items": false
+      }
+    },
+    {
+      "data": {},
+      "element": {
+        "name": "core/clock",
+        "stable": true
       }
     },
     {
@@ -30989,6 +31019,32 @@
     },
     {
       "data": {
+        "error": "id is required for motions/motion-block slide"
+      },
+      "element": {
+        "name": "motions/motion-block"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion-block with id a string does not exist"
+      },
+      "element": {
+        "name": "motions/motion-block",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion-block with id 1337 does not exist"
+      },
+      "element": {
+        "name": "motions/motion-block",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "title": "block internal",
         "motions": [
           {
@@ -31005,11 +31061,63 @@
     },
     {
       "data": {
+        "error": "id is required for motions/motion-block slide"
+      },
+      "element": {
+        "name": "motions/motion-block"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion-block with id a string does not exist"
+      },
+      "element": {
+        "name": "motions/motion-block",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion-block with id 1337 does not exist"
+      },
+      "element": {
+        "name": "motions/motion-block",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "user": "a"
       },
       "element": {
         "name": "users/user",
         "id": 4
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for users/user slide"
+      },
+      "element": {
+        "name": "users/user"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id a string does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id 1337 does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": 1337
       }
     },
     {
@@ -31023,11 +31131,63 @@
     },
     {
       "data": {
+        "error": "id is required for users/user slide"
+      },
+      "element": {
+        "name": "users/user"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id a string does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id 1337 does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "user": "candidate1"
       },
       "element": {
         "name": "users/user",
         "id": 2
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for users/user slide"
+      },
+      "element": {
+        "name": "users/user"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id a string does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id 1337 does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": 1337
       }
     },
     {
@@ -31041,11 +31201,63 @@
     },
     {
       "data": {
+        "error": "id is required for users/user slide"
+      },
+      "element": {
+        "name": "users/user"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id a string does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id 1337 does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "user": "not required"
       },
       "element": {
         "name": "users/user",
         "id": 8
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for users/user slide"
+      },
+      "element": {
+        "name": "users/user"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id a string does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id 1337 does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": 1337
       }
     },
     {
@@ -31059,6 +31271,32 @@
     },
     {
       "data": {
+        "error": "id is required for users/user slide"
+      },
+      "element": {
+        "name": "users/user"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id a string does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id 1337 does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "user": "Administrator"
       },
       "element": {
@@ -31068,11 +31306,63 @@
     },
     {
       "data": {
+        "error": "id is required for users/user slide"
+      },
+      "element": {
+        "name": "users/user"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id a string does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id 1337 does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "user": "title speaker1 the last name (layer X)"
       },
       "element": {
         "name": "users/user",
         "id": 6
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for users/user slide"
+      },
+      "element": {
+        "name": "users/user"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id a string does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "users/user with id 1337 does not exist"
+      },
+      "element": {
+        "name": "users/user",
+        "id": 1337
       }
     },
     {
@@ -31089,12 +31379,64 @@
     },
     {
       "data": {
+        "error": "id is required for core/countdown slide"
+      },
+      "element": {
+        "name": "core/countdown"
+      }
+    },
+    {
+      "data": {
+        "error": "core/countdown with id a string does not exist"
+      },
+      "element": {
+        "name": "core/countdown",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "core/countdown with id 1337 does not exist"
+      },
+      "element": {
+        "name": "core/countdown",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "id": 1,
         "message": "<p>test</p>"
       },
       "element": {
         "name": "core/projector-message",
         "id": 1
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for core/projector-message slide"
+      },
+      "element": {
+        "name": "core/projector-message"
+      }
+    },
+    {
+      "data": {
+        "error": "core/projector-message with id a string does not exist"
+      },
+      "element": {
+        "name": "core/projector-message",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "core/projector-message with id 1337 does not exist"
+      },
+      "element": {
+        "name": "core/projector-message",
+        "id": 1337
       }
     },
     {
@@ -31116,6 +31458,32 @@
       "element": {
         "name": "assignments/assignment",
         "id": 1
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for assignments/assignment slide"
+      },
+      "element": {
+        "name": "assignments/assignment"
+      }
+    },
+    {
+      "data": {
+        "error": "assignments/assignment with id a string does not exist"
+      },
+      "element": {
+        "name": "assignments/assignment",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "assignments/assignment with id 1337 does not exist"
+      },
+      "element": {
+        "name": "assignments/assignment",
+        "id": 1337
       }
     },
     {
@@ -31150,6 +31518,32 @@
     },
     {
       "data": {
+        "error": "id is required for motions/motion-poll slide"
+      },
+      "element": {
+        "name": "motions/motion-poll"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion-poll with id a string does not exist"
+      },
+      "element": {
+        "name": "motions/motion-poll",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion-poll with id 1337 does not exist"
+      },
+      "element": {
+        "name": "motions/motion-poll",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "motion": {
           "title": "Public",
           "identifier": "2"
@@ -31176,6 +31570,32 @@
       "element": {
         "name": "motions/motion-poll",
         "id": 2
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for motions/motion-poll slide"
+      },
+      "element": {
+        "name": "motions/motion-poll"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion-poll with id a string does not exist"
+      },
+      "element": {
+        "name": "motions/motion-poll",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion-poll with id 1337 does not exist"
+      },
+      "element": {
+        "name": "motions/motion-poll",
+        "id": 1337
       }
     },
     {
@@ -31213,6 +31633,32 @@
     },
     {
       "data": {
+        "error": "id is required for assignments/assignment-poll slide"
+      },
+      "element": {
+        "name": "assignments/assignment-poll"
+      }
+    },
+    {
+      "data": {
+        "error": "assignments/assignment-poll with id a string does not exist"
+      },
+      "element": {
+        "name": "assignments/assignment-poll",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "assignments/assignment-poll with id 1337 does not exist"
+      },
+      "element": {
+        "name": "assignments/assignment-poll",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "path": "A.txt",
         "mimetype": "text/plain",
         "media_url_prefix": "/media/"
@@ -31220,6 +31666,32 @@
       "element": {
         "name": "mediafiles/mediafile",
         "id": 2
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for mediafiles/mediafile slide"
+      },
+      "element": {
+        "name": "mediafiles/mediafile"
+      }
+    },
+    {
+      "data": {
+        "error": "mediafiles/mediafile with id a string does not exist"
+      },
+      "element": {
+        "name": "mediafiles/mediafile",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "mediafiles/mediafile with id 1337 does not exist"
+      },
+      "element": {
+        "name": "mediafiles/mediafile",
+        "id": 1337
       }
     },
     {
@@ -31235,6 +31707,32 @@
     },
     {
       "data": {
+        "error": "id is required for mediafiles/mediafile slide"
+      },
+      "element": {
+        "name": "mediafiles/mediafile"
+      }
+    },
+    {
+      "data": {
+        "error": "mediafiles/mediafile with id a string does not exist"
+      },
+      "element": {
+        "name": "mediafiles/mediafile",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "mediafiles/mediafile with id 1337 does not exist"
+      },
+      "element": {
+        "name": "mediafiles/mediafile",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "path": "folder/",
         "mimetype": "",
         "media_url_prefix": "/media/"
@@ -31242,6 +31740,32 @@
       "element": {
         "name": "mediafiles/mediafile",
         "id": 1
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for mediafiles/mediafile slide"
+      },
+      "element": {
+        "name": "mediafiles/mediafile"
+      }
+    },
+    {
+      "data": {
+        "error": "mediafiles/mediafile with id a string does not exist"
+      },
+      "element": {
+        "name": "mediafiles/mediafile",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "mediafiles/mediafile with id 1337 does not exist"
+      },
+      "element": {
+        "name": "mediafiles/mediafile",
+        "id": 1337
       }
     },
     {
@@ -31257,6 +31781,32 @@
     },
     {
       "data": {
+        "error": "id is required for mediafiles/mediafile slide"
+      },
+      "element": {
+        "name": "mediafiles/mediafile"
+      }
+    },
+    {
+      "data": {
+        "error": "mediafiles/mediafile with id a string does not exist"
+      },
+      "element": {
+        "name": "mediafiles/mediafile",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "mediafiles/mediafile with id 1337 does not exist"
+      },
+      "element": {
+        "name": "mediafiles/mediafile",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "title": "Topic",
         "text": "",
         "item_number": ""
@@ -31264,6 +31814,32 @@
       "element": {
         "name": "topics/topic",
         "id": 1
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for topics/topic slide"
+      },
+      "element": {
+        "name": "topics/topic"
+      }
+    },
+    {
+      "data": {
+        "error": "topics/topic with id a string does not exist"
+      },
+      "element": {
+        "name": "topics/topic",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "topics/topic with id 1337 does not exist"
+      },
+      "element": {
+        "name": "topics/topic",
+        "id": 1337
       }
     },
     {
@@ -31279,6 +31855,32 @@
     },
     {
       "data": {
+        "error": "id is required for topics/topic slide"
+      },
+      "element": {
+        "name": "topics/topic"
+      }
+    },
+    {
+      "data": {
+        "error": "topics/topic with id a string does not exist"
+      },
+      "element": {
+        "name": "topics/topic",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "topics/topic with id 1337 does not exist"
+      },
+      "element": {
+        "name": "topics/topic",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "title": "Internal",
         "text": "",
         "item_number": ""
@@ -31290,6 +31892,32 @@
     },
     {
       "data": {
+        "error": "id is required for topics/topic slide"
+      },
+      "element": {
+        "name": "topics/topic"
+      }
+    },
+    {
+      "data": {
+        "error": "topics/topic with id a string does not exist"
+      },
+      "element": {
+        "name": "topics/topic",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "topics/topic with id 1337 does not exist"
+      },
+      "element": {
+        "name": "topics/topic",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "title": "Another public topic",
         "text": "",
         "item_number": ""
@@ -31297,6 +31925,32 @@
       "element": {
         "name": "topics/topic",
         "id": 4
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for topics/topic slide"
+      },
+      "element": {
+        "name": "topics/topic"
+      }
+    },
+    {
+      "data": {
+        "error": "topics/topic with id a string does not exist"
+      },
+      "element": {
+        "name": "topics/topic",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "topics/topic with id 1337 does not exist"
+      },
+      "element": {
+        "name": "topics/topic",
+        "id": 1337
       }
     },
     {
@@ -31323,6 +31977,32 @@
     },
     {
       "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31336,6 +32016,32 @@
       "element": {
         "name": "agenda/list-of-speakers",
         "id": 2
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }
     },
     {
@@ -31357,6 +32063,32 @@
     },
     {
       "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31369,6 +32101,32 @@
       "element": {
         "name": "agenda/list-of-speakers",
         "id": 4
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }
     },
     {
@@ -31389,6 +32147,32 @@
     },
     {
       "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31401,6 +32185,32 @@
       "element": {
         "name": "agenda/list-of-speakers",
         "id": 6
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }
     },
     {
@@ -31434,6 +32244,32 @@
     },
     {
       "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31448,6 +32284,32 @@
       "element": {
         "name": "agenda/list-of-speakers",
         "id": 8
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }
     },
     {
@@ -31470,6 +32332,32 @@
     },
     {
       "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31488,6 +32376,32 @@
     },
     {
       "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31500,6 +32414,32 @@
       "element": {
         "name": "agenda/list-of-speakers",
         "id": 11
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }
     },
     {
@@ -31521,6 +32461,32 @@
     },
     {
       "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31533,6 +32499,32 @@
       "element": {
         "name": "agenda/list-of-speakers",
         "id": 13
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }
     },
     {
@@ -31550,6 +32542,32 @@
       "element": {
         "name": "agenda/list-of-speakers",
         "id": 14
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for list of speakers slide"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      },
+      "element": {
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }
     },
     {
@@ -31595,6 +32613,32 @@
         "name": "agenda/list-of-speakers",
         "id": 1,
         "mode": "final"
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for motions/motion slide"
+      },
+      "element": {
+        "name": "motions/motion"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion with id a string does not exist"
+      },
+      "element": {
+        "name": "motions/motion",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion with id 1337 does not exist"
+      },
+      "element": {
+        "name": "motions/motion",
+        "id": 1337
       }
     },
     {
@@ -31634,6 +32678,32 @@
     },
     {
       "data": {
+        "error": "id is required for motions/motion slide"
+      },
+      "element": {
+        "name": "motions/motion"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion with id a string does not exist"
+      },
+      "element": {
+        "name": "motions/motion",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion with id 1337 does not exist"
+      },
+      "element": {
+        "name": "motions/motion",
+        "id": 1337
+      }
+    },
+    {
+      "data": {
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31665,6 +32735,32 @@
         "name": "agenda/list-of-speakers",
         "id": 2,
         "mode": "final"
+      }
+    },
+    {
+      "data": {
+        "error": "id is required for motions/motion slide"
+      },
+      "element": {
+        "name": "motions/motion"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion with id a string does not exist"
+      },
+      "element": {
+        "name": "motions/motion",
+        "id": "a string"
+      }
+    },
+    {
+      "data": {
+        "error": "motions/motion with id 1337 does not exist"
+      },
+      "element": {
+        "name": "motions/motion",
+        "id": 1337
       }
     }
   ]

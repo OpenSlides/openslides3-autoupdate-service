@@ -7083,178 +7083,178 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "gender": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
+          "username": "admin",
+          "number": "",
+          "comment": "",
           "default_password": "admin",
-          "title": "",
-          "structure_level": "",
+          "id": 1,
+          "first_name": "",
+          "email": "",
+          "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": false,
+          "about_me": "",
+          "auth_type": "default",
           "last_name": "Administrator",
+          "last_email_send": null,
           "groups_id": [
             2
           ],
-          "id": 1,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
-          "username": "admin",
-          "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
-          "first_name": "",
-          "number": "",
-          "is_committee": false
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         }`),
 		"users/user:2": []byte(`{
-          "gender": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "default_password": "8NpbvXCBDr",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 2,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "candidate1",
+          "number": "",
+          "comment": "",
+          "default_password": "8NpbvXCBDr",
+          "id": 2,
+          "first_name": "candidate1",
+          "email": "",
           "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": false,
           "about_me": "",
           "auth_type": "default",
-          "first_name": "candidate1",
-          "number": "",
-          "is_committee": false
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         }`),
 		"users/user:3": []byte(`{
-          "gender": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "default_password": "5YLEHrUUTG",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 3,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "candidate2",
+          "number": "",
+          "comment": "",
+          "default_password": "5YLEHrUUTG",
+          "id": 3,
+          "first_name": "candidate2",
+          "email": "",
           "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": false,
           "about_me": "",
           "auth_type": "default",
-          "first_name": "candidate2",
-          "number": "",
-          "is_committee": false
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         }`),
 		"users/user:4": []byte(`{
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
+          "username": "a",
+          "number": "",
+          "comment": "",
           "default_password": "a",
-          "title": "",
-          "structure_level": "",
+          "id": 4,
+          "first_name": "a",
+          "email": "",
+          "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
+          "about_me": "",
+          "auth_type": "default",
           "last_name": "",
+          "last_email_send": null,
           "groups_id": [
             3
           ],
-          "id": 4,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
-          "username": "a",
-          "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         }`),
 		"users/user:5": []byte(`{
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
+          "username": "b",
+          "number": "",
+          "comment": "",
           "default_password": "b",
-          "title": "",
-          "structure_level": "",
+          "id": 5,
+          "first_name": "b",
+          "email": "",
+          "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
+          "about_me": "",
+          "auth_type": "default",
           "last_name": "",
+          "last_email_send": null,
           "groups_id": [
             3
           ],
-          "id": 5,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
-          "username": "b",
-          "is_active": true,
-          "about_me": "",
-          "auth_type": "default",
-          "first_name": "b",
-          "number": "",
-          "is_committee": false
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         }`),
 		"users/user:6": []byte(`{
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "ZdbyxFDWpp",
-          "title": "title",
-          "structure_level": "layer X",
-          "last_name": "the last name",
-          "groups_id": [],
-          "id": 6,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "speaker1",
+          "number": "3",
+          "comment": "",
+          "default_password": "ZdbyxFDWpp",
+          "id": 6,
+          "first_name": "speaker1",
+          "email": "",
           "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
           "about_me": "",
           "auth_type": "default",
-          "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false
+          "last_name": "the last name",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "title",
+          "gender": "",
+          "structure_level": "layer X"
         }`),
 		"users/user:7": []byte(`{
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "5HZr2zPM3x",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 7,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "speaker2",
+          "number": "",
+          "comment": "",
+          "default_password": "5HZr2zPM3x",
+          "id": 7,
+          "first_name": "speaker2",
+          "email": "",
           "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
           "about_me": "",
           "auth_type": "default",
-          "first_name": "speaker2",
-          "number": "",
-          "is_committee": false
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         }`),
 		"users/user:8": []byte(`{
-          "gender": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "hq59FcgwLc",
-          "title": "",
-          "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 8,
-          "email": "",
-          "comment": "",
-          "last_email_send": null,
           "username": "not required",
+          "number": "",
+          "comment": "",
+          "default_password": "hq59FcgwLc",
+          "id": 8,
+          "first_name": "not required",
+          "email": "",
           "is_active": true,
+          "vote_weight": "1.000000",
+          "is_committee": false,
+          "is_present": true,
           "about_me": "",
           "auth_type": "default",
-          "first_name": "not required",
-          "number": "",
-          "is_committee": false
+          "last_name": "",
+          "last_email_send": null,
+          "groups_id": [],
+          "title": "",
+          "gender": "",
+          "structure_level": ""
         }`),
 	},
 	2: {
@@ -7263,103 +7263,103 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:3": []byte(`{
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:6": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:7": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -10417,116 +10417,116 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
-          "email": "",
-          "username": "candidate1",
           "first_name": "candidate1",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "candidate1",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": false,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
+          "vote_weight": "1.000000",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
-          "first_name": "b",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
+          "first_name": "b",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         }`),
 	},
 	3: {
@@ -10535,103 +10535,103 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:3": []byte(`{
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:6": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:7": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -13689,116 +13689,116 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
-          "first_name": "candidate1",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
+          "first_name": "candidate1",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
-          "email": "",
-          "username": "candidate2",
           "first_name": "candidate2",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "candidate2",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": false,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "vote_weight": "1.000000",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
-          "first_name": "b",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
+          "first_name": "b",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         }`),
 	},
 	4: {
@@ -13807,103 +13807,103 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:3": []byte(`{
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:6": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:7": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -17072,116 +17072,116 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
-          "first_name": "candidate1",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
+          "first_name": "candidate1",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
-          "email": "",
-          "username": "a",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "a",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": true,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "vote_weight": "1.000000",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
-          "first_name": "b",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
+          "first_name": "b",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         }`),
 	},
 	5: {
@@ -17190,103 +17190,103 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:3": []byte(`{
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:6": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:7": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -20386,116 +20386,116 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
-          "first_name": "candidate1",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
+          "first_name": "candidate1",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
-          "email": "",
-          "username": "b",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "b",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": true,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
+          "vote_weight": "1.000000",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         }`),
 	},
 	6: {
@@ -20504,103 +20504,103 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:3": []byte(`{
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:6": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:7": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -23658,116 +23658,116 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
-          "first_name": "candidate1",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
+          "first_name": "candidate1",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
-          "first_name": "b",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
+          "first_name": "b",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
-          "email": "",
-          "username": "speaker1",
           "first_name": "speaker1",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "3",
+          "username": "speaker1",
           "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "is_present": true,
+          "about_me": "",
+          "number": "3",
+          "email": "",
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "vote_weight": "1.000000",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         }`),
 	},
 	7: {
@@ -23776,103 +23776,103 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:3": []byte(`{
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:6": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:7": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -26930,116 +26930,116 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
-          "first_name": "candidate1",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
+          "first_name": "candidate1",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
-          "first_name": "b",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
+          "first_name": "b",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
-          "email": "",
-          "username": "speaker2",
           "first_name": "speaker2",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "speaker2",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": true,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "vote_weight": "1.000000",
+          "is_committee": false
         }`),
 	},
 	8: {
@@ -27048,103 +27048,103 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": false,
           "title_information": {
             "title": "Topic"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 1,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 2,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:3": []byte(`{
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Internal"
-          }
+          },
+          "parent_id": null,
+          "tags_id": [],
+          "duration": null,
+          "id": 3,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 8,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": null,
+          "id": 5,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 14,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:6": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
-          "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          }
+          },
+          "parent_id": 3,
+          "tags_id": [],
+          "duration": 0,
+          "id": 6,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 16,
+          "item_number": "",
+          "type": 1
         }`),
 		"agenda/item:7": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
-          "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "is_internal": true,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          }
+          },
+          "parent_id": 6,
+          "tags_id": [],
+          "duration": null,
+          "id": 7,
+          "closed": false,
+          "is_hidden": false,
+          "weight": 18,
+          "item_number": "",
+          "type": 2
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -30202,131 +30202,131 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "last_name": "Administrator",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             2
           ],
-          "id": 1,
           "username": "admin",
-          "first_name": "",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "Administrator",
+          "id": 1,
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 2,
           "username": "candidate1",
-          "first_name": "candidate1",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 2,
+          "first_name": "candidate1",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 3,
           "username": "candidate2",
-          "first_name": "candidate2",
+          "title": "",
           "is_present": false,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 3,
+          "first_name": "candidate2",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 4,
           "username": "a",
-          "first_name": "a",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 4,
+          "first_name": "a",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [
             3
           ],
-          "id": 5,
           "username": "b",
-          "first_name": "b",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 5,
+          "first_name": "b",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 6,
           "username": "speaker1",
-          "first_name": "speaker1",
+          "title": "title",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "3",
-          "title": "title",
-          "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "structure_level": "layer X",
+          "last_name": "the last name",
+          "id": 6,
+          "first_name": "speaker1",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 7,
           "username": "speaker2",
-          "first_name": "speaker2",
+          "title": "",
           "is_present": true,
           "vote_weight": "1.000000",
+          "about_me": "",
           "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 7,
+          "first_name": "speaker2",
+          "is_committee": false
         }`),
 		"users/user:8": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
           "groups_id": [],
-          "id": 8,
-          "email": "",
-          "username": "not required",
           "first_name": "not required",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
+          "username": "not required",
           "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "is_present": true,
+          "about_me": "",
+          "number": "",
+          "email": "",
+          "gender": "",
+          "structure_level": "",
+          "last_name": "",
+          "id": 8,
+          "vote_weight": "1.000000",
+          "is_committee": false
         }`),
 	},
 }
@@ -30439,6 +30439,29 @@ type projectorData struct {
 var exampleProjector = []projectorData{
 	{
 		[]byte(`{
+        "error": "unknwown slide None"
+      }`),
+		[]byte(`{}`),
+	},
+	{
+		[]byte(`{
+        "error": "unknwown slide unknown"
+      }`),
+		[]byte(`{
+        "name": "unknown"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "unknwown slide None"
+      }`),
+		[]byte(`{
+        "name": [],
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
         "items": [
           {
             "title_information": {
@@ -30471,6 +30494,13 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "agenda/item-list",
         "only_main_items": false
+      }`),
+	},
+	{
+		[]byte(`{}`),
+		[]byte(`{
+        "name": "core/clock",
+        "stable": true
       }`),
 	},
 	{
@@ -30505,6 +30535,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for motions/motion-block slide"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-block"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion-block with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-block",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion-block with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-block",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "title": "block internal",
         "motions": [
           {
@@ -30521,11 +30577,63 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for motions/motion-block slide"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-block"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion-block with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-block",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion-block with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-block",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "user": "a"
       }`),
 		[]byte(`{
         "name": "users/user",
         "id": 4
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for users/user slide"
+      }`),
+		[]byte(`{
+        "name": "users/user"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1337
       }`),
 	},
 	{
@@ -30539,11 +30647,63 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for users/user slide"
+      }`),
+		[]byte(`{
+        "name": "users/user"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "user": "candidate1"
       }`),
 		[]byte(`{
         "name": "users/user",
         "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for users/user slide"
+      }`),
+		[]byte(`{
+        "name": "users/user"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1337
       }`),
 	},
 	{
@@ -30557,11 +30717,63 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for users/user slide"
+      }`),
+		[]byte(`{
+        "name": "users/user"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "user": "not required"
       }`),
 		[]byte(`{
         "name": "users/user",
         "id": 8
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for users/user slide"
+      }`),
+		[]byte(`{
+        "name": "users/user"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1337
       }`),
 	},
 	{
@@ -30575,6 +30787,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for users/user slide"
+      }`),
+		[]byte(`{
+        "name": "users/user"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "user": "Administrator"
       }`),
 		[]byte(`{
@@ -30584,11 +30822,63 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for users/user slide"
+      }`),
+		[]byte(`{
+        "name": "users/user"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "user": "title speaker1 the last name (layer X)"
       }`),
 		[]byte(`{
         "name": "users/user",
         "id": 6
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for users/user slide"
+      }`),
+		[]byte(`{
+        "name": "users/user"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "users/user with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "users/user",
+        "id": 1337
       }`),
 	},
 	{
@@ -30605,12 +30895,64 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for core/countdown slide"
+      }`),
+		[]byte(`{
+        "name": "core/countdown"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "core/countdown with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "core/countdown",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "core/countdown with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "core/countdown",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "id": 1,
         "message": "<p>test</p>"
       }`),
 		[]byte(`{
         "name": "core/projector-message",
         "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for core/projector-message slide"
+      }`),
+		[]byte(`{
+        "name": "core/projector-message"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "core/projector-message with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "core/projector-message",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "core/projector-message with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "core/projector-message",
+        "id": 1337
       }`),
 	},
 	{
@@ -30632,6 +30974,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "assignments/assignment",
         "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for assignments/assignment slide"
+      }`),
+		[]byte(`{
+        "name": "assignments/assignment"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "assignments/assignment with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "assignments/assignment",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "assignments/assignment with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "assignments/assignment",
+        "id": 1337
       }`),
 	},
 	{
@@ -30666,6 +31034,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for motions/motion-poll slide"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-poll"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion-poll with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-poll",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion-poll with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-poll",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "motion": {
           "title": "Public",
           "identifier": "2"
@@ -30692,6 +31086,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "motions/motion-poll",
         "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for motions/motion-poll slide"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-poll"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion-poll with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-poll",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion-poll with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion-poll",
+        "id": 1337
       }`),
 	},
 	{
@@ -30729,6 +31149,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for assignments/assignment-poll slide"
+      }`),
+		[]byte(`{
+        "name": "assignments/assignment-poll"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "assignments/assignment-poll with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "assignments/assignment-poll",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "assignments/assignment-poll with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "assignments/assignment-poll",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "path": "A.txt",
         "mimetype": "text/plain",
         "media_url_prefix": "/media/"
@@ -30736,6 +31182,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "mediafiles/mediafile",
         "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for mediafiles/mediafile slide"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "mediafiles/mediafile with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "mediafiles/mediafile with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": 1337
       }`),
 	},
 	{
@@ -30751,6 +31223,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for mediafiles/mediafile slide"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "mediafiles/mediafile with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "mediafiles/mediafile with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "path": "folder/",
         "mimetype": "",
         "media_url_prefix": "/media/"
@@ -30758,6 +31256,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "mediafiles/mediafile",
         "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for mediafiles/mediafile slide"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "mediafiles/mediafile with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "mediafiles/mediafile with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": 1337
       }`),
 	},
 	{
@@ -30773,6 +31297,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for mediafiles/mediafile slide"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "mediafiles/mediafile with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "mediafiles/mediafile with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "mediafiles/mediafile",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "title": "Topic",
         "text": "",
         "item_number": ""
@@ -30780,6 +31330,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "topics/topic",
         "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for topics/topic slide"
+      }`),
+		[]byte(`{
+        "name": "topics/topic"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "topics/topic with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "topics/topic with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": 1337
       }`),
 	},
 	{
@@ -30795,6 +31371,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for topics/topic slide"
+      }`),
+		[]byte(`{
+        "name": "topics/topic"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "topics/topic with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "topics/topic with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "title": "Internal",
         "text": "",
         "item_number": ""
@@ -30806,6 +31408,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for topics/topic slide"
+      }`),
+		[]byte(`{
+        "name": "topics/topic"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "topics/topic with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "topics/topic with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "title": "Another public topic",
         "text": "",
         "item_number": ""
@@ -30813,6 +31441,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "topics/topic",
         "id": 4
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for topics/topic slide"
+      }`),
+		[]byte(`{
+        "name": "topics/topic"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "topics/topic with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "topics/topic with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": 1337
       }`),
 	},
 	{
@@ -30839,6 +31493,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "waiting": [],
         "current": null,
         "finished": [],
@@ -30852,6 +31532,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "agenda/list-of-speakers",
         "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }`),
 	},
 	{
@@ -30873,6 +31579,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "waiting": [],
         "current": null,
         "finished": [],
@@ -30885,6 +31617,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "agenda/list-of-speakers",
         "id": 4
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }`),
 	},
 	{
@@ -30905,6 +31663,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "waiting": [],
         "current": null,
         "finished": [],
@@ -30917,6 +31701,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "agenda/list-of-speakers",
         "id": 6
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }`),
 	},
 	{
@@ -30950,6 +31760,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "waiting": [],
         "current": null,
         "finished": [],
@@ -30964,6 +31800,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "agenda/list-of-speakers",
         "id": 8
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }`),
 	},
 	{
@@ -30986,6 +31848,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31004,6 +31892,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31016,6 +31930,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "agenda/list-of-speakers",
         "id": 11
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }`),
 	},
 	{
@@ -31037,6 +31977,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31049,6 +32015,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "agenda/list-of-speakers",
         "id": 13
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }`),
 	},
 	{
@@ -31066,6 +32058,32 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "agenda/list-of-speakers",
         "id": 14
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for list of speakers slide"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "agenda/list-of-speakers with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1337
       }`),
 	},
 	{
@@ -31111,6 +32129,32 @@ var exampleProjector = []projectorData{
         "name": "agenda/list-of-speakers",
         "id": 1,
         "mode": "final"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for motions/motion slide"
+      }`),
+		[]byte(`{
+        "name": "motions/motion"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": 1337
       }`),
 	},
 	{
@@ -31150,6 +32194,32 @@ var exampleProjector = []projectorData{
 	},
 	{
 		[]byte(`{
+        "error": "id is required for motions/motion slide"
+      }`),
+		[]byte(`{
+        "name": "motions/motion"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": 1337
+      }`),
+	},
+	{
+		[]byte(`{
         "waiting": [],
         "current": null,
         "finished": [],
@@ -31181,6 +32251,32 @@ var exampleProjector = []projectorData{
         "name": "agenda/list-of-speakers",
         "id": 2,
         "mode": "final"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "id is required for motions/motion slide"
+      }`),
+		[]byte(`{
+        "name": "motions/motion"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion with id a string does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": "a string"
+      }`),
+	},
+	{
+		[]byte(`{
+        "error": "motions/motion with id 1337 does not exist"
+      }`),
+		[]byte(`{
+        "name": "motions/motion",
+        "id": 1337
       }`),
 	},
 }
