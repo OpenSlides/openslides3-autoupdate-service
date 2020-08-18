@@ -34,6 +34,9 @@ func (o *OptionalInt) Value() int {
 
 // Null returns true, if, the value does not exist.
 func (o *OptionalInt) Null() bool {
+	if o == nil {
+		return true
+	}
 	return !o.exist
 }
 
@@ -74,6 +77,9 @@ func (o *OptionalStr) Value() string {
 
 // Null returns true, if, the value does not exist.
 func (o *OptionalStr) Null() bool {
+	if o == nil {
+		return true
+	}
 	return !o.exist
 }
 

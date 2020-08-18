@@ -1,6 +1,5 @@
 * Projector
  * Motion
-  * Motion block
   * motion poll
  * Test creation and deletion of projectors
 
