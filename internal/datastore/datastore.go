@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 	"sync"
@@ -238,7 +237,6 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 		return fmt.Errorf("update projectors: %w", err)
 	}
 
-	log.Printf("Datastore on change_id %d", changeID)
 	return nil
 }
 

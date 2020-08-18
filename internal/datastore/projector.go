@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -91,27 +92,36 @@ func (p *projectors) update(data map[string]json.RawMessage) error {
 
 		ped := make([]projectorElementData, len(elements.Elements))
 		for i, element := range elements.Elements {
+			ped[i].Element = element
 			var namer struct {
 				Name string `json:"name"`
 			}
 			if err := json.Unmarshal(element, &namer); err != nil {
-				ped[i].Error = fmt.Sprintf("projector element has no name: %v", err)
+				if err := ped[i].setError(projector.NewClientError("unknwown slide None")); err != nil {
+					return err
+				}
 				continue
 			}
 
 			c, ok := p.callables[namer.Name]
 			if !ok {
-				ped[i].Error = fmt.Sprintf("unknown projector element %s", namer.Name)
+				if namer.Name == "" {
+					namer.Name = "None"
+				}
+				if err := ped[i].setError(projector.NewClientError("unknwown slide %s", namer.Name)); err != nil {
+					return err
+				}
 				continue
 			}
 
 			data, err := c.Build(p.ds, element, id)
 			if err != nil {
-				ped[i].Error = err.Error()
+				if err := ped[i].setError(err); err != nil {
+					return err
+				}
 				continue
 			}
 
-			ped[i].Element = element
 			ped[i].Data = data
 		}
 
@@ -143,7 +153,29 @@ type projectorData struct {
 }
 
 type projectorElementData struct {
-	Element json.RawMessage `json:"element,omitempty"`
-	Data    json.RawMessage `json:"data,omitempty"`
-	Error   string          `json:"error,omitempty"`
+	Element json.RawMessage `json:"element"`
+	Data    json.RawMessage `json:"data"`
+}
+
+func (p *projectorElementData) setError(msg error) error {
+	var ce projector.ClientError
+	if !errors.As(msg, &ce) {
+		p.Data = []byte(`{"error":"Internal error"}`)
+		//log.Println(msg.Error())
+		// TODO: Do something with the error
+		return nil
+	}
+
+	data := struct {
+		Error string `json:"error"`
+	}{
+		ce.Error(),
+	}
+	v, err := json.Marshal(data)
+	if err != nil {
+		return fmt.Errorf("encoding error message: %w", err)
+	}
+	p.Data = v
+	return nil
+
 }

@@ -21,12 +21,24 @@ func Slide() projector.CallableFunc {
 			Mode string `json:"mode"`
 		}
 		if err := json.Unmarshal(e, &element); err != nil {
+			var element struct {
+				ID interface{} `json:"id"`
+			}
+
+			// Fallback for better error messages
+			if err := json.Unmarshal(e, &element); err == nil {
+				return nil, projector.NewClientError("motions/motion with id %s does not exist", element.ID)
+			}
 			return nil, fmt.Errorf("decoding element: %w", err)
+		}
+
+		if element.ID == 0 {
+			return nil, projector.NewClientError("id is required for motions/motion slide")
 		}
 
 		var m motion
 		if err := ds.Get("motions/motion", element.ID, &m); err != nil {
-			return nil, fmt.Errorf("getting motion: %w", err)
+			return nil, projector.NewClientError("motions/motion with id %d does not exist", element.ID)
 		}
 
 		submitters, err := slideSubmitters(ds, &m)
@@ -144,19 +156,12 @@ func Slide() projector.CallableFunc {
 // SlideMotionBlock renders a an motion block.
 func SlideMotionBlock() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
-		var element struct {
-			ID int `json:"id"`
-		}
-		if err := json.Unmarshal(e, &element); err != nil {
-			return nil, fmt.Errorf("decoding element: %w", err)
-		}
-
 		var mb struct {
 			Motions []int           `json:"motions_id"`
 			Title   json.RawMessage `json:"title"`
 		}
-		if err := ds.Get("motions/motion-block", element.ID, &mb); err != nil {
-			return nil, fmt.Errorf("getting motion-block: %w", err)
+		if err := projector.ModelFromElement(ds, e, "motions/motion-block", &mb); err != nil {
+			return nil, fmt.Errorf("getting motion block: %w", err)
 		}
 
 		var motions []json.RawMessage

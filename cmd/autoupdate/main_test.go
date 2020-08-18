@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+	"encoding/json"
 	"testing"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
@@ -70,10 +72,6 @@ func TestProjector(t *testing.T) {
 
 	r := test.NewRedisMock()
 	r.FD = test.ExampleData()
-	ds, err := datastore.New("", r, nil, callabes, closed)
-	if err != nil {
-		t.Fatalf("Can not create datastore: %v", err)
-	}
 
 	todoList := map[string]bool{
 		"motions/motion-poll": true,
@@ -85,17 +83,24 @@ func TestProjector(t *testing.T) {
 				t.Skip()
 			}
 
-			c, ok := callabes[tt.ElementName]
-			if !ok {
-				t.Fatalf("No callable for Element `%s`", tt.ElementName)
-			}
+			r.Overwrite = tt.Overwrite
 
-			got, err := c.Build(ds, tt.Element, 1)
+			ds, err := datastore.New("", r, nil, callabes, closed)
 			if err != nil {
-				t.Errorf("ProjectorCallable returned unexpected error: %v", err)
+				t.Fatalf("Can not create datastore: %v", err)
 			}
 
-			test.ExpectEqualJSON(t, got, tt.Expected)
+			_, projectors, err := ds.Projectors(context.Background(), 0)
+			if err != nil {
+				t.Fatalf("Can not get projectors: %v", err)
+			}
+
+			var v []json.RawMessage
+			if err := json.Unmarshal(projectors[1], &v); err != nil {
+				t.Fatalf("Can not decode first projector: %v", err)
+			}
+
+			test.ExpectEqualJSON(t, v[0], tt.Expected)
 		})
 	}
 }

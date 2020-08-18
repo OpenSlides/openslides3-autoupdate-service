@@ -15,7 +15,19 @@ func Slide() projector.CallableFunc {
 			ID int `json:"id"`
 		}
 		if err := json.Unmarshal(e, &element); err != nil {
+			var element struct {
+				ID interface{} `json:"id"`
+			}
+
+			// Fallback for better error messages
+			if err := json.Unmarshal(e, &element); err == nil {
+				return nil, projector.NewClientError("users/user with id %s does not exist", element.ID)
+			}
 			return nil, fmt.Errorf("decoding element: %w", err)
+		}
+
+		if element.ID == 0 {
+			return nil, projector.NewClientError("id is required for users/user slide")
 		}
 
 		name, err := GetUserName(ds, element.ID)
@@ -38,7 +50,7 @@ func GetUserName(ds projector.Datastore, uid int) (string, error) {
 	}
 
 	if err := ds.Get("users/user", uid, &user); err != nil {
-		return "", fmt.Errorf("decoding user: %w", err)
+		return "", projector.NewClientError("users/user with id %d does not exist", uid)
 	}
 
 	parts := func(sp ...string) []string {
