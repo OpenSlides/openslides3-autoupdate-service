@@ -69,8 +69,7 @@ func TestProjector(t *testing.T) {
 	ds := test.NewDatastoreMock(0, closed)
 
 	todoList := map[string]bool{
-		"motions/motion-poll":  true,
-		"motions/motion-block": true,
+		"motions/motion-poll": true,
 	}
 
 	for _, tt := range test.ExampleProjector() {

@@ -13,7 +13,7 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 )
 
-// Slide renders a an assignment.
+// Slide renders a a motion.
 func Slide() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
 		var element struct {
@@ -141,17 +141,102 @@ func Slide() projector.CallableFunc {
 	}
 }
 
-func extendReferenceMotions(ds projector.Datastore, recommendation json.RawMessage) (json.RawMessage, error) {
+// SlideMotionBlock renders a an motion block.
+func SlideMotionBlock() projector.CallableFunc {
+	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
+		var element struct {
+			ID int `json:"id"`
+		}
+		if err := json.Unmarshal(e, &element); err != nil {
+			return nil, fmt.Errorf("decoding element: %w", err)
+		}
+
+		var mb struct {
+			Motions []int           `json:"motions_id"`
+			Title   json.RawMessage `json:"title"`
+		}
+		if err := ds.Get("motions/motion-block", element.ID, &mb); err != nil {
+			return nil, fmt.Errorf("getting motion-block: %w", err)
+		}
+
+		var motions []json.RawMessage
+		referenced := make(map[int]json.RawMessage)
+		for _, mID := range mb.Motions {
+			var m motion
+			if err := ds.Get("motions/motion", mID, &m); err != nil {
+				return nil, fmt.Errorf("getting motion: %w", err)
+			}
+
+			out := map[string]json.RawMessage{
+				"title":      m.Title,
+				"identifier": m.Identifier,
+			}
+
+			if !m.RecommendationID.Null() {
+				var recommendation struct {
+					Label              json.RawMessage `json:"recommendation_label"`
+					CSS                json.RawMessage `json:"css_class"`
+					ShowExtensionField bool            `json:"show_recommendation_extension_field"`
+				}
+				if err := ds.Get("motions/state", m.RecommendationID.Value(), &recommendation); err != nil {
+					return nil, fmt.Errorf("getting recommendation state: %w", err)
+				}
+
+				var outRecommendation = struct {
+					Name json.RawMessage `json:"name"`
+					CSS  json.RawMessage `json:"css_class"`
+				}{
+					recommendation.Label,
+					recommendation.CSS,
+				}
+
+				bs, err := json.Marshal(outRecommendation)
+				if err != nil {
+					return nil, fmt.Errorf("encoding recommendation: %w", err)
+				}
+				out["recommendation"] = bs
+
+				if recommendation.ShowExtensionField {
+					out["recommendation_extension"] = m.RecommendationExtension
+					if err := extendReferenceMotions(ds, m.RecommendationExtension, referenced); err != nil {
+						return nil, fmt.Errorf("getting extension: %w", err)
+					}
+				}
+			}
+			bs, err := json.Marshal(out)
+			if err != nil {
+				return nil, fmt.Errorf("encoding motion: %w", err)
+			}
+			motions = append(motions, bs)
+		}
+
+		var out = struct {
+			Title      json.RawMessage         `json:"title"`
+			Motions    []json.RawMessage       `json:"motions"`
+			Referenced map[int]json.RawMessage `json:"referenced_motions"`
+		}{
+			mb.Title,
+			motions,
+			referenced,
+		}
+		bs, err := json.Marshal(out)
+		if err != nil {
+			return nil, fmt.Errorf("encoding motion block: %w", err)
+		}
+		return bs, nil
+	}
+}
+
+func extendReferenceMotions(ds projector.Datastore, recommendation json.RawMessage, recommendated map[int]json.RawMessage) error {
 	if isNull(recommendation) {
-		return []byte(`{}`), nil
+		return nil
 	}
 
 	r := regexp.MustCompile(`\[motion:(\d+)\]`)
-	recommendated := make(map[int]json.RawMessage)
 	for _, match := range r.FindAllSubmatch(recommendation, -1) {
 		id, err := strconv.Atoi(string(match[1]))
 		if err != nil {
-			return nil, fmt.Errorf("invalid id: %w", err)
+			return fmt.Errorf("invalid id: %w", err)
 		}
 		var motion struct {
 			Title      json.RawMessage `json:"title"`
@@ -164,21 +249,17 @@ func extendReferenceMotions(ds projector.Datastore, recommendation json.RawMessa
 			if errors.As(err, &doesNotExist) {
 				continue
 			}
-			return nil, fmt.Errorf("getting recommendated motion: %w", err)
+			return fmt.Errorf("getting recommendated motion: %w", err)
 		}
 
 		b, err := json.Marshal(motion)
 		if err != nil {
-			return nil, fmt.Errorf("encoding motion: %w", err)
+			return fmt.Errorf("encoding motion: %w", err)
 		}
 		recommendated[id] = b
 	}
 
-	b, err := json.Marshal(recommendated)
-	if err != nil {
-		return nil, fmt.Errorf("encoding recommendation list: %w", err)
-	}
-	return b, nil
+	return nil
 }
 
 func mergedIntoDiff(ds projector.Datastore, a amendment) (int, error) {
@@ -500,12 +581,16 @@ func slideRecommendation(out map[string]json.RawMessage, ds projector.Datastore,
 	out["recommendation"] = state.Label
 
 	if state.ShowExtension {
-		extension, err := extendReferenceMotions(ds, m.RecommendationExtension)
-		if err != nil {
+		extension := make(map[int]json.RawMessage)
+		if err := extendReferenceMotions(ds, m.RecommendationExtension, extension); err != nil {
 			return fmt.Errorf("getting extension: %w", err)
 		}
+		bs, err := json.Marshal(extension)
+		if err != nil {
+			return fmt.Errorf("encoding extension: %w", err)
+		}
 		out["recommendation_extension"] = m.RecommendationExtension
-		out["referenced_motions"] = extension
+		out["referenced_motions"] = bs
 	}
 
 	recommenderConfig := "motions_statute_recommendations_by"

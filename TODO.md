@@ -1,7 +1,6 @@
 * Projector
  * Don't send all error messages of slides to user.
  * Motion
-  * Motion block
   * motion poll
  * Test creation and deletion of projectors
 
