@@ -3,6 +3,7 @@ package main
 import (
 	"testing"
 
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/test"
 )
 
@@ -66,8 +67,13 @@ func TestProjector(t *testing.T) {
 	closed := make(chan struct{})
 	defer close(closed)
 	callabes := openslidesProjectorCallables()
-	ds := test.NewDatastoreMock(0, closed)
-	ds.FullData = test.ExampleData()
+
+	r := test.NewRedisMock()
+	r.FD = test.ExampleData()
+	ds, err := datastore.New("", r, nil, callabes, closed)
+	if err != nil {
+		t.Fatalf("Can not create datastore: %v", err)
+	}
 
 	todoList := map[string]bool{
 		"motions/motion-poll": true,
