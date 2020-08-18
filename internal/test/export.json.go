@@ -7083,283 +7083,283 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "username": "admin",
-          "last_email_send": null,
-          "is_active": true,
-          "about_me": "",
+          "gender": "",
+          "is_present": false,
           "vote_weight": "1.000000",
           "default_password": "admin",
-          "number": "",
-          "structure_level": "",
           "title": "",
+          "structure_level": "",
           "last_name": "Administrator",
-          "comment": "",
-          "is_committee": false,
-          "email": "",
-          "id": 1,
-          "first_name": "",
-          "auth_type": "default",
-          "is_present": false,
           "groups_id": [
             2
           ],
-          "gender": ""
+          "id": 1,
+          "email": "",
+          "comment": "",
+          "last_email_send": null,
+          "username": "admin",
+          "is_active": true,
+          "about_me": "",
+          "auth_type": "default",
+          "first_name": "",
+          "number": "",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "username": "candidate1",
-          "last_email_send": null,
-          "is_active": true,
-          "about_me": "",
+          "gender": "",
+          "is_present": false,
           "vote_weight": "1.000000",
           "default_password": "8NpbvXCBDr",
-          "number": "",
-          "structure_level": "",
           "title": "",
+          "structure_level": "",
           "last_name": "",
-          "comment": "",
-          "is_committee": false,
-          "email": "",
-          "id": 2,
-          "first_name": "candidate1",
-          "auth_type": "default",
-          "is_present": false,
           "groups_id": [],
-          "gender": ""
+          "id": 2,
+          "email": "",
+          "comment": "",
+          "last_email_send": null,
+          "username": "candidate1",
+          "is_active": true,
+          "about_me": "",
+          "auth_type": "default",
+          "first_name": "candidate1",
+          "number": "",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "username": "candidate2",
-          "last_email_send": null,
-          "is_active": true,
-          "about_me": "",
+          "gender": "",
+          "is_present": false,
           "vote_weight": "1.000000",
           "default_password": "5YLEHrUUTG",
-          "number": "",
-          "structure_level": "",
           "title": "",
+          "structure_level": "",
           "last_name": "",
-          "comment": "",
-          "is_committee": false,
-          "email": "",
-          "id": 3,
-          "first_name": "candidate2",
-          "auth_type": "default",
-          "is_present": false,
           "groups_id": [],
-          "gender": ""
+          "id": 3,
+          "email": "",
+          "comment": "",
+          "last_email_send": null,
+          "username": "candidate2",
+          "is_active": true,
+          "about_me": "",
+          "auth_type": "default",
+          "first_name": "candidate2",
+          "number": "",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "username": "a",
-          "last_email_send": null,
-          "is_active": true,
-          "about_me": "",
+          "gender": "",
+          "is_present": true,
           "vote_weight": "1.000000",
           "default_password": "a",
-          "number": "",
-          "structure_level": "",
           "title": "",
+          "structure_level": "",
           "last_name": "",
-          "comment": "",
-          "is_committee": false,
-          "email": "",
-          "id": 4,
-          "first_name": "a",
-          "auth_type": "default",
-          "is_present": true,
           "groups_id": [
             3
           ],
-          "gender": ""
+          "id": 4,
+          "email": "",
+          "comment": "",
+          "last_email_send": null,
+          "username": "a",
+          "is_active": true,
+          "about_me": "",
+          "auth_type": "default",
+          "first_name": "a",
+          "number": "",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "username": "b",
-          "last_email_send": null,
-          "is_active": true,
-          "about_me": "",
+          "gender": "",
+          "is_present": true,
           "vote_weight": "1.000000",
           "default_password": "b",
-          "number": "",
-          "structure_level": "",
           "title": "",
+          "structure_level": "",
           "last_name": "",
-          "comment": "",
-          "is_committee": false,
-          "email": "",
-          "id": 5,
-          "first_name": "b",
-          "auth_type": "default",
-          "is_present": true,
           "groups_id": [
             3
           ],
-          "gender": ""
+          "id": 5,
+          "email": "",
+          "comment": "",
+          "last_email_send": null,
+          "username": "b",
+          "is_active": true,
+          "about_me": "",
+          "auth_type": "default",
+          "first_name": "b",
+          "number": "",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "username": "speaker1",
-          "last_email_send": null,
-          "is_active": true,
-          "about_me": "",
+          "gender": "",
+          "is_present": true,
           "vote_weight": "1.000000",
           "default_password": "ZdbyxFDWpp",
-          "number": "3",
-          "structure_level": "layer X",
           "title": "title",
+          "structure_level": "layer X",
           "last_name": "the last name",
-          "comment": "",
-          "is_committee": false,
-          "email": "",
-          "id": 6,
-          "first_name": "speaker1",
-          "auth_type": "default",
-          "is_present": true,
           "groups_id": [],
-          "gender": ""
+          "id": 6,
+          "email": "",
+          "comment": "",
+          "last_email_send": null,
+          "username": "speaker1",
+          "is_active": true,
+          "about_me": "",
+          "auth_type": "default",
+          "first_name": "speaker1",
+          "number": "3",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "username": "speaker2",
-          "last_email_send": null,
-          "is_active": true,
-          "about_me": "",
+          "gender": "",
+          "is_present": true,
           "vote_weight": "1.000000",
           "default_password": "5HZr2zPM3x",
-          "number": "",
-          "structure_level": "",
           "title": "",
+          "structure_level": "",
           "last_name": "",
-          "comment": "",
-          "is_committee": false,
-          "email": "",
-          "id": 7,
-          "first_name": "speaker2",
-          "auth_type": "default",
-          "is_present": true,
           "groups_id": [],
-          "gender": ""
-        }`),
-		"users/user:8": []byte(`{
-          "username": "not required",
+          "id": 7,
+          "email": "",
+          "comment": "",
           "last_email_send": null,
+          "username": "speaker2",
           "is_active": true,
           "about_me": "",
+          "auth_type": "default",
+          "first_name": "speaker2",
+          "number": "",
+          "is_committee": false
+        }`),
+		"users/user:8": []byte(`{
+          "gender": "",
+          "is_present": true,
           "vote_weight": "1.000000",
           "default_password": "hq59FcgwLc",
-          "number": "",
-          "structure_level": "",
           "title": "",
+          "structure_level": "",
           "last_name": "",
-          "comment": "",
-          "is_committee": false,
-          "email": "",
-          "id": 8,
-          "first_name": "not required",
-          "auth_type": "default",
-          "is_present": true,
           "groups_id": [],
-          "gender": ""
+          "id": 8,
+          "email": "",
+          "comment": "",
+          "last_email_send": null,
+          "username": "not required",
+          "is_active": true,
+          "about_me": "",
+          "auth_type": "default",
+          "first_name": "not required",
+          "number": "",
+          "is_committee": false
         }`),
 	},
 	2: {
 		"agenda/item:1": []byte(`{
-          "is_internal": false,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
+          "tags_id": [],
+          "is_internal": false,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 2,
           "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": null,
+          "is_hidden": false,
           "title_information": {
             "title": "Topic"
-          },
-          "id": 1,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:3": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "parent_id": null,
-          "is_hidden": false,
-          "weight": 8,
-          "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
-          "title_information": {
-            "title": "Internal"
-          },
           "id": 3,
-          "item_number": ""
-        }`),
-		"agenda/item:5": []byte(`{
+          "tags_id": [],
           "is_internal": true,
           "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
+          "weight": 8,
+          "level": 0,
+          "parent_id": null,
+          "is_hidden": false,
+          "title_information": {
+            "title": "Internal"
+          }
+        }`),
+		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 14,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          },
-          "id": 5,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:6": []byte(`{
-          "is_internal": true,
-          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": 0,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 16,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          },
-          "id": 6,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:7": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
           "weight": 18,
           "level": 2,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
+          "parent_id": 6,
+          "is_hidden": false,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          },
-          "id": 7,
-          "item_number": ""
+          }
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -10417,221 +10417,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "username": "admin",
-          "first_name": "",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "Administrator",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             2
           ],
           "id": 1,
-          "last_name": "Administrator",
-          "gender": ""
+          "username": "admin",
+          "first_name": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:2": []byte(`{
+          "last_name": "",
+          "about_me": "",
+          "gender": "",
+          "groups_id": [],
           "id": 2,
+          "email": "",
           "username": "candidate1",
           "first_name": "candidate1",
-          "number": "",
-          "is_committee": false,
-          "email": "",
-          "structure_level": "",
-          "about_me": "",
-          "vote_weight": "1.000000",
           "is_present": false,
-          "groups_id": [],
+          "vote_weight": "1.000000",
+          "number": "",
           "title": "",
-          "last_name": "",
-          "gender": ""
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:3": []byte(`{
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 3,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate2",
+          "first_name": "candidate2",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:4": []byte(`{
-          "username": "a",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 4,
-          "last_name": "",
-          "gender": ""
+          "username": "a",
+          "first_name": "a",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:5": []byte(`{
-          "username": "b",
-          "first_name": "b",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 5,
-          "last_name": "",
-          "gender": ""
+          "username": "b",
+          "first_name": "b",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:6": []byte(`{
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "layer X",
+          "last_name": "the last name",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "title",
+          "gender": "",
           "groups_id": [],
           "id": 6,
-          "last_name": "the last name",
-          "gender": ""
+          "username": "speaker1",
+          "first_name": "speaker1",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "3",
+          "title": "title",
+          "is_committee": false,
+          "structure_level": "layer X"
         }`),
 		"users/user:7": []byte(`{
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 7,
-          "last_name": "",
-          "gender": ""
+          "username": "speaker2",
+          "first_name": "speaker2",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 	},
 	3: {
 		"agenda/item:1": []byte(`{
-          "is_internal": false,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
+          "tags_id": [],
+          "is_internal": false,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 2,
           "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": null,
+          "is_hidden": false,
           "title_information": {
             "title": "Topic"
-          },
-          "id": 1,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:3": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "parent_id": null,
-          "is_hidden": false,
-          "weight": 8,
-          "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
-          "title_information": {
-            "title": "Internal"
-          },
           "id": 3,
-          "item_number": ""
-        }`),
-		"agenda/item:5": []byte(`{
+          "tags_id": [],
           "is_internal": true,
           "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
+          "weight": 8,
+          "level": 0,
+          "parent_id": null,
+          "is_hidden": false,
+          "title_information": {
+            "title": "Internal"
+          }
+        }`),
+		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 14,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          },
-          "id": 5,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:6": []byte(`{
-          "is_internal": true,
-          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": 0,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 16,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          },
-          "id": 6,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:7": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
           "weight": 18,
           "level": 2,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
+          "parent_id": 6,
+          "is_hidden": false,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          },
-          "id": 7,
-          "item_number": ""
+          }
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -13689,221 +13689,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "username": "admin",
-          "first_name": "",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "Administrator",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             2
           ],
           "id": 1,
-          "last_name": "Administrator",
-          "gender": ""
+          "username": "admin",
+          "first_name": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:2": []byte(`{
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 2,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate1",
+          "first_name": "candidate1",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:3": []byte(`{
+          "last_name": "",
+          "about_me": "",
+          "gender": "",
+          "groups_id": [],
           "id": 3,
+          "email": "",
           "username": "candidate2",
           "first_name": "candidate2",
-          "number": "",
-          "is_committee": false,
-          "email": "",
-          "structure_level": "",
-          "about_me": "",
-          "vote_weight": "1.000000",
           "is_present": false,
-          "groups_id": [],
+          "vote_weight": "1.000000",
+          "number": "",
           "title": "",
-          "last_name": "",
-          "gender": ""
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:4": []byte(`{
-          "username": "a",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 4,
-          "last_name": "",
-          "gender": ""
+          "username": "a",
+          "first_name": "a",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:5": []byte(`{
-          "username": "b",
-          "first_name": "b",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 5,
-          "last_name": "",
-          "gender": ""
+          "username": "b",
+          "first_name": "b",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:6": []byte(`{
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "layer X",
+          "last_name": "the last name",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "title",
+          "gender": "",
           "groups_id": [],
           "id": 6,
-          "last_name": "the last name",
-          "gender": ""
+          "username": "speaker1",
+          "first_name": "speaker1",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "3",
+          "title": "title",
+          "is_committee": false,
+          "structure_level": "layer X"
         }`),
 		"users/user:7": []byte(`{
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 7,
-          "last_name": "",
-          "gender": ""
+          "username": "speaker2",
+          "first_name": "speaker2",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 	},
 	4: {
 		"agenda/item:1": []byte(`{
-          "is_internal": false,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
+          "tags_id": [],
+          "is_internal": false,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 2,
           "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": null,
+          "is_hidden": false,
           "title_information": {
             "title": "Topic"
-          },
-          "id": 1,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:3": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "parent_id": null,
-          "is_hidden": false,
-          "weight": 8,
-          "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
-          "title_information": {
-            "title": "Internal"
-          },
           "id": 3,
-          "item_number": ""
-        }`),
-		"agenda/item:5": []byte(`{
+          "tags_id": [],
           "is_internal": true,
           "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
+          "weight": 8,
+          "level": 0,
+          "parent_id": null,
+          "is_hidden": false,
+          "title_information": {
+            "title": "Internal"
+          }
+        }`),
+		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 14,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          },
-          "id": 5,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:6": []byte(`{
-          "is_internal": true,
-          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": 0,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 16,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          },
-          "id": 6,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:7": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
           "weight": 18,
           "level": 2,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
+          "parent_id": 6,
+          "is_hidden": false,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          },
-          "id": 7,
-          "item_number": ""
+          }
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -17072,221 +17072,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "username": "admin",
-          "first_name": "",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "Administrator",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             2
           ],
           "id": 1,
-          "last_name": "Administrator",
-          "gender": ""
+          "username": "admin",
+          "first_name": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:2": []byte(`{
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 2,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate1",
+          "first_name": "candidate1",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:3": []byte(`{
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 3,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate2",
+          "first_name": "candidate2",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "username": "a",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false,
-          "email": "",
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "is_present": true,
+          "gender": "",
           "groups_id": [
             3
           ],
+          "id": 4,
+          "email": "",
+          "username": "a",
+          "first_name": "a",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
           "title": "",
-          "last_name": "",
-          "gender": ""
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:5": []byte(`{
-          "username": "b",
-          "first_name": "b",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 5,
-          "last_name": "",
-          "gender": ""
+          "username": "b",
+          "first_name": "b",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:6": []byte(`{
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "layer X",
+          "last_name": "the last name",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "title",
+          "gender": "",
           "groups_id": [],
           "id": 6,
-          "last_name": "the last name",
-          "gender": ""
+          "username": "speaker1",
+          "first_name": "speaker1",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "3",
+          "title": "title",
+          "is_committee": false,
+          "structure_level": "layer X"
         }`),
 		"users/user:7": []byte(`{
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 7,
-          "last_name": "",
-          "gender": ""
+          "username": "speaker2",
+          "first_name": "speaker2",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 	},
 	5: {
 		"agenda/item:1": []byte(`{
-          "is_internal": false,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
+          "tags_id": [],
+          "is_internal": false,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 2,
           "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": null,
+          "is_hidden": false,
           "title_information": {
             "title": "Topic"
-          },
-          "id": 1,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:3": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "parent_id": null,
-          "is_hidden": false,
-          "weight": 8,
-          "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
-          "title_information": {
-            "title": "Internal"
-          },
           "id": 3,
-          "item_number": ""
-        }`),
-		"agenda/item:5": []byte(`{
+          "tags_id": [],
           "is_internal": true,
           "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
+          "weight": 8,
+          "level": 0,
+          "parent_id": null,
+          "is_hidden": false,
+          "title_information": {
+            "title": "Internal"
+          }
+        }`),
+		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 14,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          },
-          "id": 5,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:6": []byte(`{
-          "is_internal": true,
-          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": 0,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 16,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          },
-          "id": 6,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:7": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
           "weight": 18,
           "level": 2,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
+          "parent_id": 6,
+          "is_hidden": false,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          },
-          "id": 7,
-          "item_number": ""
+          }
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -20386,221 +20386,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "username": "admin",
-          "first_name": "",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "Administrator",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             2
           ],
           "id": 1,
-          "last_name": "Administrator",
-          "gender": ""
+          "username": "admin",
+          "first_name": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:2": []byte(`{
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 2,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate1",
+          "first_name": "candidate1",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:3": []byte(`{
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 3,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate2",
+          "first_name": "candidate2",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:4": []byte(`{
-          "username": "a",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 4,
-          "last_name": "",
-          "gender": ""
+          "username": "a",
+          "first_name": "a",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "username": "b",
-          "first_name": "b",
-          "number": "",
-          "is_committee": false,
-          "email": "",
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "is_present": true,
+          "gender": "",
           "groups_id": [
             3
           ],
+          "id": 5,
+          "email": "",
+          "username": "b",
+          "first_name": "b",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
           "title": "",
-          "last_name": "",
-          "gender": ""
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:6": []byte(`{
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "layer X",
+          "last_name": "the last name",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "title",
+          "gender": "",
           "groups_id": [],
           "id": 6,
-          "last_name": "the last name",
-          "gender": ""
+          "username": "speaker1",
+          "first_name": "speaker1",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "3",
+          "title": "title",
+          "is_committee": false,
+          "structure_level": "layer X"
         }`),
 		"users/user:7": []byte(`{
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 7,
-          "last_name": "",
-          "gender": ""
+          "username": "speaker2",
+          "first_name": "speaker2",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 	},
 	6: {
 		"agenda/item:1": []byte(`{
-          "is_internal": false,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
+          "tags_id": [],
+          "is_internal": false,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 2,
           "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": null,
+          "is_hidden": false,
           "title_information": {
             "title": "Topic"
-          },
-          "id": 1,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:3": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "parent_id": null,
-          "is_hidden": false,
-          "weight": 8,
-          "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
-          "title_information": {
-            "title": "Internal"
-          },
           "id": 3,
-          "item_number": ""
-        }`),
-		"agenda/item:5": []byte(`{
+          "tags_id": [],
           "is_internal": true,
           "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
+          "weight": 8,
+          "level": 0,
+          "parent_id": null,
+          "is_hidden": false,
+          "title_information": {
+            "title": "Internal"
+          }
+        }`),
+		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 14,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          },
-          "id": 5,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:6": []byte(`{
-          "is_internal": true,
-          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": 0,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 16,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          },
-          "id": 6,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:7": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
           "weight": 18,
           "level": 2,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
+          "parent_id": 6,
+          "is_hidden": false,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          },
-          "id": 7,
-          "item_number": ""
+          }
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -23658,221 +23658,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "username": "admin",
-          "first_name": "",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "Administrator",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             2
           ],
           "id": 1,
-          "last_name": "Administrator",
-          "gender": ""
+          "username": "admin",
+          "first_name": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:2": []byte(`{
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 2,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate1",
+          "first_name": "candidate1",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:3": []byte(`{
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 3,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate2",
+          "first_name": "candidate2",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:4": []byte(`{
-          "username": "a",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 4,
-          "last_name": "",
-          "gender": ""
+          "username": "a",
+          "first_name": "a",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:5": []byte(`{
-          "username": "b",
-          "first_name": "b",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 5,
-          "last_name": "",
-          "gender": ""
+          "username": "b",
+          "first_name": "b",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:6": []byte(`{
+          "last_name": "the last name",
+          "about_me": "",
+          "gender": "",
+          "groups_id": [],
           "id": 6,
+          "email": "",
           "username": "speaker1",
           "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false,
-          "email": "",
-          "structure_level": "layer X",
-          "about_me": "",
-          "vote_weight": "1.000000",
           "is_present": true,
-          "groups_id": [],
+          "vote_weight": "1.000000",
+          "number": "3",
           "title": "title",
-          "last_name": "the last name",
-          "gender": ""
+          "is_committee": false,
+          "structure_level": "layer X"
         }`),
 		"users/user:7": []byte(`{
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 7,
-          "last_name": "",
-          "gender": ""
+          "username": "speaker2",
+          "first_name": "speaker2",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 	},
 	7: {
 		"agenda/item:1": []byte(`{
-          "is_internal": false,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
+          "tags_id": [],
+          "is_internal": false,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 2,
           "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": null,
+          "is_hidden": false,
           "title_information": {
             "title": "Topic"
-          },
-          "id": 1,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:3": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "parent_id": null,
-          "is_hidden": false,
-          "weight": 8,
-          "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
-          "title_information": {
-            "title": "Internal"
-          },
           "id": 3,
-          "item_number": ""
-        }`),
-		"agenda/item:5": []byte(`{
+          "tags_id": [],
           "is_internal": true,
           "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
+          "weight": 8,
+          "level": 0,
+          "parent_id": null,
+          "is_hidden": false,
+          "title_information": {
+            "title": "Internal"
+          }
+        }`),
+		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 14,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          },
-          "id": 5,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:6": []byte(`{
-          "is_internal": true,
-          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": 0,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 16,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          },
-          "id": 6,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:7": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
           "weight": 18,
           "level": 2,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
+          "parent_id": 6,
+          "is_hidden": false,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          },
-          "id": 7,
-          "item_number": ""
+          }
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -26930,221 +26930,221 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "username": "admin",
-          "first_name": "",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "Administrator",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             2
           ],
           "id": 1,
-          "last_name": "Administrator",
-          "gender": ""
+          "username": "admin",
+          "first_name": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:2": []byte(`{
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 2,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate1",
+          "first_name": "candidate1",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:3": []byte(`{
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 3,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate2",
+          "first_name": "candidate2",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:4": []byte(`{
-          "username": "a",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 4,
-          "last_name": "",
-          "gender": ""
+          "username": "a",
+          "first_name": "a",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:5": []byte(`{
-          "username": "b",
-          "first_name": "b",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 5,
-          "last_name": "",
-          "gender": ""
+          "username": "b",
+          "first_name": "b",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:6": []byte(`{
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "layer X",
+          "last_name": "the last name",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "title",
+          "gender": "",
           "groups_id": [],
           "id": 6,
-          "last_name": "the last name",
-          "gender": ""
+          "username": "speaker1",
+          "first_name": "speaker1",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "3",
+          "title": "title",
+          "is_committee": false,
+          "structure_level": "layer X"
         }`),
 		"users/user:7": []byte(`{
+          "last_name": "",
+          "about_me": "",
+          "gender": "",
+          "groups_id": [],
           "id": 7,
+          "email": "",
           "username": "speaker2",
           "first_name": "speaker2",
-          "number": "",
-          "is_committee": false,
-          "email": "",
-          "structure_level": "",
-          "about_me": "",
-          "vote_weight": "1.000000",
           "is_present": true,
-          "groups_id": [],
+          "vote_weight": "1.000000",
+          "number": "",
           "title": "",
-          "last_name": "",
-          "gender": ""
+          "is_committee": false,
+          "structure_level": ""
         }`),
 	},
 	8: {
 		"agenda/item:1": []byte(`{
-          "is_internal": false,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
+          "tags_id": [],
+          "is_internal": false,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 2,
           "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": null,
+          "is_hidden": false,
           "title_information": {
             "title": "Topic"
-          },
-          "id": 1,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:3": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "parent_id": null,
-          "is_hidden": false,
-          "weight": 8,
-          "level": 0,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
-          "title_information": {
-            "title": "Internal"
-          },
           "id": 3,
-          "item_number": ""
-        }`),
-		"agenda/item:5": []byte(`{
+          "tags_id": [],
           "is_internal": true,
           "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
+          "weight": 8,
+          "level": 0,
+          "parent_id": null,
+          "is_hidden": false,
+          "title_information": {
+            "title": "Internal"
+          }
+        }`),
+		"agenda/item:5": []byte(`{
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 14,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
-          },
-          "id": 5,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:6": []byte(`{
-          "is_internal": true,
-          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": 0,
+          "item_number": "",
+          "closed": false,
+          "type": 1,
           "weight": 16,
           "level": 1,
-          "closed": false,
-          "tags_id": [],
-          "type": 1,
+          "parent_id": 3,
+          "is_hidden": false,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
-          },
-          "id": 6,
-          "item_number": ""
+          }
         }`),
 		"agenda/item:7": []byte(`{
-          "is_internal": true,
-          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
+          "tags_id": [],
+          "is_internal": true,
+          "duration": null,
+          "item_number": "",
+          "closed": false,
+          "type": 2,
           "weight": 18,
           "level": 2,
-          "closed": false,
-          "tags_id": [],
-          "type": 2,
+          "parent_id": 6,
+          "is_hidden": false,
           "title_information": {
             "title": "Public",
             "identifier": "2"
-          },
-          "id": 7,
-          "item_number": ""
+          }
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -30202,131 +30202,131 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "username": "admin",
-          "first_name": "",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "Administrator",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             2
           ],
           "id": 1,
-          "last_name": "Administrator",
-          "gender": ""
+          "username": "admin",
+          "first_name": "",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:2": []byte(`{
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 2,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate1",
+          "first_name": "candidate1",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:3": []byte(`{
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "number": "",
-          "is_committee": false,
-          "is_present": false,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 3,
-          "last_name": "",
-          "gender": ""
+          "username": "candidate2",
+          "first_name": "candidate2",
+          "is_present": false,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:4": []byte(`{
-          "username": "a",
-          "first_name": "a",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 4,
-          "last_name": "",
-          "gender": ""
+          "username": "a",
+          "first_name": "a",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:5": []byte(`{
-          "username": "b",
-          "first_name": "b",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [
             3
           ],
           "id": 5,
-          "last_name": "",
-          "gender": ""
+          "username": "b",
+          "first_name": "b",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:6": []byte(`{
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "number": "3",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "layer X",
+          "last_name": "the last name",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "title",
+          "gender": "",
           "groups_id": [],
           "id": 6,
-          "last_name": "the last name",
-          "gender": ""
+          "username": "speaker1",
+          "first_name": "speaker1",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "3",
+          "title": "title",
+          "is_committee": false,
+          "structure_level": "layer X"
         }`),
 		"users/user:7": []byte(`{
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "number": "",
-          "is_committee": false,
-          "is_present": true,
-          "structure_level": "",
+          "last_name": "",
           "about_me": "",
-          "vote_weight": "1.000000",
-          "title": "",
+          "gender": "",
           "groups_id": [],
           "id": 7,
-          "last_name": "",
-          "gender": ""
+          "username": "speaker2",
+          "first_name": "speaker2",
+          "is_present": true,
+          "vote_weight": "1.000000",
+          "number": "",
+          "title": "",
+          "is_committee": false,
+          "structure_level": ""
         }`),
 		"users/user:8": []byte(`{
+          "last_name": "",
+          "about_me": "",
+          "gender": "",
+          "groups_id": [],
           "id": 8,
+          "email": "",
           "username": "not required",
           "first_name": "not required",
-          "number": "",
-          "is_committee": false,
-          "email": "",
-          "structure_level": "",
-          "about_me": "",
-          "vote_weight": "1.000000",
           "is_present": true,
-          "groups_id": [],
+          "vote_weight": "1.000000",
+          "number": "",
           "title": "",
-          "last_name": "",
-          "gender": ""
+          "is_committee": false,
+          "structure_level": ""
         }`),
 	},
 }
@@ -30439,114 +30439,38 @@ type projectorData struct {
 var exampleProjector = []projectorData{
 	{
 		[]byte(`{
-        "identifier": null,
-        "title": "Leadmotion1",
-        "submitters": [
-          "a"
-        ],
-        "preamble": "The assembly may decide:",
-        "amendment_paragraphs": null,
-        "base_motion": null,
-        "base_statute": null,
-        "is_child": false,
-        "show_meta_box": false,
-        "show_referring_motions": true,
-        "change_recommendations": [],
-        "amendments": [
+        "items": [
           {
-            "id": 2,
-            "identifier": "\u00c4-1",
-            "title": "\u00c4nderungsantrag zu Leadmotion1",
-            "amendment_paragraphs": [
-              "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
-            ],
-            "merge_amendment_into_diff": 0,
-            "merge_amendment_into_final": 0
-          }
-        ],
-        "line_length": 85,
-        "line_numbering_mode": "outside",
-        "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
-        "reason": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
-        "recommendation": "Permission",
-        "recommendation_extension": "if [motion:2] is acepted",
-        "referenced_motions": {
-          "2": {
-            "title": "\u00c4nderungsantrag zu Leadmotion1",
-            "identifier": "\u00c4-1"
-          }
-        },
-        "recommender": "ABK",
-        "recommendation_referencing_motions": null
-      }`),
-		[]byte(`{
-        "name": "motions/motion",
-        "id": 1
-      }`),
-	},
-	{
-		[]byte(`{
-        "identifier": "2",
-        "title": "Public",
-        "submitters": [
-          "Administrator"
-        ],
-        "preamble": "The assembly may decide:",
-        "amendment_paragraphs": null,
-        "base_motion": null,
-        "base_statute": null,
-        "is_child": false,
-        "show_meta_box": false,
-        "show_referring_motions": true,
-        "change_recommendations": [],
-        "amendments": [],
-        "line_length": 85,
-        "line_numbering_mode": "outside",
-        "text": "<p>a</p>",
-        "reason": "<p>a</p>",
-        "recommendation_referencing_motions": null
-      }`),
-		[]byte(`{
-        "name": "motions/motion",
-        "id": 3
-      }`),
-	},
-	{
-		[]byte(`{
-        "identifier": "\u00c4-1",
-        "title": "\u00c4nderungsantrag zu Leadmotion1",
-        "submitters": [
-          "Administrator"
-        ],
-        "preamble": "The assembly may decide:",
-        "amendment_paragraphs": [
-          "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
-        ],
-        "base_motion": {
-          "identifier": null,
-          "title": "Leadmotion1",
-          "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
-        },
-        "base_statute": null,
-        "is_child": true,
-        "show_meta_box": false,
-        "show_referring_motions": true,
-        "change_recommendations": [],
-        "amendments": [],
-        "line_length": 85,
-        "line_numbering_mode": "outside",
-        "text": "",
-        "reason": "",
-        "recommendation_referencing_motions": [
-          {
-            "title": "Leadmotion1",
-            "identifier": null
+            "title_information": {
+              "title": "Topic",
+              "_agenda_item_number": ""
+            },
+            "collection": "topics/topic",
+            "depth": 0
           }
         ]
       }`),
 		[]byte(`{
-        "name": "motions/motion",
-        "id": 2
+        "name": "agenda/item-list",
+        "only_main_items": false
+      }`),
+	},
+	{
+		[]byte(`{
+        "items": [
+          {
+            "title_information": {
+              "title": "Topic",
+              "_agenda_item_number": ""
+            },
+            "collection": "topics/topic",
+            "depth": 0
+          }
+        ]
+      }`),
+		[]byte(`{
+        "name": "agenda/item-list",
+        "only_main_items": false
       }`),
 	},
 	{
@@ -30845,6 +30769,418 @@ var exampleProjector = []projectorData{
 		[]byte(`{
         "name": "mediafiles/mediafile",
         "id": 3
+      }`),
+	},
+	{
+		[]byte(`{
+        "title": "Topic",
+        "text": "",
+        "item_number": ""
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "title": "Hidden",
+        "text": "",
+        "item_number": ""
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "title": "Internal",
+        "text": "",
+        "item_number": ""
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": 3
+      }`),
+	},
+	{
+		[]byte(`{
+        "title": "Another public topic",
+        "text": "",
+        "item_number": ""
+      }`),
+		[]byte(`{
+        "name": "topics/topic",
+        "id": 4
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": {
+          "user": "title speaker1 the last name (layer X)",
+          "marked": false,
+          "weight": null,
+          "end_time": null
+        },
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Topic",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Hidden",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Internal",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 3
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "mediafiles/mediafile",
+        "title_information": {
+          "title": "folder"
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 4
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "mediafiles/mediafile",
+        "title_information": {
+          "title": "A.txt"
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 5
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "mediafiles/mediafile",
+        "title_information": {
+          "title": "in.jpg"
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 6
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [
+          {
+            "user": "speaker2",
+            "marked": false,
+            "weight": 2,
+            "end_time": null
+          }
+        ],
+        "current": {
+          "user": "title speaker1 the last name (layer X)",
+          "marked": false,
+          "weight": null,
+          "end_time": null
+        },
+        "finished": [],
+        "content_object_collection": "assignments/assignment",
+        "title_information": {
+          "title": "Assignment",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 7
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "motions/motion",
+        "title_information": {
+          "title": "Leadmotion1",
+          "identifier": null,
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 8
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "motions/motion",
+        "title_information": {
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
+          "identifier": "\u00c4-1",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 9
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "motions/motion",
+        "title_information": {
+          "title": "Public",
+          "identifier": "2",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 10
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "mediafiles/mediafile",
+        "title_information": {
+          "title": "A.txt"
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 11
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "motions/motion-block",
+        "title_information": {
+          "title": "block",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 12
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "motions/motion-block",
+        "title_information": {
+          "title": "block internal"
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 13
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Another public topic",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 14
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": {
+          "user": "title speaker1 the last name (layer X)",
+          "marked": false,
+          "weight": null,
+          "end_time": null
+        },
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Topic",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": {
+          "user": "title speaker1 the last name (layer X)",
+          "marked": false,
+          "weight": null,
+          "end_time": null
+        },
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Topic",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 1,
+        "mode": "final"
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Internal",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 3
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Internal",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 3,
+        "mode": "final"
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Hidden",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 2
+      }`),
+	},
+	{
+		[]byte(`{
+        "waiting": [],
+        "current": null,
+        "finished": [],
+        "content_object_collection": "topics/topic",
+        "title_information": {
+          "title": "Hidden",
+          "_agenda_item_number": ""
+        },
+        "closed": false
+      }`),
+		[]byte(`{
+        "name": "agenda/list-of-speakers",
+        "id": 2,
+        "mode": "final"
       }`),
 	},
 }
