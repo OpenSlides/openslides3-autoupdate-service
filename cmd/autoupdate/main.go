@@ -74,8 +74,8 @@ func main() {
 	handler := autoupdatehttp.New(auth, autoupdatehttp.WithForceHTTP2(forceHTTP), autoupdatehttp.WithAutoupdate(a), autoupdatehttp.WithNotify(n))
 
 	// Create tls http2 server.
-	srv := &http.Server{Handler: handler}
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
+	srv := &http.Server{Handler: handler}
 	ln, err := tlsListener(listenAddr)
 	if err != nil {
 		log.Fatalf("Can not create tls listener: %v", err)

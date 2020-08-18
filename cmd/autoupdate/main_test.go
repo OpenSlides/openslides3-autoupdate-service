@@ -63,8 +63,10 @@ func TestRequiredUser(t *testing.T) {
 }
 
 func TestProjector(t *testing.T) {
+	closed := make(chan struct{})
+	defer close(closed)
 	callabes := openslidesProjectorCallables()
-	ds := test.NewDatastoreMock(0)
+	ds := test.NewDatastoreMock(0, closed)
 
 	todoList := map[string]bool{
 		"motions/motion-poll": true,

@@ -16,11 +16,12 @@ type DatastoreMock struct {
 	maxChangeID int
 	Err         error
 
+	closed  <-chan struct{}
 	changes chan []string
 }
 
 // NewDatastoreMock initializes a DatastoreMock.
-func NewDatastoreMock(startID int) *DatastoreMock {
+func NewDatastoreMock(startID int, closed <-chan struct{}) *DatastoreMock {
 	changes := make(chan []string, 1)
 
 	fdCopy := make(map[string]json.RawMessage, len(exampleData))
@@ -33,6 +34,7 @@ func NewDatastoreMock(startID int) *DatastoreMock {
 		changes:     changes,
 		minChangeID: startID,
 		maxChangeID: startID,
+		closed:      closed,
 	}
 	return d
 }
@@ -48,11 +50,11 @@ func (d *DatastoreMock) CurrentID() int {
 }
 
 // KeysChanged waits for Changes to be called.
-func (d *DatastoreMock) KeysChanged(closing <-chan struct{}) ([]string, int, error) {
+func (d *DatastoreMock) KeysChanged() ([]string, int, error) {
 	var changes []string
 	select {
 	case changes = <-d.changes:
-	case <-closing:
+	case <-d.closed:
 		return nil, 0, closingErr{}
 	}
 	d.maxChangeID++

@@ -15,17 +15,17 @@ import (
 )
 
 func TestAutoupdateFirstData(t *testing.T) {
+	closed := make(chan struct{})
+	defer close(closed)
+
 	auther := new(test.AutherMock)
-	datastore := test.NewDatastoreMock(1)
+	datastore := test.NewDatastoreMock(1, closed)
 	datastore.FullData = map[string]json.RawMessage{
 		"user:1": []byte("hello world1"),
 		"user:2": []byte("hello world2"),
 	}
 
 	restricter := new(test.RestricterMock)
-
-	closed := make(chan struct{})
-	defer close(closed)
 
 	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {

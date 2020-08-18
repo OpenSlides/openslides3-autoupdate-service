@@ -34,13 +34,21 @@ func New(datastore Datastore, restricter Restricter, closed <-chan struct{}) (*A
 
 	go func() {
 		for {
-			keys, changeID, err := datastore.KeysChanged(a.closed)
+			keys, changeID, err := datastore.KeysChanged()
 			if err != nil {
 				var closing interface {
 					Closing()
 				}
 				if errors.As(err, &closing) {
 					return
+				}
+
+				var reset interface {
+					Reset()
+				}
+				if errors.As(err, &reset) {
+					a.reset()
+					continue
 				}
 
 				log.Printf("Autoupdate: Can not receive new data: %v", err)
@@ -52,7 +60,7 @@ func New(datastore Datastore, restricter Restricter, closed <-chan struct{}) (*A
 
 			// When the received data is to new, all the missing data is received at
 			// once. If more then one change id was skipped, the missing ids have to be
-			// created in the toppic with dummy items.
+			// created in the topic with dummy items.
 			for tid < uint64(changeID) {
 				tid = a.topic.Publish()
 			}
@@ -98,6 +106,10 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 		}
 	}
 
+	if len(changedKeys) == 0 {
+		return false, nil, int(newChangeID), nil
+	}
+
 	data := a.datastore.GetMany(changedKeys)
 	a.restricter.Restrict(uid, data)
 	return false, data, int(newChangeID), nil
@@ -131,4 +143,12 @@ func (a *Autoupdate) Projectors(ctx context.Context, tid uint64, pids []int) (nt
 		}
 	}
 	return ntid, rdata, int(a.topic.LastID()), nil
+}
+
+func (a *Autoupdate) reset() {
+	oldTopic := a.topic
+	a.topic = topic.New(topic.WithClosed(a.closed), topic.WithStartID(uint64(a.datastore.CurrentID())))
+
+	// Send an empty message on the old topic to wake up all clients.
+	oldTopic.Publish()
 }

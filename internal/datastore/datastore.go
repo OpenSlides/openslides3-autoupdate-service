@@ -73,14 +73,14 @@ func (d *Datastore) CurrentID() int {
 // KeysChanged blocks until there is new data. It updates the internal cache and
 // returns the changed keys and the new change id.
 //
-// If closing is closed then it return nil, 0, nil.
-func (d *Datastore) KeysChanged(closing <-chan struct{}) ([]string, int, error) {
+// If the datastore is closed then it return nil, 0, nil.
+func (d *Datastore) KeysChanged() ([]string, int, error) {
 	var rawData []byte
 	var err error
 	for rawData == nil {
 		// Update() blocks until there is new data. But when there is no new
 		// data for an hour, then it returns with nil.
-		rawData, err = d.redisConn.Update(closing)
+		rawData, err = d.redisConn.Update(d.closed)
 		if err != nil {
 			return nil, 0, fmt.Errorf("get autoupdate data: %w", err)
 		}
@@ -107,6 +107,14 @@ func (d *Datastore) KeysChanged(closing <-chan struct{}) ([]string, int, error) 
 
 	if changeID > d.maxChangeID+1 {
 		// Data is to new. Get the data in between.
+		if changeID > d.maxChangeID+100 {
+			// Data is match to new. Probably redis was reset.
+			if err := d.reset(); err != nil {
+				return nil, 0, fmt.Errorf("reset: %w", err)
+			}
+			return nil, 0, resetError{}
+		}
+
 		data, err := d.receive(d.maxChangeID, changeID-1)
 		if err != nil {
 			return nil, 0, fmt.Errorf("receive missing data from %d to %d: %w", d.maxChangeID, changeID-1, err)
@@ -123,7 +131,7 @@ func (d *Datastore) KeysChanged(closing <-chan struct{}) ([]string, int, error) 
 
 	if changeID < d.maxChangeID+1 {
 		// Data already known. Try the next.
-		return d.KeysChanged(closing)
+		return d.KeysChanged()
 	}
 
 	if err := d.update(sData.Elements, changeID); err != nil {
@@ -150,7 +158,7 @@ func (d *Datastore) ChangedKeys(from, to int) ([]string, error) {
 func (d *Datastore) Get(collection string, id int, v interface{}) error {
 	e := d.cache.get(fmt.Sprintf("%s:%d", collection, id))
 	if e == nil {
-		return doesNotExist(fmt.Sprintf("%s:%d", collection, id))
+		return doesNotExistError(fmt.Sprintf("%s:%d", collection, id))
 	}
 	return json.Unmarshal(e, v)
 }
@@ -251,4 +259,25 @@ func (d *Datastore) receive(from, to int) (data map[string]json.RawMessage, err 
 		return nil, fmt.Errorf("get data: %w", err)
 	}
 	return data, nil
+}
+
+// reset clears the datasotre and initializes it with new data.
+func (d *Datastore) reset() error {
+
+	fd, max, min, err := d.redisConn.FullData()
+	if err != nil {
+		return fmt.Errorf("get startdata from redis: %w", err)
+	}
+
+	d.cache = new(cache)
+	d.minChangeID = min
+	d.mu.Lock()
+	d.maxChangeID = max
+	d.mu.Unlock()
+
+	if err := d.update(fd, max); err != nil {
+		return fmt.Errorf("initial datastore update: %w", err)
+	}
+
+	return nil
 }

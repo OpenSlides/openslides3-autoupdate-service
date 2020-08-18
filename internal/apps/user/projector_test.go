@@ -9,7 +9,10 @@ import (
 )
 
 func TestSlide(t *testing.T) {
-	db := test.NewDatastoreMock(0)
+	closed := make(chan struct{})
+	defer close(closed)
+
+	db := test.NewDatastoreMock(0, closed)
 	slide := user.Slide()
 
 	for _, tt := range []struct {

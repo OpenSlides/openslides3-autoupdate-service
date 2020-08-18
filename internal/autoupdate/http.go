@@ -39,9 +39,12 @@ func (a *Autoupdate) HandleAutoupdate(w http.ResponseWriter, r *http.Request) er
 			return noStatusCodeError{err}
 		}
 
-		if err := sendData(w, all, data, changeID, newChangeID); err != nil {
-			return noStatusCodeError{err}
+		if len(data) != 0 {
+			if err := sendData(w, all, data, changeID, newChangeID); err != nil {
+				return noStatusCodeError{err}
+			}
 		}
+
 		changeID = newChangeID
 	}
 }

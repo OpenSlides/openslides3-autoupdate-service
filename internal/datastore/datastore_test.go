@@ -43,7 +43,7 @@ func TestKeysChangedNormal(t *testing.T) {
 	}
 
 	r.Send(data)
-	keys, chID, err := ds.KeysChanged(closing)
+	keys, chID, err := ds.KeysChanged()
 
 	if err != nil {
 		t.Errorf("KeysChanged returned unexpected err: %v", err)
@@ -79,7 +79,7 @@ func TestKeysChangedDelete(t *testing.T) {
 	}
 
 	r.Send(data)
-	keys, chID, err := ds.KeysChanged(closing)
+	keys, chID, err := ds.KeysChanged()
 
 	if err != nil {
 		t.Errorf("KeysChanged returned unexpected err: %v", err)
@@ -120,7 +120,7 @@ func TestKeysChangedSkippedChangeID(t *testing.T) {
 	}
 
 	r.Send(data)
-	keys, chID, err := ds.KeysChanged(closing)
+	keys, chID, err := ds.KeysChanged()
 
 	if err != nil {
 		t.Errorf("KeysChanged returned unexpected err: %v", err)
@@ -154,7 +154,7 @@ func TestKeysChangedBlocking(t *testing.T) {
 
 	unblocked := make(chan struct{})
 	go func() {
-		_, _, _ = ds.KeysChanged(closing)
+		_, _, _ = ds.KeysChanged()
 		close(unblocked)
 	}()
 
@@ -189,7 +189,7 @@ func TestKeysChangedNilDoesNotUnblock(t *testing.T) {
 
 	unblocked := make(chan struct{})
 	go func() {
-		_, _, _ = ds.KeysChanged(closing)
+		_, _, _ = ds.KeysChanged()
 		close(unblocked)
 	}()
 
@@ -230,7 +230,7 @@ func TestKeysChangedLowIDDoesNotUnblock(t *testing.T) {
 
 	unblocked := make(chan struct{})
 	go func() {
-		_, _, _ = ds.KeysChanged(closing)
+		_, _, _ = ds.KeysChanged()
 		close(unblocked)
 	}()
 

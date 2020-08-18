@@ -10,7 +10,9 @@ import (
 )
 
 func TestAutoupdateReceiveNewData(t *testing.T) {
-	datastore := test.NewDatastoreMock(1)
+	closed := make(chan struct{})
+	defer close(closed)
+	datastore := test.NewDatastoreMock(1, closed)
 	datastore.FullData = map[string]json.RawMessage{
 		"user:1": []byte("hello world1"),
 		"user:2": []byte("hello world2"),
@@ -18,8 +20,6 @@ func TestAutoupdateReceiveNewData(t *testing.T) {
 	datastore.Change([]string{"user:1"})
 	restricter := new(test.RestricterMock)
 
-	closed := make(chan struct{})
-	defer close(closed)
 	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
@@ -49,7 +49,10 @@ func TestAutoupdateReceiveNewData(t *testing.T) {
 }
 
 func TestAutoupdateReceiveFirstData(t *testing.T) {
-	datastore := test.NewDatastoreMock(2)
+	closed := make(chan struct{})
+	defer close(closed)
+
+	datastore := test.NewDatastoreMock(2, closed)
 	datastore.FullData = map[string]json.RawMessage{
 		"user:1": []byte("hello world1"),
 		"user:2": []byte("hello world2"),
@@ -57,8 +60,6 @@ func TestAutoupdateReceiveFirstData(t *testing.T) {
 
 	restricter := new(test.RestricterMock)
 
-	closed := make(chan struct{})
-	defer close(closed)
 	a, err := autoupdate.New(datastore, restricter, closed)
 	if err != nil {
 		t.Fatalf("autoupdate startup failed: %v", err)
