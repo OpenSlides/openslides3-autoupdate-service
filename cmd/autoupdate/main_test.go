@@ -68,10 +68,9 @@ func TestRequiredUser(t *testing.T) {
 func TestProjector(t *testing.T) {
 	closed := make(chan struct{})
 	defer close(closed)
-	callabes := openslidesProjectorCallables()
+	callables := openslidesProjectorCallables()
 
-	r := test.NewRedisMock()
-	r.FD = test.ExampleData()
+	ds := test.NewDatastoreMock(0, closed)
 
 	todoList := map[string]bool{
 		"motions/motion-poll": true,
@@ -82,15 +81,21 @@ func TestProjector(t *testing.T) {
 			if todoList[tt.ElementName] {
 				t.Skip()
 			}
+			fd := make(map[string]json.RawMessage)
+			for k, v := range test.ExampleData() {
+				fd[k] = v
+			}
+			for k, v := range tt.Overwrite {
+				fd[k] = v
+			}
+			ds.FullData = fd
 
-			r.Overwrite = tt.Overwrite
-
-			ds, err := datastore.New("", r, nil, callabes, closed)
-			if err != nil {
-				t.Fatalf("Can not create datastore: %v", err)
+			p := datastore.NewProjectors(ds, callables, closed)
+			if err := p.Update(fd); err != nil {
+				t.Fatalf("Can not update projector data: %v", err)
 			}
 
-			_, projectors, err := ds.Projectors(context.Background(), 0)
+			_, projectors, err := p.ProjectorData(context.Background(), 0)
 			if err != nil {
 				t.Fatalf("Can not get projectors: %v", err)
 			}
