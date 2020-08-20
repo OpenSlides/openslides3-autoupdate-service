@@ -13,7 +13,7 @@ type Datastore interface {
 	GetMany([]string) map[string]json.RawMessage
 	GetAll() map[string]json.RawMessage
 	ChangedKeys(from, to int) ([]string, error)
-	Projectors(ctx context.Context, tid uint64) (uint64, map[int]json.RawMessage, error)
+	ProjectorData(ctx context.Context, tid uint64) (uint64, map[int]json.RawMessage, error)
 }
 
 // Restricter restricts data for one user.

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -13,20 +14,26 @@ import (
 	"github.com/ostcar/topic"
 )
 
-type projectors struct {
+// Projectors holds the data of all projectors.
+type Projectors struct {
 	mu         sync.RWMutex
 	projectors map[int]json.RawMessage
 	closed     <-chan struct{}
 	callables  map[string]projector.Callable
 	topic      *topic.Topic
-	ds         *Datastore
+	ds         projector.Datastore
 }
 
-// Projectors returns the data of every changed projector.
+// NewProjectors returns a new projector instance.
+func NewProjectors(ds projector.Datastore, ps map[string]projector.Callable, closed <-chan struct{}) *Projectors {
+	return &Projectors{ds: ds, callables: ps, closed: closed}
+}
+
+// ProjectorData returns the data of every changed projector.
 //
 // Blocks untils the service or the context is closed or at least one projector
 // has changed.
-func (p *projectors) Projectors(ctx context.Context, tid uint64) (uint64, map[int]json.RawMessage, error) {
+func (p *Projectors) ProjectorData(ctx context.Context, tid uint64) (uint64, map[int]json.RawMessage, error) {
 	ntid, changedIDs, err := p.topic.Receive(ctx, tid)
 	if err != nil {
 		return 0, nil, fmt.Errorf("receiving from projector topic: %w", err)
@@ -43,7 +50,8 @@ func (p *projectors) Projectors(ctx context.Context, tid uint64) (uint64, map[in
 	return ntid, data, nil
 }
 
-func (p *projectors) update(data map[string]json.RawMessage) error {
+// Update updates the cache of the projector.
+func (p *Projectors) Update(data map[string]json.RawMessage) error {
 	p.mu.Lock()
 	defer p.mu.Unlock()
 
@@ -91,27 +99,36 @@ func (p *projectors) update(data map[string]json.RawMessage) error {
 
 		ped := make([]projectorElementData, len(elements.Elements))
 		for i, element := range elements.Elements {
+			ped[i].Element = element
 			var namer struct {
 				Name string `json:"name"`
 			}
 			if err := json.Unmarshal(element, &namer); err != nil {
-				ped[i].Error = fmt.Sprintf("projector element has no name: %v", err)
+				if err := ped[i].setError(projector.NewClientError("unknwown slide None")); err != nil {
+					return err
+				}
 				continue
 			}
 
 			c, ok := p.callables[namer.Name]
 			if !ok {
-				ped[i].Error = fmt.Sprintf("unknown projector element %s", namer.Name)
+				if namer.Name == "" {
+					namer.Name = "None"
+				}
+				if err := ped[i].setError(projector.NewClientError("unknwown slide %s", namer.Name)); err != nil {
+					return err
+				}
 				continue
 			}
 
 			data, err := c.Build(p.ds, element, id)
 			if err != nil {
-				ped[i].Error = err.Error()
+				if err := ped[i].setError(err); err != nil {
+					return err
+				}
 				continue
 			}
 
-			ped[i].Element = element
 			ped[i].Data = data
 		}
 
@@ -143,7 +160,29 @@ type projectorData struct {
 }
 
 type projectorElementData struct {
-	Element json.RawMessage `json:"element,omitempty"`
-	Data    json.RawMessage `json:"data,omitempty"`
-	Error   string          `json:"error,omitempty"`
+	Element json.RawMessage `json:"element"`
+	Data    json.RawMessage `json:"data"`
+}
+
+func (p *projectorElementData) setError(msg error) error {
+	var ce projector.ClientError
+	if !errors.As(msg, &ce) {
+		p.Data = []byte(`{"error":"Internal error"}`)
+		//log.Println(msg.Error())
+		// TODO: Do something with the error
+		return nil
+	}
+
+	data := struct {
+		Error string `json:"error"`
+	}{
+		ce.Error(),
+	}
+	v, err := json.Marshal(data)
+	if err != nil {
+		return fmt.Errorf("encoding error message: %w", err)
+	}
+	p.Data = v
+	return nil
+
 }

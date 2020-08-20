@@ -12,11 +12,23 @@ func ModelFromElement(ds Datastore, e json.RawMessage, collection string, v inte
 		ID int `json:"id"`
 	}
 	if err := json.Unmarshal(e, &element); err != nil {
+		var element struct {
+			ID interface{} `json:"id"`
+		}
+
+		// Fallback for better error messages
+		if err := json.Unmarshal(e, &element); err == nil {
+			return NewClientError("%s with id %s does not exist", collection, element.ID)
+		}
 		return fmt.Errorf("decoding element: %w", err)
 	}
 
+	if element.ID == 0 {
+		return NewClientError("id is required for %s slide", collection)
+	}
+
 	if err := ds.Get(collection, element.ID, v); err != nil {
-		return fmt.Errorf("get model: %w", err)
+		return NewClientError("%s with id %d does not exist", collection, element.ID)
 	}
 	return nil
 }

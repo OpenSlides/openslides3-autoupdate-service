@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 	"sync"
@@ -26,7 +25,7 @@ type Datastore struct {
 
 	hasPerm
 	requiredUser
-	projectors
+	*Projectors
 	config
 }
 
@@ -48,7 +47,7 @@ func New(osAddr string, redisConn RedisConn, requiredUsers map[string]func(json.
 	}
 
 	// TODO: fix circular dependency between datastore and projector.
-	d.projectors = projectors{ds: d, callables: projectorSlides, closed: closed}
+	d.Projectors = NewProjectors(d, projectorSlides, closed)
 
 	if err := d.update(fd, max); err != nil {
 		return nil, fmt.Errorf("initial datastore update: %w", err)
@@ -234,11 +233,10 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 		return fmt.Errorf("updating config: %w", err)
 	}
 
-	if err := d.projectors.update(data); err != nil {
+	if err := d.Projectors.Update(data); err != nil {
 		return fmt.Errorf("update projectors: %w", err)
 	}
 
-	log.Printf("Datastore on change_id %d", changeID)
 	return nil
 }
 

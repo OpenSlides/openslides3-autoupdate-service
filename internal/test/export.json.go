@@ -7083,279 +7083,279 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "gender": "",
+          "username": "admin",
           "is_present": false,
-          "vote_weight": "1.000000",
-          "default_password": "admin",
           "title": "",
           "structure_level": "",
-          "last_name": "Administrator",
+          "last_email_send": null,
+          "default_password": "admin",
+          "is_active": true,
+          "is_committee": false,
           "groups_id": [
             2
           ],
-          "id": 1,
-          "email": "",
           "comment": "",
-          "last_email_send": null,
-          "username": "admin",
-          "is_active": true,
           "about_me": "",
-          "auth_type": "default",
-          "first_name": "",
+          "last_name": "Administrator",
           "number": "",
-          "is_committee": false
+          "gender": "",
+          "email": "",
+          "first_name": "",
+          "auth_type": "default",
+          "vote_weight": "1.000000",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "gender": "",
+          "username": "candidate1",
           "is_present": false,
-          "vote_weight": "1.000000",
-          "default_password": "8NpbvXCBDr",
           "title": "",
           "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 2,
-          "email": "",
-          "comment": "",
           "last_email_send": null,
-          "username": "candidate1",
+          "default_password": "8NpbvXCBDr",
           "is_active": true,
+          "is_committee": false,
+          "groups_id": [],
+          "comment": "",
           "about_me": "",
-          "auth_type": "default",
-          "first_name": "candidate1",
+          "last_name": "",
           "number": "",
-          "is_committee": false
+          "gender": "",
+          "email": "",
+          "first_name": "candidate1",
+          "auth_type": "default",
+          "vote_weight": "1.000000",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "gender": "",
+          "username": "candidate2",
           "is_present": false,
-          "vote_weight": "1.000000",
-          "default_password": "5YLEHrUUTG",
           "title": "",
           "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 3,
-          "email": "",
-          "comment": "",
           "last_email_send": null,
-          "username": "candidate2",
+          "default_password": "5YLEHrUUTG",
           "is_active": true,
+          "is_committee": false,
+          "groups_id": [],
+          "comment": "",
           "about_me": "",
-          "auth_type": "default",
-          "first_name": "candidate2",
+          "last_name": "",
           "number": "",
-          "is_committee": false
+          "gender": "",
+          "email": "",
+          "first_name": "candidate2",
+          "auth_type": "default",
+          "vote_weight": "1.000000",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "gender": "",
+          "username": "a",
           "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "a",
           "title": "",
           "structure_level": "",
-          "last_name": "",
+          "last_email_send": null,
+          "default_password": "a",
+          "is_active": true,
+          "is_committee": false,
           "groups_id": [
             3
           ],
-          "id": 4,
-          "email": "",
           "comment": "",
-          "last_email_send": null,
-          "username": "a",
-          "is_active": true,
           "about_me": "",
-          "auth_type": "default",
-          "first_name": "a",
+          "last_name": "",
           "number": "",
-          "is_committee": false
+          "gender": "",
+          "email": "",
+          "first_name": "a",
+          "auth_type": "default",
+          "vote_weight": "1.000000",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "gender": "",
+          "username": "b",
           "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "b",
           "title": "",
           "structure_level": "",
-          "last_name": "",
+          "last_email_send": null,
+          "default_password": "b",
+          "is_active": true,
+          "is_committee": false,
           "groups_id": [
             3
           ],
-          "id": 5,
-          "email": "",
           "comment": "",
-          "last_email_send": null,
-          "username": "b",
-          "is_active": true,
           "about_me": "",
-          "auth_type": "default",
-          "first_name": "b",
+          "last_name": "",
           "number": "",
-          "is_committee": false
+          "gender": "",
+          "email": "",
+          "first_name": "b",
+          "auth_type": "default",
+          "vote_weight": "1.000000",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "gender": "",
+          "username": "speaker1",
           "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "ZdbyxFDWpp",
           "title": "title",
           "structure_level": "layer X",
-          "last_name": "the last name",
-          "groups_id": [],
-          "id": 6,
-          "email": "",
-          "comment": "",
           "last_email_send": null,
-          "username": "speaker1",
+          "default_password": "ZdbyxFDWpp",
           "is_active": true,
+          "is_committee": false,
+          "groups_id": [],
+          "comment": "",
           "about_me": "",
-          "auth_type": "default",
-          "first_name": "speaker1",
+          "last_name": "the last name",
           "number": "3",
-          "is_committee": false
+          "gender": "",
+          "email": "",
+          "first_name": "speaker1",
+          "auth_type": "default",
+          "vote_weight": "1.000000",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "gender": "",
+          "username": "speaker2",
           "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "5HZr2zPM3x",
           "title": "",
           "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 7,
-          "email": "",
-          "comment": "",
           "last_email_send": null,
-          "username": "speaker2",
+          "default_password": "5HZr2zPM3x",
           "is_active": true,
+          "is_committee": false,
+          "groups_id": [],
+          "comment": "",
           "about_me": "",
-          "auth_type": "default",
-          "first_name": "speaker2",
+          "last_name": "",
           "number": "",
-          "is_committee": false
+          "gender": "",
+          "email": "",
+          "first_name": "speaker2",
+          "auth_type": "default",
+          "vote_weight": "1.000000",
+          "id": 7
         }`),
 		"users/user:8": []byte(`{
-          "gender": "",
+          "username": "not required",
           "is_present": true,
-          "vote_weight": "1.000000",
-          "default_password": "hq59FcgwLc",
           "title": "",
           "structure_level": "",
-          "last_name": "",
-          "groups_id": [],
-          "id": 8,
-          "email": "",
-          "comment": "",
           "last_email_send": null,
-          "username": "not required",
+          "default_password": "hq59FcgwLc",
           "is_active": true,
+          "is_committee": false,
+          "groups_id": [],
+          "comment": "",
           "about_me": "",
-          "auth_type": "default",
-          "first_name": "not required",
+          "last_name": "",
           "number": "",
-          "is_committee": false
+          "gender": "",
+          "email": "",
+          "first_name": "not required",
+          "auth_type": "default",
+          "vote_weight": "1.000000",
+          "id": 8
         }`),
 	},
 	2: {
 		"agenda/item:1": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 2,
+          "duration": null,
+          "is_internal": false,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
           "title_information": {
             "title": "Topic"
           }
         }`),
 		"agenda/item:3": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 8,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 3,
           "title_information": {
             "title": "Internal"
           }
         }`),
 		"agenda/item:5": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 14,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           }
         }`),
 		"agenda/item:6": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 16,
+          "duration": 0,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           }
         }`),
 		"agenda/item:7": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 18,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 6,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
           "title_information": {
             "title": "Public",
             "identifier": "2"
@@ -10417,217 +10417,217 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "admin",
           "last_name": "Administrator",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": false,
+          "title": "",
           "groups_id": [
             2
           ],
-          "id": 1,
-          "username": "admin",
+          "structure_level": "",
           "first_name": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 2,
-          "email": "",
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate1",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "email": "",
+          "first_name": "candidate1",
+          "about_me": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 3,
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate2",
+          "about_me": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "a",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 4,
-          "username": "a",
+          "structure_level": "",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "b",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 5,
-          "username": "b",
+          "structure_level": "",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 6,
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker1",
+          "last_name": "the last name",
           "number": "3",
-          "title": "title",
           "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "is_present": true,
+          "title": "title",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "first_name": "speaker1",
+          "about_me": "",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": true,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "speaker2",
+          "about_me": "",
+          "id": 7
         }`),
 	},
 	3: {
 		"agenda/item:1": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 2,
+          "duration": null,
+          "is_internal": false,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
           "title_information": {
             "title": "Topic"
           }
         }`),
 		"agenda/item:3": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 8,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 3,
           "title_information": {
             "title": "Internal"
           }
         }`),
 		"agenda/item:5": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 14,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           }
         }`),
 		"agenda/item:6": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 16,
+          "duration": 0,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           }
         }`),
 		"agenda/item:7": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 18,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 6,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
           "title_information": {
             "title": "Public",
             "identifier": "2"
@@ -13689,217 +13689,217 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "admin",
           "last_name": "Administrator",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": false,
+          "title": "",
           "groups_id": [
             2
           ],
-          "id": 1,
-          "username": "admin",
+          "structure_level": "",
           "first_name": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 2,
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate1",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate1",
+          "about_me": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 3,
-          "email": "",
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "email": "",
+          "first_name": "candidate2",
+          "about_me": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "a",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 4,
-          "username": "a",
+          "structure_level": "",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "b",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 5,
-          "username": "b",
+          "structure_level": "",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 6,
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker1",
+          "last_name": "the last name",
           "number": "3",
-          "title": "title",
           "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "is_present": true,
+          "title": "title",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "first_name": "speaker1",
+          "about_me": "",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": true,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "speaker2",
+          "about_me": "",
+          "id": 7
         }`),
 	},
 	4: {
 		"agenda/item:1": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 2,
+          "duration": null,
+          "is_internal": false,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
           "title_information": {
             "title": "Topic"
           }
         }`),
 		"agenda/item:3": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 8,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 3,
           "title_information": {
             "title": "Internal"
           }
         }`),
 		"agenda/item:5": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 14,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           }
         }`),
 		"agenda/item:6": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 16,
+          "duration": 0,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           }
         }`),
 		"agenda/item:7": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 18,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 6,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
           "title_information": {
             "title": "Public",
             "identifier": "2"
@@ -17072,217 +17072,217 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "admin",
           "last_name": "Administrator",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": false,
+          "title": "",
           "groups_id": [
             2
           ],
-          "id": 1,
-          "username": "admin",
+          "structure_level": "",
           "first_name": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 2,
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate1",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate1",
+          "about_me": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 3,
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate2",
+          "about_me": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "a",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 4,
+          "structure_level": "",
           "email": "",
-          "username": "a",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "b",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 5,
-          "username": "b",
+          "structure_level": "",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 6,
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker1",
+          "last_name": "the last name",
           "number": "3",
-          "title": "title",
           "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "is_present": true,
+          "title": "title",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "first_name": "speaker1",
+          "about_me": "",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": true,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "speaker2",
+          "about_me": "",
+          "id": 7
         }`),
 	},
 	5: {
 		"agenda/item:1": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 2,
+          "duration": null,
+          "is_internal": false,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
           "title_information": {
             "title": "Topic"
           }
         }`),
 		"agenda/item:3": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 8,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 3,
           "title_information": {
             "title": "Internal"
           }
         }`),
 		"agenda/item:5": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 14,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           }
         }`),
 		"agenda/item:6": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 16,
+          "duration": 0,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           }
         }`),
 		"agenda/item:7": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 18,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 6,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
           "title_information": {
             "title": "Public",
             "identifier": "2"
@@ -20386,217 +20386,217 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "admin",
           "last_name": "Administrator",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": false,
+          "title": "",
           "groups_id": [
             2
           ],
-          "id": 1,
-          "username": "admin",
+          "structure_level": "",
           "first_name": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 2,
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate1",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate1",
+          "about_me": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 3,
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate2",
+          "about_me": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "a",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 4,
-          "username": "a",
+          "structure_level": "",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "b",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 5,
+          "structure_level": "",
           "email": "",
-          "username": "b",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 6,
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker1",
+          "last_name": "the last name",
           "number": "3",
-          "title": "title",
           "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "is_present": true,
+          "title": "title",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "first_name": "speaker1",
+          "about_me": "",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": true,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "speaker2",
+          "about_me": "",
+          "id": 7
         }`),
 	},
 	6: {
 		"agenda/item:1": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 2,
+          "duration": null,
+          "is_internal": false,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
           "title_information": {
             "title": "Topic"
           }
         }`),
 		"agenda/item:3": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 8,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 3,
           "title_information": {
             "title": "Internal"
           }
         }`),
 		"agenda/item:5": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 14,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           }
         }`),
 		"agenda/item:6": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 16,
+          "duration": 0,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           }
         }`),
 		"agenda/item:7": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 18,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 6,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
           "title_information": {
             "title": "Public",
             "identifier": "2"
@@ -23658,217 +23658,217 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "admin",
           "last_name": "Administrator",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": false,
+          "title": "",
           "groups_id": [
             2
           ],
-          "id": 1,
-          "username": "admin",
+          "structure_level": "",
           "first_name": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 2,
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate1",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate1",
+          "about_me": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 3,
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate2",
+          "about_me": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "a",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 4,
-          "username": "a",
+          "structure_level": "",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "b",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 5,
-          "username": "b",
+          "structure_level": "",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 6,
-          "email": "",
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker1",
+          "last_name": "the last name",
           "number": "3",
-          "title": "title",
           "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "is_present": true,
+          "title": "title",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "email": "",
+          "first_name": "speaker1",
+          "about_me": "",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": true,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "speaker2",
+          "about_me": "",
+          "id": 7
         }`),
 	},
 	7: {
 		"agenda/item:1": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 2,
+          "duration": null,
+          "is_internal": false,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
           "title_information": {
             "title": "Topic"
           }
         }`),
 		"agenda/item:3": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 8,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 3,
           "title_information": {
             "title": "Internal"
           }
         }`),
 		"agenda/item:5": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 14,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           }
         }`),
 		"agenda/item:6": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 16,
+          "duration": 0,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           }
         }`),
 		"agenda/item:7": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 18,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 6,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
           "title_information": {
             "title": "Public",
             "identifier": "2"
@@ -26930,217 +26930,217 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "admin",
           "last_name": "Administrator",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": false,
+          "title": "",
           "groups_id": [
             2
           ],
-          "id": 1,
-          "username": "admin",
+          "structure_level": "",
           "first_name": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 2,
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate1",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate1",
+          "about_me": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 3,
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate2",
+          "about_me": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "a",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 4,
-          "username": "a",
+          "structure_level": "",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "b",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 5,
-          "username": "b",
+          "structure_level": "",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 6,
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker1",
+          "last_name": "the last name",
           "number": "3",
-          "title": "title",
           "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "is_present": true,
+          "title": "title",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "first_name": "speaker1",
+          "about_me": "",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "email": "",
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": true,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "email": "",
+          "first_name": "speaker2",
+          "about_me": "",
+          "id": 7
         }`),
 	},
 	8: {
 		"agenda/item:1": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 2,
+          "duration": null,
+          "is_internal": false,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "id": 1,
-          "tags_id": [],
-          "is_internal": false,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 2,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 1,
           "title_information": {
             "title": "Topic"
           }
         }`),
 		"agenda/item:3": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 8,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": null,
+          "is_hidden": false,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "id": 3,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 8,
           "level": 0,
-          "parent_id": null,
-          "is_hidden": false,
+          "id": 3,
           "title_information": {
             "title": "Internal"
           }
         }`),
 		"agenda/item:5": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 14,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "id": 5,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 14,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 5,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           }
         }`),
 		"agenda/item:6": []byte(`{
+          "type": 1,
+          "tags_id": [],
+          "weight": 16,
+          "duration": 0,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 3,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "id": 6,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": 0,
           "item_number": "",
-          "closed": false,
-          "type": 1,
-          "weight": 16,
           "level": 1,
-          "parent_id": 3,
-          "is_hidden": false,
+          "id": 6,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           }
         }`),
 		"agenda/item:7": []byte(`{
+          "type": 2,
+          "tags_id": [],
+          "weight": 18,
+          "duration": null,
+          "is_internal": true,
+          "closed": false,
+          "parent_id": 6,
+          "is_hidden": false,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "id": 7,
-          "tags_id": [],
-          "is_internal": true,
-          "duration": null,
           "item_number": "",
-          "closed": false,
-          "type": 2,
-          "weight": 18,
           "level": 2,
-          "parent_id": 6,
-          "is_hidden": false,
+          "id": 7,
           "title_information": {
             "title": "Public",
             "identifier": "2"
@@ -30202,131 +30202,131 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "admin",
           "last_name": "Administrator",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": false,
+          "title": "",
           "groups_id": [
             2
           ],
-          "id": 1,
-          "username": "admin",
+          "structure_level": "",
           "first_name": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 2,
-          "username": "candidate1",
-          "first_name": "candidate1",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate1",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate1",
+          "about_me": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 3,
-          "username": "candidate2",
-          "first_name": "candidate2",
-          "is_present": false,
           "vote_weight": "1.000000",
+          "username": "candidate2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": false,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "candidate2",
+          "about_me": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "a",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 4,
-          "username": "a",
+          "structure_level": "",
           "first_name": "a",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
+          "vote_weight": "1.000000",
+          "username": "b",
           "last_name": "",
-          "about_me": "",
+          "number": "",
+          "is_committee": false,
           "gender": "",
+          "is_present": true,
+          "title": "",
           "groups_id": [
             3
           ],
-          "id": 5,
-          "username": "b",
+          "structure_level": "",
           "first_name": "b",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "number": "",
-          "title": "",
-          "is_committee": false,
-          "structure_level": ""
+          "about_me": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "last_name": "the last name",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 6,
-          "username": "speaker1",
-          "first_name": "speaker1",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker1",
+          "last_name": "the last name",
           "number": "3",
-          "title": "title",
           "is_committee": false,
-          "structure_level": "layer X"
+          "gender": "",
+          "is_present": true,
+          "title": "title",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "first_name": "speaker1",
+          "about_me": "",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 7,
-          "username": "speaker2",
-          "first_name": "speaker2",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "speaker2",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": true,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "first_name": "speaker2",
+          "about_me": "",
+          "id": 7
         }`),
 		"users/user:8": []byte(`{
-          "last_name": "",
-          "about_me": "",
-          "gender": "",
-          "groups_id": [],
-          "id": 8,
-          "email": "",
-          "username": "not required",
-          "first_name": "not required",
-          "is_present": true,
           "vote_weight": "1.000000",
+          "username": "not required",
+          "last_name": "",
           "number": "",
-          "title": "",
           "is_committee": false,
-          "structure_level": ""
+          "gender": "",
+          "is_present": true,
+          "title": "",
+          "groups_id": [],
+          "structure_level": "",
+          "email": "",
+          "first_name": "not required",
+          "about_me": "",
+          "id": 8
         }`),
 	},
 }
@@ -30432,755 +30432,20080 @@ var exampleRequiredUser = map[string]permIDs{
 }
 
 type projectorData struct {
-	Data    json.RawMessage
-	Element json.RawMessage
+	Overwrite map[string]json.RawMessage
+	Data      json.RawMessage
 }
 
 var exampleProjector = []projectorData{
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {}
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "items": [
-          {
-            "title_information": {
-              "title": "Topic",
-              "_agenda_item_number": ""
-            },
-            "collection": "topics/topic",
-            "depth": 0
-          }
-        ]
-      }`),
-		[]byte(`{
-        "name": "agenda/item-list",
-        "only_main_items": false
-      }`),
-	},
-	{
-		[]byte(`{
-        "items": [
-          {
-            "title_information": {
-              "title": "Topic",
-              "_agenda_item_number": ""
-            },
-            "collection": "topics/topic",
-            "depth": 0
-          }
-        ]
-      }`),
-		[]byte(`{
-        "name": "agenda/item-list",
-        "only_main_items": false
-      }`),
-	},
-	{
-		[]byte(`{
-        "title": "block",
-        "motions": [
-          {
-            "title": "Leadmotion1",
-            "identifier": null,
-            "recommendation": {
-              "name": "Permission",
-              "css_class": "lightblue"
-            },
-            "recommendation_extension": "if [motion:2] is acepted"
-          },
-          {
-            "title": "\u00c4nderungsantrag zu Leadmotion1",
-            "identifier": "\u00c4-1"
-          }
-        ],
-        "referenced_motions": {
-          "2": {
-            "title": "\u00c4nderungsantrag zu Leadmotion1",
-            "identifier": "\u00c4-1"
-          }
-        }
-      }`),
-		[]byte(`{
-        "name": "motions/motion-block",
-        "id": 1
-      }`),
-	},
-	{
-		[]byte(`{
-        "title": "block internal",
-        "motions": [
-          {
-            "title": "Public",
-            "identifier": "2"
-          }
-        ],
-        "referenced_motions": {}
-      }`),
-		[]byte(`{
-        "name": "motions/motion-block",
-        "id": 2
-      }`),
-	},
-	{
-		[]byte(`{
-        "user": "a"
-      }`),
-		[]byte(`{
-        "name": "users/user",
-        "id": 4
-      }`),
-	},
-	{
-		[]byte(`{
-        "user": "b"
-      }`),
-		[]byte(`{
-        "name": "users/user",
-        "id": 5
-      }`),
-	},
-	{
-		[]byte(`{
-        "user": "candidate1"
-      }`),
-		[]byte(`{
-        "name": "users/user",
-        "id": 2
-      }`),
-	},
-	{
-		[]byte(`{
-        "user": "candidate2"
-      }`),
-		[]byte(`{
-        "name": "users/user",
-        "id": 3
-      }`),
-	},
-	{
-		[]byte(`{
-        "user": "not required"
-      }`),
-		[]byte(`{
-        "name": "users/user",
-        "id": 8
-      }`),
-	},
-	{
-		[]byte(`{
-        "user": "speaker2"
-      }`),
-		[]byte(`{
-        "name": "users/user",
-        "id": 7
-      }`),
-	},
-	{
-		[]byte(`{
-        "user": "Administrator"
-      }`),
-		[]byte(`{
-        "name": "users/user",
-        "id": 1
-      }`),
-	},
-	{
-		[]byte(`{
-        "user": "title speaker1 the last name (layer X)"
-      }`),
-		[]byte(`{
-        "name": "users/user",
-        "id": 6
-      }`),
-	},
-	{
-		[]byte(`{
-        "description": "",
-        "running": true,
-        "countdown_time": 1597141855.090748,
-        "warning_time": 0
-      }`),
-		[]byte(`{
-        "name": "core/countdown",
-        "id": 1
-      }`),
-	},
-	{
-		[]byte(`{
-        "id": 1,
-        "message": "<p>test</p>"
-      }`),
-		[]byte(`{
-        "name": "core/projector-message",
-        "id": 1
-      }`),
-	},
-	{
-		[]byte(`{
-        "title": "Assignment",
-        "phase": 0,
-        "open_posts": 1,
-        "description": "",
-        "assignment_related_users": [
-          {
-            "user": "candidate1"
-          },
-          {
-            "user": "candidate2"
-          }
-        ],
-        "number_poll_candidates": false
-      }`),
-		[]byte(`{
-        "name": "assignments/assignment",
-        "id": 1
-      }`),
-	},
-	{
-		[]byte(`{
-        "motion": {
-          "title": "Public",
-          "identifier": "2"
+        "data": {
+          "error": "unknwown slide None"
         },
-        "poll": {
-          "title": "Abstimmung",
-          "type": "named",
-          "pollmethod": "YNA",
-          "state": 4,
-          "onehundred_percent_base": "YNA",
-          "majority_method": "simple",
-          "options": [
+        "element": {}
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
             {
-              "yes": 0.0,
-              "no": 1.0,
-              "abstain": 0.0
+              "name": "unknown"
             }
           ],
-          "votesvalid": "1.000000",
-          "votesinvalid": "0.000000",
-          "votescast": "1.000000"
-        }
-      }`),
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "name": "motions/motion-poll",
-        "id": 1
+        "data": {
+          "error": "unknwown slide unknown"
+        },
+        "element": {
+          "name": "unknown"
+        }
       }`),
 	},
 	{
-		[]byte(`{
-        "motion": {
-          "title": "Public",
-          "identifier": "2"
-        },
-        "poll": {
-          "title": "Abstimmung (2)",
-          "type": "pseudoanonymous",
-          "pollmethod": "YNA",
-          "state": 4,
-          "onehundred_percent_base": "YNA",
-          "majority_method": "simple",
-          "options": [
+		map[string]json.RawMessage{
+			"core/projector:2": []byte(`{
+          "id": 1,
+          "elements": [
             {
-              "yes": 1.0,
-              "no": 0.0,
-              "abstain": 0.0
+              "name": [],
+              "id": 2
             }
           ],
-          "votesvalid": "1.000000",
-          "votesinvalid": "0.000000",
-          "votescast": "1.000000"
-        }
-      }`),
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "name": "motions/motion-poll",
-        "id": 2
+        "data": {
+          "path": "folder/in.jpg",
+          "mimetype": "image/jpeg",
+          "media_url_prefix": "/media/"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 3
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/item-list",
+              "only_main_items": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "assignment": {
-          "title": "Assignment"
-        },
-        "poll": {
-          "title": "Wahlgang",
-          "type": "named",
-          "pollmethod": "votes",
-          "votes_amount": 1,
-          "description": "",
-          "state": 2,
-          "onehundred_percent_base": "valid",
-          "majority_method": "simple",
-          "options": [
+        "data": {
+          "items": [
             {
-              "user": {
-                "short_name": "candidate1"
-              }
-            },
-            {
-              "user": {
-                "short_name": "candidate2"
-              }
+              "title_information": {
+                "title": "Topic",
+                "_agenda_item_number": ""
+              },
+              "collection": "topics/topic",
+              "depth": 0
             }
           ]
+        },
+        "element": {
+          "name": "agenda/item-list",
+          "only_main_items": false
         }
       }`),
-		[]byte(`{
-        "name": "assignments/assignment-poll",
-        "id": 1
-      }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/item-list",
+              "only_main_items": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "path": "A.txt",
-        "mimetype": "text/plain",
-        "media_url_prefix": "/media/"
-      }`),
-		[]byte(`{
-        "name": "mediafiles/mediafile",
-        "id": 2
-      }`),
-	},
-	{
-		[]byte(`{
-        "path": "folder/A.txt",
-        "mimetype": "text/plain",
-        "media_url_prefix": "/media/"
-      }`),
-		[]byte(`{
-        "name": "mediafiles/mediafile",
-        "id": 4
-      }`),
-	},
-	{
-		[]byte(`{
-        "path": "folder/",
-        "mimetype": "",
-        "media_url_prefix": "/media/"
-      }`),
-		[]byte(`{
-        "name": "mediafiles/mediafile",
-        "id": 1
-      }`),
-	},
-	{
-		[]byte(`{
-        "path": "folder/in.jpg",
-        "mimetype": "image/jpeg",
-        "media_url_prefix": "/media/"
-      }`),
-		[]byte(`{
-        "name": "mediafiles/mediafile",
-        "id": 3
-      }`),
-	},
-	{
-		[]byte(`{
-        "title": "Topic",
-        "text": "",
-        "item_number": ""
-      }`),
-		[]byte(`{
-        "name": "topics/topic",
-        "id": 1
-      }`),
-	},
-	{
-		[]byte(`{
-        "title": "Hidden",
-        "text": "",
-        "item_number": ""
-      }`),
-		[]byte(`{
-        "name": "topics/topic",
-        "id": 2
-      }`),
-	},
-	{
-		[]byte(`{
-        "title": "Internal",
-        "text": "",
-        "item_number": ""
-      }`),
-		[]byte(`{
-        "name": "topics/topic",
-        "id": 3
-      }`),
-	},
-	{
-		[]byte(`{
-        "title": "Another public topic",
-        "text": "",
-        "item_number": ""
-      }`),
-		[]byte(`{
-        "name": "topics/topic",
-        "id": 4
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": {
-          "user": "title speaker1 the last name (layer X)",
-          "marked": false,
-          "weight": null,
-          "end_time": null
+        "data": {
+          "items": [
+            {
+              "title_information": {
+                "title": "Topic",
+                "_agenda_item_number": ""
+              },
+              "collection": "topics/topic"
+            }
+          ]
         },
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Topic",
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 1
+        "element": {
+          "name": "agenda/item-list",
+          "only_main_items": true
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/clock",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Hidden",
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 2
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Internal",
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 3
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "mediafiles/mediafile",
-        "title_information": {
-          "title": "folder"
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 4
+        "data": {},
+        "element": {
+          "name": "core/clock",
+          "stable": true
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "mediafiles/mediafile",
-        "title_information": {
-          "title": "A.txt"
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 5
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "mediafiles/mediafile",
-        "title_information": {
-          "title": "in.jpg"
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 6
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [
-          {
-            "user": "speaker2",
-            "marked": false,
-            "weight": 2,
-            "end_time": null
-          }
-        ],
-        "current": {
-          "user": "title speaker1 the last name (layer X)",
-          "marked": false,
-          "weight": null,
-          "end_time": null
-        },
-        "finished": [],
-        "content_object_collection": "assignments/assignment",
-        "title_information": {
-          "title": "Assignment",
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 7
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "motions/motion",
-        "title_information": {
-          "title": "Leadmotion1",
-          "identifier": null,
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 8
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "motions/motion",
-        "title_information": {
-          "title": "\u00c4nderungsantrag zu Leadmotion1",
-          "identifier": "\u00c4-1",
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 9
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "motions/motion",
-        "title_information": {
-          "title": "Public",
-          "identifier": "2",
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 10
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "mediafiles/mediafile",
-        "title_information": {
-          "title": "A.txt"
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 11
-      }`),
-	},
-	{
-		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "motions/motion-block",
-        "title_information": {
+        "data": {
           "title": "block",
-          "_agenda_item_number": ""
+          "motions": [
+            {
+              "title": "Leadmotion1",
+              "identifier": null,
+              "recommendation": {
+                "name": "Permission",
+                "css_class": "lightblue"
+              },
+              "recommendation_extension": "if [motion:2] is acepted"
+            },
+            {
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "identifier": "\u00c4-1"
+            }
+          ],
+          "referenced_motions": {
+            "2": {
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "identifier": "\u00c4-1"
+            }
+          }
         },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 12
+        "element": {
+          "name": "motions/motion-block",
+          "id": 1
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-block"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "motions/motion-block",
-        "title_information": {
-          "title": "block internal"
+        "data": {
+          "error": "id is required for motions/motion-block slide"
         },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 13
+        "element": {
+          "name": "motions/motion-block"
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
+        "data": {
+          "error": "motions/motion-block with id a string does not exist"
+        },
+        "element": {
+          "name": "motions/motion-block",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion-block with id 1337 does not exist"
+        },
+        "element": {
+          "name": "motions/motion-block",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion-block",
+          "title_information": {
+            "title": "block",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion-block",
+          "title_information": {
+            "title": "block",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "title": "block internal",
+          "motions": [
+            {
+              "title": "Public",
+              "identifier": "2"
+            }
+          ],
+          "referenced_motions": {}
+        },
+        "element": {
+          "name": "motions/motion-block",
+          "id": 2
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-block"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for motions/motion-block slide"
+        },
+        "element": {
+          "name": "motions/motion-block"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion-block with id a string does not exist"
+        },
+        "element": {
+          "name": "motions/motion-block",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion-block with id 1337 does not exist"
+        },
+        "element": {
+          "name": "motions/motion-block",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion-block",
+          "title_information": {
+            "title": "block internal"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-block",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion-block",
+          "title_information": {
+            "title": "block internal"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "user": "a"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 4
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for users/user slide"
+        },
+        "element": {
+          "name": "users/user"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id a string does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id 1337 does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 5
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "user": "b"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 5
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for users/user slide"
+        },
+        "element": {
+          "name": "users/user"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id a string does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id 1337 does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 5
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 5
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 5
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "user": "candidate1"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 2
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for users/user slide"
+        },
+        "element": {
+          "name": "users/user"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id a string does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id 1337 does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "user": "candidate2"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 3
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for users/user slide"
+        },
+        "element": {
+          "name": "users/user"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id a string does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id 1337 does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 8
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "user": "not required"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 8
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for users/user slide"
+        },
+        "element": {
+          "name": "users/user"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id a string does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id 1337 does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 8
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 8
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 8
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 7
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "user": "speaker2"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 7
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for users/user slide"
+        },
+        "element": {
+          "name": "users/user"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id a string does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id 1337 does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 7
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 7
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 7
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "user": "Administrator"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for users/user slide"
+        },
+        "element": {
+          "name": "users/user"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id a string does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id 1337 does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 6
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "user": "title speaker1 the last name (layer X)"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 6
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for users/user slide"
+        },
+        "element": {
+          "name": "users/user"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id a string does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "users/user with id 1337 does not exist"
+        },
+        "element": {
+          "name": "users/user",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 6
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 6
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "users/user",
+              "id": 6
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/countdown",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "description": "",
+          "running": true,
+          "countdown_time": 1597141855.090748,
+          "warning_time": 0
+        },
+        "element": {
+          "name": "core/countdown",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/countdown"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for core/countdown slide"
+        },
+        "element": {
+          "name": "core/countdown"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/countdown",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "core/countdown with id a string does not exist"
+        },
+        "element": {
+          "name": "core/countdown",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/countdown",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "core/countdown with id 1337 does not exist"
+        },
+        "element": {
+          "name": "core/countdown",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "core/countdown",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "core/countdown",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "core/countdown",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/projector-message",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "id": 1,
+          "message": "<p>test</p>"
+        },
+        "element": {
+          "name": "core/projector-message",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/projector-message"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for core/projector-message slide"
+        },
+        "element": {
+          "name": "core/projector-message"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/projector-message",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "core/projector-message with id a string does not exist"
+        },
+        "element": {
+          "name": "core/projector-message",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "core/projector-message",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "core/projector-message with id 1337 does not exist"
+        },
+        "element": {
+          "name": "core/projector-message",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "core/projector-message",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "core/projector-message",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "core/projector-message",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "title": "Assignment",
+          "phase": 0,
+          "open_posts": 1,
+          "description": "",
+          "assignment_related_users": [
+            {
+              "user": "candidate1"
+            },
+            {
+              "user": "candidate2"
+            }
+          ],
+          "number_poll_candidates": false
+        },
+        "element": {
+          "name": "assignments/assignment",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for assignments/assignment slide"
+        },
+        "element": {
+          "name": "assignments/assignment"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "assignments/assignment with id a string does not exist"
+        },
+        "element": {
+          "name": "assignments/assignment",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "assignments/assignment with id 1337 does not exist"
+        },
+        "element": {
+          "name": "assignments/assignment",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [
+            {
+              "user": "speaker2",
+              "marked": false,
+              "weight": 2,
+              "end_time": null
+            }
+          ],
+          "current": {
+            "user": "title speaker1 the last name (layer X)",
+            "marked": false,
+            "weight": null,
+            "end_time": null
+          },
+          "finished": [],
+          "content_object_collection": "assignments/assignment",
+          "title_information": {
+            "title": "Assignment",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff",
+          "current_speaker": "title speaker1 the last name (layer X)"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [
+            {
+              "user": "speaker2",
+              "marked": false,
+              "weight": 2,
+              "end_time": null
+            }
+          ],
+          "current": {
+            "user": "title speaker1 the last name (layer X)",
+            "marked": false,
+            "weight": null,
+            "end_time": null
+          },
+          "finished": [],
+          "content_object_collection": "assignments/assignment",
+          "title_information": {
+            "title": "Assignment",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": null,
+          "title": "Leadmotion1",
+          "submitters": [
+            "a"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": null,
+          "base_motion": null,
+          "base_statute": null,
+          "is_child": false,
+          "show_meta_box": false,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [
+            {
+              "id": 2,
+              "identifier": "\u00c4-1",
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "amendment_paragraphs": [
+                "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+              ],
+              "merge_amendment_into_diff": 0,
+              "merge_amendment_into_final": 0
+            }
+          ],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
+          "reason": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
+          "recommendation": "Permission",
+          "recommendation_extension": "if [motion:2] is acepted",
+          "referenced_motions": {
+            "2": {
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "identifier": "\u00c4-1"
+            }
+          },
+          "recommender": "ABK",
+          "recommendation_referencing_motions": null
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for motions/motion slide"
+        },
+        "element": {
+          "name": "motions/motion"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion with id a string does not exist"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion with id 1337 does not exist"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "Leadmotion1",
+            "identifier": null,
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "Leadmotion1",
+            "identifier": null,
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": "2",
+          "title": "Public",
+          "submitters": [
+            "Administrator"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": null,
+          "base_motion": null,
+          "base_statute": null,
+          "is_child": false,
+          "show_meta_box": false,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "<p>a</p>",
+          "reason": "<p>a</p>",
+          "recommendation_referencing_motions": null
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 3
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for motions/motion slide"
+        },
+        "element": {
+          "name": "motions/motion"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion with id a string does not exist"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion with id 1337 does not exist"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "Public",
+            "identifier": "2",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "Public",
+            "identifier": "2",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
+          "submitters": [
+            "Administrator"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": [
+            "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+          ],
+          "base_motion": {
+            "identifier": null,
+            "title": "Leadmotion1",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+          },
+          "base_statute": null,
+          "is_child": true,
+          "show_meta_box": false,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "",
+          "reason": "",
+          "recommendation_referencing_motions": [
+            {
+              "title": "Leadmotion1",
+              "identifier": null
+            }
+          ]
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 2
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for motions/motion slide"
+        },
+        "element": {
+          "name": "motions/motion"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion with id a string does not exist"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion with id 1337 does not exist"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "motion": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "poll": {
+            "title": "Abstimmung",
+            "type": "named",
+            "pollmethod": "YNA",
+            "state": 4,
+            "onehundred_percent_base": "YNA",
+            "majority_method": "simple",
+            "options": [
+              {
+                "yes": 0.0,
+                "no": 1.0,
+                "abstain": 0.0
+              }
+            ],
+            "votesvalid": "1.000000",
+            "votesinvalid": "0.000000",
+            "votescast": "1.000000"
+          }
+        },
+        "element": {
+          "name": "motions/motion-poll",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-poll"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for motions/motion-poll slide"
+        },
+        "element": {
+          "name": "motions/motion-poll"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion-poll with id a string does not exist"
+        },
+        "element": {
+          "name": "motions/motion-poll",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion-poll with id 1337 does not exist"
+        },
+        "element": {
+          "name": "motions/motion-poll",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "motion": {
+            "title": "Public",
+            "identifier": "2"
+          },
+          "poll": {
+            "title": "Abstimmung (2)",
+            "type": "pseudoanonymous",
+            "pollmethod": "YNA",
+            "state": 4,
+            "onehundred_percent_base": "YNA",
+            "majority_method": "simple",
+            "options": [
+              {
+                "yes": 1.0,
+                "no": 0.0,
+                "abstain": 0.0
+              }
+            ],
+            "votesvalid": "1.000000",
+            "votesinvalid": "0.000000",
+            "votescast": "1.000000"
+          }
+        },
+        "element": {
+          "name": "motions/motion-poll",
+          "id": 2
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-poll"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for motions/motion-poll slide"
+        },
+        "element": {
+          "name": "motions/motion-poll"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion-poll with id a string does not exist"
+        },
+        "element": {
+          "name": "motions/motion-poll",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "motions/motion-poll with id 1337 does not exist"
+        },
+        "element": {
+          "name": "motions/motion-poll",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "motions/motion-poll",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "assignment": {
+            "title": "Assignment"
+          },
+          "poll": {
+            "title": "Wahlgang",
+            "type": "named",
+            "pollmethod": "votes",
+            "votes_amount": 1,
+            "description": "",
+            "state": 2,
+            "onehundred_percent_base": "valid",
+            "majority_method": "simple",
+            "options": [
+              {
+                "user": {
+                  "short_name": "candidate1"
+                }
+              },
+              {
+                "user": {
+                  "short_name": "candidate2"
+                }
+              }
+            ]
+          }
+        },
+        "element": {
+          "name": "assignments/assignment-poll",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for assignments/assignment-poll slide"
+        },
+        "element": {
+          "name": "assignments/assignment-poll"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "assignments/assignment-poll with id a string does not exist"
+        },
+        "element": {
+          "name": "assignments/assignment-poll",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "assignments/assignment-poll with id 1337 does not exist"
+        },
+        "element": {
+          "name": "assignments/assignment-poll",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "path": "A.txt",
+          "mimetype": "text/plain",
+          "media_url_prefix": "/media/"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 2
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for mediafiles/mediafile slide"
+        },
+        "element": {
+          "name": "mediafiles/mediafile"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "mediafiles/mediafile with id a string does not exist"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "mediafiles/mediafile with id 1337 does not exist"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "A.txt"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "A.txt"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "path": "folder/A.txt",
+          "mimetype": "text/plain",
+          "media_url_prefix": "/media/"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 4
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for mediafiles/mediafile slide"
+        },
+        "element": {
+          "name": "mediafiles/mediafile"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "mediafiles/mediafile with id a string does not exist"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "mediafiles/mediafile with id 1337 does not exist"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "A.txt"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "A.txt"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "path": "folder/",
+          "mimetype": "",
+          "media_url_prefix": "/media/"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for mediafiles/mediafile slide"
+        },
+        "element": {
+          "name": "mediafiles/mediafile"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "mediafiles/mediafile with id a string does not exist"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "mediafiles/mediafile with id 1337 does not exist"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "folder"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "folder"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "path": "folder/in.jpg",
+          "mimetype": "image/jpeg",
+          "media_url_prefix": "/media/"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 3
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for mediafiles/mediafile slide"
+        },
+        "element": {
+          "name": "mediafiles/mediafile"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "mediafiles/mediafile with id a string does not exist"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "mediafiles/mediafile with id 1337 does not exist"
+        },
+        "element": {
+          "name": "mediafiles/mediafile",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "in.jpg"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "mediafiles/mediafile",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "in.jpg"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "title": "Topic",
+          "text": "",
+          "item_number": ""
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for topics/topic slide"
+        },
+        "element": {
+          "name": "topics/topic"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "topics/topic with id a string does not exist"
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "topics/topic with id 1337 does not exist"
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": {
+            "user": "title speaker1 the last name (layer X)",
+            "marked": false,
+            "weight": null,
+            "end_time": null
+          },
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Topic",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff",
+          "current_speaker": "title speaker1 the last name (layer X)"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": {
+            "user": "title speaker1 the last name (layer X)",
+            "marked": false,
+            "weight": null,
+            "end_time": null
+          },
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Topic",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "title": "Hidden",
+          "text": "",
+          "item_number": ""
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": 2
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for topics/topic slide"
+        },
+        "element": {
+          "name": "topics/topic"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "topics/topic with id a string does not exist"
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "topics/topic with id 1337 does not exist"
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Hidden",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Hidden",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "title": "Internal",
+          "text": "",
+          "item_number": ""
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": 3
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for topics/topic slide"
+        },
+        "element": {
+          "name": "topics/topic"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "topics/topic with id a string does not exist"
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "topics/topic with id 1337 does not exist"
+        },
+        "element": {
+          "name": "topics/topic",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Internal",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Internal",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
           "title": "Another public topic",
-          "_agenda_item_number": ""
+          "text": "",
+          "item_number": ""
         },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 14
+        "element": {
+          "name": "topics/topic",
+          "id": 4
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": {
-          "user": "title speaker1 the last name (layer X)",
-          "marked": false,
-          "weight": null,
-          "end_time": null
+        "data": {
+          "error": "id is required for topics/topic slide"
         },
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Topic",
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 1
+        "element": {
+          "name": "topics/topic"
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": {
-          "user": "title speaker1 the last name (layer X)",
-          "marked": false,
-          "weight": null,
-          "end_time": null
+        "data": {
+          "error": "topics/topic with id a string does not exist"
         },
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Topic",
-          "_agenda_item_number": ""
-        },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 1,
-        "mode": "final"
+        "element": {
+          "name": "topics/topic",
+          "id": "a string"
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Internal",
-          "_agenda_item_number": ""
+        "data": {
+          "error": "topics/topic with id 1337 does not exist"
         },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 3
+        "element": {
+          "name": "topics/topic",
+          "id": 1337
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Internal",
-          "_agenda_item_number": ""
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Another public topic",
+            "_agenda_item_number": ""
+          },
+          "closed": false
         },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 3,
-        "mode": "final"
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Hidden",
-          "_agenda_item_number": ""
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
         },
-        "closed": false
-      }`),
-		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 2
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
       }`),
 	},
 	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "topics/topic",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "waiting": [],
-        "current": null,
-        "finished": [],
-        "content_object_collection": "topics/topic",
-        "title_information": {
-          "title": "Hidden",
-          "_agenda_item_number": ""
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Another public topic",
+            "_agenda_item_number": ""
+          },
+          "closed": false
         },
-        "closed": false
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
       }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
 		[]byte(`{
-        "name": "agenda/list-of-speakers",
-        "id": 2,
-        "mode": "final"
+        "data": {
+          "waiting": [],
+          "current": {
+            "user": "title speaker1 the last name (layer X)",
+            "marked": false,
+            "weight": null,
+            "end_time": null
+          },
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Topic",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Hidden",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 2
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Internal",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 3
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "folder"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 4
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 5
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "A.txt"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 5
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 5
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 5
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 5
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 6
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "in.jpg"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 6
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 6
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 6
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 6
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 7
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [
+            {
+              "user": "speaker2",
+              "marked": false,
+              "weight": 2,
+              "end_time": null
+            }
+          ],
+          "current": {
+            "user": "title speaker1 the last name (layer X)",
+            "marked": false,
+            "weight": null,
+            "end_time": null
+          },
+          "finished": [],
+          "content_object_collection": "assignments/assignment",
+          "title_information": {
+            "title": "Assignment",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 7
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 7
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 7
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 7
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 8
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "Leadmotion1",
+            "identifier": null,
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 8
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 8
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 8
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 8
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 9
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "\u00c4nderungsantrag zu Leadmotion1",
+            "identifier": "\u00c4-1",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 9
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 9
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 9
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 9
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 10
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion",
+          "title_information": {
+            "title": "Public",
+            "identifier": "2",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 10
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 10
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 10
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 10
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 11
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "mediafiles/mediafile",
+          "title_information": {
+            "title": "A.txt"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 11
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 11
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 11
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 11
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 12
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion-block",
+          "title_information": {
+            "title": "block",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 12
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 12
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 12
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 12
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 13
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "motions/motion-block",
+          "title_information": {
+            "title": "block internal"
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 13
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 13
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 13
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 13
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 14
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "waiting": [],
+          "current": null,
+          "finished": [],
+          "content_object_collection": "topics/topic",
+          "title_information": {
+            "title": "Another public topic",
+            "_agenda_item_number": ""
+          },
+          "closed": false
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 14
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for list of speakers slide"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id a string does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "agenda/list-of-speakers with id 1337 does not exist"
+        },
+        "element": {
+          "name": "agenda/list-of-speakers",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 14
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 14
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "agenda/list-of-speakers",
+              "id": 14
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1,
+              "mode": "final"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": null,
+          "title": "Leadmotion1",
+          "submitters": [
+            "a"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": null,
+          "base_motion": null,
+          "base_statute": null,
+          "is_child": false,
+          "show_meta_box": false,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [
+            {
+              "id": 2,
+              "identifier": "\u00c4-1",
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "amendment_paragraphs": [
+                "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+              ],
+              "merge_amendment_into_diff": 0,
+              "merge_amendment_into_final": 0
+            }
+          ],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
+          "reason": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
+          "modified_final_version": "",
+          "recommendation": "Permission",
+          "recommendation_extension": "if [motion:2] is acepted",
+          "referenced_motions": {
+            "2": {
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "identifier": "\u00c4-1"
+            }
+          },
+          "recommender": "ABK",
+          "recommendation_referencing_motions": null
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 1,
+          "mode": "final"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/config:77": []byte(`{
+          "id": 77,
+          "key": "motions_disable_text_on_projector",
+          "value": true
+        }`),
+			"core/config:78": []byte(`{
+          "id": 78,
+          "key": "motions_disable_reason_on_projector",
+          "value": true
+        }`),
+			"core/config:79": []byte(`{
+          "id": 79,
+          "key": "motions_disable_recommendation_on_projector",
+          "value": true
+        }`),
+			"core/config:80": []byte(`{
+          "id": 80,
+          "key": "motions_hide_referring_motions",
+          "value": true
+        }`),
+			"core/config:81": []byte(`{
+          "id": 81,
+          "key": "motions_disable_sidebox_on_projector",
+          "value": true
+        }`),
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": null,
+          "title": "Leadmotion1",
+          "submitters": [
+            "a"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": null,
+          "base_motion": null,
+          "base_statute": null,
+          "is_child": false,
+          "show_meta_box": false,
+          "show_referring_motions": false,
+          "change_recommendations": [],
+          "amendments": [
+            {
+              "id": 2,
+              "identifier": "\u00c4-1",
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "amendment_paragraphs": [
+                "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+              ],
+              "merge_amendment_into_diff": 0,
+              "merge_amendment_into_final": 0
+            }
+          ],
+          "line_length": 85,
+          "line_numbering_mode": "outside"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/config:77": []byte(`{
+          "id": 77,
+          "key": "motions_disable_text_on_projector",
+          "value": false
+        }`),
+			"core/config:78": []byte(`{
+          "id": 78,
+          "key": "motions_disable_reason_on_projector",
+          "value": false
+        }`),
+			"core/config:79": []byte(`{
+          "id": 79,
+          "key": "motions_disable_recommendation_on_projector",
+          "value": false
+        }`),
+			"core/config:80": []byte(`{
+          "id": 80,
+          "key": "motions_hide_referring_motions",
+          "value": false
+        }`),
+			"core/config:81": []byte(`{
+          "id": 81,
+          "key": "motions_disable_sidebox_on_projector",
+          "value": false
+        }`),
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 1
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": null,
+          "title": "Leadmotion1",
+          "submitters": [
+            "a"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": null,
+          "base_motion": null,
+          "base_statute": null,
+          "is_child": false,
+          "show_meta_box": true,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [
+            {
+              "id": 2,
+              "identifier": "\u00c4-1",
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "amendment_paragraphs": [
+                "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+              ],
+              "merge_amendment_into_diff": 0,
+              "merge_amendment_into_final": 0
+            }
+          ],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
+          "reason": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>",
+          "recommendation": "Permission",
+          "recommendation_extension": "if [motion:2] is acepted",
+          "referenced_motions": {
+            "2": {
+              "title": "\u00c4nderungsantrag zu Leadmotion1",
+              "identifier": "\u00c4-1"
+            }
+          },
+          "recommender": "ABK",
+          "recommendation_referencing_motions": null
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 1
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 3,
+              "mode": "final"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": "2",
+          "title": "Public",
+          "submitters": [
+            "Administrator"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": null,
+          "base_motion": null,
+          "base_statute": null,
+          "is_child": false,
+          "show_meta_box": false,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "<p>a</p>",
+          "reason": "<p>a</p>",
+          "modified_final_version": "",
+          "recommendation_referencing_motions": null
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 3,
+          "mode": "final"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/config:77": []byte(`{
+          "id": 77,
+          "key": "motions_disable_text_on_projector",
+          "value": true
+        }`),
+			"core/config:78": []byte(`{
+          "id": 78,
+          "key": "motions_disable_reason_on_projector",
+          "value": true
+        }`),
+			"core/config:79": []byte(`{
+          "id": 79,
+          "key": "motions_disable_recommendation_on_projector",
+          "value": true
+        }`),
+			"core/config:80": []byte(`{
+          "id": 80,
+          "key": "motions_hide_referring_motions",
+          "value": true
+        }`),
+			"core/config:81": []byte(`{
+          "id": 81,
+          "key": "motions_disable_sidebox_on_projector",
+          "value": true
+        }`),
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": "2",
+          "title": "Public",
+          "submitters": [
+            "Administrator"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": null,
+          "base_motion": null,
+          "base_statute": null,
+          "is_child": false,
+          "show_meta_box": false,
+          "show_referring_motions": false,
+          "change_recommendations": [],
+          "amendments": [],
+          "line_length": 85,
+          "line_numbering_mode": "outside"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 3
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/config:77": []byte(`{
+          "id": 77,
+          "key": "motions_disable_text_on_projector",
+          "value": false
+        }`),
+			"core/config:78": []byte(`{
+          "id": 78,
+          "key": "motions_disable_reason_on_projector",
+          "value": false
+        }`),
+			"core/config:79": []byte(`{
+          "id": 79,
+          "key": "motions_disable_recommendation_on_projector",
+          "value": false
+        }`),
+			"core/config:80": []byte(`{
+          "id": 80,
+          "key": "motions_hide_referring_motions",
+          "value": false
+        }`),
+			"core/config:81": []byte(`{
+          "id": 81,
+          "key": "motions_disable_sidebox_on_projector",
+          "value": false
+        }`),
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": "2",
+          "title": "Public",
+          "submitters": [
+            "Administrator"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": null,
+          "base_motion": null,
+          "base_statute": null,
+          "is_child": false,
+          "show_meta_box": true,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "<p>a</p>",
+          "reason": "<p>a</p>",
+          "recommendation_referencing_motions": null
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 3
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 2,
+              "mode": "final"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
+          "submitters": [
+            "Administrator"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": [
+            "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+          ],
+          "base_motion": {
+            "identifier": null,
+            "title": "Leadmotion1",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+          },
+          "base_statute": null,
+          "is_child": true,
+          "show_meta_box": false,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "",
+          "reason": "",
+          "modified_final_version": "",
+          "recommendation_referencing_motions": [
+            {
+              "title": "Leadmotion1",
+              "identifier": null
+            }
+          ]
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 2,
+          "mode": "final"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/config:77": []byte(`{
+          "id": 77,
+          "key": "motions_disable_text_on_projector",
+          "value": true
+        }`),
+			"core/config:78": []byte(`{
+          "id": 78,
+          "key": "motions_disable_reason_on_projector",
+          "value": true
+        }`),
+			"core/config:79": []byte(`{
+          "id": 79,
+          "key": "motions_disable_recommendation_on_projector",
+          "value": true
+        }`),
+			"core/config:80": []byte(`{
+          "id": 80,
+          "key": "motions_hide_referring_motions",
+          "value": true
+        }`),
+			"core/config:81": []byte(`{
+          "id": 81,
+          "key": "motions_disable_sidebox_on_projector",
+          "value": true
+        }`),
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
+          "submitters": [
+            "Administrator"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": [
+            "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+          ],
+          "base_motion": {
+            "identifier": null,
+            "title": "Leadmotion1",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+          },
+          "base_statute": null,
+          "is_child": true,
+          "show_meta_box": false,
+          "show_referring_motions": false,
+          "change_recommendations": [],
+          "amendments": [],
+          "line_length": 85,
+          "line_numbering_mode": "outside"
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 2
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/config:77": []byte(`{
+          "id": 77,
+          "key": "motions_disable_text_on_projector",
+          "value": false
+        }`),
+			"core/config:78": []byte(`{
+          "id": 78,
+          "key": "motions_disable_reason_on_projector",
+          "value": false
+        }`),
+			"core/config:79": []byte(`{
+          "id": 79,
+          "key": "motions_disable_recommendation_on_projector",
+          "value": false
+        }`),
+			"core/config:80": []byte(`{
+          "id": 80,
+          "key": "motions_hide_referring_motions",
+          "value": false
+        }`),
+			"core/config:81": []byte(`{
+          "id": 81,
+          "key": "motions_disable_sidebox_on_projector",
+          "value": false
+        }`),
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "motions/motion",
+              "id": 2
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "identifier": "\u00c4-1",
+          "title": "\u00c4nderungsantrag zu Leadmotion1",
+          "submitters": [
+            "Administrator"
+          ],
+          "preamble": "The assembly may decide:",
+          "amendment_paragraphs": [
+            "<p>Lorem ipsum dolor sit amet, consectedfgddfgdf&nbsp; gdfgdfg dfg dfg ww ontes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+          ],
+          "base_motion": {
+            "identifier": null,
+            "title": "Leadmotion1",
+            "text": "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.<br>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut</p>"
+          },
+          "base_statute": null,
+          "is_child": true,
+          "show_meta_box": true,
+          "show_referring_motions": true,
+          "change_recommendations": [],
+          "amendments": [],
+          "line_length": 85,
+          "line_numbering_mode": "outside",
+          "text": "",
+          "reason": "",
+          "recommendation_referencing_motions": [
+            {
+              "title": "Leadmotion1",
+              "identifier": null
+            }
+          ]
+        },
+        "element": {
+          "name": "motions/motion",
+          "id": 2
+        }
       }`),
 	},
 }

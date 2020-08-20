@@ -11,10 +11,14 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 )
 
+type treeInfoDepth struct {
+	treeInfo
+	Depth int `json:"depth"`
+}
+
 type treeInfo struct {
 	TitleInformation map[string]*projector.OptionalStr `json:"title_information"`
 	Collection       string                            `json:"collection"`
-	Depth            int                               `json:"depth"`
 }
 
 // ItemListSlide renders a list of items.
@@ -41,9 +45,9 @@ func ItemListSlide() projector.CallableFunc {
 
 			items[item.ID] = item
 		}
-
-		var agendaItems []treeInfo
+		var out json.RawMessage
 		if element.OnlyMainItems {
+			var agendaItems []treeInfo
 			for _, item := range sortedItems(items) {
 				if item.ParentID != 0 || item.Type != 1 {
 					continue
@@ -55,17 +59,21 @@ func ItemListSlide() projector.CallableFunc {
 					Collection:       item.ContentObject.Collection,
 				})
 			}
+			var err error
+			out, err = json.Marshal(agendaItems)
+			if err != nil {
+				return nil, fmt.Errorf("decoding agenda items: %w", err)
+			}
 		} else {
 			var err error
-			agendaItems, err = getFlatTree(items, 0)
+			agendaItems, err := getFlatTree(items, 0)
 			if err != nil {
 				return nil, fmt.Errorf("get flat tree: %w", err)
 			}
-		}
-
-		out, err := json.Marshal(agendaItems)
-		if err != nil {
-			return nil, fmt.Errorf("decoding agenda items: %w", err)
+			out, err = json.Marshal(agendaItems)
+			if err != nil {
+				return nil, fmt.Errorf("decoding agenda items: %w", err)
+			}
 		}
 
 		return []byte(fmt.Sprintf(`{"items":%s}`, out)), nil
@@ -88,7 +96,7 @@ func sortedItems(items map[int]agendaItem) []agendaItem {
 	return itemList
 }
 
-func getFlatTree(agendaItems map[int]agendaItem, parentID int) ([]treeInfo, error) {
+func getFlatTree(agendaItems map[int]agendaItem, parentID int) ([]treeInfoDepth, error) {
 	children := make(map[int][]int)
 	for _, item := range sortedItems(agendaItems) {
 		if item.Type == 1 {
@@ -96,17 +104,18 @@ func getFlatTree(agendaItems map[int]agendaItem, parentID int) ([]treeInfo, erro
 		}
 	}
 
-	var tree []treeInfo
+	var tree []treeInfoDepth
 	var buildTree func(itemIDs []int, depth int)
 	buildTree = func(itemIDs []int, depth int) {
 		for _, itemID := range itemIDs {
 			item := agendaItems[itemID]
 			titleInformation := item.TitleInformation
 			titleInformation["_agenda_item_number"] = projector.NewOptionalStr(item.ItemNumber)
-			tree = append(tree, treeInfo{
-				TitleInformation: titleInformation,
-				Collection:       item.ContentObject.Collection,
-				Depth:            depth,
+			tree = append(tree, treeInfoDepth{
+				treeInfo: treeInfo{
+					TitleInformation: titleInformation,
+					Collection:       item.ContentObject.Collection},
+				Depth: depth,
 			})
 			buildTree(children[itemID], depth+1)
 		}
@@ -119,21 +128,30 @@ func getFlatTree(agendaItems map[int]agendaItem, parentID int) ([]treeInfo, erro
 // ListOfSpeakersSlide renders a list of speakers.
 func ListOfSpeakersSlide() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
+		var los listOfSpeakers
+		projector.ModelFromElement(ds, e, "agenda/list-of-speakers", &los)
+
 		var element struct {
 			ID int `json:"id"`
 		}
 		if err := json.Unmarshal(e, &element); err != nil {
+			var element struct {
+				ID interface{} `json:"id"`
+			}
+
+			// Fallback for better error messages
+			if err := json.Unmarshal(e, &element); err == nil {
+				return nil, projector.NewClientError("agenda/list-of-speakers with id %s does not exist", element.ID)
+			}
 			return nil, fmt.Errorf("decoding element: %w", err)
 		}
 
 		if element.ID == 0 {
-			return nil, fmt.Errorf("id is required for list of speakers slide")
+			return nil, projector.NewClientError("id is required for list of speakers slide")
 		}
 
-		var los listOfSpeakers
-
 		if err := ds.Get("agenda/list-of-speakers", element.ID, &los); err != nil {
-			return nil, fmt.Errorf("getting list of speakers: %w", err)
+			return nil, projector.NewClientError("agenda/list-of-speakers with id %d does not exist", element.ID)
 		}
 
 		return listOfSpeakerSlideData(ds, los)

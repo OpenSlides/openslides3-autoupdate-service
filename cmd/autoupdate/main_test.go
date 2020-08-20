@@ -1,8 +1,11 @@
 package main
 
 import (
+	"context"
+	"encoding/json"
 	"testing"
 
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/test"
 )
 
@@ -65,7 +68,8 @@ func TestRequiredUser(t *testing.T) {
 func TestProjector(t *testing.T) {
 	closed := make(chan struct{})
 	defer close(closed)
-	callabes := openslidesProjectorCallables()
+	callables := openslidesProjectorCallables()
+
 	ds := test.NewDatastoreMock(0, closed)
 
 	todoList := map[string]bool{
@@ -77,18 +81,31 @@ func TestProjector(t *testing.T) {
 			if todoList[tt.ElementName] {
 				t.Skip()
 			}
+			fd := make(map[string]json.RawMessage)
+			for k, v := range test.ExampleData() {
+				fd[k] = v
+			}
+			for k, v := range tt.Overwrite {
+				fd[k] = v
+			}
+			ds.FullData = fd
 
-			c, ok := callabes[tt.ElementName]
-			if !ok {
-				t.Fatalf("No callable for Element `%s`", tt.ElementName)
+			p := datastore.NewProjectors(ds, callables, closed)
+			if err := p.Update(fd); err != nil {
+				t.Fatalf("Can not update projector data: %v", err)
 			}
 
-			got, err := c.Build(ds, tt.Element, 1)
+			_, projectors, err := p.ProjectorData(context.Background(), 0)
 			if err != nil {
-				t.Errorf("ProjectorCallable returned unexpected error: %v", err)
+				t.Fatalf("Can not get projectors: %v", err)
 			}
 
-			test.ExpectEqualJSON(t, got, tt.Expected)
+			var v []json.RawMessage
+			if err := json.Unmarshal(projectors[1], &v); err != nil {
+				t.Fatalf("Can not decode first projector: %v", err)
+			}
+
+			test.ExpectEqualJSON(t, v[0], tt.Expected)
 		})
 	}
 }

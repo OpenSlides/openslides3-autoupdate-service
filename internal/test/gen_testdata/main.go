@@ -43,10 +43,7 @@ type export struct {
 		IDs  []int  `json:"ids"`
 		Perm string `json:"perm"`
 	} `json:"required_users"`
-	Projector []struct {
-		Data    rawString `json:"data"`
-		Element rawString `json:"element"`
-	} `json:"projectors"`
+	Projectors []projector `json:"projectors"`
 }
 
 type rawString struct {
@@ -114,6 +111,30 @@ func (r restricted) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+type projector struct {
+	Overwrite map[string]string
+	Data      string
+}
+
+func (p *projector) UnmarshalJSON(data []byte) error {
+	var bs struct {
+		Overwrite map[string]json.RawMessage `json:"overwrite"`
+		Data      json.RawMessage            `json:"data"`
+	}
+	if err := json.Unmarshal(data, &bs); err != nil {
+		return fmt.Errorf("decoding projector: %w", err)
+	}
+
+	os := make(map[string]string, len(bs.Overwrite))
+	for k, v := range bs.Overwrite {
+		os[k] = string(v)
+	}
+
+	p.Overwrite = os
+	p.Data = string(bs.Data)
+	return nil
+}
+
 const tplFullData = `// Code generated with export.json DO NOT EDIT.
 
 package test
@@ -151,15 +172,19 @@ var exampleRequiredUser = map[string]permIDs{
 }
 
 type projectorData struct {
-	Data    json.RawMessage
-	Element json.RawMessage
+	Overwrite map[string]json.RawMessage
+	Data      json.RawMessage
 }
 
 var exampleProjector = []projectorData{
-	{{- range $row := .ExampleProjector }}
+	{{- range .ExampleProjectors }}
 	{
-		[]byte({{$.Escape}}{{$row.Data}}{{$.Escape}}),
-		[]byte({{$.Escape}}{{$row.Element}}{{$.Escape}}),
+		map[string]json.RawMessage {
+		{{- range $key, $value := .Overwrite }}
+			"{{$key}}": []byte({{$.Escape}}{{$value}}{{$.Escape}}),
+		{{- end}}
+		},
+		[]byte({{$.Escape}}{{.Data}}{{$.Escape}}),
 	},
 	{{- end}}
 }
@@ -213,7 +238,7 @@ func writeData(e export) error {
 		"ExampleData":           strExampleData,
 		"ExampleRestrictedData": strRestrictedData,
 		"ExampleRequiredUser":   strRequiredUser,
-		"ExampleProjector":      e.Projector,
+		"ExampleProjectors":     e.Projectors,
 	}
 
 	if err := t.Execute(replacer{w: f}, data); err != nil {

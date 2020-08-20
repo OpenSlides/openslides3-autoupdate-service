@@ -24,13 +24,8 @@ type DatastoreMock struct {
 func NewDatastoreMock(startID int, closed <-chan struct{}) *DatastoreMock {
 	changes := make(chan []string, 1)
 
-	fdCopy := make(map[string]json.RawMessage, len(exampleData))
-	for k, v := range exampleData {
-		fdCopy[k] = v
-	}
-
 	d := &DatastoreMock{
-		FullData:    fdCopy,
+		FullData:    make(map[string]json.RawMessage),
 		changes:     changes,
 		minChangeID: startID,
 		maxChangeID: startID,
@@ -131,8 +126,8 @@ func (d *DatastoreMock) Change(keys []string) {
 	d.changes <- keys
 }
 
-// Projectors does currently nothing.
-func (d *DatastoreMock) Projectors(ctx context.Context, tid uint64) (uint64, map[int]json.RawMessage, error) {
+// ProjectorData does currently nothing.
+func (d *DatastoreMock) ProjectorData(ctx context.Context, tid uint64) (uint64, map[int]json.RawMessage, error) {
 	return 0, nil, nil
 }
 

@@ -6,6 +6,15 @@ import (
 	"strings"
 )
 
+// ExampleData returns a full database with example data.
+func ExampleData() map[string]json.RawMessage {
+	fdCopy := make(map[string]json.RawMessage, len(exampleData))
+	for k, v := range exampleData {
+		fdCopy[k] = v
+	}
+	return fdCopy
+}
+
 // RestrictedDataset is a used for a test.
 type RestrictedDataset struct {
 	Name       string
@@ -67,24 +76,33 @@ func ExampleRequiredUser() []RequiredUserDataset {
 type ProjectorDataset struct {
 	Name        string
 	ElementName string
-	Element     json.RawMessage
+	Overwrite   map[string]json.RawMessage
 	Expected    json.RawMessage
 }
 
 // ExampleProjector returns test cases.
 func ExampleProjector() []ProjectorDataset {
 	var pds []ProjectorDataset
-	for i, data := range exampleProjector {
-		var element struct {
-			Name string `json:"name"`
+	for i, projector := range exampleProjector {
+		var data struct {
+			Element struct {
+				Name string `json:"name"`
+			} `json:"element"`
 		}
-		json.Unmarshal(data.Element, &element)
+		if err := json.Unmarshal(projector.Data, &data); err != nil {
+			panic(err)
+		}
+
+		name := data.Element.Name
+		if name == "" {
+			name = "NONE"
+		}
 
 		pd := ProjectorDataset{
-			Name:        fmt.Sprintf("Dataset%d-%s", i, element.Name),
-			Element:     data.Element,
-			ElementName: element.Name,
-			Expected:    data.Data,
+			Name:        fmt.Sprintf("Dataset%d-%s", i, name),
+			ElementName: name,
+			Overwrite:   projector.Overwrite,
+			Expected:    projector.Data,
 		}
 		pds = append(pds, pd)
 	}
