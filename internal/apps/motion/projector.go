@@ -232,6 +232,105 @@ func SlideMotionBlock() projector.CallableFunc {
 	}
 }
 
+// SlideMotionPoll renders slides for motions/motion-poll.
+func SlideMotionPoll() projector.CallableFunc {
+	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
+		var mp map[string]json.RawMessage
+		if err := projector.ModelFromElement(ds, e, "motions/motion-poll", &mp); err != nil {
+			return nil, fmt.Errorf("getting motion poll: %w", err)
+		}
+
+		var mid int
+		if err := json.Unmarshal(mp["motion_id"], &mid); err != nil {
+			return nil, fmt.Errorf("decoding motion id: %w", err)
+		}
+
+		pollData := map[string]json.RawMessage{
+			"title":                   mp["title"],
+			"type":                    mp["type"],
+			"pollmethod":              mp["pollmethod"],
+			"state":                   mp["state"],
+			"onehundred_percent_base": mp["onehundred_percent_base"],
+			"majority_method":         mp["majority_method"],
+		}
+
+		if bytes.Equal(mp["state"], []byte("4")) {
+			var oids []int
+			if err := json.Unmarshal(mp["options_id"], &oids); err != nil {
+				return nil, fmt.Errorf("decoding options_id: %w", err)
+			}
+
+			var rawOption struct {
+				Yes     string `json:"yes"`
+				No      string `json:"no"`
+				Abstain string `json:"abstain"`
+			}
+			if err := ds.Get("motions/motion-option", oids[0], &rawOption); err != nil {
+				return nil, fmt.Errorf("getting motion-option: %w", err)
+			}
+
+			yes, err := strconv.ParseFloat(rawOption.Yes, 32)
+			if err != nil {
+				return nil, fmt.Errorf("decoding option.yes: %w", err)
+			}
+			no, err := strconv.ParseFloat(rawOption.No, 32)
+			if err != nil {
+				return nil, fmt.Errorf("decoding option.no: %w", err)
+			}
+			abstain, err := strconv.ParseFloat(rawOption.Abstain, 32)
+			if err != nil {
+				return nil, fmt.Errorf("decoding option.abstain: %w", err)
+			}
+
+			outOption := struct {
+				Yes     float64 `json:"yes"`
+				No      float64 `json:"no"`
+				Abstain float64 `json:"abstain"`
+			}{
+				yes,
+				no,
+				abstain,
+			}
+			t := []interface{}{outOption}
+
+			b, err := json.Marshal(t)
+			if err != nil {
+				return nil, fmt.Errorf("encoding motion option: %w", err)
+			}
+			pollData["options"] = b
+			pollData["votesvalid"] = mp["votesvalid"]
+			pollData["votesinvalid"] = mp["votesinvalid"]
+			pollData["votescast"] = mp["votescast"]
+		}
+
+		var m motion
+		if err := ds.Get("motions/motion", mid, &m); err != nil {
+			return nil, fmt.Errorf("getting motion: %w", err)
+		}
+		out := struct {
+			Motion struct {
+				Title      json.RawMessage `json:"title"`
+				Identifier json.RawMessage `json:"identifier"`
+			} `json:"motion"`
+			Poll map[string]json.RawMessage `json:"poll"`
+		}{
+			struct {
+				Title      json.RawMessage `json:"title"`
+				Identifier json.RawMessage `json:"identifier"`
+			}{
+				m.Title,
+				m.Identifier,
+			},
+			pollData,
+		}
+		b, err := json.Marshal(out)
+		if err != nil {
+			return nil, fmt.Errorf("encoding data: %w", err)
+		}
+		return b, nil
+	}
+}
+
 func extendReferenceMotions(ds projector.Datastore, recommendation json.RawMessage, recommendated map[int]json.RawMessage) error {
 	if isNull(recommendation) {
 		return nil

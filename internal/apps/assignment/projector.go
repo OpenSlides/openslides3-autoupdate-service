@@ -150,7 +150,7 @@ func PollSlide() projector.CallableFunc {
 
 				abstain, err := strconv.ParseFloat(option.Abstain, 32)
 				if err != nil {
-					return nil, fmt.Errorf("decoding option.no: %w", err)
+					return nil, fmt.Errorf("decoding option.abstain: %w", err)
 				}
 				data["abstain"] = abstain
 			}

@@ -123,7 +123,7 @@ func (p *Projectors) Update(data map[string]json.RawMessage) error {
 
 			data, err := c.Build(p.ds, element, id)
 			if err != nil {
-				if err := ped[i].setError(err); err != nil {
+				if err := ped[i].setError(fmt.Errorf("building slide with %s: %w", namer.Name, err)); err != nil {
 					return err
 				}
 				continue
@@ -164,13 +164,11 @@ type projectorElementData struct {
 	Data    json.RawMessage `json:"data"`
 }
 
-func (p *projectorElementData) setError(msg error) error {
+func (p *projectorElementData) setError(err error) error {
 	var ce projector.ClientError
-	if !errors.As(msg, &ce) {
+	if !errors.As(err, &ce) {
 		p.Data = []byte(`{"error":"Internal error"}`)
-		//log.Println(msg.Error())
-		// TODO: Do something with the error
-		return nil
+		return err
 	}
 
 	data := struct {

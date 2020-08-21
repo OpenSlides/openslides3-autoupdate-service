@@ -69,18 +69,10 @@ func TestProjector(t *testing.T) {
 	closed := make(chan struct{})
 	defer close(closed)
 	callables := openslidesProjectorCallables()
-
 	ds := test.NewDatastoreMock(0, closed)
-
-	todoList := map[string]bool{
-		"motions/motion-poll": true,
-	}
 
 	for _, tt := range test.ExampleProjector() {
 		t.Run(tt.Name, func(t *testing.T) {
-			if todoList[tt.ElementName] {
-				t.Skip()
-			}
 			fd := make(map[string]json.RawMessage)
 			for k, v := range test.ExampleData() {
 				fd[k] = v
