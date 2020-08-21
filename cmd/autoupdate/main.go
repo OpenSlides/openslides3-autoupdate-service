@@ -255,7 +255,7 @@ func openslidesProjectorCallables() map[string]projector.Callable {
 
 		"motions/motion":       motion.Slide(),
 		"motions/motion-block": motion.SlideMotionBlock(),
-		// "motions/motion-poll":
+		"motions/motion-poll":  motion.SlideMotionPoll(),
 
 		"topics/topic": topic.Slide(),
 		"users/user":   user.Slide(),
