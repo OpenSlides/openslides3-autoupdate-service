@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 	"sync"
@@ -169,9 +168,7 @@ func (p *projectorElementData) setError(err error) error {
 	var ce projector.ClientError
 	if !errors.As(err, &ce) {
 		p.Data = []byte(`{"error":"Internal error"}`)
-		log.Println(err.Error())
-		// TODO: Do something with the error
-		return nil
+		return err
 	}
 
 	data := struct {

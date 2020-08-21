@@ -332,18 +332,24 @@ func referenceProjector(ds projector.Datastore, id int) (json.RawMessage, error)
 }
 
 func currentListOfSpeakers(ds projector.Datastore, p json.RawMessage) (listOfSpeakers, error) {
-	var projector struct {
+	var pr struct {
 		Elements []struct {
 			Name string `json:"name"`
-			ID   int    `josn:"id"`
-		}
+			ID   int    `json:"id"`
+		} `json:"elements"`
 	}
-	if err := json.Unmarshal(p, &projector); err != nil {
+	if err := json.Unmarshal(p, &pr); err != nil {
+		var je *json.UnmarshalTypeError
+		if errors.As(err, &je) {
+			if je.Field == "elements.id" {
+				return listOfSpeakers{}, projector.NewClientError("elements.id is not an int.")
+			}
+		}
 		return listOfSpeakers{}, fmt.Errorf("decoding projector: %w", err)
 	}
 
 	var los listOfSpeakers
-	for _, element := range projector.Elements {
+	for _, element := range pr.Elements {
 		if element.ID == 0 {
 			continue
 		}
