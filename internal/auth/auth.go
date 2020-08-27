@@ -75,7 +75,7 @@ func (a *Auth) Middleware(next func(w http.ResponseWriter, r *http.Request) erro
 	return func(w http.ResponseWriter, r *http.Request) error {
 		uid, err := a.whoami(r)
 		if err != nil {
-			return fmt.Errorf("authenticate request")
+			return fmt.Errorf("authenticate request: %w", err)
 		}
 
 		ctx := context.WithValue(r.Context(), UserIDKey, uid)
