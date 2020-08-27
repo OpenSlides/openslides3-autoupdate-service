@@ -32,6 +32,10 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
+const (
+	redisRetryWait time.Duration = 3 * time.Second
+)
+
 func main() {
 	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
 	redisAddr := getEnv("MESSAGE_BUS_HOST", "localhost") + ":" + getEnv("MESSAGE_BUS_PORT", "6379")
@@ -42,7 +46,7 @@ func main() {
 			break
 		}
 		log.Printf("Can not connect to redis at %s. Retry...", redisAddr)
-		time.Sleep(time.Second)
+		time.Sleep(redisRetryWait)
 	}
 	fmt.Printf("Connected to Redis at %s\n", redisAddr)
 
