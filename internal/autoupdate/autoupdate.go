@@ -56,19 +56,18 @@ func New(datastore Datastore, restricter Restricter, closed <-chan struct{}) (*A
 				continue
 			}
 
+			// When the received data is to new, all the missing data is
+			// received at once. If more then one change id was skipped, the
+			// missing ids have to be created in the topic with dummy items.
 			tid := a.topic.LastID()
-
-			// When the received data is to new, all the missing data is received at
-			// once. If more then one change id was skipped, the missing ids have to be
-			// created in the topic with dummy items.
 			for tid < uint64(changeID)-1 {
 				tid = a.topic.Publish()
 			}
 
-			a.topic.Publish(keys...)
+			tid = a.topic.Publish(keys...)
 
-			// if the topic id is bigger then the change id, then something is broken.
-			// There is no way to recover safely from this.
+			// if the topic id is different then the change id, then something
+			// is broken. There is no way to recover safely from this.
 			if tid != uint64(changeID) {
 				log.Panicf("topic id differs from change id. Topic: %d, changeid %d", tid, changeID)
 			}

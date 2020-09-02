@@ -21,8 +21,8 @@ func TestAutoupdateFirstData(t *testing.T) {
 	auther := new(test.AutherMock)
 	datastore := test.NewDatastoreMock(1, closed)
 	datastore.FullData = map[string]json.RawMessage{
-		"user:1": []byte("hello world1"),
-		"user:2": []byte("hello world2"),
+		"user:1": []byte(`"hello world1"`),
+		"user:2": []byte(`"hello world2"`),
 	}
 
 	restricter := new(test.RestricterMock)
