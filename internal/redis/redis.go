@@ -43,31 +43,54 @@ const (
 
 // Redis holds the connection to redis.
 type Redis struct {
-	pool             *redis.Pool
+	readPool         *redis.Pool
+	writePool        *redis.Pool
 	lastAutoupdateID string
 	lastNotifyID     string
 }
 
 // New create a new Redis instance.
-func New(addr string) *Redis {
-	pool := &redis.Pool{
+func New(readAddr, writeAddr string) *Redis {
+	readPool := &redis.Pool{
 		MaxActive:   100,
 		Wait:        true,
 		MaxIdle:     10,
 		IdleTimeout: 240 * time.Second,
-		Dial:        func() (redis.Conn, error) { return redis.Dial("tcp", addr) },
+		Dial:        func() (redis.Conn, error) { return redis.Dial("tcp", readAddr) },
+	}
+
+	writePool := readPool
+	if readAddr != writeAddr {
+		writePool = &redis.Pool{
+			MaxActive:   100,
+			Wait:        true,
+			MaxIdle:     10,
+			IdleTimeout: 240 * time.Second,
+			Dial:        func() (redis.Conn, error) { return redis.Dial("tcp", writeAddr) },
+		}
 	}
 
 	r := &Redis{
-		pool: pool,
+		readPool:  readPool,
+		writePool: writePool,
 	}
 	return r
 }
 
-// TestConn sends a ping command to redis. Does not return the response, but an
+// TestReadConn sends a ping command to redis. Does not return the response, but an
 // error if there is no response.
-func (r *Redis) TestConn() error {
-	conn := r.pool.Get()
+func (r *Redis) TestReadConn() error {
+	return r.testConn(r.readPool)
+}
+
+// TestWriteConn sends a ping command to redis. Does not return the response, but an
+// error if there is no response.
+func (r *Redis) TestWriteConn() error {
+	return r.testConn(r.writePool)
+}
+
+func (r *Redis) testConn(pool *redis.Pool) error {
+	conn := pool.Get()
 	defer conn.Close()
 
 	if _, err := conn.Do("PING"); err != nil {
@@ -79,7 +102,7 @@ func (r *Redis) TestConn() error {
 // FullData gets all data from redis. It also gets the min and max change id in
 // a atomic way.
 func (r *Redis) FullData() (data map[string]json.RawMessage, max int, min int, err error) {
-	conn := r.pool.Get()
+	conn := r.readPool.Get()
 	defer conn.Close()
 
 	var ready string
@@ -163,7 +186,7 @@ func (r *Redis) FullData() (data map[string]json.RawMessage, max int, min int, e
 //
 // Blocks until there is new data.
 func (r *Redis) Update(closing <-chan struct{}) ([]byte, error) {
-	conn := r.pool.Get()
+	conn := r.readPool.Get()
 	defer conn.Close()
 
 	id := r.lastAutoupdateID
@@ -205,7 +228,7 @@ func (r *Redis) Update(closing <-chan struct{}) ([]byte, error) {
 // ChangedKeys returns all keys in the changeidkey higher from and lower or
 // equal to.
 func (r *Redis) ChangedKeys(from, to int) ([]string, error) {
-	conn := r.pool.Get()
+	conn := r.readPool.Get()
 	defer conn.Close()
 
 	keys, err := redis.Strings(conn.Do("ZRANGEBYSCORE", changeIDKey, "("+strconv.Itoa(from), strconv.Itoa(to)))
@@ -227,7 +250,7 @@ func (r *Redis) ChangedKeys(from, to int) ([]string, error) {
 //
 // If a key does not exist, the value in the returned dict is nil.
 func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
-	conn := r.pool.Get()
+	conn := r.readPool.Get()
 	defer conn.Close()
 
 	args := make([]interface{}, len(keys)+1)
@@ -250,7 +273,7 @@ func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 
 // SendNotify publishes a notify message in redis.
 func (r *Redis) SendNotify(message string) error {
-	conn := r.pool.Get()
+	conn := r.writePool.Get()
 	defer conn.Close()
 
 	_, err := conn.Do("XADD", notifyKey, "*", "content", message)
@@ -262,7 +285,7 @@ func (r *Redis) SendNotify(message string) error {
 
 // ReceiveNotify returns the next notify message.
 func (r *Redis) ReceiveNotify(closing <-chan struct{}) (message string, err error) {
-	conn := r.pool.Get()
+	conn := r.readPool.Get()
 	defer conn.Close()
 
 	id := r.lastNotifyID
