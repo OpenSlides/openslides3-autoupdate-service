@@ -38,17 +38,13 @@ const (
 
 func main() {
 	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
-	redisAddr := getEnv("MESSAGE_BUS_HOST", "localhost") + ":" + getEnv("MESSAGE_BUS_PORT", "6379")
+	redisHost := getEnv("MESSAGE_BUS_HOST", "localhost")
+	redisPort := getEnv("MESSAGE_BUS_PORT", "6379")
+	redisAddr := redisHost + ":" + redisPort
+	redisWriteAddr := getEnv("REDIS_WRITE_HOST", redisHost) + ":" + getEnv("REDIS_WRITE_PORT", redisPort)
 
-	redisConn := redis.New(redisAddr)
-	for {
-		if err := redisConn.TestConn(); err == nil {
-			break
-		}
-		log.Printf("Can not connect to redis at %s. Retry...", redisAddr)
-		time.Sleep(redisRetryWait)
-	}
-	fmt.Printf("Connected to Redis at %s\n", redisAddr)
+	redisConn := redis.New(redisAddr, redisWriteAddr)
+	testRedis(redisConn, redisAddr, redisWriteAddr)
 
 	requiredUserCallables := openslidesRequiredUsers()
 	projectorCallables := openslidesProjectorCallables()
@@ -126,6 +122,36 @@ func getEnv(env, devaultValue string) string {
 		return devaultValue
 	}
 	return value
+}
+
+func testRedis(conn *redis.Redis, readAddr, writeAddr string) {
+	var readConnected bool
+	var writeConnected bool
+	for {
+		if !readConnected {
+			if err := conn.TestReadConn(); err == nil {
+				readConnected = true
+			} else {
+				log.Printf("Can not connect to redis at %s for reading.", readAddr)
+			}
+		}
+
+		if !writeConnected {
+			if err := conn.TestWriteConn(); err == nil {
+				writeConnected = true
+			} else {
+				log.Printf("Can not connect to redis at %s for writing.", writeAddr)
+			}
+		}
+
+		if readConnected && writeConnected {
+			break
+		}
+
+		log.Println("Retry...")
+		time.Sleep(redisRetryWait)
+	}
+	fmt.Printf("Connected to Redis at %s (read) and %s (write)\n", readAddr, writeAddr)
 }
 
 const (

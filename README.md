@@ -165,8 +165,14 @@ The service can be configured with the following environment variables:
   empty string which starts the service on every device.
 * `CERT_DIR`: Path where the tls certificates and the keys are. If emtpy, the
   server creates a self signed inmemory certificat. The default is empty.
-* `MESSAGE_BUS_HOST`: Host of the redis server. The default is `localhost`.
-* `MESSAGE_BUS_PORT`: Port of the redis server. The default is `6379`.
+* `MESSAGE_BUS_HOST`: Host of the redis server for reading. The default is
+  `localhost`.
+* `MESSAGE_BUS_PORT`: Port of the redis server for reading. The default is
+  `6379`.
+* `REDIS_WRITE_HOST`: Host of the redis server for writing. The default is the
+  same as `MESSAGE_BUS_HOST`.
+* `REDIS_WRITE_PORT`: Port of the redis server for writing. The default is the
+  same as `MESSAGE_BUS_PORT`.
 * `WORKER_HOST`: Host of the OpenSlides worker (Default: `localhost`).
 * `WORKER_PORT`: Port of the OpenSlides worker (Default: `8000`).
 * `WORKER_PROTOCOL`: Protocol of the OpenSlides worker (Default: `http`).
