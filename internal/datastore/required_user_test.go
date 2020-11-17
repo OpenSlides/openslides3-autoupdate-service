@@ -6,9 +6,9 @@ import (
 )
 
 func TestRequiredUser(t *testing.T) {
-	callables := map[string]func(json.RawMessage) ([]int, string, error){
-		"collection": func(json.RawMessage) ([]int, string, error) {
-			return []int{1}, "can.perm", nil
+	callables := map[string]func(json.RawMessage) (map[int]bool, string, error){
+		"collection": func(json.RawMessage) (map[int]bool, string, error) {
+			return map[int]bool{1: true}, "can.perm", nil
 		},
 	}
 
@@ -33,9 +33,9 @@ func TestRequiredUser(t *testing.T) {
 }
 
 func TestRequiredUserSecondUpdate(t *testing.T) {
-	callables := map[string]func(json.RawMessage) ([]int, string, error){
-		"collection": func(json.RawMessage) ([]int, string, error) {
-			return []int{1}, "can.perm", nil
+	callables := map[string]func(json.RawMessage) (map[int]bool, string, error){
+		"collection": func(json.RawMessage) (map[int]bool, string, error) {
+			return map[int]bool{1: true}, "can.perm", nil
 		},
 	}
 
@@ -67,9 +67,9 @@ func TestRequiredUserSecondUpdate(t *testing.T) {
 }
 
 func TestRequiredUserDelete(t *testing.T) {
-	callables := map[string]func(json.RawMessage) ([]int, string, error){
-		"collection": func(json.RawMessage) ([]int, string, error) {
-			return []int{1}, "can.perm", nil
+	callables := map[string]func(json.RawMessage) (map[int]bool, string, error){
+		"collection": func(json.RawMessage) (map[int]bool, string, error) {
+			return map[int]bool{1: true}, "can.perm", nil
 		},
 	}
 

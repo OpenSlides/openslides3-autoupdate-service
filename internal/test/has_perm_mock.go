@@ -1,10 +1,17 @@
 package test
 
+import (
+	"encoding/json"
+	"fmt"
+	"strconv"
+)
+
 // HasPermMock implements the restricter.HasPermer interface.
 type HasPermMock struct {
 	IsSuperuser bool
 	Perms       []string
 	Groups      map[int]bool
+	Data        map[string]json.RawMessage
 }
 
 // HasPerm returns true, if the given perm is in the list of Perms.
@@ -39,7 +46,6 @@ func (h *HasPermMock) InGroups(_ int, groups []int) bool {
 	return false
 }
 
-// UserRequired returns nil
 func (h *HasPermMock) UserRequired(uid int) []string {
 	perms := make(map[string]bool)
 	for _, e := range exampleRequiredUser {
@@ -55,4 +61,13 @@ func (h *HasPermMock) UserRequired(uid int) []string {
 		keys = append(keys, k)
 	}
 	return keys
+}
+
+func (h *HasPermMock) Get(collection string, id int, v interface{}) error {
+	elementID := collection + ":" + strconv.Itoa(id)
+	e := h.Data[elementID]
+	if e == nil {
+		return fmt.Errorf("doesNotExistError: %s", elementID)
+	}
+	return json.Unmarshal(e, v)
 }

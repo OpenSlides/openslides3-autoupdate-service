@@ -58,7 +58,7 @@ func TestRequiredUser(t *testing.T) {
 				t.Errorf("RequiredUser returned perm %s, expected %s", perm, tt.ExpectPerm)
 			}
 
-			if !test.CmpIntSlice(ids, tt.ExpectIDs) {
+			if !test.CmpIntSet(ids, tt.ExpectIDs) {
 				t.Errorf("RequiredUser returned ids %v, expected %v", ids, tt.ExpectIDs)
 			}
 		})

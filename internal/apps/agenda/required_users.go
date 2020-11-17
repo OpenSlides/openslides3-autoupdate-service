@@ -6,7 +6,7 @@ import (
 )
 
 // RequiredSpeakers returns the user ids of a list of speaker objekt.
-func RequiredSpeakers(data json.RawMessage) ([]int, string, error) {
+func RequiredSpeakers(data json.RawMessage) (map[int]bool, string, error) {
 	var los struct {
 		Speakers []struct {
 			UserID int `json:"user_id"`
@@ -16,9 +16,10 @@ func RequiredSpeakers(data json.RawMessage) ([]int, string, error) {
 		return nil, "", fmt.Errorf("unmarshal list of speaker: %w", err)
 	}
 
-	uids := make([]int, len(los.Speakers))
-	for i, s := range los.Speakers {
-		uids[i] = s.UserID
+	// use a set to make ids unique
+	uids := map[int]bool{}
+	for _, s := range los.Speakers {
+		uids[s.UserID] = true
 	}
 	return uids, CanSeeListOfSpeakers, nil
 }

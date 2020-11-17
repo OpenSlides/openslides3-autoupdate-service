@@ -156,6 +156,14 @@ To run the tests, call:
 go test ./...
 ```
 
+Generate export.json.go from internal/test/export.json:
+
+```
+cd internal/test
+go run gen_testdata/main.go
+go fmt export.json.go
+```
+
 ## Environment variables
 
 The service can be configured with the following environment variables:

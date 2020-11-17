@@ -6,7 +6,7 @@ import (
 )
 
 // RequiredMotions returns the user ids of a motion element.
-func RequiredMotions(data json.RawMessage) ([]int, string, error) {
+func RequiredMotions(data json.RawMessage) (map[int]bool, string, error) {
 	var motion struct {
 		Submitters []struct {
 			ID int `json:"user_id"`
@@ -17,24 +17,19 @@ func RequiredMotions(data json.RawMessage) ([]int, string, error) {
 		return nil, "", fmt.Errorf("unmarshal motion: %w", err)
 	}
 
-	uidSet := make(map[int]bool)
+	uids := map[int]bool{}
 	for _, s := range motion.Submitters {
-		uidSet[s.ID] = true
+		uids[s.ID] = true
 	}
 	for _, id := range motion.Supporters {
-		uidSet[id] = true
-	}
-
-	uids := make([]int, 0, len(uidSet))
-	for id := range uidSet {
-		uids = append(uids, id)
+		uids[id] = true
 	}
 
 	return uids, CanSee, nil
 }
 
 // RequiredPollOption returns the VoteID of the option.
-func RequiredPollOption(data json.RawMessage) ([]int, string, error) {
+func RequiredPollOption(data json.RawMessage) (map[int]bool, string, error) {
 	var option struct {
 		VoteID int `json:"voted_id"`
 	}
@@ -42,5 +37,5 @@ func RequiredPollOption(data json.RawMessage) ([]int, string, error) {
 		return nil, "", fmt.Errorf("unmarshal motion poll option: %w", err)
 	}
 
-	return []int{option.VoteID}, CanSee, nil
+	return map[int]bool{option.VoteID: true}, CanSee, nil
 }

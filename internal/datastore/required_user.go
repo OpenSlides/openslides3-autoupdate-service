@@ -10,14 +10,14 @@ import (
 type requiredUser struct {
 	mu sync.RWMutex
 
-	requiredUser map[string][]int
+	requiredUser map[string]map[int]bool
 	requiredPerm map[string]string
 
 	// users holds a calculated version of usersRequired that can be accessed in
 	// constant time.
 	users map[int][]string
 
-	callables map[string]func(json.RawMessage) ([]int, string, error)
+	callables map[string]func(json.RawMessage) (map[int]bool, string, error)
 }
 
 func (r *requiredUser) update(data map[string]json.RawMessage) error {
@@ -25,7 +25,7 @@ func (r *requiredUser) update(data map[string]json.RawMessage) error {
 	defer r.mu.Unlock()
 
 	if r.requiredUser == nil {
-		r.requiredUser = make(map[string][]int)
+		r.requiredUser = make(map[string]map[int]bool)
 		r.requiredPerm = make(map[string]string)
 	}
 
@@ -66,7 +66,7 @@ func (r *requiredUser) update(data map[string]json.RawMessage) error {
 	r.users = make(map[int][]string)
 
 	for k, v := range r.requiredUser {
-		for _, uid := range v {
+		for uid := range v {
 			// Make sure each perm is only once in the slide. For smal slides,
 			// this is faster then using a set.
 			var inSlide bool
