@@ -10,11 +10,14 @@ import (
 type requiredUser struct {
 	mu sync.RWMutex
 
+	// requiredUser maps element ids to a set of needed user ids.
 	requiredUser map[string]map[int]bool
+	// requiredPerm maps element ids to the required permission to have.
 	requiredPerm map[string]string
 
-	// users holds a calculated version of usersRequired that can be accessed in
-	// constant time.
+	// users maps every required user id to a list of permissions, so
+	// for each user it could be easily queried, which permissions are
+	// needed to require the user.
 	users map[int][]string
 
 	callables map[string]func(json.RawMessage) (map[int]bool, string, error)
@@ -31,10 +34,10 @@ func (r *requiredUser) update(data map[string]json.RawMessage) error {
 
 	var usersChanged bool
 
-	for k, v := range data {
-		parts := strings.Split(k, ":")
+	for elementID, v := range data {
+		parts := strings.Split(elementID, ":")
 		if len(parts) != 2 {
-			return fmt.Errorf("key %s has wrong format. Expected one `:`", k)
+			return fmt.Errorf("key %s has wrong format. Expected one `:`", elementID)
 		}
 
 		c, ok := r.callables[parts[0]]
@@ -45,18 +48,18 @@ func (r *requiredUser) update(data map[string]json.RawMessage) error {
 		usersChanged = true
 
 		if v == nil {
-			delete(r.requiredUser, k)
-			delete(r.requiredPerm, k)
+			delete(r.requiredUser, elementID)
+			delete(r.requiredPerm, elementID)
 			continue
 		}
 
 		uids, perm, err := c(v)
 		if err != nil {
-			return fmt.Errorf("calculate required users for %s: %w", k, err)
+			return fmt.Errorf("calculate required users for %s: %w", elementID, err)
 		}
 
-		r.requiredUser[k] = uids
-		r.requiredPerm[k] = perm
+		r.requiredUser[elementID] = uids
+		r.requiredPerm[elementID] = perm
 	}
 
 	if !usersChanged {
@@ -65,20 +68,9 @@ func (r *requiredUser) update(data map[string]json.RawMessage) error {
 
 	r.users = make(map[int][]string)
 
-	for k, v := range r.requiredUser {
+	for elementID, v := range r.requiredUser {
 		for uid := range v {
-			// Make sure each perm is only once in the slide. For smal slides,
-			// this is faster then using a set.
-			var inSlide bool
-			for _, perm := range r.users[uid] {
-				if perm == r.requiredPerm[k] {
-					inSlide = true
-					break
-				}
-			}
-			if !inSlide {
-				r.users[uid] = append(r.users[uid], r.requiredPerm[k])
-			}
+			r.users[uid] = append(r.users[uid], r.requiredPerm[elementID])
 		}
 	}
 

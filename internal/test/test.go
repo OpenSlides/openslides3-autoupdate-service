@@ -13,7 +13,7 @@ func CmpIntSlice(a, b []int) bool {
 		return false
 	}
 	if len(a) == 0 && len(b) == 0 {
-		// handle nil case
+		// Handle nil case.
 		return true
 	}
 	for i := range a {
@@ -24,13 +24,13 @@ func CmpIntSlice(a, b []int) bool {
 	return true
 }
 
-// CmpIntSet returns true, if both sets have the smae entries
+// CmpIntSet returns true, if both sets have the smae entries.
 func CmpIntSet(a, b map[int]bool) bool {
 	if len(a) != len(b) {
 		return false
 	}
 	if len(a) == 0 && len(b) == 0 {
-		// handle nil case
+		// Handle nil case.
 		return true
 	}
 
@@ -39,13 +39,6 @@ func CmpIntSet(a, b map[int]bool) bool {
 			return false
 		}
 	}
-
-	for key := range b {
-		if !a[key] {
-			return false
-		}
-	}
-
 	return true
 }
 
@@ -55,7 +48,7 @@ func CmpStrSlice(a, b []string) bool {
 		return false
 	}
 	if len(a) == 0 && len(b) == 0 {
-		// handle nil case
+		// Handle nil case.
 		return true
 	}
 	for i := range a {

@@ -16,8 +16,7 @@ func RequiredSpeakers(data json.RawMessage) (map[int]bool, string, error) {
 		return nil, "", fmt.Errorf("unmarshal list of speaker: %w", err)
 	}
 
-	// use a set to make ids unique
-	uids := map[int]bool{}
+	uids := make(map[int]bool, len(los.Speakers))
 	for _, s := range los.Speakers {
 		uids[s.UserID] = true
 	}

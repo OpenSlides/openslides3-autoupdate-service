@@ -156,12 +156,10 @@ To run the tests, call:
 go test ./...
 ```
 
-Generate export.json.go from internal/test/export.json:
+To replace the export.json copy it to internal/test/export.json and run:
 
 ```
-cd internal/test
-go run gen_testdata/main.go
-go fmt export.json.go
+go generate ./...
 ```
 
 ## Environment variables

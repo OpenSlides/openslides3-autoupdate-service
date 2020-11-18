@@ -49,14 +49,14 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 			return filter(element, littleDataFields)
 		}
 
-		// get the users `vote_delegated_from_users_id`
+		// Get the users `vote_delegated_from_users_id`.
 		var requestUser struct {
 			VoteDelegationIds []int `json:"vote_delegated_from_users_id"`
 		}
 		if err := r.Get("users/user", uid, &requestUser); err != nil {
 			return nil, fmt.Errorf("unmarshal user: %w", err)
 		}
-		// the user.ID is requred, if it is in VoteDelegationIds
+		// The user.ID is required, if it is in VoteDelegationIds.
 		for _, id := range requestUser.VoteDelegationIds {
 			if id == user.ID {
 				return filter(element, littleDataFields)

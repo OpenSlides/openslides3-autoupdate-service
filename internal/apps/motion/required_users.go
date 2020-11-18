@@ -17,7 +17,7 @@ func RequiredMotions(data json.RawMessage) (map[int]bool, string, error) {
 		return nil, "", fmt.Errorf("unmarshal motion: %w", err)
 	}
 
-	uids := map[int]bool{}
+	uids := make(map[int]bool, len(motion.Submitters)+len(motion.Supporters))
 	for _, s := range motion.Submitters {
 		uids[s.ID] = true
 	}

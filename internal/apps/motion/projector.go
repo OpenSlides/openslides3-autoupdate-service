@@ -536,7 +536,7 @@ func slideAmendments(ds projector.Datastore, m *motion) (json.RawMessage, error)
 			return nil, fmt.Errorf("getting ammendment: %w", err)
 		}
 
-		// get change recommendations for the amendment
+		// Get change recommendations for the amendment.
 		crs, err := slideChangeRecommendations(ds, &amendment)
 		if err != nil {
 			return nil, fmt.Errorf("get change recommendations for amendment: %w", err)

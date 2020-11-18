@@ -97,7 +97,7 @@ func main() {
 	}
 }
 
-// waitForShutdown blocks until the service exists.
+// WaitForShutdown blocks until the service exists.
 //
 // It listens on SIGINT and SIGTERM. If the signal is received for a second
 // time, the process is killed with statuscode 1.
