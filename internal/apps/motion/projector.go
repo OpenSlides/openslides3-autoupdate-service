@@ -366,15 +366,15 @@ func extendReferenceMotions(ds projector.Datastore, recommendation json.RawMessa
 	return nil
 }
 
-func mergedIntoDiff(ds projector.Datastore, a amendment) (int, error) {
-	if a.StateID.Null() {
+func mergedIntoDiff(ds projector.Datastore, m *motion) (int, error) {
+	if m.StateID.Null() {
 		return 0, nil
 	}
 
 	var state struct {
 		IntoFinal int `json:"merge_amendment_into_final"`
 	}
-	if err := ds.Get("motions/state", a.StateID.Value(), &state); err != nil {
+	if err := ds.Get("motions/state", m.StateID.Value(), &state); err != nil {
 		// TODO: if state does not exist, better error message.
 		return 0, fmt.Errorf("getting state: %w", err)
 	}
@@ -387,11 +387,11 @@ func mergedIntoDiff(ds projector.Datastore, a amendment) (int, error) {
 		return 1, nil
 	}
 
-	if a.RecommendationID.Null() {
+	if m.RecommendationID.Null() {
 		return 0, nil
 	}
 
-	if err := ds.Get("motion/state", a.RecommendationID.Value(), &state); err != nil {
+	if err := ds.Get("motion/state", m.RecommendationID.Value(), &state); err != nil {
 		// TODO: if state does not exist, better error message.
 		return 0, fmt.Errorf("getting state: %w", err)
 	}
@@ -401,15 +401,15 @@ func mergedIntoDiff(ds projector.Datastore, a amendment) (int, error) {
 	return 0, nil
 }
 
-func mergedIntoFinal(ds projector.Datastore, a amendment) (int, error) {
-	if a.StateID.Null() {
+func mergedIntoFinal(ds projector.Datastore, m *motion) (int, error) {
+	if m.StateID.Null() {
 		return 0, nil
 	}
 
 	var state struct {
 		IntoFinal int `json:"merge_amendment_into_final"`
 	}
-	if err := ds.Get("motions/state", a.StateID.Value(), &state); err != nil {
+	if err := ds.Get("motions/state", m.StateID.Value(), &state); err != nil {
 		// TODO: if state does not exist, better error message.
 		return 0, fmt.Errorf("getting state: %w", err)
 	}
@@ -485,11 +485,7 @@ func slideBaseMotion(ds projector.Datastore, m *motion) (json.RawMessage, error)
 }
 
 func slideChangeRecommendations(ds projector.Datastore, m *motion) (json.RawMessage, error) {
-	if !isNull(m.StatuteParagraphID) || (!isNull(m.ParentID) && !isNull(m.AmendmentParagraphs)) {
-		return []byte("[]"), nil
-	}
-
-	var crl []json.RawMessage
+	var crs []json.RawMessage
 	for _, id := range m.ChangeRecommendationIDs {
 		var cr json.RawMessage
 		if err := ds.Get("motions/motion-change-recommendation", id, &cr); err != nil {
@@ -513,14 +509,14 @@ func slideChangeRecommendations(ds projector.Datastore, m *motion) (json.RawMess
 			continue
 		}
 
-		crl = append(crl, cr)
+		crs = append(crs, cr)
 	}
 
-	if len(crl) == 0 {
+	if len(crs) == 0 {
 		return []byte("[]"), nil
 	}
 
-	c, err := json.Marshal(crl)
+	c, err := json.Marshal(crs)
 	if err != nil {
 		return nil, fmt.Errorf("encoding change recommendations: %w", err)
 	}
@@ -535,33 +531,41 @@ func slideAmendments(ds projector.Datastore, m *motion) (json.RawMessage, error)
 
 	var amendmentData []json.RawMessage
 	for _, id := range m.AmendmentIDs {
-		var a amendment
-		if err := ds.Get("motions/motion", id, &a); err != nil {
+		var amendment motion
+		if err := ds.Get("motions/motion", id, &amendment); err != nil {
 			return nil, fmt.Errorf("getting ammendment: %w", err)
 		}
 
-		intoDiff, err := mergedIntoDiff(ds, a)
+		// Get change recommendations for the amendment.
+		crs, err := slideChangeRecommendations(ds, &amendment)
+		if err != nil {
+			return nil, fmt.Errorf("get change recommendations for amendment: %w", err)
+		}
+
+		intoDiff, err := mergedIntoDiff(ds, &amendment)
 		if err != nil {
 			return nil, fmt.Errorf("calc merged into diff: %w", err)
 		}
 
-		intoFinal, err := mergedIntoFinal(ds, a)
+		intoFinal, err := mergedIntoFinal(ds, &amendment)
 		if err != nil {
 			return nil, fmt.Errorf("calc merged into final: %w", err)
 		}
 
 		out := struct {
-			ID         int             `json:"id"`
-			Identifier json.RawMessage `json:"identifier"`
-			Title      json.RawMessage `json:"title"`
-			Paragraphs json.RawMessage `json:"amendment_paragraphs"`
-			IntoDiff   int             `json:"merge_amendment_into_diff"`
-			IntoFinal  int             `json:"merge_amendment_into_final"`
+			ID                    int             `json:"id"`
+			Identifier            json.RawMessage `json:"identifier"`
+			Title                 json.RawMessage `json:"title"`
+			Paragraphs            json.RawMessage `json:"amendment_paragraphs"`
+			ChangeRecommendations json.RawMessage `json:"change_recommendations"`
+			IntoDiff              int             `json:"merge_amendment_into_diff"`
+			IntoFinal             int             `json:"merge_amendment_into_final"`
 		}{
 			id,
-			a.Identifier,
-			a.Title,
-			a.Paragraphs,
+			amendment.Identifier,
+			amendment.Title,
+			amendment.AmendmentParagraphs,
+			crs,
 			intoDiff,
 			intoFinal,
 		}

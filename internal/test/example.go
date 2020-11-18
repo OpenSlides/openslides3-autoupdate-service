@@ -52,7 +52,7 @@ type RequiredUserDataset struct {
 	Collection string
 	Element    json.RawMessage
 	ExpectPerm string
-	ExpectIDs  []int
+	ExpectIDs  map[int]bool
 }
 
 // ExampleRequiredUser returns testcases to test required users.
@@ -60,12 +60,16 @@ func ExampleRequiredUser() []RequiredUserDataset {
 	var rus []RequiredUserDataset
 	for elementID, data := range exampleRequiredUser {
 		collection := elementID[:strings.Index(elementID, ":")]
+		ids := make(map[int]bool, len(data.ids))
+		for _, id := range data.ids {
+			ids[id] = true
+		}
 		ru := RequiredUserDataset{
 			Name:       elementID,
 			Collection: collection,
 			Element:    exampleData[elementID],
 			ExpectPerm: data.perm,
-			ExpectIDs:  data.ids,
+			ExpectIDs:  ids,
 		}
 		rus = append(rus, ru)
 	}
@@ -128,7 +132,7 @@ Outer:
 		groupSet := make(map[int]bool, len(user.GroupsID))
 		for _, gid := range user.GroupsID {
 			if gid == 2 {
-				r[uid] = &HasPermMock{IsSuperuser: true}
+				r[uid] = &HasPermMock{IsSuperuser: true, Data: exampleData}
 				continue Outer
 			}
 
@@ -141,7 +145,7 @@ Outer:
 			perms = append(perms, group.Permissions...)
 			groupSet[gid] = true
 		}
-		r[uid] = &HasPermMock{Perms: perms, Groups: groupSet}
+		r[uid] = &HasPermMock{Perms: perms, Groups: groupSet, Data: exampleData}
 	}
 	return r
 }

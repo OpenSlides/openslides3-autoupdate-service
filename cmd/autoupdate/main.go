@@ -97,7 +97,7 @@ func main() {
 	}
 }
 
-// waitForShutdown blocks until the service exists.
+// WaitForShutdown blocks until the service exists.
 //
 // It listens on SIGINT and SIGTERM. If the signal is received for a second
 // time, the process is killed with statuscode 1.
@@ -215,8 +215,8 @@ func tlsListener(listenAddr string) (net.Listener, error) {
 	return tls.NewListener(ln, tlsConf), nil
 }
 
-func openslidesRequiredUsers() map[string]func(json.RawMessage) ([]int, string, error) {
-	return map[string]func(json.RawMessage) ([]int, string, error){
+func openslidesRequiredUsers() map[string]func(json.RawMessage) (map[int]bool, string, error) {
+	return map[string]func(json.RawMessage) (map[int]bool, string, error){
 		"agenda/list-of-speakers":       agenda.RequiredSpeakers,
 		"assignments/assignment":        assignment.RequiredAssignments,
 		"assignments/assignment-poll":   assignment.RequiredPoll,

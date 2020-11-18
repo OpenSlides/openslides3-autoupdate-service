@@ -156,6 +156,12 @@ To run the tests, call:
 go test ./...
 ```
 
+To replace the export.json copy it to internal/test/export.json and run:
+
+```
+go generate ./...
+```
+
 ## Environment variables
 
 The service can be configured with the following environment variables:

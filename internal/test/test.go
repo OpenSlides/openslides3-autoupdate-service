@@ -13,11 +13,29 @@ func CmpIntSlice(a, b []int) bool {
 		return false
 	}
 	if len(a) == 0 && len(b) == 0 {
-		// handle nil case
+		// Handle nil case.
 		return true
 	}
 	for i := range a {
 		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
+// CmpIntSet returns true, if both sets have the smae entries.
+func CmpIntSet(a, b map[int]bool) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	if len(a) == 0 && len(b) == 0 {
+		// Handle nil case.
+		return true
+	}
+
+	for key := range a {
+		if !b[key] {
 			return false
 		}
 	}
@@ -30,7 +48,7 @@ func CmpStrSlice(a, b []string) bool {
 		return false
 	}
 	if len(a) == 0 && len(b) == 0 {
-		// handle nil case
+		// Handle nil case.
 		return true
 	}
 	for i := range a {
@@ -65,6 +83,6 @@ func ExpectEqualJSON(t *testing.T, a, b []byte) {
 		if err != nil {
 			t.Fatalf("remarshalling b: %v", err)
 		}
-		t.Errorf("json not equal: %s\n %s", ap, bp)
+		t.Errorf("json not equal: %s\n\n\n%s", ap, bp)
 	}
 }

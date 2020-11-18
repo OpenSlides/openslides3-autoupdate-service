@@ -20,4 +20,5 @@ type HasPermer interface {
 	IsSuperadmin(uid int) bool
 	InGroups(uid int, groups []int) bool
 	UserRequired(uid int) []string
+	Get(collection string, id int, v interface{}) error
 }

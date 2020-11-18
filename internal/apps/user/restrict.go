@@ -24,10 +24,9 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 		"vote_weight",
 		"gender",
 	}
-
-	manyDataFields := append(littleDataFields, "email", "last_email_send", "comment", "is_active", "auth_type")
+	manyDataFields := append(littleDataFields, "email", "last_email_send", "comment", "is_active", "auth_type", "vote_delegated_to_id", "vote_delegated_from_users_id")
 	allDataFields := append(manyDataFields, "default_password")
-	ownDataFields := append(littleDataFields, "email")
+	ownDataFields := append(littleDataFields, "email", "gender", "vote_delegated_to_id", "vote_delegated_from_users_id")
 
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
 		var user struct {
@@ -48,6 +47,20 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 				return filter(element, manyDataFields)
 			}
 			return filter(element, littleDataFields)
+		}
+
+		// Get the users `vote_delegated_from_users_id`.
+		var requestUser struct {
+			VoteDelegationIds []int `json:"vote_delegated_from_users_id"`
+		}
+		if err := r.Get("users/user", uid, &requestUser); err != nil {
+			return nil, fmt.Errorf("unmarshal user: %w", err)
+		}
+		// The user.ID is required, if it is in VoteDelegationIds.
+		for _, id := range requestUser.VoteDelegationIds {
+			if id == user.ID {
+				return filter(element, littleDataFields)
+			}
 		}
 
 		for _, perm := range r.UserRequired(user.ID) {

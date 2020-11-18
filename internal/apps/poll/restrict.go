@@ -36,6 +36,29 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 		}
 		poll["user_has_voted"] = hasVoted
 
+		// Get the users `vote_delegated_from_users_id`.
+		var user struct {
+			VoteDelegationIds []int `json:"vote_delegated_from_users_id"`
+		}
+		if err := r.Get("users/user", uid, &user); err != nil {
+			return nil, fmt.Errorf("unmarshal user: %w", err)
+		}
+		// Calc the intersection of voteDelegationIds and votedID.
+		ids := []int{}
+		for _, delegationID := range user.VoteDelegationIds {
+			for _, votedID := range votedID {
+				if delegationID == votedID {
+					ids = append(ids, delegationID)
+					break
+				}
+			}
+		}
+		m, err := json.Marshal(ids)
+		if err != nil {
+			return nil, fmt.Errorf("marshal user_has_voted_for_delegations: %w", err)
+		}
+		poll["user_has_voted_for_delegations"] = m
+
 		var state int
 		if err := json.Unmarshal(poll["state"], &state); err != nil {
 			return nil, fmt.Errorf("unmarshal poll state: %w", err)
@@ -81,7 +104,7 @@ func RestrictOption(r restricter.HasPermer, canSee, canManage string) restricter
 			return nil, fmt.Errorf("unmarshal pollstate: %w", err)
 		}
 
-		// delete some fields for unpublished options.
+		// Delete some fields for unpublished options.
 		if state != StatePublished {
 			delete(option, "yes")
 			delete(option, "no")
@@ -118,6 +141,15 @@ func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.E
 		}
 
 		if userID == uid {
+			return element, nil
+		}
+
+		var delegatedUserID int
+		if err := json.Unmarshal(vote["delegated_user_id"], &delegatedUserID); err != nil {
+			return nil, fmt.Errorf("unmarshal delegated_user_id: %w", err)
+		}
+
+		if delegatedUserID == uid {
 			return element, nil
 		}
 
