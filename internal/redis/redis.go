@@ -33,10 +33,6 @@ const (
 	// readyWait is the duration to wait to check again if the cache is ready.
 	readyWait = 1 * time.Second
 
-	// blockTimeout is the time in miliseconds, how long the xread command will
-	// block.
-	blockTimeout = "3600000" // One Hour
-
 	// notifyKey is the name of the notify stream name.
 	notifyKey = "notify"
 )
@@ -199,7 +195,7 @@ func (r *Redis) Update(closing <-chan struct{}) ([]byte, error) {
 	received := make(chan struct{})
 
 	go func() {
-		id, data, err = stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", blockTimeout, "STREAMS", autoupdateKey, id))
+		id, data, err = stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", "0", "STREAMS", autoupdateKey, id))
 		close(received)
 	}()
 
@@ -297,7 +293,7 @@ func (r *Redis) ReceiveNotify(closing <-chan struct{}) (message string, err erro
 	received := make(chan struct{})
 
 	go func() {
-		id, data, err = stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", blockTimeout, "STREAMS", notifyKey, id))
+		id, data, err = stream(conn.Do("XREAD", "COUNT", 1, "BLOCK", "0", "STREAMS", notifyKey, id))
 		close(received)
 	}()
 
