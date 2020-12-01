@@ -506,12 +506,24 @@ var exampleData = map[string]json.RawMessage{
         "poll_id": 3,
         "pollstate": 2
       }`),
+	"assignments/assignment-option:5": []byte(`{
+        "user_id": 2,
+        "weight": 1,
+        "id": 5,
+        "yes": "0.000000",
+        "no": "2.000000",
+        "abstain": "0.000000",
+        "poll_id": 4,
+        "pollstate": 3
+      }`),
 	"assignments/assignment-poll:1": []byte(`{
         "assignment_id": 1,
         "description": "",
-        "pollmethod": "votes",
+        "pollmethod": "Y",
         "votes_amount": 1,
         "allow_multiple_votes_per_candidate": false,
+        "global_yes": true,
+        "amount_global_yes": "1.000000",
         "global_no": true,
         "amount_global_no": "0.000000",
         "global_abstain": true,
@@ -539,9 +551,11 @@ var exampleData = map[string]json.RawMessage{
 	"assignments/assignment-poll:3": []byte(`{
         "assignment_id": 2,
         "description": "",
-        "pollmethod": "votes",
+        "pollmethod": "Y",
         "votes_amount": 1,
         "allow_multiple_votes_per_candidate": false,
+        "global_yes": true,
+        "amount_global_yes": "2.000000",
         "global_no": false,
         "amount_global_no": null,
         "global_abstain": false,
@@ -565,6 +579,33 @@ var exampleData = map[string]json.RawMessage{
           11
         ]
       }`),
+	"assignments/assignment-poll:4": []byte(`{
+        "assignment_id": 2,
+        "description": "",
+        "pollmethod": "N",
+        "votes_amount": 1,
+        "allow_multiple_votes_per_candidate": false,
+        "global_yes": true,
+        "amount_global_yes": "6.000000",
+        "global_no": true,
+        "amount_global_no": "7.000000",
+        "global_abstain": true,
+        "amount_global_abstain": "8.000000",
+        "state": 3,
+        "type": "analog",
+        "title": "Wahlgang (2)",
+        "groups_id": [],
+        "votesvalid": "3.000000",
+        "votesinvalid": "4.000000",
+        "votescast": "5.000000",
+        "options_id": [
+          5
+        ],
+        "id": 4,
+        "onehundred_percent_base": "valid",
+        "majority_method": "simple",
+        "voted_id": []
+      }`),
 	"assignments/assignment-vote:1": []byte(`{
         "id": 1,
         "weight": "1.000000",
@@ -582,6 +623,15 @@ var exampleData = map[string]json.RawMessage{
         "delegated_user_id": 10,
         "option_id": 4,
         "pollstate": 2
+      }`),
+	"assignments/assignment-vote:4": []byte(`{
+        "id": 4,
+        "weight": "2.000000",
+        "value": "N",
+        "user_id": null,
+        "delegated_user_id": null,
+        "option_id": 5,
+        "pollstate": 3
       }`),
 	"assignments/assignment:1": []byte(`{
         "id": 1,
@@ -633,7 +683,8 @@ var exampleData = map[string]json.RawMessage{
         "attachments_id": [],
         "number_poll_candidates": false,
         "polls_id": [
-          3
+          3,
+          4
         ]
       }`),
 	"core/config:10": []byte(`{
@@ -816,14 +867,18 @@ var exampleData = map[string]json.RawMessage{
         "key": "assignment_poll_method",
         "value": "votes",
         "data": {
-          "defaultValue": "votes",
+          "defaultValue": "Y",
           "inputType": "choice",
           "label": "Default election method",
           "helpText": "",
           "choices": [
             {
-              "value": "votes",
+              "value": "Y",
               "display_name": "Yes per candidate"
+            },
+            {
+              "value": "N",
+              "display_name": "No per candidate"
             },
             {
               "value": "YN",
@@ -849,7 +904,7 @@ var exampleData = map[string]json.RawMessage{
           "label": "Connect all users to live conference automatically",
           "helpText": "Server settings required to activate Jitsi Meet integration.",
           "choices": null,
-          "weight": 141,
+          "weight": 142,
           "group": "General",
           "subgroup": "Live conference"
         }
@@ -901,7 +956,7 @@ var exampleData = map[string]json.RawMessage{
               "display_name": "Yes/No/Abstain per candidate"
             },
             {
-              "value": "votes",
+              "value": "Y",
               "display_name": "Sum of votes including general No/Abstain"
             },
             {
@@ -1056,7 +1111,7 @@ var exampleData = map[string]json.RawMessage{
           "label": "Allow only current speakers and list of speakers managers to enter the live conference",
           "helpText": "Server settings required to activate Jitsi Meet integration.",
           "choices": null,
-          "weight": 142,
+          "weight": 141,
           "group": "General",
           "subgroup": "Live conference"
         }
@@ -1071,7 +1126,7 @@ var exampleData = map[string]json.RawMessage{
           "label": "Livestream poster image url",
           "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
           "choices": null,
-          "weight": 144,
+          "weight": 147,
           "group": "General",
           "subgroup": "Live conference"
         }
@@ -1091,6 +1146,51 @@ var exampleData = map[string]json.RawMessage{
           "subgroup": "List of speakers"
         }
       }`),
+	"core/config:122": []byte(`{
+        "id": 122,
+        "key": "general_system_conference_open_microphone",
+        "value": false,
+        "data": {
+          "defaultValue": false,
+          "inputType": "boolean",
+          "label": "Automatically open the microphone for new conference speakers",
+          "helpText": "Server settings required to activate Jitsi Meet integration.",
+          "choices": null,
+          "weight": 143,
+          "group": "General",
+          "subgroup": "Live conference"
+        }
+      }`),
+	"core/config:123": []byte(`{
+        "id": 123,
+        "key": "general_system_conference_open_video",
+        "value": false,
+        "data": {
+          "defaultValue": false,
+          "inputType": "boolean",
+          "label": "Automatically open the web cam for new conference speakers",
+          "helpText": "Server settings required to activate Jitsi Meet integration.",
+          "choices": null,
+          "weight": 144,
+          "group": "General",
+          "subgroup": "Live conference"
+        }
+      }`),
+	"core/config:124": []byte(`{
+        "id": 124,
+        "key": "general_system_conference_auto_connect_next_speakers",
+        "value": 0,
+        "data": {
+          "defaultValue": 0,
+          "inputType": "integer",
+          "label": "Number of next speakers automatically connecting to the live conference",
+          "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+          "choices": null,
+          "weight": 145,
+          "group": "General",
+          "subgroup": "Live conference"
+        }
+      }`),
 	"core/config:13": []byte(`{
         "id": 13,
         "key": "general_system_stream_url",
@@ -1101,7 +1201,7 @@ var exampleData = map[string]json.RawMessage{
           "label": "Livestream url",
           "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
           "choices": null,
-          "weight": 143,
+          "weight": 146,
           "group": "General",
           "subgroup": "Live conference"
         }
@@ -1496,7 +1596,7 @@ var exampleData = map[string]json.RawMessage{
 	"core/config:38": []byte(`{
         "id": 38,
         "key": "config_version",
-        "value": 3,
+        "value": 4,
         "data": null
       }`),
 	"core/config:39": []byte(`{
@@ -4508,12 +4608,24 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "yes": "0.000000",
+          "no": "2.000000",
+          "abstain": "0.000000",
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "amount_global_yes": "1.000000",
           "global_no": true,
           "amount_global_no": "0.000000",
           "global_abstain": true,
@@ -4543,9 +4655,11 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "amount_global_yes": "2.000000",
           "global_no": false,
           "amount_global_no": null,
           "global_abstain": false,
@@ -4571,6 +4685,35 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
         }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "amount_global_yes": "6.000000",
+          "global_no": true,
+          "amount_global_no": "7.000000",
+          "global_abstain": true,
+          "amount_global_abstain": "8.000000",
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "votesvalid": "3.000000",
+          "votesinvalid": "4.000000",
+          "votescast": "5.000000",
+          "options_id": [
+            5
+          ],
+          "id": 4,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "voted_id": [],
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
+        }`),
 		"assignments/assignment-vote:1": []byte(`{
           "id": 1,
           "weight": "1.000000",
@@ -4588,6 +4731,15 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "delegated_user_id": 10,
           "option_id": 4,
           "pollstate": 2
+        }`),
+		"assignments/assignment-vote:4": []byte(`{
+          "id": 4,
+          "weight": "2.000000",
+          "value": "N",
+          "user_id": null,
+          "delegated_user_id": null,
+          "option_id": 5,
+          "pollstate": 3
         }`),
 		"assignments/assignment:1": []byte(`{
           "id": 1,
@@ -4639,7 +4791,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -4822,14 +4975,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -4855,7 +5012,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -4907,7 +5064,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -5062,7 +5219,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -5077,7 +5234,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -5097,6 +5254,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -5107,7 +5309,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -5502,7 +5704,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -7726,292 +7928,292 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "",
-          "last_email_send": null,
           "groups_id": [
             2
           ],
-          "username": "admin",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "admin",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 1,
-          "last_name": "Administrator",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "admin",
+          "number": "",
+          "gender": "",
           "is_present": false,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "Administrator",
+          "default_password": "admin",
+          "id": 1,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:10": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "mandate",
-          "last_email_send": null,
           "groups_id": [],
-          "username": "mandate",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "mandate",
+          "number": "",
+          "gender": "",
+          "is_present": true,
           "vote_delegated_from_users_id": [
             11
           ],
-          "default_password": "QK4PL7vPvR",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 10,
           "last_name": "",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
+          "default_password": "QK4PL7vPvR",
+          "id": 10,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "mandate",
+          "is_committee": false
         }`),
 		"users/user:11": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "voter",
-          "last_email_send": null,
           "groups_id": [
             3
           ],
-          "username": "voter",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "DXR2sAQdju",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 11,
-          "last_name": "",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "voter",
+          "number": "",
+          "gender": "",
           "is_present": true,
-          "vote_weight": "2.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "",
+          "default_password": "DXR2sAQdju",
+          "id": 11,
           "vote_delegated_to_id": 10,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "2.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "voter",
+          "is_committee": false
         }`),
 		"users/user:2": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "candidate1",
-          "last_email_send": null,
           "groups_id": [
             7
           ],
-          "username": "candidate1",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "8NpbvXCBDr",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 2,
-          "last_name": "",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "candidate1",
+          "number": "",
+          "gender": "",
           "is_present": false,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "",
+          "default_password": "8NpbvXCBDr",
+          "id": 2,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "candidate1",
+          "is_committee": false
         }`),
 		"users/user:3": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "candidate2",
-          "last_email_send": null,
           "groups_id": [],
-          "username": "candidate2",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "5YLEHrUUTG",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 3,
-          "last_name": "",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "candidate2",
+          "number": "",
+          "gender": "",
           "is_present": false,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "",
+          "default_password": "5YLEHrUUTG",
+          "id": 3,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "candidate2",
+          "is_committee": false
         }`),
 		"users/user:4": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "a",
-          "last_email_send": null,
           "groups_id": [
             3
           ],
-          "username": "a",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "a",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 4,
-          "last_name": "",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "a",
+          "number": "",
+          "gender": "",
           "is_present": true,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "",
+          "default_password": "a",
+          "id": 4,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "a",
+          "is_committee": false
         }`),
 		"users/user:5": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "b",
-          "last_email_send": null,
           "groups_id": [
             3
           ],
-          "username": "b",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "b",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 5,
-          "last_name": "",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "b",
+          "number": "",
+          "gender": "",
           "is_present": true,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "",
+          "default_password": "b",
+          "id": 5,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "b",
+          "is_committee": false
         }`),
 		"users/user:6": []byte(`{
-          "title": "title",
-          "is_active": true,
-          "comment": "",
-          "first_name": "speaker1",
-          "last_email_send": null,
           "groups_id": [],
-          "username": "speaker1",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "layer X",
-          "vote_delegated_from_users_id": [],
-          "default_password": "ZdbyxFDWpp",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 6,
-          "last_name": "the last name",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "speaker1",
+          "number": "3",
+          "gender": "",
           "is_present": true,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "the last name",
+          "default_password": "ZdbyxFDWpp",
+          "id": 6,
           "vote_delegated_to_id": null,
-          "number": "3"
+          "about_me": "",
+          "title": "title",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "speaker1",
+          "is_committee": false
         }`),
 		"users/user:7": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "speaker2",
-          "last_email_send": null,
           "groups_id": [],
-          "username": "speaker2",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "5HZr2zPM3x",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 7,
-          "last_name": "",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "speaker2",
+          "number": "",
+          "gender": "",
           "is_present": true,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "",
+          "default_password": "5HZr2zPM3x",
+          "id": 7,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "speaker2",
+          "is_committee": false
         }`),
 		"users/user:8": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "",
-          "last_email_send": null,
           "groups_id": [],
-          "username": "not required",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "hq59FcgwLc",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 8,
-          "last_name": "",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "not required",
+          "number": "",
+          "gender": "",
           "is_present": true,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "",
+          "default_password": "hq59FcgwLc",
+          "id": 8,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "",
+          "is_committee": false
         }`),
 		"users/user:9": []byte(`{
-          "title": "",
-          "is_active": true,
-          "comment": "",
-          "first_name": "no perms",
-          "last_email_send": null,
           "groups_id": [
             6
           ],
-          "username": "no perms",
-          "gender": "",
-          "email": "",
+          "comment": "",
           "structure_level": "",
-          "vote_delegated_from_users_id": [],
-          "default_password": "Cjjdp6xhYx",
-          "auth_type": "default",
-          "is_committee": false,
-          "id": 9,
-          "last_name": "",
-          "about_me": "",
+          "email": "",
+          "last_email_send": null,
+          "username": "no perms",
+          "number": "",
+          "gender": "",
           "is_present": true,
-          "vote_weight": "1.000000",
+          "vote_delegated_from_users_id": [],
+          "last_name": "",
+          "default_password": "Cjjdp6xhYx",
+          "id": 9,
           "vote_delegated_to_id": null,
-          "number": ""
+          "about_me": "",
+          "title": "",
+          "vote_weight": "1.000000",
+          "is_active": true,
+          "auth_type": "default",
+          "first_name": "no perms",
+          "is_committee": false
         }`),
 	},
 	2: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -8292,12 +8494,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -8319,9 +8529,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -8334,6 +8545,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             4
           ],
           "id": 3,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "user_has_voted": false,
@@ -8389,7 +8622,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -8572,14 +8806,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -8605,7 +8843,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -8657,7 +8895,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -8812,7 +9050,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -8827,7 +9065,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -8847,6 +9085,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -8857,7 +9140,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -9252,7 +9535,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -11304,309 +11587,309 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:10": []byte(`{
-          "id": 10,
-          "title": "",
-          "structure_level": "",
-          "username": "mandate",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "mandate",
+          "title": "",
+          "username": "mandate",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "mandate",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 10
         }`),
 		"users/user:11": []byte(`{
-          "id": 11,
-          "title": "",
-          "structure_level": "",
-          "username": "voter",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "2.000000",
-          "first_name": "voter",
+          "title": "",
+          "username": "voter",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "voter",
+          "vote_weight": "2.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 11
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "",
+          "username": "candidate1",
+          "number": "",
+          "vote_weight": "1.000000",
+          "is_present": false,
+          "first_name": "candidate1",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [],
-          "username": "candidate1",
           "last_name": "",
-          "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
-          "vote_delegated_to_id": null,
-          "number": "",
-          "is_committee": false,
-          "gender": "",
           "groups_id": [
             7
-          ]
+          ],
+          "is_committee": false,
+          "id": 2,
+          "email": ""
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate2",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
+          "title": "",
+          "username": "candidate2",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "title": "",
-          "structure_level": "",
-          "username": "a",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
+          "title": "",
+          "username": "a",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "a",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "title": "",
-          "structure_level": "",
-          "username": "b",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
+          "title": "",
+          "username": "b",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "b",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "title": "title",
-          "structure_level": "layer X",
-          "username": "speaker1",
-          "last_name": "the last name",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
+          "title": "title",
+          "username": "speaker1",
           "number": "3",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker1",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "the last name",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "title": "",
-          "structure_level": "",
-          "username": "speaker2",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
+          "title": "",
+          "username": "speaker2",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 7
         }`),
 		"users/user:8": []byte(`{
-          "id": 8,
-          "title": "",
-          "structure_level": "",
-          "username": "not required",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "not required",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 8
         }`),
 		"users/user:9": []byte(`{
-          "id": 9,
-          "title": "",
-          "structure_level": "",
-          "username": "no perms",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "no perms",
+          "title": "",
+          "username": "no perms",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "no perms",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             6
-          ]
+          ],
+          "structure_level": "",
+          "id": 9
         }`),
 	},
 	3: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/item:10": []byte(`{
           "is_internal": true,
-          "id": 10,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 10000,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "vote delegation"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "assignments/assignment",
             "id": 2
           },
-          "level": 0
+          "id": 10,
+          "parent_id": null
         }`),
 		"agenda/item:3": []byte(`{
           "is_internal": true,
-          "id": 3,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 8,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Internal"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "level": 0
+          "id": 3,
+          "parent_id": null
         }`),
 		"agenda/item:5": []byte(`{
           "is_internal": true,
-          "id": 5,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 14,
-          "duration": null,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "level": 1
+          "id": 5,
+          "parent_id": 3
         }`),
 		"agenda/item:6": []byte(`{
           "is_internal": true,
-          "id": 6,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 16,
-          "duration": 0,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "level": 1
+          "id": 6,
+          "parent_id": 3
         }`),
 		"agenda/item:7": []byte(`{
           "is_internal": true,
-          "id": 7,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 18,
-          "duration": null,
+          "closed": false,
+          "level": 2,
           "title_information": {
             "title": "Public",
             "identifier": "2"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": 6,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "level": 2
+          "id": 7,
+          "parent_id": 6
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -11887,12 +12170,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -11914,9 +12205,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -11929,6 +12221,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             4
           ],
           "id": 3,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "user_has_voted": false,
@@ -11984,7 +12298,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -12167,14 +12482,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -12200,7 +12519,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -12252,7 +12571,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -12407,7 +12726,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -12422,7 +12741,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -12442,6 +12761,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -12452,7 +12816,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -12847,7 +13211,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -14899,245 +15263,245 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate1",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
+          "title": "",
+          "username": "candidate1",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate1",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             7
-          ]
+          ],
+          "structure_level": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "",
+          "username": "candidate2",
+          "number": "",
+          "vote_weight": "1.000000",
+          "is_present": false,
+          "first_name": "candidate2",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [],
-          "username": "candidate2",
           "last_name": "",
-          "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
-          "vote_delegated_to_id": null,
-          "number": "",
+          "groups_id": [],
           "is_committee": false,
-          "gender": "",
-          "groups_id": []
+          "id": 3,
+          "email": ""
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "title": "",
-          "structure_level": "",
-          "username": "a",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
+          "title": "",
+          "username": "a",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "a",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "title": "",
-          "structure_level": "",
-          "username": "b",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
+          "title": "",
+          "username": "b",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "b",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "title": "title",
-          "structure_level": "layer X",
-          "username": "speaker1",
-          "last_name": "the last name",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
+          "title": "title",
+          "username": "speaker1",
           "number": "3",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker1",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "the last name",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "title": "",
-          "structure_level": "",
-          "username": "speaker2",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
+          "title": "",
+          "username": "speaker2",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 7
         }`),
 	},
 	4: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/item:10": []byte(`{
           "is_internal": true,
-          "id": 10,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 10000,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "vote delegation"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "assignments/assignment",
             "id": 2
           },
-          "level": 0
+          "id": 10,
+          "parent_id": null
         }`),
 		"agenda/item:3": []byte(`{
           "is_internal": true,
-          "id": 3,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 8,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Internal"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "level": 0
+          "id": 3,
+          "parent_id": null
         }`),
 		"agenda/item:5": []byte(`{
           "is_internal": true,
-          "id": 5,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 14,
-          "duration": null,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "level": 1
+          "id": 5,
+          "parent_id": 3
         }`),
 		"agenda/item:6": []byte(`{
           "is_internal": true,
-          "id": 6,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 16,
-          "duration": 0,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "level": 1
+          "id": 6,
+          "parent_id": 3
         }`),
 		"agenda/item:7": []byte(`{
           "is_internal": true,
-          "id": 7,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 18,
-          "duration": null,
+          "closed": false,
+          "level": 2,
           "title_information": {
             "title": "Public",
             "identifier": "2"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": 6,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "level": 2
+          "id": 7,
+          "parent_id": 6
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -15418,12 +15782,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -15445,9 +15817,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -15460,6 +15833,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             4
           ],
           "id": 3,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "user_has_voted": false,
@@ -15524,7 +15919,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -15707,14 +16103,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -15740,7 +16140,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -15792,7 +16192,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -15947,7 +16347,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -15962,7 +16362,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -15982,6 +16382,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -15992,7 +16437,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -16387,7 +16832,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -18542,245 +18987,245 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           }
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate1",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
+          "title": "",
+          "username": "candidate1",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate1",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             7
-          ]
+          ],
+          "structure_level": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate2",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
+          "title": "",
+          "username": "candidate2",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "",
+          "username": "a",
+          "number": "",
+          "vote_weight": "1.000000",
+          "is_present": true,
+          "first_name": "a",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [],
-          "username": "a",
           "last_name": "",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
-          "vote_delegated_to_id": null,
-          "number": "",
-          "is_committee": false,
-          "gender": "",
           "groups_id": [
             3
-          ]
+          ],
+          "is_committee": false,
+          "id": 4,
+          "email": ""
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "title": "",
-          "structure_level": "",
-          "username": "b",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
+          "title": "",
+          "username": "b",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "b",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "title": "title",
-          "structure_level": "layer X",
-          "username": "speaker1",
-          "last_name": "the last name",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
+          "title": "title",
+          "username": "speaker1",
           "number": "3",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker1",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "the last name",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "title": "",
-          "structure_level": "",
-          "username": "speaker2",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
+          "title": "",
+          "username": "speaker2",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 7
         }`),
 	},
 	5: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/item:10": []byte(`{
           "is_internal": true,
-          "id": 10,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 10000,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "vote delegation"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "assignments/assignment",
             "id": 2
           },
-          "level": 0
+          "id": 10,
+          "parent_id": null
         }`),
 		"agenda/item:3": []byte(`{
           "is_internal": true,
-          "id": 3,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 8,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Internal"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "level": 0
+          "id": 3,
+          "parent_id": null
         }`),
 		"agenda/item:5": []byte(`{
           "is_internal": true,
-          "id": 5,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 14,
-          "duration": null,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "level": 1
+          "id": 5,
+          "parent_id": 3
         }`),
 		"agenda/item:6": []byte(`{
           "is_internal": true,
-          "id": 6,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 16,
-          "duration": 0,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "level": 1
+          "id": 6,
+          "parent_id": 3
         }`),
 		"agenda/item:7": []byte(`{
           "is_internal": true,
-          "id": 7,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 18,
-          "duration": null,
+          "closed": false,
+          "level": 2,
           "title_information": {
             "title": "Public",
             "identifier": "2"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": 6,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "level": 2
+          "id": 7,
+          "parent_id": 6
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -19061,12 +19506,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -19088,9 +19541,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -19103,6 +19557,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             4
           ],
           "id": 3,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "user_has_voted": false,
@@ -19158,7 +19634,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -19341,14 +19818,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -19374,7 +19855,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -19426,7 +19907,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -19581,7 +20062,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -19596,7 +20077,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -19616,6 +20097,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -19626,7 +20152,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -20021,7 +20547,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -22115,245 +22641,245 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate1",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
+          "title": "",
+          "username": "candidate1",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate1",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             7
-          ]
+          ],
+          "structure_level": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate2",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
+          "title": "",
+          "username": "candidate2",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "title": "",
-          "structure_level": "",
-          "username": "a",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
+          "title": "",
+          "username": "a",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "a",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "",
+          "username": "b",
+          "number": "",
+          "vote_weight": "1.000000",
+          "is_present": true,
+          "first_name": "b",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [],
-          "username": "b",
           "last_name": "",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
-          "vote_delegated_to_id": null,
-          "number": "",
-          "is_committee": false,
-          "gender": "",
           "groups_id": [
             3
-          ]
+          ],
+          "is_committee": false,
+          "id": 5,
+          "email": ""
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "title": "title",
-          "structure_level": "layer X",
-          "username": "speaker1",
-          "last_name": "the last name",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
+          "title": "title",
+          "username": "speaker1",
           "number": "3",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker1",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "the last name",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "title": "",
-          "structure_level": "",
-          "username": "speaker2",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
+          "title": "",
+          "username": "speaker2",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 7
         }`),
 	},
 	6: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/item:10": []byte(`{
           "is_internal": true,
-          "id": 10,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 10000,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "vote delegation"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "assignments/assignment",
             "id": 2
           },
-          "level": 0
+          "id": 10,
+          "parent_id": null
         }`),
 		"agenda/item:3": []byte(`{
           "is_internal": true,
-          "id": 3,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 8,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Internal"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "level": 0
+          "id": 3,
+          "parent_id": null
         }`),
 		"agenda/item:5": []byte(`{
           "is_internal": true,
-          "id": 5,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 14,
-          "duration": null,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "level": 1
+          "id": 5,
+          "parent_id": 3
         }`),
 		"agenda/item:6": []byte(`{
           "is_internal": true,
-          "id": 6,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 16,
-          "duration": 0,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "level": 1
+          "id": 6,
+          "parent_id": 3
         }`),
 		"agenda/item:7": []byte(`{
           "is_internal": true,
-          "id": 7,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 18,
-          "duration": null,
+          "closed": false,
+          "level": 2,
           "title_information": {
             "title": "Public",
             "identifier": "2"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": 6,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "level": 2
+          "id": 7,
+          "parent_id": 6
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -22634,12 +23160,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -22661,9 +23195,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -22676,6 +23211,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             4
           ],
           "id": 3,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "user_has_voted": false,
@@ -22731,7 +23288,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -22914,14 +23472,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -22947,7 +23509,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -22999,7 +23561,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -23154,7 +23716,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -23169,7 +23731,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -23189,6 +23751,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -23199,7 +23806,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -23594,7 +24201,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -25646,245 +26253,245 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate1",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
+          "title": "",
+          "username": "candidate1",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate1",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             7
-          ]
+          ],
+          "structure_level": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate2",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
+          "title": "",
+          "username": "candidate2",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "title": "",
-          "structure_level": "",
-          "username": "a",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
+          "title": "",
+          "username": "a",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "a",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "title": "",
-          "structure_level": "",
-          "username": "b",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
+          "title": "",
+          "username": "b",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "b",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "title",
+          "username": "speaker1",
+          "number": "3",
+          "vote_weight": "1.000000",
+          "is_present": true,
+          "first_name": "speaker1",
+          "gender": "",
           "structure_level": "layer X",
           "vote_delegated_from_users_id": [],
-          "username": "speaker1",
           "last_name": "the last name",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
-          "vote_delegated_to_id": null,
-          "number": "3",
+          "groups_id": [],
           "is_committee": false,
-          "gender": "",
-          "groups_id": []
+          "id": 6,
+          "email": ""
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "title": "",
-          "structure_level": "",
-          "username": "speaker2",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
+          "title": "",
+          "username": "speaker2",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 7
         }`),
 	},
 	7: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/item:10": []byte(`{
           "is_internal": true,
-          "id": 10,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 10000,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "vote delegation"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "assignments/assignment",
             "id": 2
           },
-          "level": 0
+          "id": 10,
+          "parent_id": null
         }`),
 		"agenda/item:3": []byte(`{
           "is_internal": true,
-          "id": 3,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 8,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Internal"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "level": 0
+          "id": 3,
+          "parent_id": null
         }`),
 		"agenda/item:5": []byte(`{
           "is_internal": true,
-          "id": 5,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 14,
-          "duration": null,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "level": 1
+          "id": 5,
+          "parent_id": 3
         }`),
 		"agenda/item:6": []byte(`{
           "is_internal": true,
-          "id": 6,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 16,
-          "duration": 0,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "level": 1
+          "id": 6,
+          "parent_id": 3
         }`),
 		"agenda/item:7": []byte(`{
           "is_internal": true,
-          "id": 7,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 18,
-          "duration": null,
+          "closed": false,
+          "level": 2,
           "title_information": {
             "title": "Public",
             "identifier": "2"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": 6,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "level": 2
+          "id": 7,
+          "parent_id": 6
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -26165,12 +26772,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -26192,9 +26807,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -26207,6 +26823,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             4
           ],
           "id": 3,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "user_has_voted": false,
@@ -26262,7 +26900,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -26445,14 +27084,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -26478,7 +27121,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -26530,7 +27173,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -26685,7 +27328,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -26700,7 +27343,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -26720,6 +27363,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -26730,7 +27418,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -27125,7 +27813,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -29177,245 +29865,245 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate1",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
+          "title": "",
+          "username": "candidate1",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate1",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             7
-          ]
+          ],
+          "structure_level": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate2",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
+          "title": "",
+          "username": "candidate2",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "title": "",
-          "structure_level": "",
-          "username": "a",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
+          "title": "",
+          "username": "a",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "a",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "title": "",
-          "structure_level": "",
-          "username": "b",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
+          "title": "",
+          "username": "b",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "b",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "title": "title",
-          "structure_level": "layer X",
-          "username": "speaker1",
-          "last_name": "the last name",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
+          "title": "title",
+          "username": "speaker1",
           "number": "3",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker1",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "the last name",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "",
+          "username": "speaker2",
+          "number": "",
+          "vote_weight": "1.000000",
+          "is_present": true,
+          "first_name": "speaker2",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [],
-          "username": "speaker2",
           "last_name": "",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
-          "vote_delegated_to_id": null,
-          "number": "",
+          "groups_id": [],
           "is_committee": false,
-          "gender": "",
-          "groups_id": []
+          "id": 7,
+          "email": ""
         }`),
 	},
 	8: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/item:10": []byte(`{
           "is_internal": true,
-          "id": 10,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 10000,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "vote delegation"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "assignments/assignment",
             "id": 2
           },
-          "level": 0
+          "id": 10,
+          "parent_id": null
         }`),
 		"agenda/item:3": []byte(`{
           "is_internal": true,
-          "id": 3,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 8,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Internal"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "level": 0
+          "id": 3,
+          "parent_id": null
         }`),
 		"agenda/item:5": []byte(`{
           "is_internal": true,
-          "id": 5,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 14,
-          "duration": null,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "level": 1
+          "id": 5,
+          "parent_id": 3
         }`),
 		"agenda/item:6": []byte(`{
           "is_internal": true,
-          "id": 6,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 16,
-          "duration": 0,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "level": 1
+          "id": 6,
+          "parent_id": 3
         }`),
 		"agenda/item:7": []byte(`{
           "is_internal": true,
-          "id": 7,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 18,
-          "duration": null,
+          "closed": false,
+          "level": 2,
           "title_information": {
             "title": "Public",
             "identifier": "2"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": 6,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "level": 2
+          "id": 7,
+          "parent_id": 6
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -29696,12 +30384,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -29723,9 +30419,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -29738,6 +30435,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             4
           ],
           "id": 3,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "user_has_voted": false,
@@ -29793,7 +30512,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -29976,14 +30696,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -30009,7 +30733,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -30061,7 +30785,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -30216,7 +30940,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -30231,7 +30955,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -30251,6 +30975,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -30261,7 +31030,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -30656,7 +31425,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -32708,135 +33477,135 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate1",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
+          "title": "",
+          "username": "candidate1",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate1",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             7
-          ]
+          ],
+          "structure_level": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate2",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
+          "title": "",
+          "username": "candidate2",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "title": "",
-          "structure_level": "",
-          "username": "a",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
+          "title": "",
+          "username": "a",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "a",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "title": "",
-          "structure_level": "",
-          "username": "b",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
+          "title": "",
+          "username": "b",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "b",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "title": "title",
-          "structure_level": "layer X",
-          "username": "speaker1",
-          "last_name": "the last name",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
+          "title": "title",
+          "username": "speaker1",
           "number": "3",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker1",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "the last name",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "title": "",
-          "structure_level": "",
-          "username": "speaker2",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
+          "title": "",
+          "username": "speaker2",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 7
         }`),
 		"users/user:8": []byte(`{
-          "id": 8,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "",
+          "username": "not required",
+          "number": "",
+          "vote_weight": "1.000000",
+          "is_present": true,
+          "first_name": "",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [],
-          "username": "not required",
           "last_name": "",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "",
-          "vote_delegated_to_id": null,
-          "number": "",
+          "groups_id": [],
           "is_committee": false,
-          "gender": "",
-          "groups_id": []
+          "id": 8,
+          "email": ""
         }`),
 	},
 	9: {
@@ -33020,14 +33789,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -33053,7 +33826,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -33105,7 +33878,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -33260,7 +34033,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -33275,7 +34048,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -33295,6 +34068,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -33305,7 +34123,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -33700,7 +34518,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -34959,149 +35777,149 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:9": []byte(`{
-          "id": 9,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "",
+          "username": "no perms",
+          "number": "",
+          "vote_weight": "1.000000",
+          "is_present": true,
+          "first_name": "no perms",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [],
-          "username": "no perms",
           "last_name": "",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "no perms",
-          "vote_delegated_to_id": null,
-          "number": "",
-          "is_committee": false,
-          "gender": "",
           "groups_id": [
             6
-          ]
+          ],
+          "is_committee": false,
+          "id": 9,
+          "email": ""
         }`),
 	},
 	10: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/item:10": []byte(`{
           "is_internal": true,
-          "id": 10,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 10000,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "vote delegation"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "assignments/assignment",
             "id": 2
           },
-          "level": 0
+          "id": 10,
+          "parent_id": null
         }`),
 		"agenda/item:3": []byte(`{
           "is_internal": true,
-          "id": 3,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 8,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Internal"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "level": 0
+          "id": 3,
+          "parent_id": null
         }`),
 		"agenda/item:5": []byte(`{
           "is_internal": true,
-          "id": 5,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 14,
-          "duration": null,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "level": 1
+          "id": 5,
+          "parent_id": 3
         }`),
 		"agenda/item:6": []byte(`{
           "is_internal": true,
-          "id": 6,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 16,
-          "duration": 0,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "level": 1
+          "id": 6,
+          "parent_id": 3
         }`),
 		"agenda/item:7": []byte(`{
           "is_internal": true,
-          "id": 7,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 18,
-          "duration": null,
+          "closed": false,
+          "level": 2,
           "title_information": {
             "title": "Public",
             "identifier": "2"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": 6,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "level": 2
+          "id": 7,
+          "parent_id": 6
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -35382,12 +36200,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -35409,9 +36235,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -35430,6 +36257,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_has_voted_for_delegations": [
             11
           ]
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
+          "user_has_voted_for_delegations": []
         }`),
 		"assignments/assignment-vote:3": []byte(`{
           "id": 3,
@@ -35490,7 +36339,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -35673,14 +36523,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -35706,7 +36560,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -35758,7 +36612,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -35913,7 +36767,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -35928,7 +36782,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -35948,6 +36802,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -35958,7 +36857,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -36353,7 +37252,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -38405,279 +39304,279 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:10": []byte(`{
-          "id": 10,
-          "email": "",
+          "vote_delegated_to_id": null,
+          "about_me": "",
           "title": "",
+          "username": "mandate",
+          "number": "",
+          "vote_weight": "1.000000",
+          "is_present": true,
+          "first_name": "mandate",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [
             11
           ],
-          "username": "mandate",
           "last_name": "",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "mandate",
-          "vote_delegated_to_id": null,
-          "number": "",
+          "groups_id": [],
           "is_committee": false,
-          "gender": "",
-          "groups_id": []
+          "id": 10,
+          "email": ""
         }`),
 		"users/user:11": []byte(`{
-          "id": 11,
-          "title": "",
-          "structure_level": "",
-          "username": "voter",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "2.000000",
-          "first_name": "voter",
+          "title": "",
+          "username": "voter",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "voter",
+          "vote_weight": "2.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 11
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate1",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
+          "title": "",
+          "username": "candidate1",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate1",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             7
-          ]
+          ],
+          "structure_level": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate2",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
+          "title": "",
+          "username": "candidate2",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "title": "",
-          "structure_level": "",
-          "username": "a",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
+          "title": "",
+          "username": "a",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "a",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "title": "",
-          "structure_level": "",
-          "username": "b",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
+          "title": "",
+          "username": "b",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "b",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "title": "title",
-          "structure_level": "layer X",
-          "username": "speaker1",
-          "last_name": "the last name",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
+          "title": "title",
+          "username": "speaker1",
           "number": "3",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker1",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "the last name",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "title": "",
-          "structure_level": "",
-          "username": "speaker2",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
+          "title": "",
+          "username": "speaker2",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 7
         }`),
 	},
 	11: {
 		"agenda/item:1": []byte(`{
           "is_internal": false,
-          "id": 1,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 2,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Topic"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 1
           },
-          "level": 0
+          "id": 1,
+          "parent_id": null
         }`),
 		"agenda/item:10": []byte(`{
           "is_internal": true,
-          "id": 10,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 10000,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "vote delegation"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "assignments/assignment",
             "id": 2
           },
-          "level": 0
+          "id": 10,
+          "parent_id": null
         }`),
 		"agenda/item:3": []byte(`{
           "is_internal": true,
-          "id": 3,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 8,
-          "duration": null,
+          "closed": false,
+          "level": 0,
           "title_information": {
             "title": "Internal"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": null,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "topics/topic",
             "id": 3
           },
-          "level": 0
+          "id": 3,
+          "parent_id": null
         }`),
 		"agenda/item:5": []byte(`{
           "is_internal": true,
-          "id": 5,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 14,
-          "duration": null,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "Leadmotion1",
             "identifier": null
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 1
           },
-          "level": 1
+          "id": 5,
+          "parent_id": 3
         }`),
 		"agenda/item:6": []byte(`{
           "is_internal": true,
-          "id": 6,
           "tags_id": [],
-          "closed": false,
+          "type": 1,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 16,
-          "duration": 0,
+          "closed": false,
+          "level": 1,
           "title_information": {
             "title": "\u00c4nderungsantrag zu Leadmotion1",
             "identifier": "\u00c4-1"
           },
-          "type": 1,
-          "is_hidden": false,
-          "parent_id": 3,
-          "item_number": "",
+          "duration": 0,
           "content_object": {
             "collection": "motions/motion",
             "id": 2
           },
-          "level": 1
+          "id": 6,
+          "parent_id": 3
         }`),
 		"agenda/item:7": []byte(`{
           "is_internal": true,
-          "id": 7,
           "tags_id": [],
-          "closed": false,
+          "type": 2,
+          "item_number": "",
+          "is_hidden": false,
           "weight": 18,
-          "duration": null,
+          "closed": false,
+          "level": 2,
           "title_information": {
             "title": "Public",
             "identifier": "2"
           },
-          "type": 2,
-          "is_hidden": false,
-          "parent_id": 6,
-          "item_number": "",
+          "duration": null,
           "content_object": {
             "collection": "motions/motion",
             "id": 3
           },
-          "level": 2
+          "id": 7,
+          "parent_id": 6
         }`),
 		"agenda/list-of-speakers:1": []byte(`{
           "id": 1,
@@ -38958,12 +39857,20 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "poll_id": 3,
           "pollstate": 2
         }`),
+		"assignments/assignment-option:5": []byte(`{
+          "user_id": 2,
+          "weight": 1,
+          "id": 5,
+          "poll_id": 4,
+          "pollstate": 3
+        }`),
 		"assignments/assignment-poll:1": []byte(`{
           "assignment_id": 1,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": true,
           "global_abstain": true,
           "state": 2,
@@ -38985,9 +39892,10 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"assignments/assignment-poll:3": []byte(`{
           "assignment_id": 2,
           "description": "",
-          "pollmethod": "votes",
+          "pollmethod": "Y",
           "votes_amount": 1,
           "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
           "global_no": false,
           "global_abstain": false,
           "state": 2,
@@ -39003,6 +39911,28 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "user_has_voted": true,
+          "user_has_voted_for_delegations": []
+        }`),
+		"assignments/assignment-poll:4": []byte(`{
+          "assignment_id": 2,
+          "description": "",
+          "pollmethod": "N",
+          "votes_amount": 1,
+          "allow_multiple_votes_per_candidate": false,
+          "global_yes": true,
+          "global_no": true,
+          "global_abstain": true,
+          "state": 3,
+          "type": "analog",
+          "title": "Wahlgang (2)",
+          "groups_id": [],
+          "options_id": [
+            5
+          ],
+          "id": 4,
+          "onehundred_percent_base": "valid",
+          "majority_method": "simple",
+          "user_has_voted": false,
           "user_has_voted_for_delegations": []
         }`),
 		"assignments/assignment-vote:3": []byte(`{
@@ -39064,7 +39994,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "attachments_id": [],
           "number_poll_candidates": false,
           "polls_id": [
-            3
+            3,
+            4
           ]
         }`),
 		"core/config:10": []byte(`{
@@ -39247,14 +40178,18 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "key": "assignment_poll_method",
           "value": "votes",
           "data": {
-            "defaultValue": "votes",
+            "defaultValue": "Y",
             "inputType": "choice",
             "label": "Default election method",
             "helpText": "",
             "choices": [
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Yes per candidate"
+              },
+              {
+                "value": "N",
+                "display_name": "No per candidate"
               },
               {
                 "value": "YN",
@@ -39280,7 +40215,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Connect all users to live conference automatically",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 141,
+            "weight": 142,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -39332,7 +40267,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
                 "display_name": "Yes/No/Abstain per candidate"
               },
               {
-                "value": "votes",
+                "value": "Y",
                 "display_name": "Sum of votes including general No/Abstain"
               },
               {
@@ -39487,7 +40422,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Allow only current speakers and list of speakers managers to enter the live conference",
             "helpText": "Server settings required to activate Jitsi Meet integration.",
             "choices": null,
-            "weight": 142,
+            "weight": 141,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -39502,7 +40437,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream poster image url",
             "helpText": "Shows if livestream is not started. Recommended image format: 500x281px, PNG or JPG",
             "choices": null,
-            "weight": 144,
+            "weight": 147,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -39522,6 +40457,51 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "subgroup": "List of speakers"
           }
         }`),
+		"core/config:122": []byte(`{
+          "id": 122,
+          "key": "general_system_conference_open_microphone",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the microphone for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 143,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:123": []byte(`{
+          "id": 123,
+          "key": "general_system_conference_open_video",
+          "value": false,
+          "data": {
+            "defaultValue": false,
+            "inputType": "boolean",
+            "label": "Automatically open the web cam for new conference speakers",
+            "helpText": "Server settings required to activate Jitsi Meet integration.",
+            "choices": null,
+            "weight": 144,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
+		"core/config:124": []byte(`{
+          "id": 124,
+          "key": "general_system_conference_auto_connect_next_speakers",
+          "value": 0,
+          "data": {
+            "defaultValue": 0,
+            "inputType": "integer",
+            "label": "Number of next speakers automatically connecting to the live conference",
+            "helpText": "Live conference has to be active. Choose 0 to disable auto connect.",
+            "choices": null,
+            "weight": 145,
+            "group": "General",
+            "subgroup": "Live conference"
+          }
+        }`),
 		"core/config:13": []byte(`{
           "id": 13,
           "key": "general_system_stream_url",
@@ -39532,7 +40512,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
             "label": "Livestream url",
             "helpText": "Remove URL to deactivate livestream. Check extra group permission to see livestream.",
             "choices": null,
-            "weight": 143,
+            "weight": 146,
             "group": "General",
             "subgroup": "Live conference"
           }
@@ -39927,7 +40907,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
 		"core/config:38": []byte(`{
           "id": 38,
           "key": "config_version",
-          "value": 3,
+          "value": 4,
           "data": null
         }`),
 		"core/config:39": []byte(`{
@@ -42021,137 +43001,137 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           ]
         }`),
 		"users/user:1": []byte(`{
-          "id": 1,
-          "title": "",
-          "structure_level": "",
-          "username": "admin",
-          "last_name": "Administrator",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "",
+          "title": "",
+          "username": "admin",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "Administrator",
           "groups_id": [
             2
-          ]
+          ],
+          "structure_level": "",
+          "id": 1
         }`),
 		"users/user:11": []byte(`{
-          "id": 11,
-          "email": "",
+          "vote_delegated_to_id": 10,
+          "about_me": "",
           "title": "",
+          "username": "voter",
+          "number": "",
+          "vote_weight": "2.000000",
+          "is_present": true,
+          "first_name": "voter",
+          "gender": "",
           "structure_level": "",
           "vote_delegated_from_users_id": [],
-          "username": "voter",
           "last_name": "",
-          "about_me": "",
-          "is_present": true,
-          "vote_weight": "2.000000",
-          "first_name": "voter",
-          "vote_delegated_to_id": 10,
-          "number": "",
-          "is_committee": false,
-          "gender": "",
           "groups_id": [
             3
-          ]
+          ],
+          "is_committee": false,
+          "id": 11,
+          "email": ""
         }`),
 		"users/user:2": []byte(`{
-          "id": 2,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate1",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate1",
+          "title": "",
+          "username": "candidate1",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate1",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             7
-          ]
+          ],
+          "structure_level": "",
+          "id": 2
         }`),
 		"users/user:3": []byte(`{
-          "id": 3,
-          "title": "",
-          "structure_level": "",
-          "username": "candidate2",
-          "last_name": "",
           "about_me": "",
-          "is_present": false,
-          "vote_weight": "1.000000",
-          "first_name": "candidate2",
+          "title": "",
+          "username": "candidate2",
           "number": "",
           "is_committee": false,
+          "is_present": false,
+          "first_name": "candidate2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 3
         }`),
 		"users/user:4": []byte(`{
-          "id": 4,
-          "title": "",
-          "structure_level": "",
-          "username": "a",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "a",
+          "title": "",
+          "username": "a",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "a",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 4
         }`),
 		"users/user:5": []byte(`{
-          "id": 5,
-          "title": "",
-          "structure_level": "",
-          "username": "b",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "b",
+          "title": "",
+          "username": "b",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "b",
+          "vote_weight": "1.000000",
           "gender": "",
+          "last_name": "",
           "groups_id": [
             3
-          ]
+          ],
+          "structure_level": "",
+          "id": 5
         }`),
 		"users/user:6": []byte(`{
-          "id": 6,
-          "title": "title",
-          "structure_level": "layer X",
-          "username": "speaker1",
-          "last_name": "the last name",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker1",
+          "title": "title",
+          "username": "speaker1",
           "number": "3",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker1",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "the last name",
+          "groups_id": [],
+          "structure_level": "layer X",
+          "id": 6
         }`),
 		"users/user:7": []byte(`{
-          "id": 7,
-          "title": "",
-          "structure_level": "",
-          "username": "speaker2",
-          "last_name": "",
           "about_me": "",
-          "is_present": true,
-          "vote_weight": "1.000000",
-          "first_name": "speaker2",
+          "title": "",
+          "username": "speaker2",
           "number": "",
           "is_committee": false,
+          "is_present": true,
+          "first_name": "speaker2",
+          "vote_weight": "1.000000",
           "gender": "",
-          "groups_id": []
+          "last_name": "",
+          "groups_id": [],
+          "structure_level": "",
+          "id": 7
         }`),
 	},
 }
@@ -42234,11 +43214,19 @@ var exampleRequiredUser = map[string]permIDs{
 		"assignments.can_see",
 		[]int{2},
 	},
+	"assignments/assignment-option:5": {
+		"assignments.can_see",
+		[]int{2},
+	},
 	"assignments/assignment-poll:1": {
 		"assignments.can_see",
 		[]int{},
 	},
 	"assignments/assignment-poll:3": {
+		"assignments.can_see",
+		[]int{},
+	},
+	"assignments/assignment-poll:4": {
 		"assignments.can_see",
 		[]int{},
 	},
@@ -53281,7 +54269,7 @@ var exampleProjector = []projectorData{
           "poll": {
             "title": "Wahlgang",
             "type": "named",
-            "pollmethod": "votes",
+            "pollmethod": "Y",
             "votes_amount": 1,
             "description": "",
             "state": 2,
@@ -53751,7 +54739,7 @@ var exampleProjector = []projectorData{
           "poll": {
             "title": "Wahlgang",
             "type": "named",
-            "pollmethod": "votes",
+            "pollmethod": "Y",
             "votes_amount": 1,
             "description": "",
             "state": 2,
@@ -54130,6 +55118,471 @@ var exampleProjector = []projectorData{
             {
               "name": "assignments/assignment-poll",
               "id": 3
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers-overlay",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "assignment": {
+            "title": "vote delegation"
+          },
+          "poll": {
+            "title": "Wahlgang (2)",
+            "type": "analog",
+            "pollmethod": "N",
+            "votes_amount": 1,
+            "description": "",
+            "state": 3,
+            "onehundred_percent_base": "valid",
+            "majority_method": "simple",
+            "options": [
+              {
+                "user": {
+                  "short_name": "candidate1"
+                }
+              }
+            ]
+          }
+        },
+        "element": {
+          "name": "assignments/assignment-poll",
+          "id": 4
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "id is required for assignments/assignment-poll slide"
+        },
+        "element": {
+          "name": "assignments/assignment-poll"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": "a string"
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "assignments/assignment-poll with id a string does not exist"
+        },
+        "element": {
+          "name": "assignments/assignment-poll",
+          "id": "a string"
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 1337
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "error": "assignments/assignment-poll with id 1337 does not exist"
+        },
+        "element": {
+          "name": "assignments/assignment-poll",
+          "id": 1337
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers",
+              "stable": false
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {},
+        "element": {
+          "name": "agenda/current-list-of-speakers",
+          "stable": false
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-speaker-chyron",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 4
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+		},
+		[]byte(`{
+        "data": {
+          "background_color": "#317796",
+          "font_color": "#ffffff"
+        },
+        "element": {
+          "name": "agenda/current-speaker-chyron",
+          "stable": true
+        }
+      }`),
+	},
+	{
+		map[string]json.RawMessage{
+			"core/projector:1": []byte(`{
+          "id": 1,
+          "elements": [
+            {
+              "name": "agenda/current-list-of-speakers-overlay",
+              "stable": true
+            }
+          ],
+          "elements_preview": [],
+          "elements_history": [
+            [
+              {
+                "name": "assignments/assignment",
+                "id": 1
+              }
+            ]
+          ],
+          "scale": 0,
+          "scroll": 0,
+          "name": "Default projector",
+          "width": 1200,
+          "aspect_ratio_numerator": 16,
+          "aspect_ratio_denominator": 9,
+          "reference_projector_id": 2,
+          "projectiondefaults_id": [],
+          "color": "#000000",
+          "background_color": "#ffffff",
+          "header_background_color": "#317796",
+          "header_font_color": "#f5f5f5",
+          "header_h1_color": "#317796",
+          "chyron_background_color": "#317796",
+          "chyron_font_color": "#ffffff",
+          "show_header_footer": true,
+          "show_title": true,
+          "show_logo": true
+        }`),
+			"core/projector:2": []byte(`{
+          "id": 2,
+          "elements": [
+            {
+              "name": "assignments/assignment-poll",
+              "id": 4
             }
           ],
           "elements_preview": [],
