@@ -233,7 +233,7 @@ func openslidesRestricters(ds restricter.HasPermer) map[string]restricter.Elemen
 		"agenda/list-of-speakers": basePerm(agenda.CanSeeListOfSpeakers),
 
 		"assignments/assignment":        basePerm(assignment.CanSee),
-		"assignments/assignment-poll":   poll.RestrictPoll(ds, assignment.CanSee, assignment.CanManage, []string{"amount_global_no", "amount_global_abstain"}),
+		"assignments/assignment-poll":   poll.RestrictPoll(ds, assignment.CanSee, assignment.CanManage, []string{"amount_global_yes", "amount_global_no", "amount_global_abstain"}),
 		"assignments/assignment-option": poll.RestrictOption(ds, assignment.CanSee, assignment.CanManage),
 		"assignments/assignment-vote":   poll.RestrictVote(ds, assignment.CanSee, assignment.CanManage),
 

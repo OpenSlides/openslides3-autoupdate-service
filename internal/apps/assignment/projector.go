@@ -169,6 +169,11 @@ func PollSlide() projector.CallableFunc {
 		pollData["options"] = b
 
 		if pollState == poll.StatePublished {
+			pollData["amount_global_yes"] = []byte("null")
+			if !bytes.Equal(pollInfo["amount_global_yes"], []byte("0")) {
+				pollData["amount_global_yes"] = pollInfo["amount_global_yes"]
+			}
+
 			pollData["amount_global_no"] = []byte("null")
 			if !bytes.Equal(pollInfo["amount_global_no"], []byte("0")) {
 				pollData["amount_global_no"] = pollInfo["amount_global_no"]
