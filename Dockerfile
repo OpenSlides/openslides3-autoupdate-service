@@ -17,7 +17,7 @@ RUN go build ./cmd/autoupdate
 
 
 ######## Start a new stage from scratch #######
-FROM alpine:3.12.2
+FROM alpine:3.12.3
 WORKDIR /root/
 
 # Copy the Pre-built binary file from the previous stage
