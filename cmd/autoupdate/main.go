@@ -253,9 +253,9 @@ func openslidesRestricters(ds restricter.HasPermer) map[string]restricter.Elemen
 		"motions/motion-comment-section":       motion.CommentSectionRestrict(ds),
 		"motions/workflow":                     basePerm(motion.CanSee),
 		"motions/motion-change-recommendation": motion.ChangeRecommendationRestrict(ds),
-		"motions/motion-poll":                  poll.RestrictPoll(ds, motion.CanSee, motion.CanManage, nil),
-		"motions/motion-option":                poll.RestrictOption(ds, motion.CanSee, motion.CanManage),
-		"motions/motion-vote":                  poll.RestrictVote(ds, motion.CanSee, motion.CanManage),
+		"motions/motion-poll":                  poll.RestrictPoll(ds, motion.CanSee, motion.CanManagePolls, nil),
+		"motions/motion-option":                poll.RestrictOption(ds, motion.CanSee, motion.CanManagePolls),
+		"motions/motion-vote":                  poll.RestrictVote(ds, motion.CanSee, motion.CanManagePolls),
 		"motions/state":                        basePerm(motion.CanSee),
 
 		"topics/topic": basePerm("agenda.can_see"),
