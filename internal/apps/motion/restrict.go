@@ -8,13 +8,16 @@ import (
 )
 
 const (
-	//CanSee is the read permission for motions.
+	// CanSee is the read permission for motions.
 	CanSee = "motions.can_see"
 
 	// CanManage is the manage permission for motions.
 	CanManage       = "motions.can_manage"
 	pCanSeeInternal = "motions.can_see_internal"
 	pCanManageMeta  = "motions.can_manage_metadata"
+
+	// CanManagePolls is the manage permission for motion polls
+	CanManagePolls = "motions.can_manage_polls"
 )
 
 type required interface {
