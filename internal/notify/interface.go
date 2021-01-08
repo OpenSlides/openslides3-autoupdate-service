@@ -6,6 +6,8 @@ import "net/http"
 type Backend interface {
 	SendNotify(string) error
 	ReceiveNotify(closing <-chan struct{}) (mail string, err error)
+	AddApplause(userID int) error
+	GetApplause(since int64) (int, error)
 }
 
 // Auther authenticates a request.

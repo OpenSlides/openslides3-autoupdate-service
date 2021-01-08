@@ -10,6 +10,17 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
 
+// HandleApplause adds the userID to the applause list.
+func (n *Notify) HandleApplause(w http.ResponseWriter, r *http.Request) error {
+	userID, ok := r.Context().Value(auth.UserIDKey).(int)
+	if !ok || userID == 0 {
+		return authRequiredError{}
+	}
+
+	n.backend.AddApplause(userID)
+	return nil
+}
+
 // HandleSend is an http.ErrorHandlerFunc for sending a notify message.
 func (n *Notify) HandleSend(w http.ResponseWriter, r *http.Request) error {
 	userID, ok := r.Context().Value(auth.UserIDKey).(int)

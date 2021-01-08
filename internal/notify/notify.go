@@ -28,6 +28,8 @@ func New(backend Backend, closed <-chan struct{}) *Notify {
 	go n.listen()
 	// TODO prune topic
 
+	go n.applause()
+
 	return n
 }
 
@@ -50,6 +52,46 @@ func (n *Notify) listen() {
 		}
 
 		n.topic.Publish(m)
+	}
+}
+
+func (n *Notify) applause() {
+	for {
+		// TODO: get since time from config
+		d := time.Now().Add(-5 * time.Second)
+		a, err := n.backend.GetApplause(d.Unix())
+		if err != nil {
+			log.Printf("Notify: Can not receice applause: %v", err)
+			time.Sleep(5 * time.Second)
+			continue
+		}
+
+		b, err := json.Marshal(struct {
+			Count int `json:"count"`
+			Base  int `json:"base"`
+		}{
+			a,
+			100, // TODO: get base
+		})
+		if err != nil {
+			log.Printf("Notify: Can not encode applause: %v", err)
+			time.Sleep(5 * time.Second)
+			continue
+		}
+
+		m, err := json.Marshal(mail{
+			ToAll:   true,
+			Name:    "applause",
+			Message: b,
+		})
+		if err != nil {
+			log.Printf("Notify: Can not encode applause message: %v", err)
+			time.Sleep(5 * time.Second)
+			continue
+		}
+
+		n.topic.Publish(string(m))
+		time.Sleep(time.Second)
 	}
 }
 

@@ -28,6 +28,7 @@ func WithNotify(n *notify.Notify) Option {
 	return func(h *Handler) {
 		addErrHandleFunc(h, "/system/notify", n.HandleNotify)
 		addErrHandleFunc(h, "/system/notify/send", n.HandleSend)
+		addErrHandleFunc(h, "/system/applause", n.HandleApplause)
 	}
 }
 

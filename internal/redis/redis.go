@@ -35,6 +35,9 @@ const (
 
 	// notifyKey is the name of the notify stream name.
 	notifyKey = "notify"
+
+	// applauseKey is the name of the redis key for applause.
+	applauseKey = "applause"
 )
 
 // Redis holds the connection to redis.
@@ -265,6 +268,31 @@ func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 		data[keys[i]] = json.RawMessage(rawData[i])
 	}
 	return data, nil
+}
+
+// AddApplause adds a user to the applause set.
+func (r *Redis) AddApplause(userID int) error {
+	conn := r.writePool.Get()
+	defer conn.Close()
+
+	if _, err := conn.Do("ZADD", applauseKey, time.Now().Unix(), userID); err != nil {
+		return fmt.Errorf("adding applause in redis: %w", err)
+	}
+
+	return nil
+}
+
+// GetApplause returns the amount of applause sind a time.
+func (r *Redis) GetApplause(since int64) (int, error) {
+	conn := r.writePool.Get()
+	defer conn.Close()
+
+	c, err := redis.Int(conn.Do("ZCOUNT", applauseKey, since, "+inf"))
+	if err != nil {
+		return 0, fmt.Errorf("getting applause from redis: %w", err)
+	}
+
+	return c, nil
 }
 
 // SendNotify publishes a notify message in redis.
