@@ -32,7 +32,7 @@ func New(backend Backend, applauser Applauser, applauseInterval int, closed <-ch
 	go n.listen()
 	// TODO prune topic
 
-	go n.applause()
+	go n.applauseLoop()
 
 	return n
 }
@@ -59,17 +59,24 @@ func (n *Notify) listen() {
 	}
 }
 
-func (n *Notify) applause() {
+func (n *Notify) applauseLoop() {
+	var last int
 	for {
-		waitTime, base := n.applauser.ApplauseConfig()
+		time.Sleep(time.Duration(n.applauseInterval) * time.Millisecond)
 
-		d := time.Now().Add(-time.Duration(waitTime) * time.Second)
+		countTime, base := n.applauser.ApplauseConfig()
+
+		d := time.Now().Add(-time.Duration(countTime) * time.Second)
 		a, err := n.backend.GetApplause(d.Unix())
 		if err != nil {
 			log.Printf("Notify: Can not receice applause: %v", err)
 			time.Sleep(5 * time.Second)
 			continue
 		}
+		if a == last {
+			continue
+		}
+		last = a
 
 		b, err := json.Marshal(struct {
 			Level        int `json:"level"`
@@ -97,8 +104,6 @@ func (n *Notify) applause() {
 		}
 
 		n.topic.Publish(string(m))
-
-		time.Sleep(time.Duration(n.applauseInterval) * time.Millisecond)
 	}
 }
 
