@@ -14,3 +14,8 @@ type Backend interface {
 type Auther interface {
 	Middleware(func(w http.ResponseWriter, r *http.Request) error) func(w http.ResponseWriter, r *http.Request) error
 }
+
+// Applauser returns the relevant data for applause.
+type Applauser interface {
+	ApplauseConfig() (waitTime int, base int)
+}

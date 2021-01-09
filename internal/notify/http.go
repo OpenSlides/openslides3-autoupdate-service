@@ -47,6 +47,10 @@ func (n *Notify) HandleSend(w http.ResponseWriter, r *http.Request) error {
 		return invalidRequestError{fmt.Errorf("notify does not have required field `name`")}
 	}
 
+	if from.Name == "applause" {
+		return invalidRequestError{fmt.Errorf("notify name can not be applause")}
+	}
+
 	buf := new(bytes.Buffer)
 	if err := json.Compact(buf, m); err != nil {
 		return invalidRequestError{fmt.Errorf("json is invalid: %w", err)}

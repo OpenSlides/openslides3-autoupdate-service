@@ -271,11 +271,19 @@ func (r *Redis) Data(keys []string) (map[string]json.RawMessage, error) {
 }
 
 // AddApplause adds a user to the applause set.
+//
+// Also deletes applause that is older then a minute
 func (r *Redis) AddApplause(userID int) error {
 	conn := r.writePool.Get()
 	defer conn.Close()
 
 	if _, err := conn.Do("ZADD", applauseKey, time.Now().Unix(), userID); err != nil {
+		return fmt.Errorf("adding applause in redis: %w", err)
+	}
+
+	// Delete old applause.
+	before := time.Now().Add(-time.Second)
+	if _, err := conn.Do("ZREMRANGEBYSCORE", applauseKey, 0, before.Unix()); err != nil {
 		return fmt.Errorf("adding applause in redis: %w", err)
 	}
 

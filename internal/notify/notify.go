@@ -11,18 +11,22 @@ import (
 
 // Notify is a service to send messages between clients.
 type Notify struct {
-	backend Backend
-	topic   *topic.Topic
-	closed  <-chan struct{}
-	cIDGen  cIDGen
+	backend          Backend
+	topic            *topic.Topic
+	closed           <-chan struct{}
+	cIDGen           cIDGen
+	applauser        Applauser
+	applauseInterval int
 }
 
 // New returns an initializes Notify object.
-func New(backend Backend, closed <-chan struct{}) *Notify {
+func New(backend Backend, applauser Applauser, applauseInterval int, closed <-chan struct{}) *Notify {
 	n := &Notify{
-		backend: backend,
-		topic:   topic.New(topic.WithClosed(closed)),
-		closed:  closed,
+		backend:          backend,
+		applauser:        applauser,
+		applauseInterval: applauseInterval,
+		topic:            topic.New(topic.WithClosed(closed)),
+		closed:           closed,
 	}
 
 	go n.listen()
@@ -57,8 +61,9 @@ func (n *Notify) listen() {
 
 func (n *Notify) applause() {
 	for {
-		// TODO: get since time from config
-		d := time.Now().Add(-5 * time.Second)
+		waitTime, base := n.applauser.ApplauseConfig()
+
+		d := time.Now().Add(-time.Duration(waitTime) * time.Second)
 		a, err := n.backend.GetApplause(d.Unix())
 		if err != nil {
 			log.Printf("Notify: Can not receice applause: %v", err)
@@ -67,11 +72,11 @@ func (n *Notify) applause() {
 		}
 
 		b, err := json.Marshal(struct {
-			Count int `json:"count"`
-			Base  int `json:"base"`
+			Level        int `json:"level"`
+			PresentUsers int `json:"presentUsers"`
 		}{
 			a,
-			100, // TODO: get base
+			base,
 		})
 		if err != nil {
 			log.Printf("Notify: Can not encode applause: %v", err)
@@ -83,6 +88,7 @@ func (n *Notify) applause() {
 			ToAll:   true,
 			Name:    "applause",
 			Message: b,
+			From:    "Server",
 		})
 		if err != nil {
 			log.Printf("Notify: Can not encode applause message: %v", err)
@@ -91,7 +97,8 @@ func (n *Notify) applause() {
 		}
 
 		n.topic.Publish(string(m))
-		time.Sleep(time.Second)
+
+		time.Sleep(time.Duration(n.applauseInterval) * time.Millisecond)
 	}
 }
 
