@@ -147,6 +147,16 @@ The body has to be a valid json object with at least the fields `channel_id`,
 }
 ```
 
+Applause:
+
+The notify system also handels applause. To send an applause, send the following request:
+
+```
+curl -k https://localhost:8002/system/applause
+```
+
+For this to work, a sessionID is required (see above)
+
 
 ## Run Test
 
@@ -183,3 +193,5 @@ The service can be configured with the following environment variables:
 * `WORKER_PORT`: Port of the OpenSlides worker (Default: `8000`).
 * `WORKER_PROTOCOL`: Protocol of the OpenSlides worker (Default: `http`).
 * `FORCE_HTTP2`: Force the use of http2 (Default: not).
+* `APPLAUSE_INTERVAL_MS`: Time to calc the applause in milliseconds (Default:
+  `1000`)

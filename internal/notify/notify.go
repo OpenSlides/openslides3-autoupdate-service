@@ -73,7 +73,7 @@ func (n *Notify) applauseLoop() {
 			time.Sleep(5 * time.Second)
 			continue
 		}
-		if a == last {
+		if a == 0 && last == 0 {
 			continue
 		}
 		last = a

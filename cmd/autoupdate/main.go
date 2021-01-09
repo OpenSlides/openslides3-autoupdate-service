@@ -65,7 +65,7 @@ func main() {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	applauseInterval, err := strconv.Atoi(getEnv("APPLAUSE_INTERVAL", "1000"))
+	applauseInterval, err := strconv.Atoi(getEnv("APPLAUSE_INTERVAL_MS", "1000"))
 	if err != nil {
 		log.Fatalf("Invalid value in environment variable APPLAUSE_INTERVAL should be an int")
 	}
