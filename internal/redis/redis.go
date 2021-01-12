@@ -31,7 +31,7 @@ const (
 	cacheReadyKey = "cache_ready"
 
 	// readyWait is the duration to wait to check again if the cache is ready.
-	readyWait = 1 * time.Second
+	readyWait = 3 * time.Second
 
 	// notifyKey is the name of the notify stream name.
 	notifyKey = "notify"
