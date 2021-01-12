@@ -1,30 +1,26 @@
 FROM golang:1.15.6-alpine3.12 as builder
 LABEL maintainer="OpenSlides Team <info@openslides.com>"
-WORKDIR /root/
 
+WORKDIR /root/
 # Install git, it is needed to install the dependencies
 RUN apk --no-cache add git
-
-# Preload dependencies
 COPY go.mod go.sum ./
 RUN go mod download
-
-# Copy everything from the current directory
 COPY . .
-
-# Build the Go app
 RUN go build ./cmd/autoupdate
 
+# Development build.
+FROM builder as development
 
-######## Start a new stage from scratch #######
+RUN ["go", "get", "github.com/githubnemo/CompileDaemon"]
+EXPOSE 9012
+CMD CompileDaemon -log-prefix=false -build="go build ./cmd/autoupdate" -command="./autoupdate"
+
+# Productive build
 FROM alpine:3.12.3
+
 WORKDIR /root/
-
-# Copy the Pre-built binary file from the previous stage
 COPY --from=builder /root/autoupdate .
-
 ENV FORCE_HTTP2 yes
-
 EXPOSE 8002
-
 CMD ./autoupdate
