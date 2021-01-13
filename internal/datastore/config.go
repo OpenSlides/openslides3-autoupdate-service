@@ -53,5 +53,9 @@ func (c *config) ConfigValue(key string, v interface{}) error {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
 
+	if _, ok := c.values[key]; !ok {
+		return doesNotExistError(fmt.Sprintf("config `%s` does not exist.", key))
+	}
+
 	return json.Unmarshal(c.values[key], v)
 }

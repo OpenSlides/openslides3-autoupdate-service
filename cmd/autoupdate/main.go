@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/signal"
 	"path"
+	"strconv"
 	"syscall"
 	"time"
 
@@ -64,7 +65,12 @@ func main() {
 		log.Fatalf("Can not create autoupdate service: %v", err)
 	}
 
-	n := notify.New(redisConn, closed)
+	applauseInterval, err := strconv.Atoi(getEnv("APPLAUSE_INTERVAL_MS", "1000"))
+	if err != nil {
+		log.Fatalf("Invalid value in environment variable APPLAUSE_INTERVAL should be an int")
+	}
+
+	n := notify.New(redisConn, ds, applauseInterval, closed)
 
 	var forceHTTP bool
 	if getEnv("FORCE_HTTP2", "") != "" {

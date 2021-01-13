@@ -27,6 +27,7 @@ type Datastore struct {
 	requiredUser
 	*Projectors
 	config
+	*applause
 }
 
 // New returns an initialized Datastore instance.
@@ -45,6 +46,8 @@ func New(osAddr string, redisConn RedisConn, requiredUsers map[string]func(json.
 		requiredUser: requiredUser{callables: requiredUsers},
 		closed:       closed,
 	}
+
+	d.applause = &applause{c: &d.config}
 
 	// TODO: fix circular dependency between datastore and projector.
 	d.Projectors = NewProjectors(d, projectorSlides, closed)
@@ -235,6 +238,10 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 
 	if err := d.Projectors.Update(data); err != nil {
 		return fmt.Errorf("update projectors: %w", err)
+	}
+
+	if err := d.applause.update(data); err != nil {
+		return fmt.Errorf("updating applause: %w", err)
 	}
 
 	return nil
