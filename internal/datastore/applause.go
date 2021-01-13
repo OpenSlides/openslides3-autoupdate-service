@@ -10,8 +10,8 @@ import (
 )
 
 type applause struct {
-	c          *config
-	activeUser map[int]bool
+	c            *config
+	presentUsers map[int]bool
 
 	mu          sync.RWMutex
 	waitSeconds int
@@ -19,8 +19,8 @@ type applause struct {
 }
 
 func (a *applause) update(data map[string]json.RawMessage) error {
-	if a.activeUser == nil {
-		a.activeUser = make(map[int]bool)
+	if a.presentUsers == nil {
+		a.presentUsers = make(map[int]bool)
 	}
 
 	var applauseTimeout int
@@ -54,7 +54,7 @@ func (a *applause) update(data map[string]json.RawMessage) error {
 			return fmt.Errorf("decoding user %d: %w", userID, err)
 		}
 
-		a.activeUser[userID] = user.Present
+		a.presentUsers[userID] = user.Present
 	}
 
 	a.mu.Lock()
@@ -63,7 +63,7 @@ func (a *applause) update(data map[string]json.RawMessage) error {
 	a.waitSeconds = applauseTimeout
 
 	a.base = 0
-	for _, present := range a.activeUser {
+	for _, present := range a.presentUsers {
 		if present {
 			a.base++
 		}
