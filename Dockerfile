@@ -17,7 +17,7 @@ EXPOSE 9012
 CMD CompileDaemon -log-prefix=false -build="go build ./cmd/autoupdate" -command="./autoupdate"
 
 # Productive build
-FROM alpine:3.12.3
+FROM alpine:3.13.0
 
 WORKDIR /root/
 COPY --from=builder /root/autoupdate .
