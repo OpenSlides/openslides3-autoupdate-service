@@ -3,6 +3,7 @@ package notify
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log"
 	"time"
 
@@ -63,16 +64,19 @@ func (n *Notify) applauseLoop() {
 	var last int
 	for {
 		time.Sleep(time.Duration(n.applauseInterval) * time.Millisecond)
+		select {
+		case <-n.closed:
+			return
+		default:
+		}
 
-		countTime, base := n.applauser.ApplauseConfig()
-
-		d := time.Now().Add(-time.Duration(countTime) * time.Second)
-		a, err := n.backend.GetApplause(d.Unix())
+		a, base, err := n.receiceApplause()
 		if err != nil {
-			log.Printf("Notify: Can not receice applause: %v", err)
+			log.Printf("Notify: Can not receive applause: %v", err)
 			time.Sleep(5 * time.Second)
 			continue
 		}
+
 		if a == 0 && last == 0 {
 			continue
 		}
@@ -105,6 +109,17 @@ func (n *Notify) applauseLoop() {
 
 		n.topic.Publish(string(m))
 	}
+}
+
+func (n *Notify) receiceApplause() (int, int, error) {
+	countTime, base := n.applauser.ApplauseConfig()
+
+	d := time.Now().Add(-time.Duration(countTime) * time.Second)
+	a, err := n.backend.GetApplause(d.Unix())
+	if err != nil {
+		return 0, 0, fmt.Errorf("getting applause: %w", err)
+	}
+	return a, base, nil
 }
 
 type mail struct {

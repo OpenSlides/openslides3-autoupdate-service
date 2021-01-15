@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
@@ -16,6 +17,7 @@ func (n *Notify) HandleApplause(w http.ResponseWriter, r *http.Request) error {
 	if !ok || userID == 0 {
 		return authRequiredError{}
 	}
+	log.Println(userID)
 
 	n.backend.AddApplause(userID)
 	return nil

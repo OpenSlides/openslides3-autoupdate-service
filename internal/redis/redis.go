@@ -281,12 +281,6 @@ func (r *Redis) AddApplause(userID int) error {
 		return fmt.Errorf("adding applause in redis: %w", err)
 	}
 
-	// Delete old applause.
-	before := time.Now().Add(-time.Second)
-	if _, err := conn.Do("ZREMRANGEBYSCORE", applauseKey, 0, before.Unix()); err != nil {
-		return fmt.Errorf("adding applause in redis: %w", err)
-	}
-
 	return nil
 }
 
@@ -294,6 +288,12 @@ func (r *Redis) AddApplause(userID int) error {
 func (r *Redis) GetApplause(since int64) (int, error) {
 	conn := r.writePool.Get()
 	defer conn.Close()
+
+	// Delete old applause.
+	before := time.Now().Add(-time.Minute)
+	if _, err := conn.Do("ZREMRANGEBYSCORE", applauseKey, 0, before.Unix()); err != nil {
+		return 0, fmt.Errorf("removing old applause from redis: %w", err)
+	}
 
 	c, err := redis.Int(conn.Do("ZCOUNT", applauseKey, since, "+inf"))
 	if err != nil {
