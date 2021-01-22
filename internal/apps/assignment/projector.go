@@ -113,7 +113,7 @@ func PollSlide() projector.CallableFunc {
 		os := ds.GetModels("assignments/assignment-option", optionIDs)
 
 		optionData := make([]map[string]interface{}, len(os))
-		weight := make([]int, len(os))
+		weight := make([][2]int, len(os))
 		for i, o := range os {
 			var option struct {
 				UserID  int    `json:"user_id"`
@@ -156,11 +156,14 @@ func PollSlide() projector.CallableFunc {
 				data["abstain"] = abstain
 			}
 			optionData[i] = data
-			weight[i] = option.Weight
+			weight[i] = [2]int{option.Weight * 100, option.UserID}
 		}
 
 		sort.Slice(optionData, func(i, j int) bool {
-			return weight[i] < weight[j]
+			if weight[i][0] != weight[j][0] {
+				return weight[i][0] < weight[j][0]
+			}
+			return weight[i][1] > weight[j][1]
 		})
 
 		b, err := json.Marshal(optionData)
