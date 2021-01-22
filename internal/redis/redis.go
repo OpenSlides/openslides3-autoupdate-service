@@ -213,11 +213,6 @@ func (r *Redis) Update(closing <-chan struct{}) ([]byte, error) {
 	}
 
 	if err != nil {
-		if err == errNil {
-			// No new data
-			return nil, nil
-		}
-
 		return nil, fmt.Errorf("read autoupdate from redis: %w", err)
 	}
 
