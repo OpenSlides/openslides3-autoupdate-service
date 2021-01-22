@@ -5,6 +5,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 	"sync"
@@ -223,6 +224,8 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 	d.mu.Lock()
 	d.maxChangeID = changeID
 	d.mu.Unlock()
+
+	log.Println("Recieve data update to changeID: ", changeID)
 
 	if err := d.hasPerm.update(data); err != nil {
 		return fmt.Errorf("updating hasPerm: %w", err)

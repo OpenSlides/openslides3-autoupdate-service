@@ -98,6 +98,18 @@ func sendData(w io.Writer, all bool, data map[string]json.RawMessage, fromChange
 
 // HandleProjector handels http requests to get projector data.
 func (a *Autoupdate) HandleProjector(w http.ResponseWriter, r *http.Request) error {
+	a.pccMu.Lock()
+	a.projectorConnectionCount++
+	a.pccMu.Unlock()
+	log.Println("Got projector connection. Connection count: ", a.projectorConnectionCount)
+
+	defer func() {
+		a.pccMu.Lock()
+		a.projectorConnectionCount--
+		a.pccMu.Unlock()
+		log.Println("Lost projector connection. Connection count: ", a.projectorConnectionCount)
+	}()
+
 	w.Header().Set("Content-Type", "application/json")
 
 	projectorIDs, err := projectorIDs(r.URL.Query().Get("projector_ids"))

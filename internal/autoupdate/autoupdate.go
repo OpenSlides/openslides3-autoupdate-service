@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"sync"
 	"time"
 
 	"github.com/ostcar/topic"
@@ -21,6 +22,9 @@ type Autoupdate struct {
 	restricter Restricter
 	closed     <-chan struct{}
 	topic      *topic.Topic
+
+	pccMu                    sync.Mutex
+	projectorConnectionCount int
 }
 
 // New create a new autoupdate instance.
