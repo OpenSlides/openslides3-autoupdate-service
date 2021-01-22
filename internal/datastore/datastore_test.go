@@ -189,7 +189,7 @@ func TestKeysChangedNilDoesNotUnblock(t *testing.T) {
 
 	unblocked := make(chan struct{})
 	go func() {
-		_, _, _ = ds.KeysChanged()
+		_, _, err = ds.KeysChanged()
 		close(unblocked)
 	}()
 
@@ -206,9 +206,14 @@ func TestKeysChangedNilDoesNotUnblock(t *testing.T) {
 	timer.Reset(time.Millisecond)
 	select {
 	case <-unblocked:
-		t.Errorf("KeysChanged was done after sending nil")
 	case <-timer.C:
+		t.Errorf("KeysChanged was not done after sending nil")
 	}
+
+	if err == nil {
+		t.Errorf("Expected error that nil is not expected.")
+	}
+
 }
 
 func TestKeysChangedLowIDDoesNotUnblock(t *testing.T) {

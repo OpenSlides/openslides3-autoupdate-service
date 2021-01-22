@@ -78,15 +78,12 @@ func (d *Datastore) CurrentID() int {
 //
 // If the datastore is closed then it return nil, 0, nil.
 func (d *Datastore) KeysChanged() ([]string, int, error) {
-	var rawData []byte
-	var err error
-	for rawData == nil {
-		// Update() blocks until there is new data. But when there is no new
-		// data for an hour, then it returns with nil.
-		rawData, err = d.redisConn.Update(d.closed)
-		if err != nil {
-			return nil, 0, fmt.Errorf("get autoupdate data: %w", err)
-		}
+	rawData, err := d.redisConn.Update(d.closed)
+	if err != nil {
+		return nil, 0, fmt.Errorf("get autoupdate data: %w", err)
+	}
+	if len(rawData) == 0 {
+		return nil, 0, fmt.Errorf("redis returnd empty data. This should never happen. Please cry for help")
 	}
 
 	var sData struct {
