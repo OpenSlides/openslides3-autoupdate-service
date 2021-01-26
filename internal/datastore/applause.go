@@ -47,6 +47,11 @@ func (a *applause) update(data map[string]json.RawMessage) error {
 			return fmt.Errorf("getting userID for %s: %w", parts[1], err)
 		}
 
+		if v == nil {
+			a.presentUsers[userID] = false
+			continue
+		}
+
 		var user struct {
 			Present bool `json:"is_present"`
 		}
