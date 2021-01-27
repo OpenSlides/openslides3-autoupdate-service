@@ -279,10 +279,20 @@ func getOrPOSTMiddleware(next errHandleFunc) errHandleFunc {
 }
 
 // middleware combines all necessary middlewares.
-func middleware(next errHandleFunc, a Auther) errHandleFunc {
-	r := a.Middleware(getOrPOSTMiddleware(next))
+func middleware(next errHandleFunc, auther Auther) errHandleFunc {
+	r := authMiddleware(getOrPOSTMiddleware(next), auther)
 	r = http2Middleware(r)
 	return r
+}
+
+func authMiddleware(next errHandleFunc, auther Auther) errHandleFunc {
+	return func(w http.ResponseWriter, r *http.Request) error {
+		ctx, err := auther.Authenticate(r)
+		if err != nil {
+			return authRequiredError{}
+		}
+		return next(w, r.WithContext(ctx))
+	}
 }
 
 func sendAutoupdateData(w io.Writer, all bool, data map[string]json.RawMessage, fromChangeID, toChangeID int) error {

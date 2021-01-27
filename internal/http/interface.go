@@ -1,8 +1,11 @@
 package http
 
-import "net/http"
+import (
+	"context"
+	"net/http"
+)
 
 // Auther authenticates a request.
 type Auther interface {
-	Middleware(func(w http.ResponseWriter, r *http.Request) error) func(w http.ResponseWriter, r *http.Request) error
+	Authenticate(r *http.Request) (context.Context, error)
 }

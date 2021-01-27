@@ -1,11 +1,9 @@
 package auth
 
-type errorNoAnonymous struct{}
+// NoAnonymousError is returned when a anonymous tries to connect but anonymous is
+// disabled.
+type NoAnonymousError struct{}
 
-func (e *errorNoAnonymous) ClientError() string {
-	return "ErrorAuth"
-}
-
-func (e *errorNoAnonymous) Error() string {
+func (e *NoAnonymousError) Error() string {
 	return "Anonymous is not enabled."
 }
