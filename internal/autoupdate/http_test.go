@@ -32,7 +32,9 @@ func TestAutoupdateFirstData(t *testing.T) {
 		t.Fatalf("autoupdate startup failed: %v", err)
 	}
 
-	srv := httptest.NewUnstartedServer(ahttp.New(auther, ahttp.WithAutoupdate(a)))
+	mux := http.NewServeMux()
+	ahttp.Autoupdate(mux, a, auther)
+	srv := httptest.NewUnstartedServer(mux)
 	srv.EnableHTTP2 = true
 	srv.StartTLS()
 	defer srv.Close()

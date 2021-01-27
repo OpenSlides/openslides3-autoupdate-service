@@ -6,38 +6,52 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
 )
 
-// Handler handels client requests to the autoupdate service.
-type Handler struct {
-	mux        *http.ServeMux
-	auther     Auther
-	forceHTTP2 bool
+// RegisterAll registers all routes.
+func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *notify.Notify) {
+	Health(mux)
+	Autoupdate(mux, a, auth)
+	Projector(mux, a, auth)
+	Notify(mux, n, auth)
+	NotifySend(mux, n, auth)
+	NotifyApplause(mux, n, auth)
 }
 
-// New create a new Handler with the correct urls.
-func New(auther Auther, options ...Option) *Handler {
-	h := &Handler{
-		mux:    http.NewServeMux(),
-		auther: auther,
-	}
-	h.mux.Handle("/system/health", errHandleFunc(h.handleHealth))
-
-	for _, f := range options {
-		f(h)
-	}
-
-	return h
+// Health registers the health route.
+func Health(mux *http.ServeMux) {
+	mux.HandleFunc("/system/health", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		fmt.Fprintln(w, `{"healthy": true}`)
+	})
 }
 
-func (h *Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	h.mux.ServeHTTP(w, r)
+// Autoupdate registers the autoupdate route.
+func Autoupdate(mux *http.ServeMux, auto *autoupdate.Autoupdate, auth Auther) {
+	mux.Handle("/system/autoupdate", errHandleFunc(middleware(auto.HandleAutoupdate, auth)))
 }
 
-func (h *Handler) handleHealth(w http.ResponseWriter, r *http.Request) error {
-	w.Header().Set("Content-Type", "application/json")
-	fmt.Fprintln(w, `{"healthy": true}`)
-	return nil
+// Projector registers the projector route.
+func Projector(mux *http.ServeMux, auto *autoupdate.Autoupdate, auth Auther) {
+	mux.Handle("/system/projector", errHandleFunc(middleware(auto.HandleProjector, auth)))
+}
+
+// Notify registers the notify route.
+func Notify(mux *http.ServeMux, n *notify.Notify, auth Auther) {
+	mux.Handle("/system/notify", errHandleFunc(middleware(n.HandleNotify, auth)))
+}
+
+// NotifySend registers the notify/send route.
+func NotifySend(mux *http.ServeMux, n *notify.Notify, auth Auther) {
+	mux.Handle("/system/notify/send", errHandleFunc(middleware(n.HandleSend, auth)))
+}
+
+// NotifyApplause registers the notify/applause route.
+func NotifyApplause(mux *http.ServeMux, n *notify.Notify, auth Auther) {
+	mux.Handle("/system/applause", errHandleFunc(middleware(n.HandleApplause, auth)))
 }
 
 // errHandleFunc is like a http.Handler, but has a error as return value.
@@ -119,11 +133,8 @@ func getOrPOSTMiddleware(next errHandleFunc) errHandleFunc {
 }
 
 // middleware combines all necessary middlewares.
-func (h *Handler) middleware(next errHandleFunc) errHandleFunc {
-	r := h.auther.Middleware(getOrPOSTMiddleware(next))
-
-	if h.forceHTTP2 {
-		r = http2Middleware(r)
-	}
+func middleware(next errHandleFunc, a Auther) errHandleFunc {
+	r := a.Middleware(getOrPOSTMiddleware(next))
+	r = http2Middleware(r)
 	return r
 }

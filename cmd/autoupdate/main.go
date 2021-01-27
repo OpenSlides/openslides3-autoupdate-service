@@ -72,16 +72,12 @@ func main() {
 
 	n := notify.New(redisConn, ds, applauseInterval, closed)
 
-	var forceHTTP bool
-	if getEnv("FORCE_HTTP2", "") != "" {
-		forceHTTP = true
-	}
-
-	handler := autoupdatehttp.New(auth, autoupdatehttp.WithForceHTTP2(forceHTTP), autoupdatehttp.WithAutoupdate(a), autoupdatehttp.WithNotify(n))
+	mux := http.NewServeMux()
+	autoupdatehttp.RegisterAll(mux, auth, a, n)
 
 	// Create tls http2 server.
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
-	srv := &http.Server{Handler: handler}
+	srv := &http.Server{Handler: mux}
 	ln, err := tlsListener(listenAddr)
 	if err != nil {
 		log.Fatalf("Can not create tls listener: %v", err)
