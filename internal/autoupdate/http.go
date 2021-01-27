@@ -30,7 +30,7 @@ func (a *Autoupdate) HandleAutoupdate(w http.ResponseWriter, r *http.Request) er
 	w.(http.Flusher).Flush()
 
 	// Retrive uid from request. 0 for anonymous.
-	uid := r.Context().Value(auth.UserIDKey).(int)
+	uid := auth.FromContext(r.Context())
 	log.Printf("connect user %d with change_id %d", uid, changeID)
 
 	for {

@@ -46,6 +46,7 @@ func (h *HasPermMock) InGroups(_ int, groups []int) bool {
 	return false
 }
 
+// UserRequired checks for the given groups.
 func (h *HasPermMock) UserRequired(uid int) []string {
 	perms := make(map[string]bool)
 	for _, e := range exampleRequiredUser {
@@ -63,6 +64,7 @@ func (h *HasPermMock) UserRequired(uid int) []string {
 	return keys
 }
 
+// Get tells, if the given user has the ...
 func (h *HasPermMock) Get(collection string, id int, v interface{}) error {
 	elementID := collection + ":" + strconv.Itoa(id)
 	e := h.Data[elementID]

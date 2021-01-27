@@ -13,11 +13,6 @@ const (
 	whoamITimeout = 2 * time.Second
 )
 
-type userIDKey string
-
-// UserIDKey is the key of the request.Context where the user id is saved to.
-const UserIDKey userIDKey = "user_id"
-
 // Auth authentivates a request using the whoami view.
 type Auth struct {
 	addr string
@@ -78,9 +73,24 @@ func (a *Auth) Middleware(next func(w http.ResponseWriter, r *http.Request) erro
 			return fmt.Errorf("authenticate request: %w", err)
 		}
 
-		ctx := context.WithValue(r.Context(), UserIDKey, uid)
+		ctx := context.WithValue(r.Context(), userIDType, uid)
 		r = r.WithContext(ctx)
 
 		return next(w, r)
 	}
 }
+
+// FromContext returnes the user id from a context that was called insinde the
+// Middleware.
+func FromContext(ctx context.Context) int {
+	v := ctx.Value(userIDType)
+	if v == nil {
+		return 0
+	}
+
+	return v.(int)
+}
+
+type authString string
+
+const userIDType authString = "user_id"

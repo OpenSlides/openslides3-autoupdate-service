@@ -13,8 +13,8 @@ import (
 
 // HandleApplause adds the userID to the applause list.
 func (n *Notify) HandleApplause(w http.ResponseWriter, r *http.Request) error {
-	userID, ok := r.Context().Value(auth.UserIDKey).(int)
-	if !ok || userID == 0 {
+	userID := auth.FromContext(r.Context())
+	if userID == 0 {
 		return authRequiredError{}
 	}
 	log.Println(userID)
@@ -25,8 +25,8 @@ func (n *Notify) HandleApplause(w http.ResponseWriter, r *http.Request) error {
 
 // HandleSend is an http.ErrorHandlerFunc for sending a notify message.
 func (n *Notify) HandleSend(w http.ResponseWriter, r *http.Request) error {
-	userID, ok := r.Context().Value(auth.UserIDKey).(int)
-	if !ok || userID == 0 {
+	userID := auth.FromContext(r.Context())
+	if userID == 0 {
 		return authRequiredError{}
 	}
 
@@ -68,8 +68,8 @@ func (n *Notify) HandleSend(w http.ResponseWriter, r *http.Request) error {
 func (n *Notify) HandleNotify(w http.ResponseWriter, r *http.Request) error {
 	w.Header().Set("Content-Type", "application/octet-stream")
 
-	userID, ok := r.Context().Value(auth.UserIDKey).(int)
-	if !ok || userID == 0 {
+	userID := auth.FromContext(r.Context())
+	if userID == 0 {
 		return authRequiredError{}
 	}
 
