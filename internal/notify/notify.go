@@ -1,9 +1,13 @@
 package notify
 
 import (
+	"bytes"
+	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
+	"io/ioutil"
 	"log"
 	"time"
 
@@ -111,6 +115,97 @@ func (n *Notify) applauseLoop() {
 	}
 }
 
+// Receive recieces a notify message and sends it to the writer.
+func (n *Notify) Receive(ctx context.Context, w io.Writer, tid uint64, uid int, cid ChannelID, encoder *json.Encoder) (uint64, error) {
+	var rMails []string
+	var err error
+	tid, rMails, err = n.topic.Receive(ctx, tid)
+	if err != nil {
+		return 0, fmt.Errorf("receiving message: %w", err)
+	}
+
+	for _, rMail := range rMails {
+		var m mail
+		if err := json.Unmarshal([]byte(rMail), &m); err != nil {
+			return 0, fmt.Errorf("decoding message: %w", err)
+		}
+
+		if !m.forMe(uid, cid) {
+			continue
+		}
+
+		out := struct {
+			SenderUserID    int             `json:"sender_user_id"`
+			SenderChannelID string          `json:"sender_channel_id"`
+			Name            string          `json:"name"`
+			Message         json.RawMessage `json:"message"`
+		}{
+			m.From.uid(),
+			m.From.String(),
+			m.Name,
+			m.Message,
+		}
+
+		if err := encoder.Encode(out); err != nil {
+			return 0, fmt.Errorf("sending message: %w", err)
+		}
+	}
+
+	return tid, nil
+}
+
+// GenerateChannelID creates a new channel id for a user.
+func (n *Notify) GenerateChannelID(userID int) ChannelID {
+	return n.cIDGen.generate(userID)
+}
+
+// LastID returns the last id from the topic.
+func (n *Notify) LastID() uint64 {
+	return n.topic.LastID()
+}
+
+// AddApplause adds the applause of a user.
+func (n *Notify) AddApplause(userID int) error {
+	return n.backend.AddApplause(userID)
+}
+
+// Send sends an autoupdate message provides as a reader.
+func (n *Notify) Send(r io.Reader, userID int) error {
+	m, err := ioutil.ReadAll(r)
+	if err != nil {
+		return fmt.Errorf("reading message: %w", err)
+	}
+
+	var from mail
+
+	if err := json.Unmarshal(m, &from); err != nil {
+		return invalidRequestError{err}
+	}
+
+	if from.From.uid() != userID {
+		return invalidRequestError{fmt.Errorf("invalid channel id")}
+	}
+
+	if from.Name == "" {
+		return invalidRequestError{fmt.Errorf("notify does not have required field `name`")}
+	}
+
+	if from.Name == "applause" {
+		return invalidRequestError{fmt.Errorf("notify name can not be applause")}
+	}
+
+	buf := new(bytes.Buffer)
+	if err := json.Compact(buf, m); err != nil {
+		return invalidRequestError{fmt.Errorf("json is invalid: %w", err)}
+	}
+
+	if err := n.backend.SendNotify(buf.String()); err != nil {
+		return fmt.Errorf("sending message: %w", err)
+	}
+
+	return nil
+}
+
 func (n *Notify) receiceApplause() (int, int, error) {
 	countTime, base := n.applauser.ApplauseConfig()
 
@@ -123,7 +218,7 @@ func (n *Notify) receiceApplause() (int, int, error) {
 }
 
 type mail struct {
-	From       channelID       `json:"channel_id"`
+	From       ChannelID       `json:"channel_id"`
 	ToAll      bool            `json:"to_all"`
 	ToUsers    []int           `json:"to_users"`
 	ToChannels []string        `json:"to_channels"`
@@ -131,7 +226,7 @@ type mail struct {
 	Message    json.RawMessage `json:"message"`
 }
 
-func (m mail) forMe(uid int, cID channelID) bool {
+func (m mail) forMe(uid int, cID ChannelID) bool {
 	if m.ToAll {
 		return true
 	}

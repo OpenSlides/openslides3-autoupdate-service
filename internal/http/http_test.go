@@ -1,4 +1,4 @@
-package autoupdate_test
+package http_test
 
 import (
 	"bytes"
