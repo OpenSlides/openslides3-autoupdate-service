@@ -13,11 +13,6 @@ const (
 	whoamITimeout = 2 * time.Second
 )
 
-type userIDKey string
-
-// UserIDKey is the key of the request.Context where the user id is saved to.
-const UserIDKey userIDKey = "user_id"
-
 // Auth authentivates a request using the whoami view.
 type Auth struct {
 	addr string
@@ -60,7 +55,7 @@ func (a *Auth) whoami(r *http.Request) (int, error) {
 	}
 
 	if !respData.GuestEnabled && respData.UserID == nil {
-		return 0, new(errorNoAnonymous)
+		return 0, NoAnonymousError{}
 	}
 
 	if respData.UserID == nil {
@@ -70,17 +65,27 @@ func (a *Auth) whoami(r *http.Request) (int, error) {
 	return *respData.UserID, nil
 }
 
-// Middleware adds the user id into the request.Context.
-func (a *Auth) Middleware(next func(w http.ResponseWriter, r *http.Request) error) func(w http.ResponseWriter, r *http.Request) error {
-	return func(w http.ResponseWriter, r *http.Request) error {
-		uid, err := a.whoami(r)
-		if err != nil {
-			return fmt.Errorf("authenticate request: %w", err)
-		}
-
-		ctx := context.WithValue(r.Context(), UserIDKey, uid)
-		r = r.WithContext(ctx)
-
-		return next(w, r)
+// Authenticate returns an context that can be used by auth.FromContext().
+func (a *Auth) Authenticate(r *http.Request) (context.Context, error) {
+	uid, err := a.whoami(r)
+	if err != nil {
+		return nil, fmt.Errorf("sending whoami: %w", err)
 	}
+
+	return context.WithValue(r.Context(), userIDType, uid), nil
 }
+
+// FromContext returnes the user id from a context that was called insinde the
+// Middleware.
+func FromContext(ctx context.Context) int {
+	v := ctx.Value(userIDType)
+	if v == nil {
+		return 0
+	}
+
+	return v.(int)
+}
+
+type authString string
+
+const userIDType authString = "user_id"

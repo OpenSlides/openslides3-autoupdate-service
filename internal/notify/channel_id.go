@@ -9,11 +9,12 @@ import (
 	"time"
 )
 
-type channelID string
+// ChannelID is an id for a notify channel.
+type ChannelID string
 
 // uid returnes the user id that was used to create the channel id. Returns 0
 // for an invalid channel id.
-func (c channelID) uid() int {
+func (c ChannelID) uid() int {
 	parts := strings.Split(string(c), ":")
 	if len(parts) != 3 {
 		return 0
@@ -26,7 +27,7 @@ func (c channelID) uid() int {
 	return uid
 }
 
-func (c channelID) String() string {
+func (c ChannelID) String() string {
 	return string(c)
 }
 
@@ -38,7 +39,7 @@ type cIDGen struct {
 	count uint64
 }
 
-func (c *cIDGen) generate(uid int) channelID {
+func (c *cIDGen) generate(uid int) ChannelID {
 	c.hostGen.Do(c.buildHostID)
 
 	c.mu.Lock()
@@ -47,7 +48,7 @@ func (c *cIDGen) generate(uid int) channelID {
 	c.mu.Unlock()
 
 	cid := fmt.Sprintf("%s:%d:%d", c.host, uid, count)
-	return channelID(cid)
+	return ChannelID(cid)
 }
 
 func (c *cIDGen) buildHostID() {

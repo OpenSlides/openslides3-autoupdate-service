@@ -31,7 +31,7 @@ func TestChannelID(t *testing.T) {
 	})
 
 	t.Run("invalid cid no :", func(t *testing.T) {
-		cid := channelID("foobar")
+		cid := ChannelID("foobar")
 
 		if got := cid.uid(); got != 0 {
 			t.Errorf("cid.uid() returned %d, expected 0", got)
@@ -39,7 +39,7 @@ func TestChannelID(t *testing.T) {
 	})
 
 	t.Run("invalid cid uid not a number", func(t *testing.T) {
-		cid := channelID("foo:bar:blub")
+		cid := ChannelID("foo:bar:blub")
 
 		if got := cid.uid(); got != 0 {
 			t.Errorf("cid.uid() returned %d, expected 0", got)
