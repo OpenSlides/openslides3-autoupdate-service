@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
@@ -171,7 +172,17 @@ func NotifySend(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 		if userID == 0 {
 			return authRequiredError{}
 		}
-		return n.Send(r.Body, userID)
+
+		bs, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			return fmt.Errorf("reading message: %w", err)
+		}
+
+		if err := notify.ValidateRequest(bs, userID); err != nil {
+			return invalidRequestError{err}
+		}
+
+		return n.Send(bs, userID)
 	}
 	mux.Handle("/system/notify/send", errHandleFunc(middleware(handler, auther)))
 }

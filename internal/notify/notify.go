@@ -7,7 +7,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"time"
 
@@ -169,35 +168,33 @@ func (n *Notify) AddApplause(userID int) error {
 	return n.backend.AddApplause(userID)
 }
 
-// Send sends an autoupdate message provides as a reader.
-func (n *Notify) Send(r io.Reader, userID int) error {
-	m, err := ioutil.ReadAll(r)
-	if err != nil {
-		return fmt.Errorf("reading message: %w", err)
-	}
-
+// ValidateRequest tells, if the given data is a valid notify request.
+//
+// All errors from this function can be send to the clietn.
+func ValidateRequest(m []byte, userID int) error {
 	var from mail
 
 	if err := json.Unmarshal(m, &from); err != nil {
-		return invalidRequestError{err}
+		return fmt.Errorf("invalid json: %v", err)
 	}
 
 	if from.From.uid() != userID {
-		return invalidRequestError{fmt.Errorf("invalid channel id")}
+		return fmt.Errorf("invalid channel id")
 	}
 
 	if from.Name == "" {
-		return invalidRequestError{fmt.Errorf("notify does not have required field `name`")}
+		return fmt.Errorf("notify does not have required field `name`")
 	}
 
 	if from.Name == "applause" {
-		return invalidRequestError{fmt.Errorf("notify name can not be applause")}
+		return fmt.Errorf("notify name can not be applause")
 	}
+	return nil
+}
 
+// Send sends an autoupdate message provides as a reader.
+func (n *Notify) Send(bs []byte, userID int) error {
 	buf := new(bytes.Buffer)
-	if err := json.Compact(buf, m); err != nil {
-		return invalidRequestError{fmt.Errorf("json is invalid: %w", err)}
-	}
 
 	if err := n.backend.SendNotify(buf.String()); err != nil {
 		return fmt.Errorf("sending message: %w", err)
