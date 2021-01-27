@@ -55,7 +55,7 @@ func (a *Auth) whoami(r *http.Request) (int, error) {
 	}
 
 	if !respData.GuestEnabled && respData.UserID == nil {
-		return 0, new(NoAnonymousError)
+		return 0, NoAnonymousError{}
 	}
 
 	if respData.UserID == nil {
@@ -69,7 +69,7 @@ func (a *Auth) whoami(r *http.Request) (int, error) {
 func (a *Auth) Authenticate(r *http.Request) (context.Context, error) {
 	uid, err := a.whoami(r)
 	if err != nil {
-		return nil, fmt.Errorf("authenticate request: %w", err)
+		return nil, fmt.Errorf("sending whoami: %w", err)
 	}
 
 	return context.WithValue(r.Context(), userIDType, uid), nil

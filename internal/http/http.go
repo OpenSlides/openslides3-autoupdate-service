@@ -134,7 +134,7 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 
 		userID := auth.FromContext(r.Context())
 		if userID == 0 {
-			return authRequiredError{}
+			return authRequiredError{"You have to be logged in to use the notify system."}
 		}
 
 		cid := n.GenerateChannelID(userID)
@@ -170,7 +170,7 @@ func NotifySend(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 	handler := func(w http.ResponseWriter, r *http.Request) error {
 		userID := auth.FromContext(r.Context())
 		if userID == 0 {
-			return authRequiredError{}
+			return authRequiredError{"You have to be logged in to use the notify system."}
 		}
 
 		bs, err := ioutil.ReadAll(r.Body)
@@ -192,7 +192,7 @@ func NotifyApplause(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 	handler := func(w http.ResponseWriter, r *http.Request) error {
 		userID := auth.FromContext(r.Context())
 		if userID == 0 {
-			return authRequiredError{}
+			return authRequiredError{"You have to be logged in to send applause."}
 		}
 
 		return n.AddApplause(userID)
@@ -289,7 +289,11 @@ func authMiddleware(next errHandleFunc, auther Auther) errHandleFunc {
 	return func(w http.ResponseWriter, r *http.Request) error {
 		ctx, err := auther.Authenticate(r)
 		if err != nil {
-			return authRequiredError{}
+			var errAnonymous auth.NoAnonymousError
+			if errors.As(err, &errAnonymous) {
+				return authRequiredError{}
+			}
+			return fmt.Errorf("authenticate request: %w", err)
 		}
 		return next(w, r.WithContext(ctx))
 	}

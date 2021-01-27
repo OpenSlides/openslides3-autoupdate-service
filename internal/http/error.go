@@ -30,10 +30,16 @@ func (e noStatusCodeError) Unwrap() error {
 
 func (e noStatusCodeError) NoStatus() {}
 
-type authRequiredError struct{}
+type authRequiredError struct {
+	msg string
+}
 
 func (e authRequiredError) Error() string {
-	return "Only authenticated users can use the notify system."
+	msg := e.msg
+	if msg == "" {
+		msg = "Access for anonymous user is disabled"
+	}
+	return msg
 }
 
 func (e authRequiredError) ClientError() string {

@@ -4,6 +4,6 @@ package auth
 // disabled.
 type NoAnonymousError struct{}
 
-func (e *NoAnonymousError) Error() string {
+func (e NoAnonymousError) Error() string {
 	return "Anonymous is not enabled."
 }
