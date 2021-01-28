@@ -52,6 +52,7 @@ func Autoupdate(mux *http.ServeMux, auto *autoupdate.Autoupdate, auther Auther) 
 		}
 
 		w.WriteHeader(http.StatusOK)
+		fmt.Fprintln(w, `{"connected":true}`)
 		w.(http.Flusher).Flush()
 
 		// Retrive uid from request. 0 for anonymous.
