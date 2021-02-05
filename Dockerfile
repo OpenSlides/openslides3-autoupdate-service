@@ -13,7 +13,7 @@ RUN go build ./cmd/autoupdate
 FROM builder as development
 
 RUN ["go", "get", "github.com/githubnemo/CompileDaemon"]
-EXPOSE 9012
+EXPOSE 8002
 CMD CompileDaemon -log-prefix=false -build="go build ./cmd/autoupdate" -command="./autoupdate"
 
 # Productive build
@@ -21,6 +21,5 @@ FROM alpine:3.13.1
 
 WORKDIR /root/
 COPY --from=builder /root/autoupdate .
-ENV FORCE_HTTP2 yes
 EXPOSE 8002
 CMD ./autoupdate
