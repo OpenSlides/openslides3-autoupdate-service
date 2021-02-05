@@ -257,17 +257,6 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func http2Middleware(next errHandleFunc) errHandleFunc {
-	return func(w http.ResponseWriter, r *http.Request) error {
-		// Only allow http2 requests.
-		if !r.ProtoAtLeast(2, 0) {
-			return invalidRequestError{fmt.Errorf("Only http2 is supported")}
-		}
-
-		return next(w, r)
-	}
-}
-
 func getOrPOSTMiddleware(next errHandleFunc) errHandleFunc {
 	return func(w http.ResponseWriter, r *http.Request) error {
 		// Only allow GET or POST requests.
@@ -281,9 +270,7 @@ func getOrPOSTMiddleware(next errHandleFunc) errHandleFunc {
 
 // middleware combines all necessary middlewares.
 func middleware(next errHandleFunc, auther Auther) errHandleFunc {
-	r := authMiddleware(getOrPOSTMiddleware(next), auther)
-	r = http2Middleware(r)
-	return r
+	return authMiddleware(getOrPOSTMiddleware(next), auther)
 }
 
 func authMiddleware(next errHandleFunc, auther Auther) errHandleFunc {

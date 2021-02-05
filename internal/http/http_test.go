@@ -34,9 +34,7 @@ func TestAutoupdateFirstData(t *testing.T) {
 
 	mux := http.NewServeMux()
 	ahttp.Autoupdate(mux, a, auther)
-	srv := httptest.NewUnstartedServer(mux)
-	srv.EnableHTTP2 = true
-	srv.StartTLS()
+	srv := httptest.NewServer(mux)
 	defer srv.Close()
 
 	ctx, cancel := context.WithCancel(context.Background())

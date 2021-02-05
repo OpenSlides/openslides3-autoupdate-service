@@ -2,15 +2,12 @@ package main
 
 import (
 	"context"
-	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"log"
-	"net"
 	"net/http"
 	"os"
 	"os/signal"
-	"path"
 	"strconv"
 	"syscall"
 	"time"
@@ -75,18 +72,16 @@ func main() {
 	mux := http.NewServeMux()
 	autoupdatehttp.RegisterAll(mux, auth, a, n)
 
-	// Create tls http2 server.
+	// Create http server.
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
 	srv := &http.Server{Handler: mux}
-	ln, err := tlsListener(listenAddr)
 	if err != nil {
 		log.Fatalf("Can not create tls listener: %v", err)
 	}
-	defer ln.Close()
 
 	go func() {
 		fmt.Printf("Listen on %s\n", listenAddr)
-		if err := srv.Serve(ln); err != http.ErrServerClosed {
+		if err := srv.ListenAndServe(); err != http.ErrServerClosed {
 			log.Fatalf("HTTP Server failed: %v", err)
 		}
 	}()
@@ -154,67 +149,6 @@ func testRedis(conn *redis.Redis, readAddr, writeAddr string) {
 		time.Sleep(redisRetryWait)
 	}
 	fmt.Printf("Connected to Redis at %s (read) and %s (write)\n", readAddr, writeAddr)
-}
-
-const (
-	generalCertName = "cert.pem"
-	generalKeyName  = "key.pem"
-	specialCertName = "autoupdate.pem"
-	specialKeyName  = "autoupdate-key.pem"
-)
-
-func getCert() (tls.Certificate, error) {
-	certDir := getEnv("CERT_DIR", "")
-	if certDir == "" {
-		cert, err := autoupdatehttp.GenerateCert()
-		if err != nil {
-			return tls.Certificate{}, fmt.Errorf("creating new certificate: %w", err)
-		}
-		fmt.Println("Use inmemory self signed certificate")
-		return cert, nil
-	}
-	certFile := path.Join(certDir, specialCertName)
-	if _, err := os.Stat(certFile); os.IsNotExist(err) {
-		certFile2 := path.Join(certDir, generalCertName)
-		if _, err := os.Stat(certFile); os.IsNotExist(err) {
-			return tls.Certificate{}, fmt.Errorf("%s or %s has to exist", certFile, certFile2)
-		}
-		certFile = certFile2
-	}
-
-	keyFile := path.Join(certDir, specialKeyName)
-	if _, err := os.Stat(keyFile); os.IsNotExist(err) {
-		keyFile2 := path.Join(certDir, generalKeyName)
-		if _, err := os.Stat(keyFile); os.IsNotExist(err) {
-			return tls.Certificate{}, fmt.Errorf("%s or %s has to exist", keyFile, keyFile2)
-		}
-		keyFile = keyFile2
-	}
-
-	cert, err := tls.LoadX509KeyPair(certFile, keyFile)
-	if err != nil {
-		return tls.Certificate{}, fmt.Errorf("loading certificates from %s and %s: %w", certFile, keyFile, err)
-	}
-	fmt.Printf("Use certificate %s with key %s\n", certFile, keyFile)
-
-	return cert, nil
-}
-
-func tlsListener(listenAddr string) (net.Listener, error) {
-	cert, err := getCert()
-	if err != nil {
-		return nil, fmt.Errorf("get certificate: %w", err)
-	}
-
-	tlsConf := new(tls.Config)
-	tlsConf.NextProtos = []string{"h2"}
-	tlsConf.Certificates = []tls.Certificate{cert}
-
-	ln, err := net.Listen("tcp", listenAddr)
-	if err != nil {
-		return nil, fmt.Errorf("create tcp listener: %w", err)
-	}
-	return tls.NewListener(ln, tlsConf), nil
 }
 
 func openslidesRequiredUsers() map[string]func(json.RawMessage) (map[int]bool, string, error) {
