@@ -74,7 +74,7 @@ func main() {
 
 	// Create http server.
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
-	srv := &http.Server{Handler: mux}
+	srv := &http.Server{Addr: listenAddr, Handler: mux}
 	if err != nil {
 		log.Fatalf("Can not create tls listener: %v", err)
 	}
