@@ -6,20 +6,12 @@ To work, the service needs running OpenSlides 3 instance. It reads the data from
 redis, gets autoupdates via redis and authenticates request via the openslides
 service.
 
+IMPORTANT: The data are sent via an open http-connection. All browsers limit the
+amount of open http1.1 connections to a domain. For this service to work, the
+browser has to connect to the service with http2 and therefore needs https.
+
 
 ## Install and Start
-
-The service requires https. If no certificat is given, the service creates and
-uses an inmemory self signed certificat. To create a valid certificat for
-development, the tool [mkcert](https://github.com/FiloSottile/mkcert) can be
-used. If `mkcert` is installed, the make target `make dev-cert` can be used to
-create a certivicate for the autoupdate-service on localhost.
-
-With created certificates, use the environment varialbe CERT_DIR to use them.
-
-```
-CERT_DIR=cert autoupdate
-```
 
 
 ### With Go
@@ -179,8 +171,6 @@ The service can be configured with the following environment variables:
 * `AUTOUPDATE_PORT`:Port to listen on. The default is `8002`.
 * `AUTOUPDATE_HOST`: The device where the service starts. The default is an
   empty string which starts the service on every device.
-* `CERT_DIR`: Path where the tls certificates and the keys are. If emtpy, the
-  server creates a self signed inmemory certificat. The default is empty.
 * `MESSAGE_BUS_HOST`: Host of the redis server for reading. The default is
   `localhost`.
 * `MESSAGE_BUS_PORT`: Port of the redis server for reading. The default is
