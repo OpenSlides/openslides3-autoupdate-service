@@ -134,10 +134,6 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 		w.Header().Set("Content-Type", "application/octet-stream")
 
 		userID := auth.FromContext(r.Context())
-		if userID == 0 {
-			return authRequiredError{"You have to be logged in to use the notify system."}
-		}
-
 		cid := n.GenerateChannelID(userID)
 		tid := n.LastID()
 

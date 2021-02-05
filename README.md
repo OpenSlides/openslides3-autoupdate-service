@@ -90,9 +90,6 @@ curl -Nk https://localhost:8002/system/projector?projector_ids=1,2,3
 
 ### Notify
 
-The notify system needs logged-in users. A seesion cookies has to be created and
-used. See the --cookie flag above.
-
 To listen for messages:
 
 ```
@@ -120,6 +117,9 @@ If a message is received, it has the format:
 
 
 To send a messages:
+
+To send a notify message, you need to be logged-in. A seesion cookies has to be created and
+used. See the --cookie flag above.
 
 ```
 curl -k https://localhost:8002/system/notify/send -d '{"channel_id":"foo:1:0", "name":"title", "to_all":true, "message": "some json"}'
