@@ -184,3 +184,6 @@ The service can be configured with the following environment variables:
 * `WORKER_PROTOCOL`: Protocol of the OpenSlides worker (Default: `http`).
 * `APPLAUSE_INTERVAL_MS`: Time to calc the applause in milliseconds (Default:
   `1000`)
+* `COOKIE_NAME`: Name of the auth-session-cookie (Default: `OpenSlidesSessionID`).
+* `SESSION_PREFIX`: Prefix of the redis session keys (Default: `session:`).
+* `SECRET_KEY`: ????? TODO

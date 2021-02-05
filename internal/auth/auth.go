@@ -1,10 +1,16 @@
 package auth
 
 import (
+	"bytes"
 	"context"
+	"crypto/hmac"
+	"crypto/sha1"
+	"encoding/base64"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 )
 
@@ -13,63 +19,110 @@ const (
 	whoamITimeout = 2 * time.Second
 )
 
+// Backend gives the sessionData for a sessionID
+type Backend interface {
+	GetSession(sessionID string) ([]byte, error)
+}
+
+// Configer returns the value for a config name.
+type Configer interface {
+	ConfigValue(key string, v interface{}) error
+}
+
 // Auth authentivates a request using the whoami view.
 type Auth struct {
-	addr string
+	cookieName string
+	key        []byte
+	backend    Backend
+	configer   Configer
 }
 
 // New creates a new Auth instance.
-func New(workerAddr string) *Auth {
+func New(cookieName string, secred string, backend Backend, configer Configer) *Auth {
+	bs := sha1.Sum([]byte("django.contrib.sessionsSessionStore" + secred))
 	return &Auth{
-		addr: workerAddr,
+		cookieName: cookieName,
+		backend:    backend,
+		configer:   configer,
+		key:        []byte(bs[:]),
 	}
 }
 
-func (a *Auth) whoami(r *http.Request) (int, error) {
-	ctx, close := context.WithTimeout(r.Context(), whoamITimeout)
-	defer close()
+func (a *Auth) validateSessionData(original, value []byte) (bool, error) {
+	mac := hmac.New(sha1.New, a.key)
+	if _, err := mac.Write(value); err != nil {
+		return false, fmt.Errorf("writing hmac")
+	}
 
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, a.addr+whoAmIPath, nil)
+	originalDecoded := make([]byte, hex.DecodedLen(len(original)))
+	n, err := hex.Decode(originalDecoded, original)
 	if err != nil {
-		return 0, fmt.Errorf("creating whoami request: %w", err)
+		return false, err
 	}
 
-	// Write cookies from the original request to the whoami request.
-	for _, c := range r.Cookies() {
-		req.AddCookie(c)
-	}
+	originalDecoded = originalDecoded[:n]
+	expectedHash := mac.Sum(nil)
+	return hmac.Equal(originalDecoded, expectedHash), nil
+}
 
-	resp, err := http.DefaultClient.Do(req)
+func (a *Auth) userID(r *http.Request) (int, error) {
+	cookie, err := r.Cookie(a.cookieName)
 	if err != nil {
-		return 0, fmt.Errorf("send whoami request: %w", err)
-	}
-	defer resp.Body.Close()
-
-	var respData struct {
-		UserID       *int `json:"user_id"`
-		GuestEnabled bool `json:"guest_enabled"`
+		if err == http.ErrNoCookie {
+			return 0, nil
+		}
+		return 0, fmt.Errorf("loading session cookie: %v", err)
 	}
 
-	if err := json.NewDecoder(resp.Body).Decode(&respData); err != nil {
-		return 0, fmt.Errorf("decoding response: %w", err)
-	}
-
-	if !respData.GuestEnabled && respData.UserID == nil {
-		return 0, NoAnonymousError{}
-	}
-
-	if respData.UserID == nil {
+	encodedSessionData, err := a.backend.GetSession(cookie.Value)
+	if encodedSessionData == nil {
+		// Anonymous.
 		return 0, nil
 	}
 
-	return *respData.UserID, nil
+	b64decoded := make([]byte, base64.StdEncoding.DecodedLen(len(encodedSessionData)))
+	n, err := base64.StdEncoding.Decode(b64decoded, encodedSessionData)
+	if err != nil {
+		return 0, fmt.Errorf("base64 decode session data: %v", err)
+	}
+	b64decoded = b64decoded[:n]
+
+	parts := bytes.SplitN(b64decoded, []byte(":"), 2)
+	valid, err := a.validateSessionData(parts[0], parts[1])
+	if !valid {
+		return 0, nil
+	}
+
+	var sessionData struct {
+		UserID string `json:"_auth_user_id"`
+	}
+	if err := json.Unmarshal(parts[1], &sessionData); err != nil {
+		return 0, fmt.Errorf("json decoding session data: %v", err)
+	}
+
+	uid, err := strconv.Atoi(sessionData.UserID)
+	if err != nil {
+		return 0, fmt.Errorf("invalid user id: %s", sessionData.UserID)
+	}
+
+	return uid, nil
 }
 
 // Authenticate returns an context that can be used by auth.FromContext().
 func (a *Auth) Authenticate(r *http.Request) (context.Context, error) {
-	uid, err := a.whoami(r)
+	uid, err := a.userID(r)
 	if err != nil {
-		return nil, fmt.Errorf("sending whoami: %w", err)
+		return nil, fmt.Errorf("getting user id: %v", err)
+	}
+
+	if uid == 0 {
+		var enabled bool
+		if err := a.configer.ConfigValue("general_system_enable_anonymous", &enabled); err != nil {
+			return nil, fmt.Errorf("getting config value for anonymous: %v", err)
+		}
+		if !enabled {
+			return nil, NoAnonymousError{}
+		}
 	}
 
 	return context.WithValue(r.Context(), userIDType, uid), nil

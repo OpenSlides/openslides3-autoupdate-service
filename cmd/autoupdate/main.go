@@ -41,7 +41,8 @@ func main() {
 	redisAddr := redisHost + ":" + redisPort
 	redisWriteAddr := getEnv("REDIS_WRITE_HOST", redisHost) + ":" + getEnv("REDIS_WRITE_PORT", redisPort)
 
-	redisConn := redis.New(redisAddr, redisWriteAddr)
+	sessionPrefix := getEnv("SESSION_PREFIX", "session:")
+	redisConn := redis.New(redisAddr, redisWriteAddr, sessionPrefix)
 	testRedis(redisConn, redisAddr, redisWriteAddr)
 
 	requiredUserCallables := openslidesRequiredUsers()
@@ -55,7 +56,10 @@ func main() {
 
 	osRestricters := openslidesRestricters(ds)
 	restricter := restricter.New(ds, osRestricters)
-	auth := auth.New(workerAddr)
+
+	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
+	secredKey := getEnv("SECRET_KEY", "DEV_SECRED")
+	auth := auth.New(cookieName, secredKey, redisConn, ds)
 
 	a, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
