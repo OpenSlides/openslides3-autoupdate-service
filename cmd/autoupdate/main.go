@@ -58,7 +58,10 @@ func main() {
 	restricter := restricter.New(ds, osRestricters)
 
 	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
-	secredKey := getEnv("SECRET_KEY", "DEV_SECRED")
+	secredKey := getEnv("SECRET_KEY", "")
+	if secredKey == "" {
+		log.Fatalf("You have to set the environment variable SECRET_KEY")
+	}
 	auth := auth.New(cookieName, secredKey, redisConn, ds)
 
 	a, err := autoupdate.New(ds, restricter, closed)

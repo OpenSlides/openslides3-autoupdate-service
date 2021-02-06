@@ -186,4 +186,4 @@ The service can be configured with the following environment variables:
   `1000`)
 * `COOKIE_NAME`: Name of the auth-session-cookie (Default: `OpenSlidesSessionID`).
 * `SESSION_PREFIX`: Prefix of the redis session keys (Default: `session:`).
-* `SECRET_KEY`: ????? TODO
+* `SECRET_KEY`: This has to be set to the same value thi in the django settings.
