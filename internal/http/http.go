@@ -134,10 +134,6 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 		w.Header().Set("Content-Type", "application/octet-stream")
 
 		userID := auth.FromContext(r.Context())
-		if userID == 0 {
-			return authRequiredError{"You have to be logged in to use the notify system."}
-		}
-
 		cid := n.GenerateChannelID(userID)
 		tid := n.LastID()
 
@@ -257,17 +253,6 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func http2Middleware(next errHandleFunc) errHandleFunc {
-	return func(w http.ResponseWriter, r *http.Request) error {
-		// Only allow http2 requests.
-		if !r.ProtoAtLeast(2, 0) {
-			return invalidRequestError{fmt.Errorf("Only http2 is supported")}
-		}
-
-		return next(w, r)
-	}
-}
-
 func getOrPOSTMiddleware(next errHandleFunc) errHandleFunc {
 	return func(w http.ResponseWriter, r *http.Request) error {
 		// Only allow GET or POST requests.
@@ -281,9 +266,7 @@ func getOrPOSTMiddleware(next errHandleFunc) errHandleFunc {
 
 // middleware combines all necessary middlewares.
 func middleware(next errHandleFunc, auther Auther) errHandleFunc {
-	r := authMiddleware(getOrPOSTMiddleware(next), auther)
-	r = http2Middleware(r)
-	return r
+	return authMiddleware(getOrPOSTMiddleware(next), auther)
 }
 
 func authMiddleware(next errHandleFunc, auther Auther) errHandleFunc {
