@@ -17,6 +17,7 @@ import (
 const (
 	whoAmIPath    = "/apps/users/whoami/"
 	whoamITimeout = 2 * time.Second
+	saltPrefix    = "openslides.utils.sessions.SessionStore"
 )
 
 // Backend gives the sessionData for a sessionID
@@ -39,7 +40,7 @@ type Auth struct {
 
 // New creates a new Auth instance.
 func New(cookieName string, secred string, backend Backend, configer Configer) *Auth {
-	bs := sha1.Sum([]byte("django.contrib.sessionsSessionStore" + secred))
+	bs := sha1.Sum([]byte(saltPrefix + secred))
 	return &Auth{
 		cookieName: cookieName,
 		backend:    backend,
