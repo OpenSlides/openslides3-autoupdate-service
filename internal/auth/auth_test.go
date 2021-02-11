@@ -8,7 +8,7 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
 
-const testSecred = "@$kze04dxf37t=&1z$5bdem-6nf1wpo3)rcntc5a@n60pllc6m"
+const testSecred = "test"
 
 func TestAuth(t *testing.T) {
 	anonymous := new(anonymousMock)
@@ -89,7 +89,8 @@ func TestAuth(t *testing.T) {
 type backendMock struct{}
 
 func (b *backendMock) GetSession(sessionID string) ([]byte, error) {
-	return []byte("MTQxZDQxNzUwMWRjMGVjN2NlNWE4NjUwZDZjMTBiMzljODk4MTNiYjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJhYTdmNmFlNzhiOGM2YThlNDMyMzIwMmVlYTY0OWFiOTNlNWUxM2MwIn0="), nil
+	// userID 1 decoded with secred "test"
+	return []byte("MDFmMDJjZWNlYWZhZTAxNzY5ZDA2NTY2NWM5NjAyOWI4ZDU0MDhjMzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyNWMyNGNkNTAzZDViYTc2MDI3MzQxZWUxOTA5YzM3N2U4NTgxMDU3In0="), nil
 }
 
 type anonymousMock struct {

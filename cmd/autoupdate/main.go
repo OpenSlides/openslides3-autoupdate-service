@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -8,6 +9,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"regexp"
 	"strconv"
 	"syscall"
 	"time"
@@ -32,6 +34,7 @@ import (
 
 const (
 	redisRetryWait time.Duration = 3 * time.Second
+	secredFile                   = "/run/secrets/django"
 )
 
 func main() {
@@ -65,10 +68,12 @@ func run() error {
 	restricter := restricter.New(ds, osRestricters)
 
 	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
-	secredKey := getEnv("SECRET_KEY", "")
-	if secredKey == "" {
-		//return fmt.Errorf("TODO")
+	secredKey, err := secredKey()
+	log.Println(secredKey)
+	if err != nil {
+		return fmt.Errorf("getting secred: %w", err)
 	}
+
 	auth := auth.New(cookieName, secredKey, redisConn, ds)
 
 	a, err := autoupdate.New(ds, restricter, closed)
@@ -108,6 +113,32 @@ func run() error {
 	}
 
 	return <-wait
+}
+
+func secredKey() (string, error) {
+	f, err := os.Open(secredFile)
+	if err != nil {
+		return "", fmt.Errorf("open secred file: %w", err)
+	}
+
+	re := regexp.MustCompile(`DJANGO_SECRET_KEY\s*=\s*'[^']*'`)
+
+	var secred []byte
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		secred = re.Find(scanner.Bytes())
+		if secred != nil {
+			break
+		}
+	}
+	if err := scanner.Err(); err != nil {
+		return "", fmt.Errorf("reading secred file: %w", err)
+	}
+	if secred == nil {
+		return "", fmt.Errorf("secred file does not contain the field DJANGO_SECRET_KEY")
+	}
+
+	return string(secred), nil
 }
 
 // WaitForShutdown blocks until the service exists.
