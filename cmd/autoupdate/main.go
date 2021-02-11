@@ -14,6 +14,7 @@ import (
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/agenda"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/assignment"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/chat"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/core"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/mediafile"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/motion"
@@ -172,6 +173,9 @@ func openslidesRestricters(ds restricter.HasPermer) map[string]restricter.Elemen
 		"assignments/assignment-poll":   poll.RestrictPoll(ds, assignment.CanSee, assignment.CanManage, []string{"amount_global_yes", "amount_global_no", "amount_global_abstain"}),
 		"assignments/assignment-option": poll.RestrictOption(ds, assignment.CanSee, assignment.CanManage),
 		"assignments/assignment-vote":   poll.RestrictVote(ds, assignment.CanSee, assignment.CanManage),
+
+		"chat/chat-group":   chat.Restrict(ds),
+		"chat/chat-message": chat.Restrict(ds),
 
 		"core/projector":          basePerm(core.CanSeeProjector),
 		"core/projection-default": basePerm(core.CanSeeProjector),
