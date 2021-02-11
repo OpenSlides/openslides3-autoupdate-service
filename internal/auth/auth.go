@@ -70,6 +70,7 @@ func (a *Auth) userID(r *http.Request) (int, error) {
 	cookie, err := r.Cookie(a.cookieName)
 	if err != nil {
 		if err == http.ErrNoCookie {
+			// Anonymous.
 			return 0, nil
 		}
 		return 0, fmt.Errorf("loading session cookie: %v", err)
@@ -77,8 +78,7 @@ func (a *Auth) userID(r *http.Request) (int, error) {
 
 	encodedSessionData, err := a.backend.GetSession(cookie.Value)
 	if encodedSessionData == nil {
-		// Anonymous.
-		return 0, nil
+		return 0, Error("Unknown session")
 	}
 
 	b64decoded := make([]byte, base64.StdEncoding.DecodedLen(len(encodedSessionData)))
@@ -91,7 +91,7 @@ func (a *Auth) userID(r *http.Request) (int, error) {
 	parts := bytes.SplitN(b64decoded, []byte(":"), 2)
 	valid, err := a.validateSessionData(parts[0], parts[1])
 	if !valid {
-		return 0, nil
+		return 0, Error("Invalid session data")
 	}
 
 	var sessionData struct {
@@ -122,7 +122,7 @@ func (a *Auth) Authenticate(r *http.Request) (context.Context, error) {
 			return nil, fmt.Errorf("getting config value for anonymous: %v", err)
 		}
 		if !enabled {
-			return nil, NoAnonymousError{}
+			return nil, Error("Anonymous is not enabled.")
 		}
 	}
 
