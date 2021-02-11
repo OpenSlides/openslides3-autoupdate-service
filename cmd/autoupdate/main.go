@@ -35,6 +35,13 @@ const (
 )
 
 func main() {
+	if err := run(); err != nil {
+		log.Printf("Error: %s", err)
+		os.Exit(1)
+	}
+}
+
+func run() error {
 	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
 	redisHost := getEnv("MESSAGE_BUS_HOST", "localhost")
 	redisPort := getEnv("MESSAGE_BUS_PORT", "6379")
@@ -50,7 +57,7 @@ func main() {
 	closed := make(chan struct{})
 	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallables, projectorCallables, closed)
 	if err != nil {
-		log.Fatalf("Can not initialize data: %v", err)
+		return fmt.Errorf("initialize data: %w", err)
 	}
 	fmt.Printf("Connected to OpenSlides at %s\n", workerAddr)
 
@@ -60,18 +67,18 @@ func main() {
 	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
 	secredKey := getEnv("SECRET_KEY", "")
 	if secredKey == "" {
-		log.Fatalf("You have to set the environment variable SECRET_KEY")
+		//return fmt.Errorf("TODO")
 	}
 	auth := auth.New(cookieName, secredKey, redisConn, ds)
 
 	a, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
-		log.Fatalf("Can not create autoupdate service: %v", err)
+		return fmt.Errorf("initialize autoupdate service: %v", err)
 	}
 
 	applauseInterval, err := strconv.Atoi(getEnv("APPLAUSE_INTERVAL_MS", "1000"))
 	if err != nil {
-		log.Fatalf("Invalid value in environment variable APPLAUSE_INTERVAL should be an int")
+		return fmt.Errorf("invalid value in environment variable APPLAUSE_INTERVAL should be an int")
 	}
 
 	n := notify.New(redisConn, ds, applauseInterval, closed)
@@ -82,23 +89,25 @@ func main() {
 	// Create http server.
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
 	srv := &http.Server{Addr: listenAddr, Handler: mux}
-	if err != nil {
-		log.Fatalf("Can not create tls listener: %v", err)
-	}
 
+	wait := make(chan error)
 	go func() {
-		fmt.Printf("Listen on %s\n", listenAddr)
-		if err := srv.ListenAndServe(); err != http.ErrServerClosed {
-			log.Fatalf("HTTP Server failed: %v", err)
+		waitForShutdown()
+
+		close(closed)
+		if err := srv.Shutdown(context.Background()); err != nil {
+			wait <- fmt.Errorf("HTTP server shutdown: %w", err)
+			return
 		}
+		wait <- nil
 	}()
 
-	waitForShutdown()
-
-	close(closed)
-	if err := srv.Shutdown(context.Background()); err != nil {
-		log.Printf("Error on HTTP server shutdown: %v", err)
+	fmt.Printf("Listen on %s\n", listenAddr)
+	if err := srv.ListenAndServe(); err != http.ErrServerClosed {
+		return fmt.Errorf("HTTP Server failed: %v", err)
 	}
+
+	return <-wait
 }
 
 // WaitForShutdown blocks until the service exists.
@@ -114,7 +123,7 @@ func waitForShutdown() {
 	<-sigint
 	go func() {
 		<-sigint
-		os.Exit(1)
+		os.Exit(2)
 	}()
 }
 
