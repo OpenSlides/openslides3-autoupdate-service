@@ -69,7 +69,6 @@ func run() error {
 
 	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
 	secredKey, err := secredKey()
-	log.Println(secredKey)
 	if err != nil {
 		return fmt.Errorf("getting secred: %w", err)
 	}

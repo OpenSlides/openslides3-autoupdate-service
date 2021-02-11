@@ -12,7 +12,9 @@ RUN go build ./cmd/autoupdate
 # Development build.
 FROM builder as development
 
+RUN mkdir -p /run/secrets
 RUN echo "DJANGO_SECRET_KEY='development'" > /run/secrets/django
+
 RUN ["go", "get", "github.com/githubnemo/CompileDaemon"]
 EXPOSE 8002
 CMD CompileDaemon -log-prefix=false -build="go build ./cmd/autoupdate" -command="./autoupdate"

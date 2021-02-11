@@ -13,6 +13,14 @@ browser has to connect to the service with http2 and therefore needs https.
 
 ## Install and Start
 
+To start the service, the file `/run/secreds/django` has to exist and has to
+contain the same django secred that is used be the server. It can be created
+with:
+```
+mkdir -p /run/secrets
+echo "DJANGO_SECRET_KEY='MY_SECRED'" > /run/secrets/django
+```
+
 
 ### With Go
 
