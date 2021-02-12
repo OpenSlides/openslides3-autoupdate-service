@@ -78,7 +78,7 @@ func (a *Auth) userID(r *http.Request) (int, error) {
 
 	encodedSessionData, err := a.backend.GetSession(cookie.Value)
 	if encodedSessionData == nil {
-		return 0, Error("Unknown session")
+		return 0, Error("Invalid session data")
 	}
 
 	b64decoded := make([]byte, base64.StdEncoding.DecodedLen(len(encodedSessionData)))
