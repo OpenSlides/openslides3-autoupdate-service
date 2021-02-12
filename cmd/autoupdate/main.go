@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -67,10 +68,16 @@ func run() error {
 	restricter := restricter.New(ds, osRestricters)
 
 	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
-	secretKey, err := secretKey()
+
+	f, err := os.Open(secretFile)
+	if err != nil {
+		return fmt.Errorf("open secret file: %w", err)
+	}
+	secretKey, err := secretKey(f)
 	if err != nil {
 		return fmt.Errorf("getting secret: %w", err)
 	}
+	f.Close()
 
 	auth := auth.New(cookieName, secretKey, redisConn, ds)
 
@@ -113,19 +120,15 @@ func run() error {
 	return <-wait
 }
 
-func secretKey() (string, error) {
-	f, err := os.Open(secretFile)
-	if err != nil {
-		return "", fmt.Errorf("open secret file: %w", err)
-	}
-
-	re := regexp.MustCompile(`DJANGO_SECRET_KEY\s*=\s*'[^']*'`)
+func secretKey(r io.Reader) (string, error) {
+	re := regexp.MustCompile(`DJANGO_SECRET_KEY\s*=\s*['"]([^']*)['"]`)
 
 	var secret []byte
-	scanner := bufio.NewScanner(f)
+	scanner := bufio.NewScanner(r)
 	for scanner.Scan() {
-		secret = re.Find(scanner.Bytes())
-		if secret != nil {
+		found := re.FindSubmatch(scanner.Bytes())
+		if found != nil {
+			secret = found[1]
 			break
 		}
 	}

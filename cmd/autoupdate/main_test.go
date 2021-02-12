@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"encoding/json"
+	"strings"
 	"testing"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/datastore"
@@ -98,6 +99,48 @@ func TestProjector(t *testing.T) {
 			}
 
 			test.ExpectEqualJSON(t, v[0], tt.Expected)
+		})
+	}
+}
+
+func TestSecret(t *testing.T) {
+	for _, tt := range []struct {
+		name    string
+		content string
+		result  string
+	}{
+		{
+			"single quotes",
+			`DJANGO_SECRET_KEY='development'`,
+			"development",
+		},
+		{
+			"douple quotes",
+			`DJANGO_SECRET_KEY="development'`,
+			"development",
+		},
+		{
+			"white spaces",
+			`DJANGO_SECRET_KEY =	"development'`,
+			"development",
+		},
+		{
+			"multi line",
+			`VALUE="foo"
+			DJANGO_SECRET_KEY="development'
+			OTHER="bar"`,
+			"development",
+		},
+	} {
+		t.Run(tt.name, func(t *testing.T) {
+			secret, err := secretKey(strings.NewReader(tt.content))
+			if tt.result != "" && err != nil {
+				t.Fatalf("got unexpected error: %v", err)
+			}
+
+			if secret != tt.result {
+				t.Errorf("secredKey(%s) == `%s`; expected `%s`", tt.content, secret, tt.result)
+			}
 		})
 	}
 }
