@@ -35,7 +35,7 @@ import (
 
 const (
 	redisRetryWait time.Duration = 3 * time.Second
-	secredFile                   = "/run/secrets/django"
+	secretFile                   = "/run/secrets/django"
 )
 
 func main() {
@@ -69,12 +69,12 @@ func run() error {
 	restricter := restricter.New(ds, osRestricters)
 
 	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
-	secredKey, err := secredKey()
+	secretKey, err := secretKey()
 	if err != nil {
-		return fmt.Errorf("getting secred: %w", err)
+		return fmt.Errorf("getting secret: %w", err)
 	}
 
-	auth := auth.New(cookieName, secredKey, redisConn, ds)
+	auth := auth.New(cookieName, secretKey, redisConn, ds)
 
 	a, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
@@ -115,30 +115,30 @@ func run() error {
 	return <-wait
 }
 
-func secredKey() (string, error) {
-	f, err := os.Open(secredFile)
+func secretKey() (string, error) {
+	f, err := os.Open(secretFile)
 	if err != nil {
-		return "", fmt.Errorf("open secred file: %w", err)
+		return "", fmt.Errorf("open secret file: %w", err)
 	}
 
 	re := regexp.MustCompile(`DJANGO_SECRET_KEY\s*=\s*'[^']*'`)
 
-	var secred []byte
+	var secret []byte
 	scanner := bufio.NewScanner(f)
 	for scanner.Scan() {
-		secred = re.Find(scanner.Bytes())
-		if secred != nil {
+		secret = re.Find(scanner.Bytes())
+		if secret != nil {
 			break
 		}
 	}
 	if err := scanner.Err(); err != nil {
-		return "", fmt.Errorf("reading secred file: %w", err)
+		return "", fmt.Errorf("reading secret file: %w", err)
 	}
-	if secred == nil {
-		return "", fmt.Errorf("secred file does not contain the field DJANGO_SECRET_KEY")
+	if secret == nil {
+		return "", fmt.Errorf("secret file does not contain the field DJANGO_SECRET_KEY")
 	}
 
-	return string(secred), nil
+	return string(secret), nil
 }
 
 // WaitForShutdown blocks until the service exists.

@@ -8,11 +8,11 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
 
-const testSecred = "test"
+const testSecret = "test"
 
 func TestAuth(t *testing.T) {
 	anonymous := new(anonymousMock)
-	a := auth.New("test-auth-cookie", testSecred, new(backendMock), anonymous)
+	a := auth.New("test-auth-cookie", testSecret, new(backendMock), anonymous)
 
 	for _, tt := range []struct {
 		name             string
@@ -89,7 +89,7 @@ func TestAuth(t *testing.T) {
 type backendMock struct{}
 
 func (b *backendMock) GetSession(sessionID string) ([]byte, error) {
-	// userID 1 decoded with secred "test"
+	// userID 1 decoded with secret "test"
 	return []byte("MDFmMDJjZWNlYWZhZTAxNzY5ZDA2NTY2NWM5NjAyOWI4ZDU0MDhjMzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyNWMyNGNkNTAzZDViYTc2MDI3MzQxZWUxOTA5YzM3N2U4NTgxMDU3In0="), nil
 }
 

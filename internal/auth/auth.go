@@ -39,8 +39,8 @@ type Auth struct {
 }
 
 // New creates a new Auth instance.
-func New(cookieName string, secred string, backend Backend, configer Configer) *Auth {
-	bs := sha1.Sum([]byte(saltPrefix + secred))
+func New(cookieName string, secret string, backend Backend, configer Configer) *Auth {
+	bs := sha1.Sum([]byte(saltPrefix + secret))
 	return &Auth{
 		cookieName: cookieName,
 		backend:    backend,
