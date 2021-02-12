@@ -131,6 +131,11 @@ func TestSecret(t *testing.T) {
 			OTHER="bar"`,
 			"development",
 		},
+		{
+			"quotes inside",
+			`DJANGO_SECRET_KEY="devel"op'ment'`,
+			"devel\"op'ment",
+		},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
 			secret, err := secretKey(strings.NewReader(tt.content))

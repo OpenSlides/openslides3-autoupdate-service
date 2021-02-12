@@ -121,7 +121,7 @@ func run() error {
 }
 
 func secretKey(r io.Reader) (string, error) {
-	re := regexp.MustCompile(`DJANGO_SECRET_KEY\s*=\s*['"]([^']*)['"]`)
+	re := regexp.MustCompile(`DJANGO_SECRET_KEY\s*=\s*['"](.*)['"]`)
 
 	var secret []byte
 	scanner := bufio.NewScanner(r)
