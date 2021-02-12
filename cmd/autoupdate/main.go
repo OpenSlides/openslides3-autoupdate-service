@@ -46,7 +46,6 @@ func main() {
 }
 
 func run() error {
-	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
 	redisHost := getEnv("MESSAGE_BUS_HOST", "localhost")
 	redisPort := getEnv("MESSAGE_BUS_PORT", "6379")
 	redisAddr := redisHost + ":" + redisPort
@@ -59,11 +58,10 @@ func run() error {
 	requiredUserCallables := openslidesRequiredUsers()
 	projectorCallables := openslidesProjectorCallables()
 	closed := make(chan struct{})
-	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallables, projectorCallables, closed)
+	ds, err := datastore.New(redisConn, requiredUserCallables, projectorCallables, closed)
 	if err != nil {
 		return fmt.Errorf("initialize data: %w", err)
 	}
-	fmt.Printf("Connected to OpenSlides at %s\n", workerAddr)
 
 	osRestricters := openslidesRestricters(ds)
 	restricter := restricter.New(ds, osRestricters)
