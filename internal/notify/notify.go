@@ -126,7 +126,7 @@ func (n *Notify) Receive(ctx context.Context, w io.Writer, tid uint64, uid int, 
 	for _, rMail := range rMails {
 		var m mail
 		if err := json.Unmarshal([]byte(rMail), &m); err != nil {
-			return 0, fmt.Errorf("decoding message: %w", err)
+			return 0, fmt.Errorf("decoding message `%s`: %w", rMail, err)
 		}
 
 		if !m.forMe(uid, cid) {

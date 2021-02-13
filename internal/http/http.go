@@ -154,7 +154,7 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 		for {
 			tid, err = n.Receive(r.Context(), w, tid, userID, cid, encoder)
 			if err != nil {
-				return noStatusCodeError{err}
+				return noStatusCodeError{fmt.Errorf("rececing notify data: %w", err)}
 			}
 			w.(http.Flusher).Flush()
 		}
