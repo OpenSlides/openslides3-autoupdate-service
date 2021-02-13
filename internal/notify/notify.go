@@ -1,7 +1,6 @@
 package notify
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
@@ -194,9 +193,7 @@ func ValidateRequest(m []byte, userID int) error {
 
 // Send sends an autoupdate message provides as a reader.
 func (n *Notify) Send(bs []byte, userID int) error {
-	buf := new(bytes.Buffer)
-
-	if err := n.backend.SendNotify(buf.String()); err != nil {
+	if err := n.backend.SendNotify(bs); err != nil {
 		return fmt.Errorf("sending message: %w", err)
 	}
 
