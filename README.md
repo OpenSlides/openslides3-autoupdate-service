@@ -62,20 +62,20 @@ autoupdate-service) is also needs the flag `-k / --insecure`.
 To get all data:
 
 ```
-curl -Nk https://localhost:8002/system/autoupdate
+curl -N localhost:8002/system/autoupdate
 ```
 
 To get all data after a change id:
 
 ```
-curl -Nk https://localhost:8002/system/autoupdate?change_id=133188953000
+curl -N localhost:8002/system/autoupdate?change_id=133188953000
 ```
 
 To test an authenticated request, login to OpenSlides and find the given session
 id. Afterwards the session cookie can be used with curl:
 
 ```
-curl -Nk --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" https://localhost:8002/system/autoupdate
+curl -N --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" localhost:8002/system/autoupdate
 ```
 
 
@@ -84,7 +84,7 @@ curl -Nk --cookie "OpenSlidesSessionID=3e38tw8kpx64p4gxq80qf2hg4k60ix6w" https:/
 To get the projector data for a list of projectors:
 
 ```
-curl -Nk https://localhost:8002/system/projector?projector_ids=1,2,3
+curl -N localhost:8002/system/projector?projector_ids=1,2,3
 ```
 
 
@@ -93,7 +93,7 @@ curl -Nk https://localhost:8002/system/projector?projector_ids=1,2,3
 To listen for messages:
 
 ```
-curl -Nk https://localhost:8002/system/notify
+curl -N localhost:8002/system/notify
 ```
 
 It returns a message like this one to tell the channel id:
@@ -122,7 +122,7 @@ To send a notify message, you need to be logged-in. A seesion cookies has to be 
 used. See the --cookie flag above.
 
 ```
-curl -k https://localhost:8002/system/notify/send -d '{"channel_id":"foo:1:0", "name":"title", "to_all":true, "message": "some json"}'
+curl localhost:8002/system/notify/send -d '{"channel_id":"foo:1:0", "name":"title", "to_all":true, "message": "some json"}'
 ```
 
 The body has to be a valid json object with at least the fields `channel_id`,
@@ -144,7 +144,7 @@ Applause:
 The notify system also handels applause. To send an applause, send the following request:
 
 ```
-curl -k https://localhost:8002/system/applause
+curl localhost:8002/system/applause
 ```
 
 For this to work, a sessionID is required (see above)

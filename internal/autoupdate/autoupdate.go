@@ -132,7 +132,7 @@ func (a *Autoupdate) Receive(ctx context.Context, uid int, changeID int) (bool, 
 func (a *Autoupdate) Projectors(ctx context.Context, tid uint64, pids []int) (ntid uint64, data map[int]json.RawMessage, cid int, err error) {
 	rdata := make(map[int]json.RawMessage)
 	for len(rdata) == 0 {
-		ntid, data, err = a.datastore.ProjectorData(ctx, tid)
+		tid, data, err = a.datastore.ProjectorData(ctx, tid)
 		if err != nil {
 			return 0, nil, 0, err
 		}
@@ -147,7 +147,7 @@ func (a *Autoupdate) Projectors(ctx context.Context, tid uint64, pids []int) (nt
 			rdata[pid] = v
 		}
 	}
-	return ntid, rdata, int(a.topic.LastID()), nil
+	return tid, rdata, int(a.topic.LastID()), nil
 }
 
 func (a *Autoupdate) reset() {
