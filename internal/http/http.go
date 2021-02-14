@@ -1,6 +1,7 @@
 package http
 
 import (
+	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
@@ -154,7 +155,7 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 		for {
 			tid, err = n.Receive(r.Context(), w, tid, userID, cid, encoder)
 			if err != nil {
-				return noStatusCodeError{err}
+				return noStatusCodeError{fmt.Errorf("rececing notify data: %w", err)}
 			}
 			w.(http.Flusher).Flush()
 		}
@@ -179,7 +180,12 @@ func NotifySend(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 			return invalidRequestError{err}
 		}
 
-		return n.Send(bs, userID)
+		buf := new(bytes.Buffer)
+		if err := json.Compact(buf, bs); err != nil {
+			return invalidRequestError{err}
+		}
+
+		return n.Send(buf.Bytes(), userID)
 	}
 	mux.Handle("/system/notify/send", errHandleFunc(middleware(handler, auther)))
 }

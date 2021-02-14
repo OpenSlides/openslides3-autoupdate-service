@@ -299,7 +299,7 @@ func (r *Redis) GetApplause(since int64) (int, error) {
 }
 
 // SendNotify publishes a notify message in redis.
-func (r *Redis) SendNotify(message string) error {
+func (r *Redis) SendNotify(message []byte) error {
 	conn := r.writePool.Get()
 	defer conn.Close()
 

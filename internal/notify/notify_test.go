@@ -39,7 +39,7 @@ type backendMock struct {
 	a int
 }
 
-func (m *backendMock) SendNotify(string) error {
+func (m *backendMock) SendNotify([]byte) error {
 	return nil
 }
 
