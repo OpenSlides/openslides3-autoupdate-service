@@ -1,7 +1,6 @@
 package notify
 
 import (
-	"bytes"
 	"context"
 	"encoding/json"
 	"errors"
@@ -126,7 +125,7 @@ func (n *Notify) Receive(ctx context.Context, w io.Writer, tid uint64, uid int, 
 	for _, rMail := range rMails {
 		var m mail
 		if err := json.Unmarshal([]byte(rMail), &m); err != nil {
-			return 0, fmt.Errorf("decoding message: %w", err)
+			return 0, fmt.Errorf("decoding message `%s`: %w", rMail, err)
 		}
 
 		if !m.forMe(uid, cid) {
@@ -194,9 +193,7 @@ func ValidateRequest(m []byte, userID int) error {
 
 // Send sends an autoupdate message provides as a reader.
 func (n *Notify) Send(bs []byte, userID int) error {
-	buf := new(bytes.Buffer)
-
-	if err := n.backend.SendNotify(buf.String()); err != nil {
+	if err := n.backend.SendNotify(bs); err != nil {
 		return fmt.Errorf("sending message: %w", err)
 	}
 
