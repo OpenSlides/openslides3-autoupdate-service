@@ -21,6 +21,6 @@ func initMeter(mux *http.ServeMux) error {
 		return fmt.Errorf("initialize runtime metrics: %w", err)
 	}
 
-	mux.Handle("/system/metric", exporter)
+	mux.Handle("/metrics", exporter)
 	return nil
 }
