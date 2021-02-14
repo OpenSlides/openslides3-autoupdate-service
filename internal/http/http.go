@@ -16,7 +16,11 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
+	"go.opentelemetry.io/otel"
+	"go.opentelemetry.io/otel/metric"
 )
+
+var meter = otel.GetMeterProvider().Meter("openslides.org")
 
 // RegisterAll registers all routes.
 func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *notify.Notify) {
@@ -38,7 +42,19 @@ func Health(mux *http.ServeMux) {
 
 // Autoupdate registers the autoupdate route.
 func Autoupdate(mux *http.ServeMux, auto *autoupdate.Autoupdate, auther Auther) {
+	count := newConnectionCount("autoupdate")
+
 	handler := func(w http.ResponseWriter, r *http.Request) error {
+		uid := auth.FromContext(r.Context())
+
+		n := count.Add()
+		log.Printf("Got autoupdate connection. User %d. Connection count: %d", uid, n)
+
+		defer func() {
+			n := count.Sub()
+			log.Printf("Lost autoupdate connection. User %d. Connection count: %d", uid, n)
+		}()
+
 		w.Header().Set("Content-Type", "application/octet-stream")
 
 		rawChangeID := r.URL.Query().Get("change_id")
@@ -56,7 +72,6 @@ func Autoupdate(mux *http.ServeMux, auto *autoupdate.Autoupdate, auther Auther) 
 		w.(http.Flusher).Flush()
 
 		// Retrive uid from request. 0 for anonymous.
-		uid := auth.FromContext(r.Context())
 		log.Printf("connect user %d with change_id %d", uid, changeID)
 
 		for {
@@ -81,7 +96,7 @@ func Autoupdate(mux *http.ServeMux, auto *autoupdate.Autoupdate, auther Auther) 
 
 // Projector registers the projector route.
 func Projector(mux *http.ServeMux, auto *autoupdate.Autoupdate, auth Auther) {
-	count := new(connectionCount)
+	count := newConnectionCount("projector")
 
 	handler := func(w http.ResponseWriter, r *http.Request) error {
 		n := count.Add()
@@ -130,11 +145,22 @@ func Projector(mux *http.ServeMux, auto *autoupdate.Autoupdate, auth Auther) {
 
 // Notify registers the notify route.
 func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
+	count := newConnectionCount("notify")
+
 	handler := func(w http.ResponseWriter, r *http.Request) error {
+		uid := auth.FromContext(r.Context())
+
+		nu := count.Add()
+		log.Printf("Got autoupdate connection. User %d. Connection count: %d", uid, nu)
+
+		defer func() {
+			nu := count.Sub()
+			log.Printf("Lost autoupdate connection. User %d. Connection count: %d", uid, nu)
+		}()
+
 		w.Header().Set("Content-Type", "application/octet-stream")
 
-		userID := auth.FromContext(r.Context())
-		cid := n.GenerateChannelID(userID)
+		cid := n.GenerateChannelID(uid)
 		tid := n.LastID()
 
 		w.WriteHeader(http.StatusOK)
@@ -152,7 +178,7 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 		var err error
 
 		for {
-			tid, err = n.Receive(r.Context(), w, tid, userID, cid, encoder)
+			tid, err = n.Receive(r.Context(), w, tid, uid, cid, encoder)
 			if err != nil {
 				return noStatusCodeError{err}
 			}
@@ -164,7 +190,14 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 
 // NotifySend registers the notify/send route.
 func NotifySend(mux *http.ServeMux, n *notify.Notify, auther Auther) {
+	counter, _ := meter.NewInt64Counter(
+		"openslides.notify-send-requests",
+		metric.WithDescription("request count to notify send"),
+	)
+
 	handler := func(w http.ResponseWriter, r *http.Request) error {
+		counter.Add(r.Context(), 1)
+
 		userID := auth.FromContext(r.Context())
 		if userID == 0 {
 			return authRequiredError{"You have to be logged in to use the notify system."}
@@ -186,7 +219,13 @@ func NotifySend(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 
 // NotifyApplause registers the notify/applause route.
 func NotifyApplause(mux *http.ServeMux, n *notify.Notify, auther Auther) {
+	counter, _ := meter.NewInt64Counter(
+		"openslides.notify-applause-requests",
+		metric.WithDescription("request count to applause send"),
+	)
+
 	handler := func(w http.ResponseWriter, r *http.Request) error {
+		counter.Add(r.Context(), 1)
 		userID := auth.FromContext(r.Context())
 		if userID == 0 {
 			return authRequiredError{"You have to be logged in to send applause."}
@@ -203,6 +242,11 @@ func NotifyApplause(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 // message is sent to the client. In other cases the error is interpredet as an
 // internal error and logged to stdout.
 type errHandleFunc func(w http.ResponseWriter, r *http.Request) error
+
+var errCount, _ = meter.NewInt64Counter(
+	"openslides.http-error-count",
+	metric.WithDescription("500er send to the client"),
+)
 
 func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if err := f(w, r); err != nil {
@@ -250,6 +294,7 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 		log.Printf("Internal Error: %v", err)
 		fmt.Fprintln(w, `{"error": {"type": "InternalError", "msg": "Ups, something went wrong!"}}`)
+		errCount.Add(r.Context(), 1)
 	}
 }
 
@@ -346,6 +391,25 @@ func projectorIDs(raw string) ([]int, error) {
 type connectionCount struct {
 	mu sync.Mutex
 	v  int
+	m  metric.Int64Counter
+}
+
+func newConnectionCount(name string) *connectionCount {
+	c := new(connectionCount)
+
+	c.m, _ = meter.NewInt64Counter(
+		fmt.Sprintf("openslides.%s-connection-overall", name),
+		metric.WithDescription("overall connections to "+name),
+	)
+
+	meter.NewInt64UpDownSumObserver(
+		fmt.Sprintf("openslides.%s-connection-current", name),
+		func(_ context.Context, result metric.Int64ObserverResult) {
+			result.Observe(int64(c.Value()))
+		},
+		metric.WithDescription("current open connections to "+name),
+	)
+	return c
 }
 
 func (c *connectionCount) Add() int {
@@ -353,6 +417,7 @@ func (c *connectionCount) Add() int {
 	defer c.mu.Unlock()
 
 	c.v++
+	c.m.Add(context.Background(), 1)
 	return c.v
 }
 
@@ -361,5 +426,12 @@ func (c *connectionCount) Sub() int {
 	defer c.mu.Unlock()
 
 	c.v--
+	return c.v
+}
+
+func (c *connectionCount) Value() int {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+
 	return c.v
 }
