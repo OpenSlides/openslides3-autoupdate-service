@@ -13,6 +13,14 @@ browser has to connect to the service with http2 and therefore needs https.
 
 ## Install and Start
 
+To start the service, the file `/run/secrets/django` has to exist and has to
+contain the same django secret that is used be the server. It can be created
+with:
+```
+mkdir -p /run/secrets
+echo "DJANGO_SECRET_KEY='MY_SECRET'" > /run/secrets/django
+```
+
 
 ### With Go
 
@@ -179,8 +187,7 @@ The service can be configured with the following environment variables:
   same as `MESSAGE_BUS_HOST`.
 * `REDIS_WRITE_PORT`: Port of the redis server for writing. The default is the
   same as `MESSAGE_BUS_PORT`.
-* `WORKER_HOST`: Host of the OpenSlides worker (Default: `localhost`).
-* `WORKER_PORT`: Port of the OpenSlides worker (Default: `8000`).
-* `WORKER_PROTOCOL`: Protocol of the OpenSlides worker (Default: `http`).
 * `APPLAUSE_INTERVAL_MS`: Time to calc the applause in milliseconds (Default:
   `1000`)
+* `COOKIE_NAME`: Name of the auth-session-cookie (Default: `OpenSlidesSessionID`).
+* `SESSION_PREFIX`: Prefix of the redis session keys (Default: `session:`).

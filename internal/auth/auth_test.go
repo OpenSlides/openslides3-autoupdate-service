@@ -1,18 +1,18 @@
-package auth
+package auth_test
 
 import (
-	"fmt"
 	"net/http"
-	"net/http/httptest"
+	"reflect"
 	"testing"
+
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
 
-func TestAuth(t *testing.T) {
-	whoami := new(WhoAmIMock)
-	srv := httptest.NewServer(whoami)
-	defer srv.Close()
+const testSecret = "test"
 
-	auth := New(srv.URL)
+func TestAuth(t *testing.T) {
+	anonymous := new(anonymousMock)
+	a := auth.New("test-auth-cookie", testSecret, new(backendMock), anonymous)
 
 	for _, tt := range []struct {
 		name             string
@@ -53,21 +53,21 @@ func TestAuth(t *testing.T) {
 			"specific user",
 			func() *http.Request {
 				r, err := http.NewRequest("GET", "openslides.com/service/autoupdate", nil)
-				r.AddCookie(&http.Cookie{Name: "test-auth-cookie", Value: "1"})
+				r.AddCookie(&http.Cookie{Name: "test-auth-cookie", Value: "sessionID"})
 				if err != nil {
 					t.Fatalf("Can not create request: %v", err)
 				}
 				return r
 			},
-			false,
+			true,
 			1,
 			false,
 		},
 	} {
 		t.Run(tt.name, func(t *testing.T) {
-			whoami.anonymous = tt.anonymousEnabled
+			anonymous.enabled = tt.anonymousEnabled
 
-			uid, err := auth.whoami(tt.request())
+			ctx, err := a.Authenticate(tt.request())
 			if tt.err {
 				if err == nil {
 					t.Errorf("Auth did not returned expected error")
@@ -76,33 +76,29 @@ func TestAuth(t *testing.T) {
 			}
 
 			if err != nil {
-				t.Errorf("Auth returend unexpected err: %v", err)
+				t.Fatalf("Auth returend unexpected err: %v", err)
 			}
 
-			if uid != tt.uid {
+			if uid := auth.FromContext(ctx); uid != tt.uid {
 				t.Errorf("Auth returned uid %d, expected %d", uid, tt.uid)
 			}
 		})
 	}
 }
 
-type WhoAmIMock struct {
-	anonymous bool
+type backendMock struct{}
+
+func (b *backendMock) GetSession(sessionID string) ([]byte, error) {
+	// userID 1 decoded with secret "test"
+	return []byte("MDFmMDJjZWNlYWZhZTAxNzY5ZDA2NTY2NWM5NjAyOWI4ZDU0MDhjMzp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiIyNWMyNGNkNTAzZDViYTc2MDI3MzQxZWUxOTA5YzM3N2U4NTgxMDU3In0="), nil
 }
 
-func (wai *WhoAmIMock) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	uid := "null"
+type anonymousMock struct {
+	enabled bool
+}
 
-	c, _ := r.Cookie("test-auth-cookie")
-
-	if c != nil {
-		uid = c.Value
-	}
-
-	anonymous := "false"
-	if wai.anonymous {
-		anonymous = "true"
-	}
-
-	fmt.Fprintf(w, `{"user_id":%s,"guest_enabled":%s,"user":null,"auth_type":"default","permissions":[]}`, uid, anonymous)
+func (a *anonymousMock) ConfigValue(key string, v interface{}) error {
+	rv := reflect.ValueOf(v)
+	rv.Elem().SetBool(a.enabled)
+	return nil
 }

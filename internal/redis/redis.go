@@ -46,10 +46,12 @@ type Redis struct {
 	writePool        *redis.Pool
 	lastAutoupdateID string
 	lastNotifyID     string
+
+	sessionPrefix string
 }
 
 // New create a new Redis instance.
-func New(readAddr, writeAddr string) *Redis {
+func New(readAddr, writeAddr, sessionPrefix string) *Redis {
 	readPool := &redis.Pool{
 		MaxActive:   100,
 		Wait:        true,
@@ -70,8 +72,9 @@ func New(readAddr, writeAddr string) *Redis {
 	}
 
 	r := &Redis{
-		readPool:  readPool,
-		writePool: writePool,
+		readPool:      readPool,
+		writePool:     writePool,
+		sessionPrefix: sessionPrefix,
 	}
 	return r
 }
@@ -348,4 +351,16 @@ func (r *Redis) ReceiveNotify(closing <-chan struct{}) (message string, err erro
 	}
 
 	return string(data), nil
+}
+
+// GetSession returns the session data for a sessionID.
+func (r *Redis) GetSession(sessionID string) ([]byte, error) {
+	conn := r.readPool.Get()
+	defer conn.Close()
+
+	data, err := redis.Bytes(conn.Do("GET", r.sessionPrefix+sessionID))
+	if err != nil {
+		return nil, fmt.Errorf("getting session-data: %v", err)
+	}
+	return data, nil
 }
