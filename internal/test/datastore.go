@@ -170,4 +170,6 @@ func (e doesNotExist) Error() string {
 	return fmt.Sprintf("%s does not exist", string(e))
 }
 
-func (e doesNotExist) DoesNotExist() {}
+func (e doesNotExist) DoesNotExist() string {
+	return string(e)
+}

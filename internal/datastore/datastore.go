@@ -4,6 +4,7 @@ package datastore
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"strconv"
@@ -150,7 +151,7 @@ func (d *Datastore) ChangedKeys(from, to int) ([]string, error) {
 }
 
 // Get sets the attribute v to the value the collection:id. Returns an error
-// with the method `DoesNotExist()` if the value does not exist.
+// with the method `DoesNotExist() string` if the value does not exist.
 //
 // v has to be a pointer.
 func (d *Datastore) Get(collection string, id int, v interface{}) error {
@@ -213,7 +214,7 @@ func (d *Datastore) GetAll() map[string]json.RawMessage {
 }
 
 // update updates the cache. It is not save for concourent use.
-func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error {
+func (d *Datastore) update(data map[string]json.RawMessage, changeID int) (err error) {
 	d.cache.update(data)
 
 	d.mu.Lock()
@@ -221,6 +222,15 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) error 
 	d.mu.Unlock()
 
 	log.Println("Recieve data update to changeID: ", changeID)
+
+	defer func() {
+		var cErr conditionError
+		if !errors.As(err, &cErr) {
+			return
+		}
+
+		err = fmt.Errorf("%v: %v", err, cErr.ConditionError())
+	}()
 
 	if err := d.hasPerm.update(data); err != nil {
 		return fmt.Errorf("updating hasPerm: %w", err)

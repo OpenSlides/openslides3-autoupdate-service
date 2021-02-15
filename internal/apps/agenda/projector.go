@@ -173,7 +173,7 @@ func titleInformation(ds projector.Datastore, los listOfSpeakers) (map[string]*p
 	}
 	if err := ds.Get(los.ContentObject.Collection, los.ContentObject.ID, &contentObject); err != nil {
 		var doesNotExist interface {
-			DoesNotExist()
+			DoesNotExist() string
 		}
 		if errors.As(err, &doesNotExist) {
 			// Content Object does not exist.
@@ -188,7 +188,7 @@ func titleInformation(ds projector.Datastore, los listOfSpeakers) (map[string]*p
 	}
 	if err := ds.Get("agenda/item", contentObject.AgendaItemID, &item); err != nil {
 		var doesNotExist interface {
-			DoesNotExist()
+			DoesNotExist() string
 		}
 		if errors.As(err, &doesNotExist) {
 			// Agenda item does not exist.
@@ -361,7 +361,7 @@ func currentListOfSpeakers(ds projector.Datastore, p json.RawMessage) (listOfSpe
 		}
 		if err := ds.Get(element.Name, element.ID, &model); err != nil {
 			var doesNotExist interface {
-				DoesNotExist()
+				DoesNotExist() string
 			}
 			if errors.As(err, &doesNotExist) {
 				continue
@@ -371,7 +371,7 @@ func currentListOfSpeakers(ds projector.Datastore, p json.RawMessage) (listOfSpe
 
 		if err := ds.Get("agenda/list-of-speakers", model.LosID, &los); err != nil {
 			var doesNotExist interface {
-				DoesNotExist()
+				DoesNotExist() string
 			}
 			if errors.As(err, &doesNotExist) {
 				continue
