@@ -1,13 +1,16 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 	"os"
 	"os/signal"
+	"regexp"
 	"strconv"
 	"syscall"
 	"time"
@@ -33,39 +36,59 @@ import (
 
 const (
 	redisRetryWait time.Duration = 3 * time.Second
+	secretFile                   = "/run/secrets/django"
 )
 
 func main() {
-	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
+	if err := run(); err != nil {
+		log.Printf("Error: %s", err)
+		os.Exit(1)
+	}
+}
+
+func run() error {
 	redisHost := getEnv("MESSAGE_BUS_HOST", "localhost")
 	redisPort := getEnv("MESSAGE_BUS_PORT", "6379")
 	redisAddr := redisHost + ":" + redisPort
 	redisWriteAddr := getEnv("REDIS_WRITE_HOST", redisHost) + ":" + getEnv("REDIS_WRITE_PORT", redisPort)
 
-	redisConn := redis.New(redisAddr, redisWriteAddr)
+	sessionPrefix := getEnv("SESSION_PREFIX", "session:")
+	redisConn := redis.New(redisAddr, redisWriteAddr, sessionPrefix)
 	testRedis(redisConn, redisAddr, redisWriteAddr)
 
 	requiredUserCallables := openslidesRequiredUsers()
 	projectorCallables := openslidesProjectorCallables()
 	closed := make(chan struct{})
-	ds, err := datastore.New(workerAddr, redisConn, requiredUserCallables, projectorCallables, closed)
+	ds, err := datastore.New(redisConn, requiredUserCallables, projectorCallables, closed)
 	if err != nil {
-		log.Fatalf("Can not initialize data: %v", err)
+		return fmt.Errorf("initialize data: %w", err)
 	}
-	fmt.Printf("Connected to OpenSlides at %s\n", workerAddr)
 
 	osRestricters := openslidesRestricters(ds)
 	restricter := restricter.New(ds, osRestricters)
-	auth := auth.New(workerAddr)
+
+	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
+
+	f, err := os.Open(secretFile)
+	if err != nil {
+		return fmt.Errorf("open secret file: %w", err)
+	}
+	secretKey, err := secretKey(f)
+	if err != nil {
+		return fmt.Errorf("getting secret: %w", err)
+	}
+	f.Close()
+
+	auth := auth.New(cookieName, secretKey, redisConn, ds)
 
 	a, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
-		log.Fatalf("Can not create autoupdate service: %v", err)
+		return fmt.Errorf("initialize autoupdate service: %v", err)
 	}
 
 	applauseInterval, err := strconv.Atoi(getEnv("APPLAUSE_INTERVAL_MS", "1000"))
 	if err != nil {
-		log.Fatalf("Invalid value in environment variable APPLAUSE_INTERVAL should be an int")
+		return fmt.Errorf("invalid value in environment variable APPLAUSE_INTERVAL should be an int")
 	}
 
 	n := notify.New(redisConn, ds, applauseInterval, closed)
@@ -76,23 +99,47 @@ func main() {
 	// Create http server.
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
 	srv := &http.Server{Addr: listenAddr, Handler: mux}
-	if err != nil {
-		log.Fatalf("Can not create tls listener: %v", err)
-	}
 
+	wait := make(chan error)
 	go func() {
-		fmt.Printf("Listen on %s\n", listenAddr)
-		if err := srv.ListenAndServe(); err != http.ErrServerClosed {
-			log.Fatalf("HTTP Server failed: %v", err)
+		waitForShutdown()
+
+		close(closed)
+		if err := srv.Shutdown(context.Background()); err != nil {
+			wait <- fmt.Errorf("HTTP server shutdown: %w", err)
+			return
 		}
+		wait <- nil
 	}()
 
-	waitForShutdown()
-
-	close(closed)
-	if err := srv.Shutdown(context.Background()); err != nil {
-		log.Printf("Error on HTTP server shutdown: %v", err)
+	fmt.Printf("Listen on %s\n", listenAddr)
+	if err := srv.ListenAndServe(); err != http.ErrServerClosed {
+		return fmt.Errorf("HTTP Server failed: %v", err)
 	}
+
+	return <-wait
+}
+
+func secretKey(r io.Reader) (string, error) {
+	re := regexp.MustCompile(`DJANGO_SECRET_KEY\s*=\s*['"](.*)['"]`)
+
+	var secret []byte
+	scanner := bufio.NewScanner(r)
+	for scanner.Scan() {
+		found := re.FindSubmatch(scanner.Bytes())
+		if found != nil {
+			secret = found[1]
+			break
+		}
+	}
+	if err := scanner.Err(); err != nil {
+		return "", fmt.Errorf("reading secret file: %w", err)
+	}
+	if secret == nil {
+		return "", fmt.Errorf("secret file does not contain the field DJANGO_SECRET_KEY")
+	}
+
+	return string(secret), nil
 }
 
 // WaitForShutdown blocks until the service exists.
@@ -108,7 +155,7 @@ func waitForShutdown() {
 	<-sigint
 	go func() {
 		<-sigint
-		os.Exit(1)
+		os.Exit(2)
 	}()
 }
 

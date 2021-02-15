@@ -15,7 +15,6 @@ import (
 
 // Datastore holds the connection to OpenSlides and Redis.
 type Datastore struct {
-	osAddr      string
 	redisConn   RedisConn
 	cache       *cache
 	minChangeID int
@@ -32,14 +31,13 @@ type Datastore struct {
 }
 
 // New returns an initialized Datastore instance.
-func New(osAddr string, redisConn RedisConn, requiredUsers map[string]func(json.RawMessage) (map[int]bool, string, error), projectorSlides map[string]projector.Callable, closed <-chan struct{}) (*Datastore, error) {
+func New(redisConn RedisConn, requiredUsers map[string]func(json.RawMessage) (map[int]bool, string, error), projectorSlides map[string]projector.Callable, closed <-chan struct{}) (*Datastore, error) {
 	fd, max, min, err := redisConn.FullData()
 	if err != nil {
 		return nil, fmt.Errorf("get startdata from redis: %w", err)
 	}
 
 	d := &Datastore{
-		osAddr:       osAddr,
 		redisConn:    redisConn,
 		cache:        new(cache),
 		minChangeID:  min,

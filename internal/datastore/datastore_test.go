@@ -15,7 +15,7 @@ func TestDatastoreLowestID(t *testing.T) {
 	}
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -37,7 +37,7 @@ func TestKeysChangedNormal(t *testing.T) {
 
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -73,7 +73,7 @@ func TestKeysChangedDelete(t *testing.T) {
 
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -114,7 +114,7 @@ func TestKeysChangedSkippedChangeID(t *testing.T) {
 
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -147,7 +147,7 @@ func TestKeysChangedBlocking(t *testing.T) {
 
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -182,7 +182,7 @@ func TestKeysChangedNilDoesNotUnblock(t *testing.T) {
 
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -228,7 +228,7 @@ func TestKeysChangedLowIDDoesNotUnblock(t *testing.T) {
 
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -269,7 +269,7 @@ func TestGetMany(t *testing.T) {
 
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}
@@ -292,7 +292,7 @@ func TestGetAll(t *testing.T) {
 
 	closing := make(chan struct{})
 	defer close(closing)
-	ds, err := datastore.New("Addr", r, nil, nil, closing)
+	ds, err := datastore.New(r, nil, nil, closing)
 	if err != nil {
 		t.Fatalf("Can not initialize datastore: %v", err)
 	}

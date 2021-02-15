@@ -279,9 +279,9 @@ func authMiddleware(next errHandleFunc, auther Auther) errHandleFunc {
 	return func(w http.ResponseWriter, r *http.Request) error {
 		ctx, err := auther.Authenticate(r)
 		if err != nil {
-			var errAnonymous auth.NoAnonymousError
-			if errors.As(err, &errAnonymous) {
-				return authRequiredError{}
+			var errAuth auth.Error
+			if errors.As(err, &errAuth) {
+				return authRequiredError{msg: errAuth.Error()}
 			}
 			return fmt.Errorf("authenticate request: %w", err)
 		}
