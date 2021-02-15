@@ -96,6 +96,10 @@ func run() error {
 	mux := http.NewServeMux()
 	autoupdatehttp.RegisterAll(mux, auth, a, n)
 
+	if err := initMeter(mux); err != nil {
+		log.Fatalf("Can not initialize meter: %v", err)
+	}
+
 	// Create http server.
 	listenAddr := getEnv("AUTOUPDATE_HOST", "") + ":" + getEnv("AUTOUPDATE_PORT", "8002")
 	srv := &http.Server{Addr: listenAddr, Handler: mux}
