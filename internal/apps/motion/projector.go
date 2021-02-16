@@ -678,7 +678,7 @@ func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMes
 			continue
 		}
 
-		con.Append("recommendation_id == %d", m.RecommendationID.Value())
+		con.Append("recommendation_id == %d", im.RecommendationID.Value())
 		con.Append("recommendation_extension == %s", m.RecommendationExtension)
 
 		var state struct {
