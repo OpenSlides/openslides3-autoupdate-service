@@ -67,20 +67,6 @@ func run() error {
 	osRestricters := openslidesRestricters(ds)
 	restricter := restricter.New(ds, osRestricters)
 
-	cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
-
-	f, err := os.Open(secretFile)
-	if err != nil {
-		return fmt.Errorf("open secret file: %w", err)
-	}
-	secretKey, err := secretKey(f)
-	if err != nil {
-		return fmt.Errorf("getting secret: %w", err)
-	}
-	f.Close()
-
-	auth := auth.New(cookieName, secretKey, redisConn, ds)
-
 	a, err := autoupdate.New(ds, restricter, closed)
 	if err != nil {
 		return fmt.Errorf("initialize autoupdate service: %v", err)
@@ -93,11 +79,34 @@ func run() error {
 
 	n := notify.New(redisConn, ds, applauseInterval, closed)
 
+	var authService autoupdatehttp.Auther
+	if fakeUID := getEnv("FAKE_AUTH", "-1"); fakeUID == "-1" {
+		f, err := os.Open(secretFile)
+		if err != nil {
+			return fmt.Errorf("open secret file: %w", err)
+		}
+		secretKey, err := secretKey(f)
+		if err != nil {
+			return fmt.Errorf("getting secret: %w", err)
+		}
+		f.Close()
+
+		cookieName := getEnv("COOKIE_NAME", "OpenSlidesSessionID")
+		authService = auth.New(cookieName, secretKey, redisConn, ds)
+	} else {
+		uid, err := strconv.Atoi(fakeUID)
+		if err != nil {
+			return fmt.Errorf("invalid value in env FAKE_AUTH, has to be an int, got: %s", fakeUID)
+		}
+		authService = auth.Fake(uid)
+		log.Printf("Using fake auth with user id %s", fakeUID)
+	}
+
 	mux := http.NewServeMux()
-	autoupdatehttp.RegisterAll(mux, auth, a, n)
+	autoupdatehttp.RegisterAll(mux, authService, a, n)
 
 	if err := initMeter(mux); err != nil {
-		log.Fatalf("Can not initialize meter: %v", err)
+		return fmt.Errorf("initialize meter: %w", err)
 	}
 
 	// Create http server.
