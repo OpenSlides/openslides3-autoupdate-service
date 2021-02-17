@@ -374,7 +374,7 @@ func sendAutoupdateData(w io.Writer, all bool, data map[string]json.RawMessage, 
 	}
 
 	if err := json.NewEncoder(w).Encode(format); err != nil {
-		return fmt.Errorf("encode and send output data: %w", err)
+		return fmt.Errorf("encode and send output data, error tyoe %T: %w", err, err)
 	}
 	w.(http.Flusher).Flush()
 	return nil
