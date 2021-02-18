@@ -390,7 +390,7 @@ func mergedIntoDiff(ds projector.Datastore, m *motion) (int, error) {
 		return 0, nil
 	}
 
-	con.Append("motion %d has state id `null`", m.ID)
+	con.Append("motion:%d/state_id == %d ", m.ID, m.StateID.Value())
 
 	var state struct {
 		IntoFinal int `json:"merge_amendment_into_final"`
@@ -415,9 +415,9 @@ func mergedIntoDiff(ds projector.Datastore, m *motion) (int, error) {
 	con.Append("state.into_final == %d", state.IntoFinal)
 	con.Append("recommendation_id == %d", m.RecommendationID.Value())
 
-	if err := ds.Get("motion/state", m.RecommendationID.Value(), &state); err != nil {
+	if err := ds.Get("motions/state", m.RecommendationID.Value(), &state); err != nil {
 		// TODO: if state does not exist, better error message.
-		return 0, con.Error("getting state or recommendation: %w", err)
+		return 0, con.Error("getting recommendation id of motion %d: %w", m.ID, err)
 	}
 	if state.IntoFinal == 1 {
 		return 1, nil
@@ -578,6 +578,9 @@ func slideAmendments(ds projector.Datastore, m *motion) (json.RawMessage, error)
 
 	var amendmentData []json.RawMessage
 	for _, id := range m.AmendmentIDs {
+		conn := conn.Sub()
+		conn.Append("motion amendment_id: %d", id)
+
 		var amendment motion
 		if err := ds.Get("motions/motion", id, &amendment); err != nil {
 			return nil, conn.Error("getting ammendment: %w", err)
