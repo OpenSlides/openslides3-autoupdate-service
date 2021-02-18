@@ -191,3 +191,5 @@ The service can be configured with the following environment variables:
   `1000`)
 * `COOKIE_NAME`: Name of the auth-session-cookie (Default: `OpenSlidesSessionID`).
 * `SESSION_PREFIX`: Prefix of the redis session keys (Default: `session:`).
+* `FAKE_AUTH`: If set, the auth system is skipped and the given user id is used
+  for all requests (Default: `-1`).
