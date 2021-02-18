@@ -415,7 +415,7 @@ func mergedIntoDiff(ds projector.Datastore, m *motion) (int, error) {
 	con.Append("state.into_final == %d", state.IntoFinal)
 	con.Append("recommendation_id == %d", m.RecommendationID.Value())
 
-	if err := ds.Get("motion/state", m.RecommendationID.Value(), &state); err != nil {
+	if err := ds.Get("motions/state", m.RecommendationID.Value(), &state); err != nil {
 		// TODO: if state does not exist, better error message.
 		return 0, con.Error("getting recommendation id of motion %d: %w", m.ID, err)
 	}
