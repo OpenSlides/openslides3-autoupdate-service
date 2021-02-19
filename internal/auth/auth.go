@@ -73,7 +73,7 @@ func (a *Auth) userID(r *http.Request) (int, error) {
 			// Anonymous.
 			return 0, nil
 		}
-		return 0, fmt.Errorf("loading session cookie: %v", err)
+		return 0, fmt.Errorf("loading session cookie: %w", err)
 	}
 
 	encodedSessionData, err := a.backend.GetSession(cookie.Value)
@@ -84,7 +84,7 @@ func (a *Auth) userID(r *http.Request) (int, error) {
 	b64decoded := make([]byte, base64.StdEncoding.DecodedLen(len(encodedSessionData)))
 	n, err := base64.StdEncoding.Decode(b64decoded, encodedSessionData)
 	if err != nil {
-		return 0, fmt.Errorf("base64 decode session data: %v", err)
+		return 0, fmt.Errorf("base64 decode session data: %w", err)
 	}
 	b64decoded = b64decoded[:n]
 
@@ -98,7 +98,7 @@ func (a *Auth) userID(r *http.Request) (int, error) {
 		UserID string `json:"_auth_user_id"`
 	}
 	if err := json.Unmarshal(parts[1], &sessionData); err != nil {
-		return 0, fmt.Errorf("json decoding session data: %v", err)
+		return 0, fmt.Errorf("json decoding session data: %w", err)
 	}
 
 	uid, err := strconv.Atoi(sessionData.UserID)
@@ -113,13 +113,13 @@ func (a *Auth) userID(r *http.Request) (int, error) {
 func (a *Auth) Authenticate(r *http.Request) (context.Context, error) {
 	uid, err := a.userID(r)
 	if err != nil {
-		return nil, fmt.Errorf("getting user id: %v", err)
+		return nil, fmt.Errorf("getting user id: %w", err)
 	}
 
 	if uid == 0 {
 		var enabled bool
 		if err := a.configer.ConfigValue("general_system_enable_anonymous", &enabled); err != nil {
-			return nil, fmt.Errorf("getting config value for anonymous: %v", err)
+			return nil, fmt.Errorf("getting config value for anonymous: %w", err)
 		}
 		if !enabled {
 			return nil, Error("Anonymous is not enabled.")

@@ -233,23 +233,23 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) (err e
 	}()
 
 	if err := d.hasPerm.update(data); err != nil {
-		return fmt.Errorf("updating hasPerm: %w", err)
+		log.Printf("Error updating user permissions in the data cache: %v", err)
 	}
 
 	if err := d.requiredUser.update(data); err != nil {
-		return fmt.Errorf("updating requiredUser: %w", err)
+		log.Printf("Error updating required users in the data cache: %v", err)
 	}
 
 	if err := d.config.update(data); err != nil {
-		return fmt.Errorf("updating config: %w", err)
+		log.Printf("Error updating config values in the data cache: %v", err)
 	}
 
 	if err := d.Projectors.Update(data); err != nil {
-		return fmt.Errorf("update projectors: %w", err)
+		log.Printf("Error updating projector slides in the data cache: %v", err)
 	}
 
 	if err := d.applause.update(data); err != nil {
-		return fmt.Errorf("updating applause: %w", err)
+		log.Printf("Error updating applause (active users) the data cache: %v", err)
 	}
 
 	return nil
