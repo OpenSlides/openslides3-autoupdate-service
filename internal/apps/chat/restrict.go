@@ -12,7 +12,7 @@ type required interface {
 	InGroups(uid int, groups []int) bool
 }
 
-// Restrict restricts chat/chat-group and chat/chat-message.
+// Restrict restricts chat:chat-group and chat:chat-message.
 func Restrict(r required) restricter.ElementFunc {
 	return func(uid int, data json.RawMessage) (json.RawMessage, error) {
 		if r.HasPerm(uid, "chat.can_manage") {
@@ -20,13 +20,14 @@ func Restrict(r required) restricter.ElementFunc {
 		}
 
 		var chatobject struct {
-			AccessGroupsId []int `json:"access_groups_id"`
+			ReadGroupsId  []int `json:"read_groups_id"`
+			WriteGroupsId []int `json:"write_groups_id"`
 		}
 		if err := json.Unmarshal(data, &chatobject); err != nil {
 			return nil, fmt.Errorf("decode chat-group/chat-message: %w", err)
 		}
 
-		if r.InGroups(uid, chatobject.AccessGroupsId) {
+		if r.InGroups(uid, chatobject.ReadGroupsId) || r.InGroups(uid, chatobject.WriteGroupsId) {
 			return data, nil
 		}
 
