@@ -3,6 +3,7 @@ package vote
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 )
@@ -101,6 +102,14 @@ func (v *Vote) updateUser(id int, value json.RawMessage) error {
 }
 
 func (v *Vote) updateMotionPoll(id int, value json.RawMessage) error {
+	defer func() {
+		s := "Ready motion polls:"
+		for k := range v.pollsMotion {
+			s += " " + strconv.Itoa(k)
+		}
+		log.Println(s)
+	}()
+
 	if value == nil {
 		// Delete poll.
 		delete(v.pollsMotion, id)
@@ -155,6 +164,14 @@ func (v *Vote) updateMotionPoll(id int, value json.RawMessage) error {
 }
 
 func (v *Vote) updateAssignmentPoll(id int, value json.RawMessage) error {
+	defer func() {
+		s := "Ready assignment polls:"
+		for k := range v.pollsAssignment {
+			s += " " + strconv.Itoa(k)
+		}
+		log.Println(s)
+	}()
+
 	if value == nil {
 		// Delete poll.
 		delete(v.pollsAssignment, id)
