@@ -10,6 +10,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"regexp"
 	"strconv"
 	"strings"
 	"sync"
@@ -251,6 +252,8 @@ func VoteCache(mux *http.ServeMux, v *vote.Vote, auther Auther) {
 		metric.WithDescription("request count to vote send"),
 	)
 
+	urlRe := regexp.MustCompile(`^\/system\/vote\/(motion|assignment)\/([0-9]+)`)
+
 	handler := func(w http.ResponseWriter, r *http.Request) error {
 		defer r.Body.Close()
 
@@ -260,18 +263,14 @@ func VoteCache(mux *http.ServeMux, v *vote.Vote, auther Auther) {
 			return authRequiredError{"You have to be logged in send a vote."}
 		}
 
-		// TODO: lock in path for motion or assignment and poll-id
-		var collection string
-		var pid int
-		if _, err := fmt.Sscanf(r.URL.Path, "/system/vote/%s/%d", &collection, &pid); err != nil {
+		parts := urlRe.FindStringSubmatch(r.URL.Path)
+		if parts == nil {
 			return invalidRequestError{fmt.Errorf("invalid url")}
 		}
 
-		if collection != "motion" && collection != "assignment" {
-			return invalidRequestError{fmt.Errorf("invalid url")}
-		}
+		pid, _ := strconv.Atoi(parts[2])
 
-		f := v.Motion
+		f := v.Motion //parts[1]
 		if err := f(r.Context(), pid, r.Body); err != nil {
 			return fmt.Errorf("invalid vote: %w", err)
 		}

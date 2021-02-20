@@ -147,7 +147,8 @@ The body has to be a valid json object with at least the fields `channel_id`,
 }
 ```
 
-Applause:
+
+### Applause
 
 The notify system also handels applause. To send an applause, send the following request:
 
@@ -156,6 +157,18 @@ curl localhost:8002/system/applause
 ```
 
 For this to work, a sessionID is required (see above)
+
+
+### Vote Cache
+
+To send a vote use:
+
+```
+curl localhost:8002/system/vote/motion/1 -d `{"data":"Y"}`
+```
+
+If the poll is in the correct state and the payload is correct, the vote is
+saved into redis.
 
 
 ## Run Test

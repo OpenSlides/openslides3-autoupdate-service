@@ -109,6 +109,8 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 		return invalidInput("Your vote is delegated to someone else.")
 	}
 
+	// TODO: This has to be checked in a lua script at the same time then
+	// writing the data!!!
 	if voted, err := v.backend.HasVoted("motion", pid, payload.VoteUserID); voted || err != nil {
 		if err != nil {
 			return fmt.Errorf("ask for user has voted: %w", err)
@@ -151,6 +153,8 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 	if err := v.backend.Save("motion", pid, payload.VoteUserID, bs); err != nil {
 		return fmt.Errorf("saving vote: %w", err)
 	}
+
+	// TODO: inform backend
 
 	return nil
 }
