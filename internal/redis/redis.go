@@ -392,17 +392,18 @@ func (r *Redis) Save(collection string, id int, voteUserID int, data []byte) err
 	conn := r.readPool.Get()
 	defer conn.Close()
 
-	key := fmt.Sprintf(votedKey, collection, id)
+	votersKey := fmt.Sprintf(votedKey, collection, id)
+	saveKey := fmt.Sprintf(voteDataKey, collection, id)
 
 	if err := conn.Send("MULTI"); err != nil {
 		return fmt.Errorf("send MULTI to redis: %w", err)
 	}
 
-	if err := conn.Send("SADD", voteUserID); err != nil {
+	if err := conn.Send("SADD", votersKey, voteUserID); err != nil {
 		return fmt.Errorf("send, that the user has voted: %w", err)
 	}
 
-	if err := conn.Send("RPUSH", key, data); err != nil {
+	if err := conn.Send("RPUSH", saveKey, data); err != nil {
 		return fmt.Errorf("send the vote data: %w", err)
 	}
 

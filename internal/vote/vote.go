@@ -14,7 +14,7 @@ import (
 // Datastore is the connection to the datastore package.
 type Datastore interface {
 	ConfigValue(string, interface{}) error
-	RegisterUpdate(name string, f func(map[string]json.RawMessage) error)
+	RegisterUpdate(name string, f func(map[string]json.RawMessage) error) error
 }
 
 // Backend to store the votes to.
@@ -38,11 +38,15 @@ type Vote struct {
 }
 
 // New creates a new Vote-Service.
-func New(ds Datastore, backend Backend) *Vote {
-	return &Vote{
+func New(ds Datastore, backend Backend) (*Vote, error) {
+	v := &Vote{
 		ds:      ds,
 		backend: backend,
 	}
+	if err := ds.RegisterUpdate("voteCache", v.update); err != nil {
+		return nil, fmt.Errorf("register updater: %w", err)
+	}
+	return v, nil
 }
 
 // Assignment adds a vote to an assignment-poll.

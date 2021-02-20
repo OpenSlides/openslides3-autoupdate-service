@@ -217,15 +217,21 @@ func (d *Datastore) GetAll() map[string]json.RawMessage {
 
 // RegisterUpdate registers a function what will be called when ever the
 // database is changed.
-func (d *Datastore) RegisterUpdate(name string, f func(map[string]json.RawMessage) error) {
+func (d *Datastore) RegisterUpdate(name string, f func(map[string]json.RawMessage) error) error {
 	if d.updaters == nil {
 		d.updaters = make(map[string]func(map[string]json.RawMessage) error)
 	}
 
 	if _, ok := d.updaters[name]; ok {
-		panic("updater with name " + name + " already exists.")
+		return fmt.Errorf("updater with name %s already exists", name)
 	}
 	d.updaters[name] = f
+
+	// Initial update
+	if err := f(d.cache.all()); err != nil {
+		return fmt.Errorf("calling update for first time: %w", err)
+	}
+	return nil
 }
 
 // update updates the cache. It is not save for concourent use.

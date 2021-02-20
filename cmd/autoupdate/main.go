@@ -103,7 +103,10 @@ func run() error {
 		log.Printf("Using fake auth with user id %s", fakeUID)
 	}
 
-	v := vote.New(ds, redisConn)
+	v, err := vote.New(ds, redisConn)
+	if err != nil {
+		return fmt.Errorf("creating vote service: %w", err)
+	}
 
 	mux := http.NewServeMux()
 	autoupdatehttp.RegisterAll(mux, authService, a, n, v)
