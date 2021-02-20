@@ -32,6 +32,7 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/projector"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/redis"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/vote"
 )
 
 const (
@@ -102,8 +103,10 @@ func run() error {
 		log.Printf("Using fake auth with user id %s", fakeUID)
 	}
 
+	v := vote.New(ds, redisConn)
+
 	mux := http.NewServeMux()
-	autoupdatehttp.RegisterAll(mux, authService, a, n)
+	autoupdatehttp.RegisterAll(mux, authService, a, n, v)
 
 	if err := initMeter(mux); err != nil {
 		return fmt.Errorf("initialize meter: %w", err)

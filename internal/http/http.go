@@ -17,6 +17,7 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/vote"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
 )
@@ -24,13 +25,14 @@ import (
 var meter = otel.GetMeterProvider().Meter("openslides.org")
 
 // RegisterAll registers all routes.
-func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *notify.Notify) {
+func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *notify.Notify, v *vote.Vote) {
 	Health(mux)
 	Autoupdate(mux, a, auth)
 	Projector(mux, a, auth)
 	Notify(mux, n, auth)
 	NotifySend(mux, n, auth)
 	NotifyApplause(mux, n, auth)
+	VoteCache(mux, v, auth)
 }
 
 // Health registers the health route.
@@ -240,6 +242,44 @@ func NotifyApplause(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 		return n.AddApplause(userID)
 	}
 	mux.Handle("/system/applause", errHandleFunc(middleware(handler, auther)))
+}
+
+// VoteCache registers the vote url.
+func VoteCache(mux *http.ServeMux, v *vote.Vote, auther Auther) {
+	counter, _ := meter.NewInt64Counter(
+		"openslides.vote-requests",
+		metric.WithDescription("request count to vote send"),
+	)
+
+	handler := func(w http.ResponseWriter, r *http.Request) error {
+		defer r.Body.Close()
+
+		counter.Add(r.Context(), 1)
+		userID := auth.FromContext(r.Context())
+		if userID == 0 {
+			return authRequiredError{"You have to be logged in send a vote."}
+		}
+
+		// TODO: lock in path for motion or assignment and poll-id
+		var collection string
+		var pid int
+		if _, err := fmt.Sscanf(r.URL.Path, "/system/vote/%s/%d", &collection, &pid); err != nil {
+			return invalidRequestError{fmt.Errorf("invalid url")}
+		}
+
+		if collection != "motion" && collection != "assignment" {
+			return invalidRequestError{fmt.Errorf("invalid url")}
+		}
+
+		f := v.Motion
+		if err := f(r.Context(), pid, r.Body); err != nil {
+			return fmt.Errorf("invalid vote: %w", err)
+		}
+
+		return nil
+	}
+
+	mux.Handle("/system/vote/", errHandleFunc(middleware(handler, auther)))
 }
 
 // errHandleFunc is like a http.Handler, but has a error as return value.

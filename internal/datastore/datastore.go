@@ -24,6 +24,8 @@ type Datastore struct {
 	mu          sync.RWMutex
 	maxChangeID int
 
+	updaters map[string]func(map[string]json.RawMessage) error
+
 	hasPerm
 	requiredUser
 	*Projectors
@@ -213,6 +215,19 @@ func (d *Datastore) GetAll() map[string]json.RawMessage {
 	return d.cache.all()
 }
 
+// RegisterUpdate registers a function what will be called when ever the
+// database is changed.
+func (d *Datastore) RegisterUpdate(name string, f func(map[string]json.RawMessage) error) {
+	if d.updaters == nil {
+		d.updaters = make(map[string]func(map[string]json.RawMessage) error)
+	}
+
+	if _, ok := d.updaters[name]; ok {
+		panic("updater with name " + name + " already exists.")
+	}
+	d.updaters[name] = f
+}
+
 // update updates the cache. It is not save for concourent use.
 func (d *Datastore) update(data map[string]json.RawMessage, changeID int) (err error) {
 	d.cache.update(data)
@@ -250,6 +265,12 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) (err e
 
 	if err := d.applause.update(data); err != nil {
 		log.Printf("Error updating applause (active users) the data cache: %v", err)
+	}
+
+	for name, updater := range d.updaters {
+		if err := updater(data); err != nil {
+			log.Printf("Error updating %s: %v", name, err)
+		}
 	}
 
 	return nil

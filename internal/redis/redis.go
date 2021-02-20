@@ -38,6 +38,13 @@ const (
 
 	// applauseKey is the name of the redis key for applause.
 	applauseKey = "applause"
+
+	// votedKey is the name of the redis key which users have voted at a
+	// specific vote.
+	votedKey = "poll_%s:%d_voted"
+
+	// voteDataKey is the name of the redis key where to save the data.
+	voteDataKey = "poll_%s:%d_vote_objects"
 )
 
 // Redis holds the connection to redis.
@@ -363,4 +370,44 @@ func (r *Redis) GetSession(sessionID string) ([]byte, error) {
 		return nil, fmt.Errorf("getting session-data: %v", err)
 	}
 	return data, nil
+}
+
+// HasVoted returns, if the user with the given id has already voted in the
+// poll.
+func (r *Redis) HasVoted(collection string, id int, userID int) (bool, error) {
+	conn := r.readPool.Get()
+	defer conn.Close()
+
+	key := fmt.Sprintf(votedKey, collection, id)
+
+	member, err := redis.Bool(conn.Do("SISMEMBER", key, userID))
+	if err != nil {
+		return false, fmt.Errorf("SISMEMBER to redis: %w", err)
+	}
+	return member, nil
+}
+
+// Save the vote data for a poll.
+func (r *Redis) Save(collection string, id int, voteUserID int, data []byte) error {
+	conn := r.readPool.Get()
+	defer conn.Close()
+
+	key := fmt.Sprintf(votedKey, collection, id)
+
+	if err := conn.Send("MULTI"); err != nil {
+		return fmt.Errorf("send MULTI to redis: %w", err)
+	}
+
+	if err := conn.Send("SADD", voteUserID); err != nil {
+		return fmt.Errorf("send, that the user has voted: %w", err)
+	}
+
+	if err := conn.Send("RPUSH", key, data); err != nil {
+		return fmt.Errorf("send the vote data: %w", err)
+	}
+
+	if _, err := conn.Do("EXEC"); err != nil {
+		return fmt.Errorf("execute vote saving: %w", err)
+	}
+	return nil
 }
