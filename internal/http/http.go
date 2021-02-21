@@ -252,7 +252,7 @@ func VoteCache(mux *http.ServeMux, v *vote.Vote, auther Auther) {
 		metric.WithDescription("request count to vote send"),
 	)
 
-	urlRe := regexp.MustCompile(`^\/system\/vote\/(motion|assignment)\/([0-9]+)`)
+	urlRe := regexp.MustCompile(`^\/system\/vote\/(motion|assignment)\/([0-9]+)$`)
 
 	handler := func(w http.ResponseWriter, r *http.Request) error {
 		defer r.Body.Close()

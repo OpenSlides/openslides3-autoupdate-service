@@ -15,6 +15,7 @@ import (
 type Datastore interface {
 	ConfigValue(string, interface{}) error
 	RegisterUpdate(name string, f func(map[string]json.RawMessage) error) error
+	InGroups(uid int, groups []int) bool
 }
 
 // Backend to store the votes to.
@@ -94,6 +95,10 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 	voteUser, ok := v.users[payload.VoteUserID]
 	if !ok {
 		return invalidInput("Unknown vote user id: %d", payload.VoteUserID)
+	}
+
+	if !v.ds.InGroups(payload.VoteUserID, poll.groups) {
+		return invalidInput("The Poll is not for you")
 	}
 
 	// TODO: Check voteUser in poll-group(?)

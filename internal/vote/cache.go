@@ -18,6 +18,7 @@ type poll struct {
 	// On motion poll and assignment poll.
 	anonymous bool
 	method    int
+	groups    []int
 
 	// Only on assignment poll.
 	globalYes     bool
@@ -120,6 +121,7 @@ func (v *Vote) updateMotionPoll(id int, value json.RawMessage) error {
 		State  int    `json:"state"`
 		Type   string `json:"type"`
 		Method string `json:"pollmethod"`
+		Groups []int  `json:"groups_id"`
 	}
 	if err := json.Unmarshal(value, &decoded); err != nil {
 		return fmt.Errorf("decoding motion-poll: %w", err)
@@ -158,6 +160,7 @@ func (v *Vote) updateMotionPoll(id int, value json.RawMessage) error {
 	v.pollsMotion[id] = &poll{
 		anonymous: anonymous,
 		method:    method,
+		groups:    decoded.Groups,
 	}
 
 	return nil
