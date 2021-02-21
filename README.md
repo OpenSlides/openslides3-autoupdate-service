@@ -27,7 +27,7 @@ echo "DJANGO_SECRET_KEY='MY_SECRET'" > /run/secrets/django
 When Go is installed, the service can be installed with:
 
 ```
-go get github.com/OpenSlides/openslides3-autoupdate-service/cmd/autoupdate
+go install github.com/OpenSlides/openslides3-autoupdate-service/cmd/autoupdate@latest
 ```
 
 This command is case sensitive!

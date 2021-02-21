@@ -7,7 +7,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
@@ -204,7 +203,7 @@ func NotifySend(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 			return authRequiredError{"You have to be logged in to use the notify system."}
 		}
 
-		bs, err := ioutil.ReadAll(r.Body)
+		bs, err := io.ReadAll(r.Body)
 		if err != nil {
 			return fmt.Errorf("reading message: %w", err)
 		}
