@@ -19,8 +19,7 @@ type Datastore interface {
 
 // Backend to store the votes to.
 type Backend interface {
-	HasVoted(collection string, id int, userID int) (bool, error)
-	Save(collection string, id int, voteUserID int, data []byte) error
+	Save(collection string, id int, voteUserID int, data []byte) (bool, error)
 }
 
 // Vote handles the vote cache.
@@ -184,15 +183,6 @@ func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*po
 		return invalidInput("You are not allowed to vote for user %d", payload.VoteUserID)
 	}
 
-	// TODO: This has to be checked in a lua script at the same time as
-	// writing the data!!!
-	if voted, err := v.backend.HasVoted("motion", pid, payload.VoteUserID); voted || err != nil {
-		if err != nil {
-			return fmt.Errorf("ask for user has voted: %w", err)
-		}
-		return invalidInput("Your vote was already counted.")
-	}
-
 	// Valid vote. Save it.
 	voteData := struct {
 		RequestUser int             `json:"request_user_id,omitempty"`
@@ -225,8 +215,14 @@ func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*po
 		return fmt.Errorf("encoding vote data: %w", err)
 	}
 
-	if err := v.backend.Save("motion", pid, payload.VoteUserID, bs); err != nil {
+	firstVote, err := v.backend.Save("motion", pid, payload.VoteUserID, bs)
+	if err != nil {
 		return fmt.Errorf("saving vote: %w", err)
+	}
+
+	if !firstVote {
+		// Vote already in redis. The new data was not saved.
+		return invalidInput("User %d has already voted.", payload.VoteUserID)
 	}
 
 	// TODO: inform backend

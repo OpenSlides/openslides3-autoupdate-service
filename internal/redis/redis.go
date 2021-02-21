@@ -372,43 +372,28 @@ func (r *Redis) GetSession(sessionID string) ([]byte, error) {
 	return data, nil
 }
 
-// HasVoted returns, if the user with the given id has already voted in the
-// poll.
-func (r *Redis) HasVoted(collection string, id int, userID int) (bool, error) {
-	conn := r.readPool.Get()
-	defer conn.Close()
-
-	key := fmt.Sprintf(votedKey, collection, id)
-
-	member, err := redis.Bool(conn.Do("SISMEMBER", key, userID))
-	if err != nil {
-		return false, fmt.Errorf("SISMEMBER to redis: %w", err)
-	}
-	return member, nil
-}
+const luaVoteSaveScript = `
+local v = redis.call("SADD",KEYS[1],ARGV[1])
+if v == 0 then
+	return 0
+end
+redis.call("RPUSH",KEYS[2],ARGV[2])
+return 1`
 
 // Save the vote data for a poll.
-func (r *Redis) Save(collection string, id int, voteUserID int, data []byte) error {
+//
+// The first return value is false, when the user did already save its vote.
+func (r *Redis) Save(collection string, id int, voteUserID int, data []byte) (bool, error) {
 	conn := r.readPool.Get()
 	defer conn.Close()
 
 	votersKey := fmt.Sprintf(votedKey, collection, id)
 	saveKey := fmt.Sprintf(voteDataKey, collection, id)
 
-	if err := conn.Send("MULTI"); err != nil {
-		return fmt.Errorf("send MULTI to redis: %w", err)
+	voteSaved, err := redis.Bool(conn.Do("EVAL", luaVoteSaveScript, 2, votersKey, saveKey, voteUserID, data))
+	if err != nil {
+		return false, fmt.Errorf("execute vote saving: %w", err)
 	}
 
-	if err := conn.Send("SADD", votersKey, voteUserID); err != nil {
-		return fmt.Errorf("send, that the user has voted: %w", err)
-	}
-
-	if err := conn.Send("RPUSH", saveKey, data); err != nil {
-		return fmt.Errorf("send the vote data: %w", err)
-	}
-
-	if _, err := conn.Do("EXEC"); err != nil {
-		return fmt.Errorf("execute vote saving: %w", err)
-	}
-	return nil
+	return voteSaved, nil
 }
