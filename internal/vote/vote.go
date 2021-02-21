@@ -116,7 +116,7 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 	payloadValidate := func(pid int, d pollData) error {
 
 		if d.Type() != pollDataString {
-			return invalidInput("Data has to be a string")
+			return invalidInput("Data has to be a string.")
 		}
 
 		if d.str != "Y" && d.str != "N" && (d.str != "A" || v.pollsMotion[pid].method == pollMethodYNA) {
@@ -162,7 +162,7 @@ func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*po
 	}
 
 	if err := payloadValidate(pid, payload.Data); err != nil {
-		return invalidInput("Invalid vote data")
+		return fmt.Errorf("checking payload: %w", err)
 	}
 
 	if payload.VoteUserID == 0 {
@@ -252,7 +252,7 @@ func (p *pollData) UnmarshalJSON(b []byte) error {
 	}
 
 	if err := json.Unmarshal(b, &p.optionYNA); err == nil {
-		// pollData  is option_id to string
+		// pollData is option_id to string
 		return nil
 	}
 
@@ -268,7 +268,7 @@ const (
 
 func (p *pollData) Type() int {
 	if p.str != "" {
-		return pollDataOptionString
+		return pollDataString
 	}
 
 	if p.optionAmount != nil {
