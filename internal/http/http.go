@@ -270,7 +270,16 @@ func VoteCache(mux *http.ServeMux, v *vote.Vote, auther Auther) {
 
 		pid, _ := strconv.Atoi(parts[2])
 
-		f := v.Motion //parts[1]
+		var f func(context.Context, int, io.Reader) error
+		switch parts[1] {
+		case "motion":
+			f = v.Motion
+		case "assignment":
+			f = v.Assignment
+		default:
+			return fmt.Errorf("expected motion or assignment, got %s, this should not be possible with the regex", parts[1])
+		}
+
 		if err := f(r.Context(), pid, r.Body); err != nil {
 			return fmt.Errorf("invalid vote: %w", err)
 		}

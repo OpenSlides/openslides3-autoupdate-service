@@ -3,7 +3,6 @@ package vote
 import (
 	"context"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"sync"
@@ -50,13 +49,88 @@ func New(ds Datastore, backend Backend) (*Vote, error) {
 	return v, nil
 }
 
+func (v *Vote) assignmentDataValidate(pid int, d pollData) error {
+	p := v.pollsAssignment[pid]
+
+	if p.method == pollMethodY || p.method == pollMethodN {
+		if d.Type() == pollDataString {
+			if d.str == "Y" && p.globalYes || d.str == "N" && p.globalNo || d.str == "A" && p.globalAbstain {
+				// Data is Y|N|A and global_X is true
+				return nil
+			}
+			return invalidInput("Your answer was not allowed")
+		}
+
+		if d.Type() == pollDataOptionAmount {
+			var sumAmount int
+			for optionID, amount := range d.optionAmount {
+				if amount < 0 {
+					return invalidInput("Your answer for option %d has to be >= 0", optionID)
+				}
+
+				if !p.multipleVotes && amount > 1 {
+					return invalidInput("Your answer for option %d has to be 0 or 1", optionID)
+				}
+
+				if pollID, ok := v.optionToPoll[optionID]; pollID != pid || !ok {
+					return invalidInput("Option_id %d does not belong to the poll", optionID)
+				}
+
+				sumAmount += amount
+			}
+
+			if sumAmount < p.minAmount || sumAmount > p.maxAmount {
+				return invalidInput("The sum of your answers have to be between %d and %d", p.minAmount, p.maxAmount)
+			}
+			return nil
+		}
+
+		return invalidInput("Invalid data")
+	}
+
+	// Pollmethod == YN | YNA
+
+	if d.Type() != pollDataOptionString {
+		return invalidInput("Invalid data")
+	}
+
+	for optionID, yna := range d.optionYNA {
+		if pollID, ok := v.optionToPoll[optionID]; pollID != pid || !ok {
+			return invalidInput("Option_id %d does not belong to the poll", optionID)
+		}
+
+		if yna != "Y" && yna != "N" && (yna != "A" || p.method == pollMethodYNA) {
+			// Valid that given data matches poll method.
+			return invalidInput("Data for option %d does not fit the poll method.", optionID)
+		}
+	}
+	return nil
+}
+
 // Assignment adds a vote to an assignment-poll.
-func (v *Vote) Assignment(ctx context.Context, r io.Reader) error {
-	return errors.New("TODO")
+func (v *Vote) Assignment(ctx context.Context, pid int, r io.Reader) error {
+	return v.save(ctx, pid, r, v.pollsAssignment, v.assignmentDataValidate)
 }
 
 // Motion adds a vote to an motion-poll.
 func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
+	payloadValidate := func(pid int, d pollData) error {
+
+		if d.Type() != pollDataString {
+			return invalidInput("Data has to be a string")
+		}
+
+		if d.str != "Y" && d.str != "N" && (d.str != "A" || v.pollsMotion[pid].method == pollMethodYNA) {
+			// Valid that given data matches poll method.
+			return invalidInput("Data does not fit the poll method.")
+		}
+		return nil
+	}
+
+	return v.save(ctx, pid, r, v.pollsMotion, payloadValidate)
+}
+
+func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*poll, payloadValidate func(pid int, d pollData) error) error {
 	v.mu.RLock()
 	defer v.mu.RUnlock()
 
@@ -81,11 +155,15 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 	}
 
 	var payload struct {
-		Data       string `json:"data"`
-		VoteUserID int    `json:"user_id"`
+		Data       pollData `json:"data"`
+		VoteUserID int      `json:"user_id"`
 	}
 	if err := json.NewDecoder(r).Decode(&payload); err != nil {
 		return invalidInput("Body has invalid json.")
+	}
+
+	if err := payloadValidate(pid, payload.Data); err != nil {
+		return invalidInput("Invalid vote data")
 	}
 
 	if payload.VoteUserID == 0 {
@@ -101,24 +179,12 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 		return invalidInput("The Poll is not for you")
 	}
 
-	// TODO: Check voteUser in poll-group(?)
-
-	d := payload.Data
-	if d != "Y" && d != "N" && (d != "A" || poll.method == pollMethodYNA) {
-		// Valid that given data matches poll method.
-		return invalidInput("Data does not fit the poll method.")
-	}
-
 	if voteUser != requestUser && voteUser.delegetedTo != requestUserID {
 		// Check request user is allowed to vote for vote-user.
 		return invalidInput("You are not allowed to vote for user %d", payload.VoteUserID)
 	}
 
-	if voteUser == requestUser && voteUser.delegetedTo != 0 {
-		return invalidInput("Your vote is delegated to someone else.")
-	}
-
-	// TODO: This has to be checked in a lua script at the same time then
+	// TODO: This has to be checked in a lua script at the same time as
 	// writing the data!!!
 	if voted, err := v.backend.HasVoted("motion", pid, payload.VoteUserID); voted || err != nil {
 		if err != nil {
@@ -129,14 +195,14 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 
 	// Valid vote. Save it.
 	voteData := struct {
-		RequestUser int    `json:"request_user_id,omitempty"`
-		VoteUser    int    `json:"vote_user_id,omitempty"`
-		Value       string `json:"value"`
-		Weight      int    `json:"weight"`
+		RequestUser int             `json:"request_user_id,omitempty"`
+		VoteUser    int             `json:"vote_user_id,omitempty"`
+		Value       json.RawMessage `json:"value"`
+		Weight      int             `json:"weight"`
 	}{
 		requestUserID,
 		payload.VoteUserID,
-		payload.Data,
+		payload.Data.original,
 		voteUser.voteWeight,
 	}
 
@@ -166,4 +232,56 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 	// TODO: inform backend
 
 	return nil
+}
+
+type pollData struct {
+	str          string
+	optionAmount map[int]int
+	optionYNA    map[int]string
+
+	original json.RawMessage
+}
+
+func (p *pollData) UnmarshalJSON(b []byte) error {
+	p.original = b
+
+	if err := json.Unmarshal(b, &p.str); err == nil {
+		// pollData is a string
+		return nil
+	}
+
+	if err := json.Unmarshal(b, &p.optionAmount); err == nil {
+		// pollData is option_id to amount
+		return nil
+	}
+
+	if err := json.Unmarshal(b, &p.optionYNA); err == nil {
+		// pollData  is option_id to string
+		return nil
+	}
+
+	return fmt.Errorf("unknown poll data: %s", b)
+}
+
+const (
+	pollDataUnknown = iota
+	pollDataString
+	pollDataOptionAmount
+	pollDataOptionString
+)
+
+func (p *pollData) Type() int {
+	if p.str != "" {
+		return pollDataOptionString
+	}
+
+	if p.optionAmount != nil {
+		return pollDataOptionAmount
+	}
+
+	if p.optionYNA != nil {
+		return pollDataOptionString
+	}
+
+	return pollDataUnknown
 }
