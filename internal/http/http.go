@@ -7,7 +7,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"regexp"
@@ -19,11 +18,11 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/autoupdate"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/notify"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/vote"
-	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/metric"
+	"go.opentelemetry.io/otel/metric/global"
 )
 
-var meter = otel.GetMeterProvider().Meter("openslides.org")
+var meter = global.GetMeterProvider().Meter("openslides.org")
 
 // RegisterAll registers all routes.
 func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *notify.Notify, v *vote.Vote) {
@@ -207,7 +206,7 @@ func NotifySend(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 			return authRequiredError{"You have to be logged in to use the notify system."}
 		}
 
-		bs, err := ioutil.ReadAll(r.Body)
+		bs, err := io.ReadAll(r.Body)
 		if err != nil {
 			return fmt.Errorf("reading message: %w", err)
 		}
