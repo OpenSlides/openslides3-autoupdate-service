@@ -5,10 +5,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"sync"
+	"time"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
+
+const informWaitTime = time.Second
 
 // Datastore is the connection to the datastore package.
 type Datastore interface {
@@ -34,6 +38,9 @@ type Vote struct {
 	pollsAssignment map[int]*poll
 
 	optionToPoll map[int]int
+
+	lastInformMu sync.Mutex
+	lastInform   time.Time
 }
 
 // New creates a new Vote-Service.
@@ -225,9 +232,39 @@ func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*po
 		return invalidInput("User %d has already voted.", payload.VoteUserID)
 	}
 
-	// TODO: inform backend
+	v.inform()
 
 	return nil
+}
+
+// inform sends a signal to the backend that tells it, that there are new
+// updates.
+//
+// The function is save for concurrent use. It never blocks.
+func (v *Vote) inform() {
+	var informer bool
+
+	// It is very important that here are no race conditions. There has to be a
+	// request to the backend after each call to inform. If it would be possible
+	// for an inform call not to trigger `informer = true` but there is no other
+	// inform-goroutine (see below) still waiting, then votes could get lost. It
+	// is not a problem, if there is an unnecessary inform-goroutine.
+	v.lastInformMu.Lock()
+	if time.Now().Sub(v.lastInform) >= (informWaitTime - time.Microsecond) {
+		v.lastInform = time.Now()
+		informer = true
+	}
+	v.lastInformMu.Unlock()
+
+	if !informer {
+		return
+	}
+
+	go func() {
+		time.Sleep(informWaitTime)
+
+		log.Println("TODO: Replace me with a request to the backend")
+	}()
 }
 
 type pollData struct {
