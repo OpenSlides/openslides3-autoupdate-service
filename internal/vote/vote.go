@@ -6,13 +6,17 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"net/http"
 	"sync"
 	"time"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/auth"
 )
 
-const informWaitTime = time.Second
+const (
+	informWaitTime = time.Second
+	voteFetchPath  = "/fetch-vote-cache"
+)
 
 // Datastore is the connection to the datastore package.
 type Datastore interface {
@@ -30,8 +34,9 @@ type Backend interface {
 type Vote struct {
 	mu sync.RWMutex
 
-	ds      Datastore
-	backend Backend
+	ds         Datastore
+	backend    Backend
+	workerAddr string
 
 	users           map[int]*user
 	pollsMotion     map[int]*poll
@@ -44,10 +49,11 @@ type Vote struct {
 }
 
 // New creates a new Vote-Service.
-func New(ds Datastore, backend Backend) (*Vote, error) {
+func New(ds Datastore, workerAddr string, backend Backend) (*Vote, error) {
 	v := &Vote{
-		ds:      ds,
-		backend: backend,
+		ds:         ds,
+		workerAddr: workerAddr,
+		backend:    backend,
 	}
 	if err := ds.RegisterUpdate("voteCache", v.update); err != nil {
 		return nil, fmt.Errorf("register updater: %w", err)
@@ -263,7 +269,25 @@ func (v *Vote) inform() {
 	go func() {
 		time.Sleep(informWaitTime)
 
-		log.Println("TODO: Replace me with a request to the backend")
+		resp, err := http.Post(v.workerAddr+voteFetchPath, "application/json", nil)
+		if err != nil {
+			log.Printf("Vote Error: Can not connect to backend. Votes will not be count!: %v", err)
+			// Try again.
+			v.inform()
+			return
+		}
+		defer resp.Body.Close()
+
+		if resp.StatusCode != 200 {
+			body, err := io.ReadAll(resp.Body)
+			if err != nil {
+				body = []byte(fmt.Sprintf("[Can not read body: %v]", err))
+			}
+			log.Printf("Vote Error: Votes will not be count: Got status `%s`: %s", resp.Status, body)
+			// Try again.
+			v.inform()
+			return
+		}
 	}()
 }
 

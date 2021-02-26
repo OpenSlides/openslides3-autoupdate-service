@@ -200,6 +200,9 @@ The service can be configured with the following environment variables:
   same as `MESSAGE_BUS_HOST`.
 * `REDIS_WRITE_PORT`: Port of the redis server for writing. The default is the
   same as `MESSAGE_BUS_PORT`.
+* `WORKER_HOST`: Host of the OpenSlides worker (Default: `localhost`).
+* `WORKER_PORT`: Port of the OpenSlides worker (Default: `8000`).
+* `WORKER_PROTOCOL`: Protocol of the OpenSlides worker (Default: `http`).
 * `APPLAUSE_INTERVAL_MS`: Time to calc the applause in milliseconds (Default:
   `1000`)
 * `COOKIE_NAME`: Name of the auth-session-cookie (Default: `OpenSlidesSessionID`).

@@ -48,6 +48,7 @@ func main() {
 }
 
 func run() error {
+	workerAddr := getEnv("WORKER_PROTOCOL", "http") + "://" + getEnv("WORKER_HOST", "localhost") + ":" + getEnv("WORKER_PORT", "8000")
 	redisHost := getEnv("MESSAGE_BUS_HOST", "localhost")
 	redisPort := getEnv("MESSAGE_BUS_PORT", "6379")
 	redisAddr := redisHost + ":" + redisPort
@@ -103,7 +104,7 @@ func run() error {
 		log.Printf("Using fake auth with user id %s", fakeUID)
 	}
 
-	v, err := vote.New(ds, redisConn)
+	v, err := vote.New(ds, workerAddr, redisConn)
 	if err != nil {
 		return fmt.Errorf("creating vote service: %w", err)
 	}
