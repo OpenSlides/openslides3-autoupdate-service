@@ -7,7 +7,7 @@ RUN apk --no-cache add git
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -ldflags "-X main.commitHash=$$(git rev-parse --short HEAD) -X main.commitDate=$$(git log -1 --format=%ct)" ./cmd/autoupdate
+RUN go build -ldflags "-X main.commitHash=$(git rev-parse --short HEAD) -X main.commitDate=$(git log -1 --format=%ct)" ./cmd/autoupdate
 
 # Development build.
 FROM builder as development
