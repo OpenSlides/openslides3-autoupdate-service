@@ -23,8 +23,8 @@ import (
 var meter = global.GetMeterProvider().Meter("openslides.org")
 
 // RegisterAll registers all routes.
-func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *notify.Notify) {
-	Health(mux)
+func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *notify.Notify, commitHash, commitDate string) {
+	Health(mux, commitHash, commitDate)
 	Autoupdate(mux, a, auth)
 	Projector(mux, a, auth)
 	Notify(mux, n, auth)
@@ -33,10 +33,10 @@ func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *n
 }
 
 // Health registers the health route.
-func Health(mux *http.ServeMux) {
+func Health(mux *http.ServeMux, commitHash, commitDate string) {
 	mux.HandleFunc("/system/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		fmt.Fprintln(w, `{"healthy": true}`)
+		fmt.Fprintf(w, `{"healthy": true,"commit_hash":"%s","commit_date":"%s"}\n`, commitHash, commitDate)
 	})
 }
 
