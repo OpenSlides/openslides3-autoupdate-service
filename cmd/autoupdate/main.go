@@ -39,10 +39,7 @@ const (
 	secretFile                   = "/run/secrets/django"
 )
 
-var (
-	commitHash string
-	commitDate string
-)
+var versionInfo string
 
 func main() {
 	if err := run(); err != nil {
@@ -108,7 +105,7 @@ func run() error {
 	}
 
 	mux := http.NewServeMux()
-	autoupdatehttp.RegisterAll(mux, authService, a, n, commitHash, commitDate)
+	autoupdatehttp.RegisterAll(mux, authService, a, n, versionInfo)
 
 	if err := initMeter(mux); err != nil {
 		return fmt.Errorf("initialize meter: %w", err)
