@@ -36,7 +36,7 @@ func RegisterAll(mux *http.ServeMux, auth Auther, a *autoupdate.Autoupdate, n *n
 func Health(mux *http.ServeMux, commitHash, commitDate string) {
 	mux.HandleFunc("/system/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
-		fmt.Fprintf(w, `{"healthy": true,"commit_hash":"%s","commit_date":"%s"}\n`, commitHash, commitDate)
+		fmt.Fprintf(w, `{"healthy": true,"commit_hash":"%s","commit_date":"%s"}`, commitHash, commitDate)
 	})
 }
 
