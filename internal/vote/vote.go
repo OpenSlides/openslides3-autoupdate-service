@@ -220,7 +220,8 @@ func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*po
 	}
 
 	if !voteWeightConfig {
-		voteData.Weight = 1
+		// voteData.Weight is a DecimalField with 6 zeros.
+		voteData.Weight = 1_000_000
 	}
 
 	bs, err := json.Marshal(voteData)
