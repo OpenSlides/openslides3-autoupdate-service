@@ -44,7 +44,7 @@ const (
 	votedKey = "poll_%s:%d_voted"
 
 	// voteDataKey is the name of the redis key where to save the data.
-	voteDataKey = "poll_vote_objects"
+	voteDataKey = "poll_%s:%d_vote_objects"
 )
 
 // Redis holds the connection to redis.
@@ -388,6 +388,7 @@ func (r *Redis) Save(collection string, id int, voteUserID int, data []byte) (bo
 	defer conn.Close()
 
 	votersKey := fmt.Sprintf(votedKey, collection, id)
+	voteDataKey := fmt.Sprintf(voteDataKey, collection, id)
 	pollID := fmt.Sprintf("%s:%d", collection, id)
 
 	voteSaved, err := redis.Bool(conn.Do("EVAL", luaVoteSaveScript, 2, votersKey, voteDataKey, voteUserID, pollID, data))

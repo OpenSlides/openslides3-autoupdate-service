@@ -15,7 +15,8 @@ import (
 
 const (
 	informWaitTime = time.Second
-	voteFetchPath  = "/fetch-vote-cache"
+	voteFetchPath  = "/fetch-vote-cache/%s/"
+	voteResetPath  = "/reset-poll/%s/%d/"
 )
 
 // Datastore is the connection to the datastore package.
@@ -45,7 +46,7 @@ type Vote struct {
 	optionToPoll map[int]int
 
 	lastInformMu sync.Mutex
-	lastInform   time.Time
+	lastInform   map[string]time.Time
 }
 
 // New creates a new Vote-Service.
@@ -54,6 +55,7 @@ func New(ds Datastore, workerAddr string, backend Backend) (*Vote, error) {
 		ds:         ds,
 		workerAddr: workerAddr,
 		backend:    backend,
+		lastInform: make(map[string]time.Time),
 	}
 	if err := ds.RegisterUpdate("voteCache", v.update); err != nil {
 		return nil, fmt.Errorf("register updater: %w", err)
@@ -121,7 +123,7 @@ func (v *Vote) assignmentDataValidate(pid int, d pollData) error {
 
 // Assignment adds a vote to an assignment-poll.
 func (v *Vote) Assignment(ctx context.Context, pid int, r io.Reader) error {
-	return v.save(ctx, pid, r, v.pollsAssignment, v.assignmentDataValidate)
+	return v.save(ctx, "assignment", pid, r, v.pollsAssignment, v.assignmentDataValidate)
 }
 
 // Motion adds a vote to an motion-poll.
@@ -139,10 +141,10 @@ func (v *Vote) Motion(ctx context.Context, pid int, r io.Reader) error {
 		return nil
 	}
 
-	return v.save(ctx, pid, r, v.pollsMotion, payloadValidate)
+	return v.save(ctx, "motion", pid, r, v.pollsMotion, payloadValidate)
 }
 
-func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*poll, payloadValidate func(pid int, d pollData) error) error {
+func (v *Vote) save(ctx context.Context, collection string, pid int, r io.Reader, polls map[int]*poll, payloadValidate func(pid int, d pollData) error) error {
 	v.mu.RLock()
 	defer v.mu.RUnlock()
 
@@ -229,7 +231,7 @@ func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*po
 		return fmt.Errorf("encoding vote data: %w", err)
 	}
 
-	firstVote, err := v.backend.Save("motion", pid, payload.VoteUserID, bs)
+	firstVote, err := v.backend.Save(collection, pid, payload.VoteUserID, bs)
 	if err != nil {
 		return fmt.Errorf("saving vote: %w", err)
 	}
@@ -239,7 +241,7 @@ func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*po
 		return invalidInput("User %d has already voted.", payload.VoteUserID)
 	}
 
-	v.inform()
+	v.inform(fmt.Sprintf("%s/%d", collection, pid))
 
 	return nil
 }
@@ -248,7 +250,7 @@ func (v *Vote) save(ctx context.Context, pid int, r io.Reader, polls map[int]*po
 // updates.
 //
 // The function is save for concurrent use. It never blocks.
-func (v *Vote) inform() {
+func (v *Vote) inform(pollID string) {
 	var informer bool
 
 	// It is very important that here are no race conditions. There has to be a
@@ -257,8 +259,8 @@ func (v *Vote) inform() {
 	// inform-goroutine (see below) still waiting, then votes could get lost. It
 	// is not a problem, if there is an unnecessary inform-goroutine.
 	v.lastInformMu.Lock()
-	if time.Now().Sub(v.lastInform) >= (informWaitTime - time.Microsecond) {
-		v.lastInform = time.Now()
+	if time.Now().Sub(v.lastInform[pollID]) >= (informWaitTime - time.Microsecond) {
+		v.lastInform[pollID] = time.Now()
 		informer = true
 	}
 	v.lastInformMu.Unlock()
@@ -270,11 +272,12 @@ func (v *Vote) inform() {
 	go func() {
 		time.Sleep(informWaitTime)
 
-		resp, err := http.Post(v.workerAddr+voteFetchPath, "application/json", nil)
+		url := v.workerAddr + fmt.Sprintf(voteFetchPath, pollID)
+		resp, err := http.Post(url, "application/json", nil)
 		if err != nil {
 			log.Printf("Vote Error: Can not connect to backend. Votes will not be count!: %v", err)
 			// Try again.
-			v.inform()
+			v.inform(pollID)
 			return
 		}
 		defer resp.Body.Close()
@@ -286,7 +289,7 @@ func (v *Vote) inform() {
 			}
 			log.Printf("Vote Error: Votes will not be count: Got status `%s`: %s", resp.Status, body)
 			// Try again.
-			v.inform()
+			v.inform(pollID)
 			return
 		}
 	}()
