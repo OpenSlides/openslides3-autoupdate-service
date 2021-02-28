@@ -28,7 +28,8 @@ type Datastore interface {
 
 // Backend to store the votes to.
 type Backend interface {
-	Save(collection string, id int, voteUserID int, data []byte) (bool, error)
+	SaveVote(collection string, id int, voteUserID int, data []byte) (bool, error)
+	DeleteVote(collection string, id int) error
 }
 
 // Vote handles the vote cache.
@@ -231,7 +232,7 @@ func (v *Vote) save(ctx context.Context, collection string, pid int, r io.Reader
 		return fmt.Errorf("encoding vote data: %w", err)
 	}
 
-	firstVote, err := v.backend.Save(collection, pid, payload.VoteUserID, bs)
+	firstVote, err := v.backend.SaveVote(collection, pid, payload.VoteUserID, bs)
 	if err != nil {
 		return fmt.Errorf("saving vote: %w", err)
 	}

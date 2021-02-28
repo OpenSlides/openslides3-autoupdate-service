@@ -380,11 +380,11 @@ end
 redis.call("XADD",KEYS[2],"*",ARGV[2],ARGV[3])
 return 1`
 
-// Save the vote data for a poll.
+// SaveVote the vote data for a poll.
 //
 // The first return value is false, when the user did already save its vote.
-func (r *Redis) Save(collection string, id int, voteUserID int, data []byte) (bool, error) {
-	conn := r.readPool.Get()
+func (r *Redis) SaveVote(collection string, id int, voteUserID int, data []byte) (bool, error) {
+	conn := r.writePool.Get()
 	defer conn.Close()
 
 	votersKey := fmt.Sprintf(votedKey, collection, id)
@@ -397,4 +397,16 @@ func (r *Redis) Save(collection string, id int, voteUserID int, data []byte) (bo
 	}
 
 	return voteSaved, nil
+}
+
+// DeleteVote deletes all data for a vote.
+func (r *Redis) DeleteVote(collection string, id int) error {
+	conn := r.writePool.Get()
+	defer conn.Close()
+
+	//votersKey := fmt.Sprintf(votedKey, collection, id)
+	//voteDataKey := fmt.Sprintf(voteDataKey, collection, id)
+	//TODO
+
+	return nil
 }

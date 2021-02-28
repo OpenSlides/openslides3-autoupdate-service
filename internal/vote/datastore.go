@@ -102,6 +102,22 @@ func (v *Vote) updateUser(id int, value json.RawMessage) error {
 	return nil
 }
 
+func (v *Vote) deletePoll(collection string, id int) error {
+	switch collection {
+	case "motion":
+		delete(v.pollsMotion, id)
+	case "assignment":
+		delete(v.pollsAssignment, id)
+	default:
+		return fmt.Errorf("unknown poll type %s", collection)
+	}
+
+	if err := v.backend.DeleteVote(collection, id); err != nil {
+		return fmt.Errorf("deleting poll %s:%d from redis: %w", collection, id, err)
+	}
+	return nil
+}
+
 func (v *Vote) updateMotionPoll(id int, value json.RawMessage) error {
 	defer func() {
 		s := "Ready motion polls:"
@@ -113,8 +129,7 @@ func (v *Vote) updateMotionPoll(id int, value json.RawMessage) error {
 
 	if value == nil {
 		// Delete poll.
-		delete(v.pollsMotion, id)
-		return nil
+		return v.deletePoll("motion", id)
 	}
 
 	var decoded struct {
@@ -130,8 +145,7 @@ func (v *Vote) updateMotionPoll(id int, value json.RawMessage) error {
 	if decoded.State != 2 {
 		// Only polls in state 2 (STATE_STARTED) are relevant. If they are in
 		// the cache, delete them.
-		delete(v.pollsMotion, id)
-		return nil
+		return v.deletePoll("motion", id)
 	}
 
 	var anonymous bool
@@ -139,7 +153,7 @@ func (v *Vote) updateMotionPoll(id int, value json.RawMessage) error {
 	case "analog":
 		// Anonlog polls are ignored. Delete, if exist.
 		delete(v.pollsMotion, id)
-		return nil
+		return v.deletePoll("motion", id)
 	case "named":
 	case "pseudoanonymous":
 		anonymous = true
@@ -177,8 +191,7 @@ func (v *Vote) updateAssignmentPoll(id int, value json.RawMessage) error {
 
 	if value == nil {
 		// Delete poll.
-		delete(v.pollsAssignment, id)
-		return nil
+		return v.deletePoll("assignment", id)
 	}
 
 	var decoded struct {
@@ -199,16 +212,14 @@ func (v *Vote) updateAssignmentPoll(id int, value json.RawMessage) error {
 	if decoded.State != 2 {
 		// Only polls in state 2 (STATE_STARTED) are relevant. If they are in
 		// the cache, delete them.
-		delete(v.pollsMotion, id)
-		return nil
+		return v.deletePoll("assignment", id)
 	}
 
 	var anonymous bool
 	switch decoded.Type {
 	case "analog":
 		// Anonlog polls are ignored. Delete, if exist.
-		delete(v.pollsMotion, id)
-		return nil
+		return v.deletePoll("assignment", id)
 	case "named":
 	case "pseudoanonymous":
 		anonymous = true
