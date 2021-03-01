@@ -258,7 +258,13 @@ func listOfSpeakerSlideData(ds projector.Datastore, los listOfSpeakers) (json.Ra
 	}
 
 	if showNextSpeakers != -1 {
-		speakersWaiting = speakersWaiting[0:showNextSpeakers]
+		showNextSpeakerCount := showNextSpeakers
+
+		if len(speakersWaiting) < showNextSpeakerCount {
+			showNextSpeakerCount = len(speakersWaiting)
+		}
+
+		speakersWaiting = speakersWaiting[0:showNextSpeakerCount]
 	}
 
 	if speakersFinished == nil {
