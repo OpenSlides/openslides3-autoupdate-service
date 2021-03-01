@@ -5064,9 +5064,6 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "id": 1,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
-          "voted_id": [
-            1
-          ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
         }`),
@@ -5098,9 +5095,6 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "id": 3,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
-          "voted_id": [
-            1
-          ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
         }`),
@@ -5165,7 +5159,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -7758,7 +7752,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -7782,7 +7776,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -7806,7 +7800,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -7830,7 +7824,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -11762,7 +11756,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -11786,7 +11780,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -11810,7 +11804,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -15695,7 +15689,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -15719,7 +15713,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -15743,7 +15737,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -19606,7 +19600,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -19630,7 +19624,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -19654,7 +19648,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": true,
           "user_has_voted_for_delegations": []
@@ -23570,7 +23564,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": true,
           "user_has_voted_for_delegations": []
@@ -23594,7 +23588,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": true,
           "user_has_voted_for_delegations": []
@@ -23618,7 +23612,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -27432,7 +27426,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -27456,7 +27450,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -27480,7 +27474,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -31284,7 +31278,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -31308,7 +31302,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -31332,7 +31326,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -35136,7 +35130,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -35160,7 +35154,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -35184,7 +35178,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -41259,7 +41253,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -41283,7 +41277,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -41307,7 +41301,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -45186,7 +45180,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -45210,7 +45204,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -45234,7 +45228,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -46660,9 +46654,6 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "id": 1,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
-          "voted_id": [
-            1
-          ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
         }`),
@@ -46694,9 +46685,6 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "id": 3,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
-          "voted_id": [
-            1
-          ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
         }`),
@@ -46761,7 +46749,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -49301,7 +49289,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -49325,7 +49313,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -49349,7 +49337,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -49373,7 +49361,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -52769,7 +52757,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -52793,7 +52781,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -52817,7 +52805,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "YNA",
           "majority_method": "simple",
           "voted_id": [
-            1
+            4
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
