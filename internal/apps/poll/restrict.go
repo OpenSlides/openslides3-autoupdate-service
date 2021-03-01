@@ -7,8 +7,11 @@ import (
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
-// StatePublished is the state of a poll, when it is published.
-const StatePublished = 4
+// StateFinished and StatePublished are state ids of polls.
+const (
+	StateFinished  = 3
+	StatePublished = 4
+)
 
 // RestrictPoll restricts an element for an assignment or motion poll.
 func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFiels []string) restricter.ElementFunc {
@@ -64,16 +67,9 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			return nil, fmt.Errorf("unmarshal poll state: %w", err)
 		}
 
-		// Replace all values in voted_id to 1 to hide the real userID.
-		hiddenVotedIDs := make([]int, len(votedID))
-		for i := range hiddenVotedIDs {
-			hiddenVotedIDs[i] = 1
+		if state != StatePublished && state != StateFinished {
+			delete(poll, "voted_id")
 		}
-		m, err = json.Marshal(hiddenVotedIDs)
-		if err != nil {
-			return nil, fmt.Errorf("marshal hidden vote ids: %w", err)
-		}
-		poll["voted_id"] = m
 
 		// Delete some fields for no managers and unpublished polls.
 		if !(r.HasPerm(uid, canManage) || state == StatePublished) {
