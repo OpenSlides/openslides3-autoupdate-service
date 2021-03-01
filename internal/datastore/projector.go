@@ -6,7 +6,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"log"
 	"strconv"
 	"strings"
 	"sync"
@@ -151,7 +150,6 @@ func (p *Projectors) Update(data map[string]json.RawMessage) error {
 		return nil
 	}
 
-	log.Println("Projector-Data changed: ", changed)
 	p.topic.Publish(changed...)
 	return nil
 }

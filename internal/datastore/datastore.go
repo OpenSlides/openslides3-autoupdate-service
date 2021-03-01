@@ -221,8 +221,6 @@ func (d *Datastore) update(data map[string]json.RawMessage, changeID int) (err e
 	d.maxChangeID = changeID
 	d.mu.Unlock()
 
-	log.Println("Recieve data update to changeID: ", changeID)
-
 	defer func() {
 		var cErr conditionError
 		if !errors.As(err, &cErr) {
