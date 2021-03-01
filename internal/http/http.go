@@ -45,16 +45,10 @@ func Autoupdate(mux *http.ServeMux, auto *autoupdate.Autoupdate, auther Auther) 
 	count := newConnectionCount("autoupdate")
 
 	handler := func(w http.ResponseWriter, r *http.Request) error {
+		count.Add()
+		defer count.Sub()
+
 		uid := auth.FromContext(r.Context())
-
-		n := count.Add()
-		log.Printf("Got autoupdate connection. User %d. Connection count: %d", uid, n)
-
-		defer func() {
-			n := count.Sub()
-			log.Printf("Lost autoupdate connection. User %d. Connection count: %d", uid, n)
-		}()
-
 		w.Header().Set("Content-Type", "application/octet-stream")
 
 		rawChangeID := r.URL.Query().Get("change_id")
@@ -70,9 +64,6 @@ func Autoupdate(mux *http.ServeMux, auto *autoupdate.Autoupdate, auther Auther) 
 		w.WriteHeader(http.StatusOK)
 		fmt.Fprintln(w, `{"connected":true}`)
 		w.(http.Flusher).Flush()
-
-		// Retrive uid from request. 0 for anonymous.
-		log.Printf("connect user %d with change_id %d", uid, changeID)
 
 		for {
 			all, data, newChangeID, err := auto.Receive(r.Context(), uid, changeID)
@@ -99,13 +90,8 @@ func Projector(mux *http.ServeMux, auto *autoupdate.Autoupdate, auth Auther) {
 	count := newConnectionCount("projector")
 
 	handler := func(w http.ResponseWriter, r *http.Request) error {
-		n := count.Add()
-		log.Println("Got projector connection. Connection count: ", n)
-
-		defer func() {
-			n := count.Sub()
-			log.Println("Lost projector connection. Connection count: ", n)
-		}()
+		count.Add()
+		defer count.Sub()
 
 		w.Header().Set("Content-Type", "application/json")
 
@@ -148,16 +134,10 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 	count := newConnectionCount("notify")
 
 	handler := func(w http.ResponseWriter, r *http.Request) error {
+		count.Add()
+		defer count.Sub()
+
 		uid := auth.FromContext(r.Context())
-
-		nu := count.Add()
-		log.Printf("Got autoupdate connection. User %d. Connection count: %d", uid, nu)
-
-		defer func() {
-			nu := count.Sub()
-			log.Printf("Lost autoupdate connection. User %d. Connection count: %d", uid, nu)
-		}()
-
 		w.Header().Set("Content-Type", "application/octet-stream")
 
 		cid := n.GenerateChannelID(uid)
@@ -375,7 +355,7 @@ func sendAutoupdateData(w io.Writer, all bool, data map[string]json.RawMessage, 
 	if err := json.NewEncoder(w).Encode(format); err != nil {
 		return fmt.Errorf("encode and send output data, error tyoe %T: %w", err, err)
 	}
-	w.(http.Flusher).Flush()
+	w.(flusher).Flush()
 	return nil
 }
 
