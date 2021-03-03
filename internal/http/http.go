@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"net"
 	"net/http"
 	"strconv"
 	"strings"
@@ -248,6 +249,13 @@ func (f errHandleFunc) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
+		var errNet *net.OpError
+		if errors.As(err, &errNet) {
+			// This happens, when a client closes a connection without telling
+			// the server.
+			return
+		}
+
 		var noStatusErr interface {
 			NoStatus()
 		}
@@ -353,7 +361,7 @@ func sendAutoupdateData(w io.Writer, all bool, data map[string]json.RawMessage, 
 	}
 
 	if err := json.NewEncoder(w).Encode(format); err != nil {
-		return fmt.Errorf("encode and send output data, error tyoe %T: %w", err, err)
+		return fmt.Errorf("encode and send output data, error type %T: %w", err, err)
 	}
 	w.(flusher).Flush()
 	return nil
