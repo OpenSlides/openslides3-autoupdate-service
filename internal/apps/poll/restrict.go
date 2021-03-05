@@ -22,42 +22,47 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			return nil, fmt.Errorf("unmarshal poll: %w", err)
 		}
 
-		var votedID []int
-		if err := json.Unmarshal(poll["voted_id"], &votedID); err != nil {
-			return nil, fmt.Errorf("unmarshal voted_id: %w", err)
-		}
-
-		hasVoted := []byte("false")
-		for _, id := range votedID {
-			if id == uid {
-				hasVoted = []byte("true")
-				break
+		if uid != 0 {
+			// The following code adds the fields `user_has_voted` and
+			// `user_has_voted_for_delegations` to the poll. This can be skipped
+			// for anonymous users.
+			var votedID []int
+			if err := json.Unmarshal(poll["voted_id"], &votedID); err != nil {
+				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
 			}
-		}
-		poll["user_has_voted"] = hasVoted
 
-		// Get the users `vote_delegated_from_users_id`.
-		var user struct {
-			VoteDelegationIds []int `json:"vote_delegated_from_users_id"`
-		}
-		if err := r.Get("users/user", uid, &user); err != nil {
-			return nil, fmt.Errorf("unmarshal user: %w", err)
-		}
-		// Calc the intersection of voteDelegationIds and votedID.
-		ids := []int{}
-		for _, delegationID := range user.VoteDelegationIds {
-			for _, votedID := range votedID {
-				if delegationID == votedID {
-					ids = append(ids, delegationID)
+			hasVoted := []byte("false")
+			for _, id := range votedID {
+				if id == uid {
+					hasVoted = []byte("true")
 					break
 				}
 			}
+			poll["user_has_voted"] = hasVoted
+
+			// Get the users `vote_delegated_from_users_id`.
+			var user struct {
+				VoteDelegationIds []int `json:"vote_delegated_from_users_id"`
+			}
+			if err := r.Get("users/user", uid, &user); err != nil {
+				return nil, fmt.Errorf("unmarshal user: %w", err)
+			}
+			// Calc the intersection of voteDelegationIds and votedID.
+			ids := []int{}
+			for _, delegationID := range user.VoteDelegationIds {
+				for _, votedID := range votedID {
+					if delegationID == votedID {
+						ids = append(ids, delegationID)
+						break
+					}
+				}
+			}
+			m, err := json.Marshal(ids)
+			if err != nil {
+				return nil, fmt.Errorf("marshal user_has_voted_for_delegations: %w", err)
+			}
+			poll["user_has_voted_for_delegations"] = m
 		}
-		m, err := json.Marshal(ids)
-		if err != nil {
-			return nil, fmt.Errorf("marshal user_has_voted_for_delegations: %w", err)
-		}
-		poll["user_has_voted_for_delegations"] = m
 
 		var state int
 		if err := json.Unmarshal(poll["state"], &state); err != nil {
