@@ -12,7 +12,7 @@ type agendaItem struct {
 	ParentID         int                               `json:"parent_id"`
 	Weight           int                               `json:"weight"`
 	Type             int                               `json:"type"`
-	TitleInformation map[string]*projector.OptionalStr `json:"title_information"`
+	TitleInformation map[string]projector.OptionalStr `json:"title_information"`
 	ItemNumber       string                            `json:"item_number"`
 	ContentObject    struct {
 		Collection string `json:"collection"`
@@ -20,7 +20,7 @@ type agendaItem struct {
 }
 
 type listOfSpeakers struct {
-	TitleInformation map[string]*projector.OptionalStr `json:"title_information"`
+	TitleInformation map[string]projector.OptionalStr `json:"title_information"`
 	ContentObject    struct {
 		ID         int    `json:"id"`
 		Collection string `json:"collection"`
