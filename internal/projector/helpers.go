@@ -41,6 +41,9 @@ type OptionalInt struct {
 
 // Value returns the value of the type. Returns 0 if it does not exist.
 func (o *OptionalInt) Value() int {
+	if o == nil {
+		return 0
+	}
 	return o.value
 }
 
@@ -84,6 +87,9 @@ func NewOptionalStr(s string) *OptionalStr {
 
 // Value returns the value of the type. Returns "" if it does not exist.
 func (o *OptionalStr) Value() string {
+	if o == nil {
+		return ""
+	}
 	return o.value
 }
 
