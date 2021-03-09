@@ -162,7 +162,7 @@ type formattedSpeaker struct {
 	User         string                 `json:"user"`
 	Marked       json.RawMessage        `json:"marked"`
 	PointOfOrder bool                   `json:"point_of_order"`
-	Weight       *projector.OptionalInt `json:"weight"`
+	Weight       projector.OptionalInt `json:"weight"`
 	EndTime      json.RawMessage        `json:"end_time"`
 }
 
