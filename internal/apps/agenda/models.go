@@ -29,7 +29,7 @@ type listOfSpeakers struct {
 		UserID       int                    `json:"user_id"`
 		Marked       json.RawMessage        `json:"marked"`
 		PointOfOrder bool                   `json:"point_of_order"`
-		Weight       *projector.OptionalInt `json:"weight"`
+		Weight       projector.OptionalInt `json:"weight"`
 		BeginTime    json.RawMessage        `json:"begin_time"`
 		EndTime      json.RawMessage        `json:"end_time"`
 	} `json:"speakers"`
