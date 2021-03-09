@@ -18,8 +18,8 @@ type motion struct {
 	AmendmentIDs            []int                  `json:"amendments_id"`
 	AmendmentParagraphs     json.RawMessage        `json:"amendment_paragraphs"`
 	ModifiedFinalVersion    json.RawMessage        `json:"modified_final_version"`
-	StateID                 *projector.OptionalInt `json:"state_id"`
-	RecommendationID        *projector.OptionalInt `json:"recommendation_id"`
+	StateID                 projector.OptionalInt `json:"state_id"`
+	RecommendationID        projector.OptionalInt `json:"recommendation_id"`
 	RecommendationExtension json.RawMessage        `json:"recommendation_extension"`
 	Submitters              []struct {
 		UserID int `json:"user_id"`
