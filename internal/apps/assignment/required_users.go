@@ -3,7 +3,6 @@ package assignment
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 )
 
 // RequiredAssignments returns the user ids of a assignment element.
