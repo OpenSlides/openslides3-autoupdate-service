@@ -8,7 +8,6 @@ import (
 
 // RequiredAssignments returns the user ids of a assignment element.
 func RequiredAssignments(data json.RawMessage) (map[int]bool, string, error) {
-	log.Println("HierXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 	var assignment struct {
 		Users []struct {
 			ID int `json:"user_id"`
