@@ -33,7 +33,7 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 			ID int `json:"id"`
 		}
 		if err := json.Unmarshal(element, &user); err != nil {
-			return nil, fmt.Errorf("unmarshal user: %w", err)
+			return nil, fmt.Errorf("unmarshal user id: %w", err)
 		}
 		if user.ID == uid && !r.HasPerm(uid, "users.can_see_extra_data") {
 			return filter(element, ownDataFields)
@@ -49,17 +49,20 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 			return filter(element, littleDataFields)
 		}
 
-		// Get the users `vote_delegated_from_users_id`.
-		var requestUser struct {
-			VoteDelegationIds []int `json:"vote_delegated_from_users_id"`
-		}
-		if err := r.Get("users/user", uid, &requestUser); err != nil {
-			return nil, fmt.Errorf("unmarshal user: %w", err)
-		}
-		// The user.ID is required, if it is in VoteDelegationIds.
-		for _, id := range requestUser.VoteDelegationIds {
-			if id == user.ID {
-				return filter(element, littleDataFields)
+		// Registered users can see there delegated users.
+		if uid != 0 {
+			// Get the users `vote_delegated_from_users_id`.
+			var requestUser struct {
+				VoteDelegationIds []int `json:"vote_delegated_from_users_id"`
+			}
+			if err := r.Get("users/user", uid, &requestUser); err != nil {
+				return nil, fmt.Errorf("fetching and unmarshalling user: %w", err)
+			}
+			// The user.ID is required, if it is in VoteDelegationIds.
+			for _, id := range requestUser.VoteDelegationIds {
+				if id == user.ID {
+					return filter(element, littleDataFields)
+				}
 			}
 		}
 
