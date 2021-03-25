@@ -3,6 +3,7 @@ package poll
 import (
 	"encoding/json"
 	"fmt"
+	"sort"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
@@ -73,7 +74,18 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 		}
 
 		if state != StatePublished && state != StateFinished {
+			var voted_ids []int
+			if err := json.Unmarshal(poll["voted_id"], &voted_ids); err != nil {
+				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
+			}
+			votescast, err := json.Marshal(len(voted_ids))
+			if err != nil {
+				return nil, fmt.Errorf("marshal votescast: %w", err)
+			}
+			poll["votescast"] = votescast
 			delete(poll, "voted_id")
+			delete(poll, "votesvalid")
+			delete(poll, "votesinvalid")
 		}
 
 		// Delete some fields for no managers and unpublished polls.
@@ -85,6 +97,20 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			for _, field := range restrictedFiels {
 				delete(poll, field)
 			}
+		}
+		
+		// make sure that the user ids are sorted
+		if _, ok := poll["voted_id"]; ok {
+			var voted_ids []int
+			if err := json.Unmarshal(poll["voted_id"], &voted_ids); err != nil {
+				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
+			}
+			sort.Sort(sort.IntSlice(voted_ids))
+			voted_ids_str, err := json.Marshal(voted_ids)
+			if err != nil {
+				return nil, fmt.Errorf("marshal voted_ids: %w", err)
+			}
+			poll["voted_id"] = voted_ids_str
 		}
 
 		data, err := json.Marshal(poll)
@@ -138,31 +164,9 @@ func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.E
 			return nil, nil
 		}
 
-		if r.HasPerm(uid, canManage) {
-			return element, nil
-		}
-
 		var vote map[string]json.RawMessage
 		if err := json.Unmarshal(element, &vote); err != nil {
 			return nil, fmt.Errorf("unmarshal vote: %w", err)
-		}
-
-		var userID int
-		if err := json.Unmarshal(vote["user_id"], &userID); err != nil {
-			return nil, fmt.Errorf("unmarshal user_id: %w", err)
-		}
-
-		if userID == uid {
-			return element, nil
-		}
-
-		var delegatedUserID int
-		if err := json.Unmarshal(vote["delegated_user_id"], &delegatedUserID); err != nil {
-			return nil, fmt.Errorf("unmarshal delegated_user_id: %w", err)
-		}
-
-		if delegatedUserID == uid {
-			return element, nil
 		}
 
 		var state int
@@ -172,6 +176,35 @@ func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.E
 
 		if state == StatePublished {
 			return element, nil
+		} else {
+			delete(vote, "user_token")
+		}
+
+		data, err := json.Marshal(vote)
+		if err != nil {
+			return nil, fmt.Errorf("marshal vote: %w", err)
+		}
+
+		if r.HasPerm(uid, canManage) {
+			return data, nil
+		}
+
+		var userID int
+		if err := json.Unmarshal(vote["user_id"], &userID); err != nil {
+			return nil, fmt.Errorf("unmarshal user_id: %w", err)
+		}
+
+		if userID == uid {
+			return data, nil
+		}
+
+		var delegatedUserID int
+		if err := json.Unmarshal(vote["delegated_user_id"], &delegatedUserID); err != nil {
+			return nil, fmt.Errorf("unmarshal delegated_user_id: %w", err)
+		}
+
+		if delegatedUserID == uid {
+			return data, nil
 		}
 
 		return nil, nil
