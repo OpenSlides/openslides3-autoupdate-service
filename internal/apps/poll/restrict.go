@@ -98,7 +98,7 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 				delete(poll, field)
 			}
 		}
-		
+
 		// make sure that the user ids are sorted
 		if _, ok := poll["voted_id"]; ok {
 			var voted_ids []int
