@@ -29,17 +29,17 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			return nil, fmt.Errorf("unmarshal poll: %w", err)
 		}
 
+		var votedIDs []int
+		if err := json.Unmarshal(poll["voted_id"], &votedIDs); err != nil {
+			return nil, fmt.Errorf("unmarshal voted_id: %w", err)
+		}
+
 		if uid != 0 {
 			// The following code adds the fields `user_has_voted` and
 			// `user_has_voted_for_delegations` to the poll. This can be skipped
 			// for anonymous users.
-			var votedID []int
-			if err := json.Unmarshal(poll["voted_id"], &votedID); err != nil {
-				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
-			}
-
 			hasVoted := []byte("false")
-			for _, id := range votedID {
+			for _, id := range votedIDs {
 				if id == uid {
 					hasVoted = []byte("true")
 					break
@@ -57,7 +57,7 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			// Calc the intersection of voteDelegationIds and votedID.
 			ids := []int{}
 			for _, delegationID := range user.VoteDelegationIds {
-				for _, votedID := range votedID {
+				for _, votedID := range votedIDs {
 					if delegationID == votedID {
 						ids = append(ids, delegationID)
 						break
@@ -79,10 +79,6 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 		// Remove values that should not be published to anyone aslong as the
 		// vote is open.
 		if state == StateStarted {
-			var votedIDs []int
-			if err := json.Unmarshal(poll["voted_id"], &votedIDs); err != nil {
-				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
-			}
 			poll["votescast"] = []byte(strconv.Itoa(len(votedIDs)))
 			delete(poll, "voted_id")
 			delete(poll, "votesvalid")
@@ -102,16 +98,12 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 
 		// Make sure that the user ids are sorted.
 		if _, ok := poll["voted_id"]; ok {
-			var votedIDs []int
-			if err := json.Unmarshal(poll["voted_id"], &votedIDs); err != nil {
-				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
-			}
-			sort.Sort(sort.IntSlice(votedIDs))
-			votedIDsStr, err := json.Marshal(votedIDs)
+			sort.Ints(votedIDs)
+			bs, err := json.Marshal(votedIDs)
 			if err != nil {
-				return nil, fmt.Errorf("marshal voted_ids: %w", err)
+				return nil, fmt.Errorf("marshal voted_id: %w", err)
 			}
-			poll["voted_id"] = votedIDsStr
+			poll["voted_id"] = bs
 		}
 
 		data, err := json.Marshal(poll)
