@@ -100,7 +100,7 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			}
 		}
 
-		// make sure that the user ids are sorted
+		// Make sure that the user ids are sorted.
 		if _, ok := poll["voted_id"]; ok {
 			var votedIDs []int
 			if err := json.Unmarshal(poll["voted_id"], &votedIDs); err != nil {
