@@ -74,11 +74,11 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 		}
 
 		if state != StatePublished && state != StateFinished {
-			var voted_ids []int
-			if err := json.Unmarshal(poll["voted_id"], &voted_ids); err != nil {
+			var votedIDs []int
+			if err := json.Unmarshal(poll["voted_id"], &votedIDs); err != nil {
 				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
 			}
-			votescast, err := json.Marshal(len(voted_ids))
+			votescast, err := json.Marshal(len(votedIDs))
 			if err != nil {
 				return nil, fmt.Errorf("marshal votescast: %w", err)
 			}
@@ -101,16 +101,16 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 
 		// make sure that the user ids are sorted
 		if _, ok := poll["voted_id"]; ok {
-			var voted_ids []int
-			if err := json.Unmarshal(poll["voted_id"], &voted_ids); err != nil {
+			var votedIDs []int
+			if err := json.Unmarshal(poll["voted_id"], &votedIDs); err != nil {
 				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
 			}
-			sort.Sort(sort.IntSlice(voted_ids))
-			voted_ids_str, err := json.Marshal(voted_ids)
+			sort.Sort(sort.IntSlice(votedIDs))
+			votedIDsStr, err := json.Marshal(votedIDs)
 			if err != nil {
 				return nil, fmt.Errorf("marshal voted_ids: %w", err)
 			}
-			poll["voted_id"] = voted_ids_str
+			poll["voted_id"] = votedIDsStr
 		}
 
 		data, err := json.Marshal(poll)
@@ -176,9 +176,8 @@ func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.E
 
 		if state == StatePublished {
 			return element, nil
-		} else {
-			delete(vote, "user_token")
 		}
+		delete(vote, "user_token")
 
 		data, err := json.Marshal(vote)
 		if err != nil {
