@@ -151,6 +151,11 @@ func RestrictOption(r restricter.HasPermer, canSee, canManage string) restricter
 }
 
 // RestrictVote restricts an element for a poll vote.
+//
+// 1. You need the poll-can-see permission to get any vote.
+// 2. If the poll state is published, everyone can see the full vote.
+// 3. In othe case, noone can see the field "user_token" and only managers, the
+//    vote user and the delegated_vote_user can see the vote.
 func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.ElementFunc {
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
 		if !r.HasPerm(uid, canSee) {
@@ -170,6 +175,9 @@ func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.E
 		if state == StatePublished {
 			return element, nil
 		}
+
+		// Th user_token is only visable in the published state. Even a manager
+		// can not see it.
 		delete(vote, "user_token")
 
 		data, err := json.Marshal(vote)
