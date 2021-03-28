@@ -4,12 +4,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
+	"strconv"
 
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
 // StateFinished and StatePublished are state ids of polls.
 const (
+	StateCreated   = 1
+	StateStarted   = 2
 	StateFinished  = 3
 	StatePublished = 4
 )
@@ -73,16 +76,14 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			return nil, fmt.Errorf("unmarshal poll state: %w", err)
 		}
 
-		if state != StatePublished && state != StateFinished {
+		// Remove values that should not be published to anyone aslong as the
+		// vote is open.
+		if state == StateStarted {
 			var votedIDs []int
 			if err := json.Unmarshal(poll["voted_id"], &votedIDs); err != nil {
 				return nil, fmt.Errorf("unmarshal voted_id: %w", err)
 			}
-			votescast, err := json.Marshal(len(votedIDs))
-			if err != nil {
-				return nil, fmt.Errorf("marshal votescast: %w", err)
-			}
-			poll["votescast"] = votescast
+			poll["votescast"] = []byte(strconv.Itoa(len(votedIDs)))
 			delete(poll, "voted_id")
 			delete(poll, "votesvalid")
 			delete(poll, "votesinvalid")
