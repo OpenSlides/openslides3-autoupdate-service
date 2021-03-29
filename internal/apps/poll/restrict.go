@@ -76,9 +76,9 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 			return nil, fmt.Errorf("unmarshal poll state: %w", err)
 		}
 
-		// Remove values that should not be published to anyone aslong as the
+		// Remove values that should not be published to anyone as long as the
 		// vote is open.
-		if state == StateStarted {
+		if state != StatePublished && state != StateFinished {
 			poll["votescast"] = []byte(strconv.Itoa(len(votedIDs)))
 			delete(poll, "voted_id")
 			delete(poll, "votesvalid")
@@ -176,9 +176,11 @@ func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.E
 			return element, nil
 		}
 
-		// Th user_token is only visable in the published state. Even a manager
-		// can not see it.
-		delete(vote, "user_token")
+		// The user_token is only visible in the published state, and finished state
+		// for managers
+		if !(r.HasPerm(uid, canManage) && state == StateFinished) {
+			delete(vote, "user_token")
+		}
 
 		data, err := json.Marshal(vote)
 		if err != nil {
