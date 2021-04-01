@@ -154,7 +154,8 @@ func RestrictOption(r restricter.HasPermer, canSee, canManage string) restricter
 //
 // 1. You need the poll-can-see permission to get any vote.
 // 2. If the poll state is published, everyone can see the full vote.
-// 3. In othe case, noone can see the field "user_token" and only managers, the
+// 3. If the poll state is finished, managers can see the "user_token".
+// 4. Otherwise, no one can see the field "user_token" and only managers, the
 //    vote user and the delegated_vote_user can see the vote.
 func RestrictVote(r restricter.HasPermer, canSee, canManage string) restricter.ElementFunc {
 	return func(uid int, element json.RawMessage) (json.RawMessage, error) {
