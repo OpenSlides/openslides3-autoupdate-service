@@ -17,7 +17,7 @@ import (
 // Slide renders a a motion.
 func Slide() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
-		con := new(datastore.Condition)
+		debug := new(datastore.DebugCondition)
 
 		var element struct {
 			ID   int    `json:"id"`
@@ -39,7 +39,7 @@ func Slide() projector.CallableFunc {
 			return nil, projector.NewClientError("id is required for motions/motion slide")
 		}
 
-		con.Append("projector element.id: %d", element.ID)
+		debug.Append("projector element.id: %d", element.ID)
 
 		var m motion
 		if err := ds.Get("motions/motion", element.ID, &m); err != nil {
@@ -48,55 +48,55 @@ func Slide() projector.CallableFunc {
 
 		submitters, err := slideSubmitters(ds, &m)
 		if err != nil {
-			return nil, con.Error("get motion submitters: %w", err)
+			return nil, debug.Error("get motion submitters: %w", err)
 		}
 
 		isChild := jsonBool(!isNull(m.ParentID))
 
 		baseStatute, err := slideBaseStatute(ds, &m)
 		if err != nil {
-			return nil, con.Error("get motion base statute: %w", err)
+			return nil, debug.Error("get motion base statute: %w", err)
 		}
 
 		baseMotion, err := slideBaseMotion(ds, &m)
 		if err != nil {
-			return nil, con.Error("get base motion: %w", err)
+			return nil, debug.Error("get base motion: %w", err)
 		}
 
 		changeRecommendations, err := slideChangeRecommendations(ds, &m)
 		if err != nil {
-			return nil, con.Error("get change recommendations: %w", err)
+			return nil, debug.Error("get change recommendations: %w", err)
 		}
 
 		amendments, err := slideAmendments(ds, &m)
 		if err != nil {
-			return nil, con.Error("get amendments: %w", err)
+			return nil, debug.Error("get amendments: %w", err)
 		}
 
 		var showMetaBox json.RawMessage
 		if err := ds.ConfigValue("motions_disable_sidebox_on_projector", &showMetaBox); err != nil {
-			return nil, con.Error("getting motions_disable_sidebox_on_projector: %w", err)
+			return nil, debug.Error("getting motions_disable_sidebox_on_projector: %w", err)
 		}
 		showMetaBox = jsonNot(showMetaBox)
 
 		var lineLength json.RawMessage
 		if err := ds.ConfigValue("motions_line_length", &lineLength); err != nil {
-			return nil, con.Error("getting motions_line_length: %w", err)
+			return nil, debug.Error("getting motions_line_length: %w", err)
 		}
 
 		var preamble json.RawMessage
 		if err := ds.ConfigValue("motions_preamble", &preamble); err != nil {
-			return nil, con.Error("getting motions_preamble: %w", err)
+			return nil, debug.Error("getting motions_preamble: %w", err)
 		}
 
 		var lineNumberingMode json.RawMessage
 		if err := ds.ConfigValue("motions_default_line_numbering", &lineNumberingMode); err != nil {
-			return nil, con.Error("getting motions_default_line_numbering: %w", err)
+			return nil, debug.Error("getting motions_default_line_numbering: %w", err)
 		}
 
 		showReferingMotions, recommendationReferencingMotions, err := slideReferringMotions(ds, &m)
 		if err != nil {
-			return nil, con.Error("get refering motions: %w", err)
+			return nil, debug.Error("get refering motions: %w", err)
 		}
 
 		out := map[string]json.RawMessage{
@@ -122,10 +122,10 @@ func Slide() projector.CallableFunc {
 
 		mode := element.Mode
 		if mode == "" {
-			con.Append("element.mode == ``")
+			debug.Append("element.mode == ``")
 
 			if err := ds.ConfigValue("motions_recommendation_text_mode", &mode); err != nil {
-				return nil, con.Error("get config value for motions_recommendation_text_mode: %w", err)
+				return nil, debug.Error("get config value for motions_recommendation_text_mode: %w", err)
 			}
 		}
 		if mode == "final" {
@@ -134,7 +134,7 @@ func Slide() projector.CallableFunc {
 
 		showText, err := slideShowText(ds, &m)
 		if err != nil {
-			return nil, con.Error("get show text: %w", err)
+			return nil, debug.Error("get show text: %w", err)
 		}
 		if showText {
 			out["text"] = m.Text
@@ -142,19 +142,19 @@ func Slide() projector.CallableFunc {
 
 		showReason, err := slideShowReason(ds, &m)
 		if err != nil {
-			return nil, con.Error("get show reason: %w", err)
+			return nil, debug.Error("get show reason: %w", err)
 		}
 		if showReason {
 			out["reason"] = m.Reason
 		}
 
 		if err := slideRecommendation(out, ds, &m); err != nil {
-			return nil, con.Error("get recommendation: %w", err)
+			return nil, debug.Error("get recommendation: %w", err)
 		}
 
 		encoded, err := json.Marshal(out)
 		if err != nil {
-			return nil, con.Error("encode motion data: %w", err)
+			return nil, debug.Error("encode motion data: %w", err)
 		}
 		return encoded, nil
 	}
@@ -185,8 +185,8 @@ func SlideMotionBlock() projector.CallableFunc {
 			}
 
 			if !m.RecommendationID.Null() {
-				con := new(datastore.Condition)
-				con.Append("recommendation_id == %d", m.RecommendationID.Value())
+				debug := new(datastore.DebugCondition)
+				debug.Append("recommendation_id == %d", m.RecommendationID.Value())
 
 				var recommendation struct {
 					Label              json.RawMessage `json:"recommendation_label"`
@@ -194,7 +194,7 @@ func SlideMotionBlock() projector.CallableFunc {
 					ShowExtensionField bool            `json:"show_recommendation_extension_field"`
 				}
 				if err := ds.Get("motions/state", m.RecommendationID.Value(), &recommendation); err != nil {
-					return nil, con.Error("getting recommendation state: %w", err)
+					return nil, debug.Error("getting recommendation state: %w", err)
 				}
 
 				var outRecommendation = struct {
@@ -212,11 +212,11 @@ func SlideMotionBlock() projector.CallableFunc {
 				out["recommendation"] = bs
 
 				if recommendation.ShowExtensionField {
-					con.Append("recommeendation.show_extension == %t", recommendation.ShowExtensionField)
+					debug.Append("recommendation.show_extension == %t", recommendation.ShowExtensionField)
 
 					out["recommendation_extension"] = m.RecommendationExtension
 					if err := extendReferenceMotions(ds, m.RecommendationExtension, referenced); err != nil {
-						return nil, con.Error("getting extension: %w", err)
+						return nil, debug.Error("getting extension: %w", err)
 					}
 				}
 			}
@@ -248,7 +248,7 @@ func SlideMotionBlock() projector.CallableFunc {
 // SlideMotionPoll renders slides for motions/motion-poll.
 func SlideMotionPoll() projector.CallableFunc {
 	return func(ds projector.Datastore, e json.RawMessage, pid int) (json.RawMessage, error) {
-		con := new(datastore.Condition)
+		debug := new(datastore.DebugCondition)
 
 		var mp map[string]json.RawMessage
 		if err := projector.ModelFromElement(ds, e, "motions/motion-poll", &mp); err != nil {
@@ -270,7 +270,7 @@ func SlideMotionPoll() projector.CallableFunc {
 		}
 
 		if bytes.Equal(mp["state"], []byte("4")) {
-			con.Append("poll state == 4")
+			debug.Append("poll state == 4")
 
 			var oids []int
 			if err := json.Unmarshal(mp["options_id"], &oids); err != nil {
@@ -283,7 +283,7 @@ func SlideMotionPoll() projector.CallableFunc {
 				Abstain string `json:"abstain"`
 			}
 			if err := ds.Get("motions/motion-option", oids[0], &rawOption); err != nil {
-				return nil, con.Error("getting motion-option: %w", err)
+				return nil, debug.Error("getting motion-option: %w", err)
 			}
 
 			yes, err := strconv.ParseFloat(rawOption.Yes, 32)
@@ -322,7 +322,7 @@ func SlideMotionPoll() projector.CallableFunc {
 
 		var m motion
 		if err := ds.Get("motions/motion", mid, &m); err != nil {
-			return nil, con.Error("getting motion: %w", err)
+			return nil, debug.Error("getting motion: %w", err)
 		}
 		out := struct {
 			Motion struct {
@@ -384,20 +384,20 @@ func extendReferenceMotions(ds projector.Datastore, recommendation json.RawMessa
 }
 
 func mergedIntoDiff(ds projector.Datastore, m *motion) (int, error) {
-	con := new(datastore.Condition)
+	debug := new(datastore.DebugCondition)
 
 	if m.StateID.Null() {
 		return 0, nil
 	}
 
-	con.Append("motion:%d/state_id == %d ", m.ID, m.StateID.Value())
+	debug.Append("motion:%d/state_id == %d ", m.ID, m.StateID.Value())
 
 	var state struct {
 		IntoFinal int `json:"merge_amendment_into_final"`
 	}
 	if err := ds.Get("motions/state", m.StateID.Value(), &state); err != nil {
 		// TODO: if state does not exist, better error message.
-		return 0, con.Error("getting state: %w", err)
+		return 0, debug.Error("getting state: %w", err)
 	}
 
 	if state.IntoFinal == -1 {
@@ -412,12 +412,12 @@ func mergedIntoDiff(ds projector.Datastore, m *motion) (int, error) {
 		return 0, nil
 	}
 
-	con.Append("state.into_final == %d", state.IntoFinal)
-	con.Append("recommendation_id == %d", m.RecommendationID.Value())
+	debug.Append("state.into_final == %d", state.IntoFinal)
+	debug.Append("recommendation_id == %d", m.RecommendationID.Value())
 
 	if err := ds.Get("motions/state", m.RecommendationID.Value(), &state); err != nil {
 		// TODO: if state does not exist, better error message.
-		return 0, con.Error("getting recommendation id of motion %d: %w", m.ID, err)
+		return 0, debug.Error("getting recommendation id of motion %d: %w", m.ID, err)
 	}
 	if state.IntoFinal == 1 {
 		return 1, nil
@@ -426,20 +426,20 @@ func mergedIntoDiff(ds projector.Datastore, m *motion) (int, error) {
 }
 
 func mergedIntoFinal(ds projector.Datastore, m *motion) (int, error) {
-	con := new(datastore.Condition)
+	debug := new(datastore.DebugCondition)
 
 	if m.StateID.Null() {
 		return 0, nil
 	}
 
-	con.Append("state id == %d", m.StateID.Value())
+	debug.Append("state id == %d", m.StateID.Value())
 
 	var state struct {
 		IntoFinal int `json:"merge_amendment_into_final"`
 	}
 	if err := ds.Get("motions/state", m.StateID.Value(), &state); err != nil {
 		// TODO: if state does not exist, better error message.
-		return 0, con.Error("getting state: %w", err)
+		return 0, debug.Error("getting state: %w", err)
 	}
 
 	if state.IntoFinal == 1 {
@@ -468,12 +468,12 @@ func slideSubmitters(ds projector.Datastore, m *motion) (json.RawMessage, error)
 }
 
 func slideBaseStatute(ds projector.Datastore, m *motion) (json.RawMessage, error) {
-	con := new(datastore.Condition)
+	debug := new(datastore.DebugCondition)
 
 	if isNull(m.StatuteParagraphID) {
 		return []byte("null"), nil
 	}
-	con.Append("motion.statute_paragraph_id == `%s`", m.StatuteParagraphID)
+	debug.Append("motion.statute_paragraph_id == `%s`", m.StatuteParagraphID)
 
 	statuteID, err := strconv.Atoi(string(m.StatuteParagraphID))
 	if err != nil {
@@ -484,7 +484,7 @@ func slideBaseStatute(ds projector.Datastore, m *motion) (json.RawMessage, error
 		Text  json.RawMessage `json:"text"`
 	}
 	if err := ds.Get("motions/statute-paragraph", statuteID, &statute); err != nil {
-		return nil, con.Error("getting statute paragraph: %w", err)
+		return nil, debug.Error("getting statute paragraph: %w", err)
 	}
 	b, err := json.Marshal(statute)
 	if err != nil {
@@ -494,15 +494,15 @@ func slideBaseStatute(ds projector.Datastore, m *motion) (json.RawMessage, error
 }
 
 func slideBaseMotion(ds projector.Datastore, m *motion) (json.RawMessage, error) {
-	con := new(datastore.Condition)
+	debug := new(datastore.DebugCondition)
 
 	if !isNull(m.StatuteParagraphID) || isNull(m.ParentID) || isNull(m.AmendmentParagraphs) {
 		return []byte("null"), nil
 	}
 
-	con.Append("statute_paragraph_id == %d", m.StatuteParagraphID)
-	con.Append("parent_id == %d", m.ParentID)
-	con.Append("amendment_paragraphs == %s", m.AmendmentParagraphs)
+	debug.Append("statute_paragraph_id == %d", m.StatuteParagraphID)
+	debug.Append("parent_id == %d", m.ParentID)
+	debug.Append("amendment_paragraphs == %s", m.AmendmentParagraphs)
 
 	var pid int
 	if err := json.Unmarshal(m.ParentID, &pid); err != nil {
@@ -515,7 +515,7 @@ func slideBaseMotion(ds projector.Datastore, m *motion) (json.RawMessage, error)
 		Text       json.RawMessage `json:"text"`
 	}
 	if err := ds.Get("motions/motion", pid, &parent); err != nil {
-		return nil, con.Error("getting parent motion: %w", err)
+		return nil, debug.Error("getting parent motion: %w", err)
 	}
 	b, err := json.Marshal(parent)
 	if err != nil {
@@ -566,7 +566,7 @@ func slideChangeRecommendations(ds projector.Datastore, m *motion) (json.RawMess
 }
 
 func slideAmendments(ds projector.Datastore, m *motion) (json.RawMessage, error) {
-	conn := new(datastore.Condition)
+	conn := new(datastore.DebugCondition)
 
 	if !isNull(m.StatuteParagraphID) || (!isNull(m.ParentID) && !isNull(m.AmendmentParagraphs)) {
 		return []byte("[]"), nil
@@ -655,7 +655,7 @@ func slideShowReason(ds projector.Datastore, m *motion) (bool, error) {
 }
 
 func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMessage, error) {
-	con := new(datastore.Condition)
+	debug := new(datastore.DebugCondition)
 
 	var hideRMotion bool
 	if err := ds.ConfigValue("motions_hide_referring_motions", &hideRMotion); err != nil {
@@ -666,11 +666,11 @@ func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMes
 		return false, nil, nil
 	}
 
-	con.Append("config motions_hide_referring_motions == %t", hideRMotion)
+	debug.Append("config motions_hide_referring_motions == %t", hideRMotion)
 
 	var v []json.RawMessage
 	for _, rm := range ds.GetCollection("motions/motion") {
-		con := con.Sub()
+		debug := debug.Sub()
 
 		var im motion
 		if err := json.Unmarshal(rm, &im); err != nil {
@@ -681,21 +681,21 @@ func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMes
 			continue
 		}
 
-		con.Append("recommendation_id == %d", im.RecommendationID.Value())
-		con.Append("recommendation_extension == %s", m.RecommendationExtension)
+		debug.Append("recommendation_id == %d", im.RecommendationID.Value())
+		debug.Append("recommendation_extension == %s", m.RecommendationExtension)
 
 		var state struct {
 			ShowExtension bool `json:"show_recommendation_extension_field"`
 		}
 		if err := ds.Get("motions/state", im.RecommendationID.Value(), &state); err != nil {
 			// TODO: if state does not exist, better error message.
-			return false, nil, con.Error("getting state: %w", err)
+			return false, nil, debug.Error("getting state: %w", err)
 		}
 		if !state.ShowExtension {
 			continue
 		}
 
-		con.Append("state %d show_extension == true", im.RecommendationID.Value())
+		debug.Append("state %d show_extension == true", im.RecommendationID.Value())
 
 		r := regexp.MustCompile(`\[motion:(\d+)\]`)
 		ids := make(map[int]bool)
@@ -731,7 +731,7 @@ func slideReferringMotions(ds projector.Datastore, m *motion) (bool, json.RawMes
 }
 
 func slideRecommendation(out map[string]json.RawMessage, ds projector.Datastore, m *motion) error {
-	con := new(datastore.Condition)
+	debug := new(datastore.DebugCondition)
 
 	var disableRecommendation bool
 	if err := ds.ConfigValue("motions_disable_recommendation_on_projector", &disableRecommendation); err != nil {
@@ -742,25 +742,25 @@ func slideRecommendation(out map[string]json.RawMessage, ds projector.Datastore,
 		return nil
 	}
 
-	con.Append("config motions_disable_recommendation_on_projector == %t", disableRecommendation)
-	con.Append("recommendation_id == %d", m.RecommendationID.Value())
+	debug.Append("config motions_disable_recommendation_on_projector == %t", disableRecommendation)
+	debug.Append("recommendation_id == %d", m.RecommendationID.Value())
 
 	var state struct {
 		Label         json.RawMessage `json:"recommendation_label"`
 		ShowExtension bool            `json:"show_recommendation_extension_field"`
 	}
 	if err := ds.Get("motions/state", m.RecommendationID.Value(), &state); err != nil {
-		return con.Error("getting state: %w", err)
+		return debug.Error("getting state: %w", err)
 	}
 	out["recommendation"] = state.Label
 
 	if state.ShowExtension {
-		con := con.Sub()
-		con.Append("state %d show_extension == true", m.RecommendationID.Value())
+		debug := debug.Sub()
+		debug.Append("state %d show_extension == true", m.RecommendationID.Value())
 
 		extension := make(map[int]json.RawMessage)
 		if err := extendReferenceMotions(ds, m.RecommendationExtension, extension); err != nil {
-			return con.Error("getting extension: %w", err)
+			return debug.Error("getting extension: %w", err)
 		}
 		bs, err := json.Marshal(extension)
 		if err != nil {

@@ -25,7 +25,7 @@ func (e resetError) Error() string {
 func (e resetError) Reset() {}
 
 type conditionError struct {
-	condition *Condition
+	condition *DebugCondition
 	err       error
 }
 
@@ -63,19 +63,19 @@ func (e conditionError) ConditionError() error {
 	)
 }
 
-// Condition is used to get informations, in which constellation the database
+// DebugCondition is used to get informations, in which constellation the database
 // was invalid.
 //
-// To do this, create a Condition at the beginning of a function and after each
+// To do this, create a DebugCondition at the beginning of a function and after each
 // state-ceck, append the condition of the database.
 //
 // If an error happens, that could be a doesNotExistError, then wrap the error
-// with Condition.Error().
+// with DebugCondition.Error().
 //
 // Example:
 //
 //	func foo(ds DataStore, u User) error{
-//	con := new(datastore.Condition)
+//	con := new(datastore.DebugCondition)
 //	if u.IsPresent() {
 //		return nil
 //	}
@@ -89,18 +89,18 @@ func (e conditionError) ConditionError() error {
 //	}
 //	return nil
 //	}
-type Condition struct {
+type DebugCondition struct {
 	conditions []string
-	parent     *Condition
+	parent     *DebugCondition
 }
 
 // Append adds one conditions description
-func (c *Condition) Append(format string, a ...interface{}) {
+func (c *DebugCondition) Append(format string, a ...interface{}) {
 	c.conditions = append(c.conditions, fmt.Sprintf(format, a...))
 }
 
 // Error creates an error under the condition.
-func (c *Condition) Error(format string, a ...interface{}) error {
+func (c *DebugCondition) Error(format string, a ...interface{}) error {
 	err := fmt.Errorf(format, a...)
 
 	var sErr *conditionError
@@ -119,11 +119,11 @@ func (c *Condition) Error(format string, a ...interface{}) error {
 
 // Sub creates a new Condition that contains all conditions of the given
 // condition.
-func (c *Condition) Sub() *Condition {
-	return &Condition{parent: c}
+func (c *DebugCondition) Sub() *DebugCondition {
+	return &DebugCondition{parent: c}
 }
 
-func (c *Condition) getConditions() []string {
+func (c *DebugCondition) getConditions() []string {
 	if c.parent == nil {
 		return c.conditions
 	}
