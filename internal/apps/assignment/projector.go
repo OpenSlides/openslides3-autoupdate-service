@@ -100,6 +100,7 @@ func PollSlide() projector.CallableFunc {
 			"state",
 			"onehundred_percent_base",
 			"majority_method",
+			"entitled_users_at_stop",
 		}
 		for _, key := range keys {
 			pollData[key] = pollInfo[key]
