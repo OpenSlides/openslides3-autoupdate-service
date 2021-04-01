@@ -20,7 +20,7 @@ func RequiredPoll(canSee string) RequiredUsersFunc {
 		}
 
 		// Pseudoanonymous and unpublished polls do not need any required users.
-		if poll.State != 4 || poll.IsPseudoanonymized {
+		if poll.State != StatePublished || poll.IsPseudoanonymized {
 			return nil, canSee, nil
 		}
 
