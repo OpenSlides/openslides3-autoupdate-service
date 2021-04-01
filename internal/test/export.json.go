@@ -731,6 +731,7 @@ var exampleData = map[string]json.RawMessage{
         "onehundred_percent_base": "valid",
         "majority_method": "simple",
         "voted_id": [
+          5,
           4
         ]
       }`),
@@ -741,7 +742,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": 4,
         "delegated_user_id": null,
         "option_id": 1,
-        "pollstate": 2
+        "pollstate": 2,
+        "user_token": "OBwY5ypscPQ8lvIv"
       }`),
 	"assignments/assignment-vote:3": []byte(`{
         "id": 3,
@@ -750,7 +752,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": 11,
         "delegated_user_id": 10,
         "option_id": 4,
-        "pollstate": 2
+        "pollstate": 2,
+        "user_token": "CDwTfgZIaFriVNSj"
       }`),
 	"assignments/assignment-vote:4": []byte(`{
         "id": 4,
@@ -759,7 +762,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": null,
         "delegated_user_id": null,
         "option_id": 5,
-        "pollstate": 3
+        "pollstate": 3,
+        "user_token": "GVklGe5JykkPj73B"
       }`),
 	"assignments/assignment-vote:5": []byte(`{
         "id": 5,
@@ -768,7 +772,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": 4,
         "delegated_user_id": 4,
         "option_id": 6,
-        "pollstate": 3
+        "pollstate": 3,
+        "user_token": "hlEnGGoijVNY0071"
       }`),
 	"assignments/assignment-vote:6": []byte(`{
         "id": 6,
@@ -777,7 +782,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": 4,
         "delegated_user_id": 4,
         "option_id": 8,
-        "pollstate": 3
+        "pollstate": 3,
+        "user_token": "hlEnGGoijVNY0071"
       }`),
 	"assignments/assignment:1": []byte(`{
         "id": 1,
@@ -3398,7 +3404,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": 5,
         "delegated_user_id": null,
         "option_id": 1,
-        "pollstate": 4
+        "pollstate": 4,
+        "user_token": "2WMZqzTm07h02LhV"
       }`),
 	"motions/motion-vote:2": []byte(`{
         "id": 2,
@@ -3407,7 +3414,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": null,
         "delegated_user_id": null,
         "option_id": 2,
-        "pollstate": 4
+        "pollstate": 4,
+        "user_token": "XDuCmJfoqxFqcE7R"
       }`),
 	"motions/motion-vote:3": []byte(`{
         "id": 3,
@@ -3416,7 +3424,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": 4,
         "delegated_user_id": null,
         "option_id": 3,
-        "pollstate": 4
+        "pollstate": 4,
+        "user_token": "0ae5MBAn0hvLz6RF"
       }`),
 	"motions/motion-vote:4": []byte(`{
         "id": 4,
@@ -3425,7 +3434,8 @@ var exampleData = map[string]json.RawMessage{
         "user_id": 4,
         "delegated_user_id": 4,
         "option_id": 4,
-        "pollstate": 3
+        "pollstate": 3,
+        "user_token": "RUgYjqDEuSSngwCP"
       }`),
 	"motions/motion:1": []byte(`{
         "id": 1,
@@ -5054,9 +5064,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "groups_id": [
             3
           ],
-          "votesvalid": "1.000000",
-          "votesinvalid": "0.000000",
-          "votescast": "1.000000",
+          "votescast": 1,
           "options_id": [
             1,
             2
@@ -5086,9 +5094,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "groups_id": [
             3
           ],
-          "votesvalid": "2.000000",
-          "votesinvalid": "0.000000",
-          "votescast": "1.000000",
+          "votescast": 1,
           "options_id": [
             4
           ],
@@ -5159,7 +5165,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "voted_id": [
-            4
+            4,
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -5189,7 +5196,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 5,
-          "pollstate": 3
+          "pollstate": 3,
+          "user_token": "GVklGe5JykkPj73B"
         }`),
 		"assignments/assignment-vote:5": []byte(`{
           "id": 5,
@@ -5198,7 +5206,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": 4,
           "option_id": 6,
-          "pollstate": 3
+          "pollstate": 3,
+          "user_token": "hlEnGGoijVNY0071"
         }`),
 		"assignments/assignment-vote:6": []byte(`{
           "id": 6,
@@ -5207,7 +5216,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": 4,
           "option_id": 8,
-          "pollstate": 3
+          "pollstate": 3,
+          "user_token": "hlEnGGoijVNY0071"
         }`),
 		"assignments/assignment:1": []byte(`{
           "id": 1,
@@ -7836,7 +7846,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -7845,7 +7856,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -7854,7 +7866,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion-vote:4": []byte(`{
           "id": 4,
@@ -7863,7 +7876,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": 4,
           "option_id": 4,
-          "pollstate": 3
+          "pollstate": 3,
+          "user_token": "RUgYjqDEuSSngwCP"
         }`),
 		"motions/motion:1": []byte(`{
           "id": 1,
@@ -11834,7 +11848,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -11843,7 +11858,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -11852,7 +11868,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
@@ -15767,7 +15784,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -15776,7 +15794,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -15785,7 +15804,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
@@ -19678,7 +19698,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -19687,7 +19708,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -19696,7 +19718,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion-vote:4": []byte(`{
           "id": 4,
@@ -21084,7 +21107,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "id": 5,
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
-          "user_has_voted": false,
+          "user_has_voted": true,
           "user_has_voted_for_delegations": []
         }`),
 		"assignments/assignment:1": []byte(`{
@@ -23642,7 +23665,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -23651,7 +23675,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -23660,7 +23685,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
@@ -27504,7 +27530,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -27513,7 +27540,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -27522,7 +27550,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
@@ -31356,7 +31385,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -31365,7 +31395,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -31374,7 +31405,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
@@ -35208,7 +35240,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -35217,7 +35250,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -35226,7 +35260,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
@@ -41331,7 +41366,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -41340,7 +41376,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -41349,7 +41386,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
@@ -45258,7 +45296,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -45267,7 +45306,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -45276,7 +45316,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:2": []byte(`{
           "id": 2,
@@ -46644,9 +46685,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "groups_id": [
             3
           ],
-          "votesvalid": "1.000000",
-          "votesinvalid": "0.000000",
-          "votescast": "1.000000",
+          "votescast": 1,
           "options_id": [
             1,
             2
@@ -46676,9 +46715,7 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "groups_id": [
             3
           ],
-          "votesvalid": "2.000000",
-          "votesinvalid": "0.000000",
-          "votescast": "1.000000",
+          "votescast": 1,
           "options_id": [
             4
           ],
@@ -46749,7 +46786,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "onehundred_percent_base": "valid",
           "majority_method": "simple",
           "voted_id": [
-            4
+            4,
+            5
           ],
           "user_has_voted": false,
           "user_has_voted_for_delegations": []
@@ -46779,7 +46817,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 5,
-          "pollstate": 3
+          "pollstate": 3,
+          "user_token": "GVklGe5JykkPj73B"
         }`),
 		"assignments/assignment-vote:5": []byte(`{
           "id": 5,
@@ -46788,7 +46827,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": 4,
           "option_id": 6,
-          "pollstate": 3
+          "pollstate": 3,
+          "user_token": "hlEnGGoijVNY0071"
         }`),
 		"assignments/assignment-vote:6": []byte(`{
           "id": 6,
@@ -46797,7 +46837,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": 4,
           "option_id": 8,
-          "pollstate": 3
+          "pollstate": 3,
+          "user_token": "hlEnGGoijVNY0071"
         }`),
 		"assignments/assignment:1": []byte(`{
           "id": 1,
@@ -49373,7 +49414,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -49382,7 +49424,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -49391,7 +49434,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion-vote:4": []byte(`{
           "id": 4,
@@ -49400,7 +49444,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": 4,
           "option_id": 4,
-          "pollstate": 3
+          "pollstate": 3,
+          "user_token": "RUgYjqDEuSSngwCP"
         }`),
 		"motions/motion:1": []byte(`{
           "id": 1,
@@ -52835,7 +52880,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 5,
           "delegated_user_id": null,
           "option_id": 1,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "2WMZqzTm07h02LhV"
         }`),
 		"motions/motion-vote:2": []byte(`{
           "id": 2,
@@ -52844,7 +52890,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": null,
           "delegated_user_id": null,
           "option_id": 2,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "XDuCmJfoqxFqcE7R"
         }`),
 		"motions/motion-vote:3": []byte(`{
           "id": 3,
@@ -52853,7 +52900,8 @@ var exampleRestrictedData = map[int]map[string]json.RawMessage{
           "user_id": 4,
           "delegated_user_id": null,
           "option_id": 3,
-          "pollstate": 4
+          "pollstate": 4,
+          "user_token": "0ae5MBAn0hvLz6RF"
         }`),
 		"motions/motion:1": []byte(`{
           "id": 1,
