@@ -216,10 +216,10 @@ func openslidesRequiredUsers() map[string]func(json.RawMessage) (map[int]bool, s
 	return map[string]func(json.RawMessage) (map[int]bool, string, error){
 		"agenda/list-of-speakers":       agenda.RequiredSpeakers,
 		"assignments/assignment":        assignment.RequiredAssignments,
-		"assignments/assignment-poll":   assignment.RequiredPoll,
 		"assignments/assignment-option": assignment.RequiredPollOption,
 		"motions/motion":                motion.RequiredMotions,
-		"motions/motion-option":         motion.RequiredPollOption,
+		"assignments/assignment-poll":   poll.RequiredPoll(assignment.CanSee),
+		"motions/motion-poll":           poll.RequiredPoll(motion.CanSee),
 	}
 }
 

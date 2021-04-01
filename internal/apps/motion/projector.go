@@ -267,6 +267,7 @@ func SlideMotionPoll() projector.CallableFunc {
 			"state":                   mp["state"],
 			"onehundred_percent_base": mp["onehundred_percent_base"],
 			"majority_method":         mp["majority_method"],
+			"entitled_users_at_stop":  mp["entitled_users_at_stop"],
 		}
 
 		if bytes.Equal(mp["state"], []byte("4")) {

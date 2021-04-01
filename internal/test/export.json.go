@@ -64943,7 +64943,8 @@ var exampleProjector = []projectorData{
             ],
             "votesvalid": "1.000000",
             "votesinvalid": "0.000000",
-            "votescast": "1.000000"
+            "votescast": "1.000000",
+            "entitled_users_at_stop": null
           }
         },
         "element": {
@@ -65410,7 +65411,8 @@ var exampleProjector = []projectorData{
             ],
             "votesvalid": "1.000000",
             "votesinvalid": "0.000000",
-            "votescast": "1.000000"
+            "votescast": "1.000000",
+            "entitled_users_at_stop": null
           }
         },
         "element": {
@@ -65877,7 +65879,8 @@ var exampleProjector = []projectorData{
             ],
             "votesvalid": "1.000000",
             "votesinvalid": "0.000000",
-            "votescast": "1.000000"
+            "votescast": "1.000000",
+            "entitled_users_at_stop": null
           }
         },
         "element": {
@@ -66334,7 +66337,8 @@ var exampleProjector = []projectorData{
             "pollmethod": "YNA",
             "state": 3,
             "onehundred_percent_base": "YNA",
-            "majority_method": "simple"
+            "majority_method": "simple",
+            "entitled_users_at_stop": null
           }
         },
         "element": {
@@ -66805,7 +66809,8 @@ var exampleProjector = []projectorData{
                   "short_name": "candidate2"
                 }
               }
-            ]
+            ],
+            "entitled_users_at_stop": null
           }
         },
         "element": {
@@ -67271,7 +67276,8 @@ var exampleProjector = []projectorData{
                   "short_name": "candidate1"
                 }
               }
-            ]
+            ],
+            "entitled_users_at_stop": null
           }
         },
         "element": {
@@ -67737,7 +67743,8 @@ var exampleProjector = []projectorData{
                   "short_name": "candidate1"
                 }
               }
-            ]
+            ],
+            "entitled_users_at_stop": null
           }
         },
         "element": {
@@ -68213,7 +68220,8 @@ var exampleProjector = []projectorData{
                   "short_name": "all perms"
                 }
               }
-            ]
+            ],
+            "entitled_users_at_stop": null
           }
         },
         "element": {
