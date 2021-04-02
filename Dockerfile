@@ -7,7 +7,7 @@ RUN apk --no-cache add git
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build ./cmd/autoupdate
+RUN CGO_ENABLED=0 go build ./cmd/autoupdate
 
 # Development build.
 FROM builder as development
@@ -20,9 +20,8 @@ EXPOSE 8002
 CMD CompileDaemon -log-prefix=false -build="go build ./cmd/autoupdate" -command="./autoupdate"
 
 # Productive build
-FROM alpine:3.13.3
+FROM scratch
 
-WORKDIR /root/
 COPY --from=builder /root/autoupdate .
 EXPOSE 8002
-CMD ./autoupdate
+ENTRYPOINT ["/autoupdate"]
