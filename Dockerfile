@@ -1,4 +1,4 @@
-FROM golang:1.16.2-alpine3.12 as builder
+FROM golang:1.16.3-alpine3.12.4 as builder
 LABEL maintainer="OpenSlides Team <info@openslides.com>"
 
 WORKDIR /root/
@@ -7,7 +7,7 @@ RUN apk --no-cache add git
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build ./cmd/autoupdate
+RUN CGO_ENABLED=0 go build ./cmd/autoupdate
 
 # Development build.
 FROM builder as development
@@ -20,9 +20,8 @@ EXPOSE 8002
 CMD CompileDaemon -log-prefix=false -build="go build ./cmd/autoupdate" -command="./autoupdate"
 
 # Productive build
-FROM alpine:3.13.3
+FROM scratch
 
-WORKDIR /root/
 COPY --from=builder /root/autoupdate .
 EXPOSE 8002
-CMD ./autoupdate
+ENTRYPOINT ["/autoupdate"]
