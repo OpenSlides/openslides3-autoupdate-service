@@ -35,9 +35,6 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 		if err := json.Unmarshal(element, &user); err != nil {
 			return nil, fmt.Errorf("unmarshal user id: %w", err)
 		}
-		if user.ID == uid && !r.HasPerm(uid, "users.can_see_extra_data") {
-			return filter(element, ownDataFields)
-		}
 
 		if r.HasPerm(uid, "users.can_see_name") {
 			if r.HasPerm(uid, "users.can_see_extra_data") {
@@ -46,7 +43,15 @@ func Restrict(r restricter.HasPermer) restricter.ElementFunc {
 				}
 				return filter(element, manyDataFields)
 			}
+
+			// no can_see_extra_data
+			if user.ID == uid {
+				return filter(element, ownDataFields)
+			}
 			return filter(element, littleDataFields)
+		} else if user.ID == uid {
+			// no can_see but own data
+			return filter(element, ownDataFields)
 		}
 
 		// Registered users can see there delegated users.
