@@ -51,7 +51,7 @@ const (
 
 func TestRestrict(t *testing.T) {
 	permer := new(test.HasPermMock)
-	r := agenda.Restrict(permer)
+	r := agenda.RestrictItem(permer)
 
 	for _, tt := range []struct {
 		name     string

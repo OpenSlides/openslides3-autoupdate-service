@@ -226,8 +226,8 @@ func openslidesRequiredUsers() map[string]func(json.RawMessage) (map[int]bool, s
 func openslidesRestricters(ds restricter.HasPermer) map[string]restricter.Element {
 	basePerm := restricter.BasePermission(ds)
 	return map[string]restricter.Element{
-		"agenda/item":             agenda.Restrict(ds),
-		"agenda/list-of-speakers": basePerm(agenda.CanSeeListOfSpeakers),
+		"agenda/item":             agenda.RestrictItem(ds),
+		"agenda/list-of-speakers": agenda.RestrictListOfSpeakers(ds),
 
 		"assignments/assignment":        basePerm(assignment.CanSee),
 		"assignments/assignment-poll":   poll.RestrictPoll(ds, assignment.CanSee, assignment.CanManage, []string{"amount_global_yes", "amount_global_no", "amount_global_abstain"}),

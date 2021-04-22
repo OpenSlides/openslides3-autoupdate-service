@@ -14,11 +14,12 @@ type Element interface {
 	Restrict(int, json.RawMessage) (json.RawMessage, error)
 }
 
-// HasPermer tells if a user has a specivic perm.
+// HasPermer tells if a user has a specific perm.
 type HasPermer interface {
 	HasPerm(uid int, perm string) bool
 	IsSuperadmin(uid int) bool
 	InGroups(uid int, groups []int) bool
 	UserRequired(uid int) []string
 	Get(collection string, id int, v interface{}) error
+	ConfigValue(key string, v interface{}) error
 }
