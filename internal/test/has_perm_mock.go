@@ -74,7 +74,7 @@ func (h *HasPermMock) Get(collection string, id int, v interface{}) error {
 	return json.Unmarshal(e, v)
 }
 
-// ConfigValue is currently a stub until it is actually needed by the tests 
+// ConfigValue is currently a stub until it is actually needed by the tests
 func (h *HasPermMock) ConfigValue(key string, v interface{}) error {
 	return nil
 }
