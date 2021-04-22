@@ -62157,6 +62157,7 @@ var exampleProjector = []projectorData{
               "user": "speaker2",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             }
@@ -62165,6 +62166,7 @@ var exampleProjector = []projectorData{
             "user": "title speaker1 the last name (layer X)",
             "marked": false,
             "point_of_order": false,
+            "pro_speech": null,
             "weight": null,
             "end_time": null
           },
@@ -62351,6 +62353,7 @@ var exampleProjector = []projectorData{
               "user": "speaker2",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             }
@@ -62359,6 +62362,7 @@ var exampleProjector = []projectorData{
             "user": "title speaker1 the last name (layer X)",
             "marked": false,
             "point_of_order": false,
+            "pro_speech": null,
             "weight": null,
             "end_time": null
           },
@@ -62667,6 +62671,7 @@ var exampleProjector = []projectorData{
               "user": "candidate1",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             },
@@ -62674,6 +62679,7 @@ var exampleProjector = []projectorData{
               "user": "candidate2",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             },
@@ -62681,6 +62687,7 @@ var exampleProjector = []projectorData{
               "user": "all perms",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 3,
               "end_time": null
             }
@@ -62868,6 +62875,7 @@ var exampleProjector = []projectorData{
               "user": "candidate1",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             },
@@ -62875,6 +62883,7 @@ var exampleProjector = []projectorData{
               "user": "candidate2",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             },
@@ -62882,6 +62891,7 @@ var exampleProjector = []projectorData{
               "user": "all perms",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 3,
               "end_time": null
             }
@@ -63186,6 +63196,7 @@ var exampleProjector = []projectorData{
               "user": "candidate1",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             }
@@ -63373,6 +63384,7 @@ var exampleProjector = []projectorData{
               "user": "candidate1",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             }
@@ -70769,6 +70781,7 @@ var exampleProjector = []projectorData{
               "user": "Administrator",
               "marked": false,
               "point_of_order": true,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             },
@@ -70776,6 +70789,7 @@ var exampleProjector = []projectorData{
               "user": "Administrator",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             }
@@ -70784,6 +70798,7 @@ var exampleProjector = []projectorData{
             "user": "title speaker1 the last name (layer X)",
             "marked": false,
             "point_of_order": false,
+            "pro_speech": null,
             "weight": null,
             "end_time": null
           },
@@ -70970,6 +70985,7 @@ var exampleProjector = []projectorData{
               "user": "Administrator",
               "marked": false,
               "point_of_order": true,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             },
@@ -70977,6 +70993,7 @@ var exampleProjector = []projectorData{
               "user": "Administrator",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             }
@@ -70985,6 +71002,7 @@ var exampleProjector = []projectorData{
             "user": "title speaker1 the last name (layer X)",
             "marked": false,
             "point_of_order": false,
+            "pro_speech": null,
             "weight": null,
             "end_time": null
           },
@@ -72452,6 +72470,7 @@ var exampleProjector = []projectorData{
               "user": "Administrator",
               "marked": false,
               "point_of_order": true,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             },
@@ -72459,6 +72478,7 @@ var exampleProjector = []projectorData{
               "user": "Administrator",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             }
@@ -72467,6 +72487,7 @@ var exampleProjector = []projectorData{
             "user": "title speaker1 the last name (layer X)",
             "marked": false,
             "point_of_order": false,
+            "pro_speech": null,
             "weight": null,
             "end_time": null
           },
@@ -75194,6 +75215,7 @@ var exampleProjector = []projectorData{
               "user": "speaker2",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             }
@@ -75202,6 +75224,7 @@ var exampleProjector = []projectorData{
             "user": "title speaker1 the last name (layer X)",
             "marked": false,
             "point_of_order": false,
+            "pro_speech": null,
             "weight": null,
             "end_time": null
           },
@@ -78841,6 +78864,7 @@ var exampleProjector = []projectorData{
               "user": "candidate1",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             }
@@ -79303,6 +79327,7 @@ var exampleProjector = []projectorData{
               "user": "candidate1",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 1,
               "end_time": null
             },
@@ -79310,6 +79335,7 @@ var exampleProjector = []projectorData{
               "user": "candidate2",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 2,
               "end_time": null
             },
@@ -79317,6 +79343,7 @@ var exampleProjector = []projectorData{
               "user": "all perms",
               "marked": false,
               "point_of_order": false,
+              "pro_speech": null,
               "weight": 3,
               "end_time": null
             }

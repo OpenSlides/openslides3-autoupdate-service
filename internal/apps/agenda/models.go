@@ -26,12 +26,13 @@ type listOfSpeakers struct {
 		Collection string `json:"collection"`
 	} `json:"content_object"`
 	Speakers []struct {
-		UserID       int                    `json:"user_id"`
-		Marked       json.RawMessage        `json:"marked"`
-		PointOfOrder bool                   `json:"point_of_order"`
-		Weight       *projector.OptionalInt `json:"weight"`
-		BeginTime    json.RawMessage        `json:"begin_time"`
-		EndTime      json.RawMessage        `json:"end_time"`
+		UserID       int                     `json:"user_id"`
+		Marked       json.RawMessage         `json:"marked"`
+		PointOfOrder bool                    `json:"point_of_order"`
+		ProSpeech    *projector.OptionalBool `json:"pro_speech"`
+		Weight       *projector.OptionalInt  `json:"weight"`
+		BeginTime    json.RawMessage         `json:"begin_time"`
+		EndTime      json.RawMessage         `json:"end_time"`
 	} `json:"speakers"`
 	Closed json.RawMessage `json:"closed"`
 }
