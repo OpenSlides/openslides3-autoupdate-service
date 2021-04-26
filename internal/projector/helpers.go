@@ -119,3 +119,44 @@ func (o *OptionalStr) MarshalJSON() ([]byte, error) {
 	}
 	return json.Marshal(o.value)
 }
+
+// OptionalBool is a type that can be null or an bool.
+type OptionalBool struct {
+	value bool
+	exist bool
+}
+
+// Value returns the value of the type. Returns false if it does not exist.
+func (o *OptionalBool) Value() bool {
+	if o == nil {
+		return false
+	}
+	return o.value
+}
+
+// Null returns true, if, the value does not exist.
+func (o *OptionalBool) Null() bool {
+	if o == nil {
+		return true
+	}
+	return !o.exist
+}
+
+// UnmarshalJSON builds this type from json.
+func (o *OptionalBool) UnmarshalJSON(b []byte) error {
+	if bytes.Equal(b, []byte(`null`)) {
+		o.exist = false
+		return nil
+	}
+
+	o.exist = true
+	return json.Unmarshal(b, &o.value)
+}
+
+// MarshalJSON decodes the type to json.
+func (o *OptionalBool) MarshalJSON() ([]byte, error) {
+	if o.Null() {
+		return []byte(`null`), nil
+	}
+	return json.Marshal(o.value)
+}

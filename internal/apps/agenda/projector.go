@@ -159,11 +159,12 @@ func ListOfSpeakersSlide() projector.CallableFunc {
 }
 
 type formattedSpeaker struct {
-	User         string                 `json:"user"`
-	Marked       json.RawMessage        `json:"marked"`
-	PointOfOrder bool                   `json:"point_of_order"`
-	Weight       *projector.OptionalInt `json:"weight"`
-	EndTime      json.RawMessage        `json:"end_time"`
+	User         string                  `json:"user"`
+	Marked       json.RawMessage         `json:"marked"`
+	PointOfOrder bool                    `json:"point_of_order"`
+	ProSpeech    *projector.OptionalBool `json:"pro_speech"`
+	Weight       *projector.OptionalInt  `json:"weight"`
+	EndTime      json.RawMessage         `json:"end_time"`
 }
 
 func titleInformation(ds projector.Datastore, los listOfSpeakers) (map[string]*projector.OptionalStr, error) {
@@ -218,6 +219,7 @@ func listOfSpeakerSlideData(ds projector.Datastore, los listOfSpeakers) (json.Ra
 			User:         username,
 			Marked:       speaker.Marked,
 			PointOfOrder: speaker.PointOfOrder,
+			ProSpeech:    speaker.ProSpeech,
 			Weight:       speaker.Weight,
 			EndTime:      speaker.EndTime,
 		}
