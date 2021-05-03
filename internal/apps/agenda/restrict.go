@@ -14,8 +14,9 @@ const (
 
 	// CanSeeListOfSpeakers is the permission string if a user can see the list
 	// of speakers.
-	CanSeeListOfSpeakers     = "agenda.can_see_list_of_speakers"
-	pCanManageListOfSpeakers = "agenda.can_manage_list_of_speakers"
+	CanSeeListOfSpeakers = "agenda.can_see_list_of_speakers"
+	// CanManageListOfSpeakers is the permission string to manage lists of speakers.
+	CanManageListOfSpeakers = "agenda.can_manage_list_of_speakers"
 )
 
 // RestrictItem handels restrictions of agenda/item elements.
@@ -83,7 +84,7 @@ func RestrictListOfSpeakers(r restricter.HasPermer) restricter.ElementFunc {
 			return nil, fmt.Errorf("getting agenda_list_of_speakers_speaker_note_for_everyone: %w", err)
 		}
 
-		if notesForEveryone || r.HasPerm(uid, pCanManageListOfSpeakers) {
+		if notesForEveryone || r.HasPerm(uid, CanManageListOfSpeakers) {
 			return element, nil
 		}
 

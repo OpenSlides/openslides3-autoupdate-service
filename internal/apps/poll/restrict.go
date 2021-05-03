@@ -6,6 +6,7 @@ import (
 	"sort"
 	"strconv"
 
+	"github.com/OpenSlides/openslides3-autoupdate-service/internal/apps/agenda"
 	"github.com/OpenSlides/openslides3-autoupdate-service/internal/restricter"
 )
 
@@ -89,11 +90,17 @@ func RestrictPoll(r restricter.HasPermer, canSee, canManage string, restrictedFi
 		if !(r.HasPerm(uid, canManage) || state == StatePublished) {
 			delete(poll, "votesvalid")
 			delete(poll, "votesinvalid")
-			delete(poll, "votescast")
 			delete(poll, "voted_id")
 			for _, field := range restrictedFiels {
 				delete(poll, field)
 			}
+		}
+
+		// Handle votescast individually:
+		// It can be seen, if the user can manage the poll or lists of speakers (they should see the progress, too)
+		// or the state is published.
+		if !(r.HasPerm(uid, canManage) || r.HasPerm(uid, agenda.CanManageListOfSpeakers) || state == StatePublished) {
+			delete(poll, "votescast")
 		}
 
 		// Make sure that the user ids are sorted.
