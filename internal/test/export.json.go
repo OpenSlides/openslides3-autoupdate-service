@@ -62263,7 +62263,8 @@ var exampleProjector = []projectorData{
         "data": {
           "background_color": "#317796",
           "font_color": "#ffffff",
-          "current_speaker": "title speaker1 the last name (layer X)"
+          "current_speaker_level": "layer X",
+          "current_speaker_name": "title speaker1 the last name"
         },
         "element": {
           "name": "agenda/current-speaker-chyron",
@@ -70895,7 +70896,8 @@ var exampleProjector = []projectorData{
         "data": {
           "background_color": "#317796",
           "font_color": "#ffffff",
-          "current_speaker": "title speaker1 the last name (layer X)"
+          "current_speaker_level": "layer X",
+          "current_speaker_name": "title speaker1 the last name"
         },
         "element": {
           "name": "agenda/current-speaker-chyron",
