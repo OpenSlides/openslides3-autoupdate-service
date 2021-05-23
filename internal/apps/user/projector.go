@@ -35,12 +35,12 @@ func Slide() projector.CallableFunc {
 			return nil, fmt.Errorf("get username: %w", err)
 		}
 
-		return []byte(fmt.Sprintf(`{"user":"%s"}`, name)), nil
+		return []byte(fmt.Sprintf(`{"user":%s}`, name)), nil
 	}
 }
 
-// GetUserName returns the display name for an user id.
-func GetUserName(ds projector.Datastore, uid int) (string, error) {
+// GetUserName returns the display name for an user id as valid json.
+func GetUserName(ds projector.Datastore, uid int) ([]byte, error) {
 	var user struct {
 		Username  string `json:"username"`
 		Title     string `json:"title"`
@@ -50,7 +50,7 @@ func GetUserName(ds projector.Datastore, uid int) (string, error) {
 	}
 
 	if err := ds.Get("users/user", uid, &user); err != nil {
-		return "", projector.NewClientError("users/user with id %d does not exist", uid)
+		return nil, projector.NewClientError("users/user with id %d does not exist", uid)
 	}
 
 	parts := func(sp ...string) []string {
@@ -65,12 +65,12 @@ func GetUserName(ds projector.Datastore, uid int) (string, error) {
 	}(user.Title, user.FirstName, user.LastName)
 
 	if len(parts) == 0 {
-		return user.Username, nil
+		return json.Marshal(user.Username)
 	}
 
 	if user.Level != "" {
 		parts = append(parts, fmt.Sprintf("(%s)", user.Level))
 	}
 
-	return strings.Join(parts, " "), nil
+	return json.Marshal(strings.Join(parts, " "))
 }

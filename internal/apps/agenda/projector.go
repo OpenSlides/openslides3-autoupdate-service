@@ -159,7 +159,7 @@ func ListOfSpeakersSlide() projector.CallableFunc {
 }
 
 type formattedSpeaker struct {
-	User         string                  `json:"user"`
+	User         json.RawMessage         `json:"user"`
 	Marked       json.RawMessage         `json:"marked"`
 	PointOfOrder bool                    `json:"point_of_order"`
 	ProSpeech    *projector.OptionalBool `json:"pro_speech"`
@@ -424,7 +424,7 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 			return nil, fmt.Errorf("getting current list of speakers: %w", err)
 		}
 
-		var current string
+		var current []byte
 		for _, speaker := range los.Speakers {
 			if !bytes.Equal(speaker.BeginTime, []byte("null")) && bytes.Equal(speaker.EndTime, []byte("null")) {
 				current, err = user.GetUserName(ds, speaker.UserID)
@@ -435,8 +435,8 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 			}
 		}
 
-		if current != "" {
-			currentSpeaker["current_speaker"] = []byte(`"` + current + `"`)
+		if current != nil {
+			currentSpeaker["current_speaker"] = current
 		}
 
 		b, err := json.Marshal(currentSpeaker)
