@@ -39,14 +39,13 @@ func Slide() projector.CallableFunc {
 	}
 }
 
-// GetUserName returns the display name for an user id.
-func GetUserName(ds projector.Datastore, uid int) (string, error) {
+// GetUserShortName returns the short display name for an user id (name without structure_level)
+func GetUserShortName(ds projector.Datastore, uid int) (string, error) {
 	var user struct {
 		Username  string `json:"username"`
 		Title     string `json:"title"`
 		FirstName string `json:"first_name"`
 		LastName  string `json:"last_name"`
-		Level     string `json:"structure_level"`
 	}
 
 	if err := ds.Get("users/user", uid, &user); err != nil {
@@ -68,9 +67,34 @@ func GetUserName(ds projector.Datastore, uid int) (string, error) {
 		return user.Username, nil
 	}
 
-	if user.Level != "" {
-		parts = append(parts, fmt.Sprintf("(%s)", user.Level))
+	return strings.Join(parts, " "), nil
+}
+
+// GetUserLevel returns the structre level for user id.
+func GetUserLevel(ds projector.Datastore, uid int) (string, error) {
+	var user struct {
+		Level string `json:"structure_level"`
 	}
 
-	return strings.Join(parts, " "), nil
+	if err := ds.Get("users/user", uid, &user); err != nil {
+		return "", projector.NewClientError("users/user with id %d does not exist", uid)
+	}
+
+	return user.Level, nil
+}
+
+// GetUserName returns the display name for an user id.
+func GetUserName(ds projector.Datastore, uid int) (string, error) {
+	shotName, err := GetUserShortName(ds, uid)
+	if err != nil {
+		return "", fmt.Errorf("getting short name: %w", err)
+	}
+
+	structureLevel, _ := GetUserLevel(ds, uid)
+
+	if structureLevel != "" {
+		return fmt.Sprintf("%s (%s)", shotName, structureLevel), nil
+	}
+
+	return shotName, nil
 }
