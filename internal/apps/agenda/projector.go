@@ -425,10 +425,10 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 		}
 
 		var currentName []byte
-		var userLevel []byte
+		var userLevel string
 		for _, speaker := range los.Speakers {
 			if !bytes.Equal(speaker.BeginTime, []byte("null")) && bytes.Equal(speaker.EndTime, []byte("null")) {
-				currentName, err = user.GetUserName(ds, speaker.UserID)
+				currentName, err = user.GetUserShortName(ds, speaker.UserID)
 				userLevel, err = user.GetUserLevel(ds, speaker.UserID)
 				if err != nil {
 					return nil, fmt.Errorf("getting username: %w", err)
@@ -441,8 +441,12 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 			currentSpeaker["current_speaker_name"] = currentName
 		}
 
-		if userLevel != nil {
-			currentSpeaker["current_speaker_level"] = userLevel
+		if userLevel != "" {
+			encoded, err := json.Marshal(userLevel)
+			if err != nil {
+				return nil, fmt.Errorf("encoding user level: %w", err)
+			}
+			currentSpeaker["current_speaker_level"] = encoded
 		}
 
 		b, err := json.Marshal(currentSpeaker)

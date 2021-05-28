@@ -72,13 +72,12 @@ func GetUserShortName(ds projector.Datastore, uid int) ([]byte, error) {
 }
 
 // GetUserLevel returns the structre level for user id as json.
-func GetUserLevel(ds projector.Datastore, uid int) ([]byte, error) {
+func GetUserLevel(ds projector.Datastore, uid int) (string, error) {
 	var user struct {
-		Level json.RawMessage `json:"structure_level"`
+		Level string `json:"structure_level"`
 	}
-
 	if err := ds.Get("users/user", uid, &user); err != nil {
-		return nil, projector.NewClientError("users/user with id %d does not exist", uid)
+		return "", projector.NewClientError("users/user with id %d does not exist", uid)
 	}
 
 	return user.Level, nil
@@ -96,7 +95,7 @@ func GetUserName(ds projector.Datastore, uid int) ([]byte, error) {
 		return nil, fmt.Errorf("get user level: %w", err)
 	}
 
-	if structureLevel == nil {
+	if structureLevel == "" {
 		return shortName, nil
 	}
 

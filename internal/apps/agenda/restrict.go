@@ -99,11 +99,11 @@ func RestrictListOfSpeakers(r restricter.HasPermer) restricter.ElementFunc {
 		}
 
 		for _, speaker := range speakers {
-			var userId int
-			if err := json.Unmarshal(speaker["user_id"], &userId); err != nil {
+			var userID int
+			if err := json.Unmarshal(speaker["user_id"], &userID); err != nil {
 				return nil, fmt.Errorf("decoding speaker: %w", err)
 			}
-			if uid == userId {
+			if uid == userID {
 				continue
 			}
 			delete(speaker, "note")
