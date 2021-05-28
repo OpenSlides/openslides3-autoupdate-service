@@ -424,11 +424,11 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 			return nil, fmt.Errorf("getting current list of speakers: %w", err)
 		}
 
-		var current []byte
-		var userLevel string
+		var currentName []byte
+		var userLevel []byte
 		for _, speaker := range los.Speakers {
 			if !bytes.Equal(speaker.BeginTime, []byte("null")) && bytes.Equal(speaker.EndTime, []byte("null")) {
-				current, err = user.GetUserName(ds, speaker.UserID)
+				currentName, err = user.GetUserName(ds, speaker.UserID)
 				userLevel, err = user.GetUserLevel(ds, speaker.UserID)
 				if err != nil {
 					return nil, fmt.Errorf("getting username: %w", err)
@@ -437,12 +437,12 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 			}
 		}
 
-		if userName != nil {
-			currentSpeaker["current_speaker_name"] = []byte(`"` + userName + `"`)
+		if currentName != nil {
+			currentSpeaker["current_speaker_name"] = currentName
 		}
 
-		if userLevel != "" {
-			currentSpeaker["current_speaker_level"] = []byte(`"` + userLevel + `"`)
+		if userLevel != nil {
+			currentSpeaker["current_speaker_level"] = userLevel
 		}
 
 		b, err := json.Marshal(currentSpeaker)
