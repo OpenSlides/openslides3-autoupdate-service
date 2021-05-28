@@ -453,7 +453,7 @@ func slideSubmitters(ds projector.Datastore, m *motion) (json.RawMessage, error)
 	sort.Slice(m.Submitters, func(i, j int) bool {
 		return m.Submitters[i].Weight < m.Submitters[j].Weight
 	})
-	submitters := make([]string, len(m.Submitters))
+	submitters := make([]json.RawMessage, len(m.Submitters))
 	for i, s := range m.Submitters {
 		username, err := user.GetUserName(ds, s.UserID)
 		if err != nil {

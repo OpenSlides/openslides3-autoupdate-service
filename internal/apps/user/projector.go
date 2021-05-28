@@ -35,21 +35,22 @@ func Slide() projector.CallableFunc {
 			return nil, fmt.Errorf("get username: %w", err)
 		}
 
-		return []byte(fmt.Sprintf(`{"user":"%s"}`, name)), nil
+		return []byte(fmt.Sprintf(`{"user":%s}`, name)), nil
 	}
 }
 
 // GetUserShortName returns the short display name for an user id (name without structure_level)
-func GetUserShortName(ds projector.Datastore, uid int) (string, error) {
+func GetUserShortName(ds projector.Datastore, uid int) ([]byte, error) {
 	var user struct {
 		Username  string `json:"username"`
 		Title     string `json:"title"`
 		FirstName string `json:"first_name"`
 		LastName  string `json:"last_name"`
+		Level     string `json:"structure_level"`
 	}
 
 	if err := ds.Get("users/user", uid, &user); err != nil {
-		return "", projector.NewClientError("users/user with id %d does not exist", uid)
+		return nil, projector.NewClientError("users/user with id %d does not exist", uid)
 	}
 
 	parts := func(sp ...string) []string {
@@ -64,18 +65,17 @@ func GetUserShortName(ds projector.Datastore, uid int) (string, error) {
 	}(user.Title, user.FirstName, user.LastName)
 
 	if len(parts) == 0 {
-		return user.Username, nil
+		return json.Marshal(user.Username)
 	}
 
-	return strings.Join(parts, " "), nil
+	return json.Marshal(strings.Join(parts, " "))
 }
 
-// GetUserLevel returns the structre level for user id.
+// GetUserLevel returns the structre level for user id as json.
 func GetUserLevel(ds projector.Datastore, uid int) (string, error) {
 	var user struct {
 		Level string `json:"structure_level"`
 	}
-
 	if err := ds.Get("users/user", uid, &user); err != nil {
 		return "", projector.NewClientError("users/user with id %d does not exist", uid)
 	}
@@ -84,17 +84,31 @@ func GetUserLevel(ds projector.Datastore, uid int) (string, error) {
 }
 
 // GetUserName returns the display name for an user id.
-func GetUserName(ds projector.Datastore, uid int) (string, error) {
-	shotName, err := GetUserShortName(ds, uid)
+func GetUserName(ds projector.Datastore, uid int) ([]byte, error) {
+	shortName, err := GetUserShortName(ds, uid)
 	if err != nil {
-		return "", fmt.Errorf("getting short name: %w", err)
+		return nil, fmt.Errorf("getting short name: %w", err)
 	}
 
-	structureLevel, _ := GetUserLevel(ds, uid)
-
-	if structureLevel != "" {
-		return fmt.Sprintf("%s (%s)", shotName, structureLevel), nil
+	structureLevel, err := GetUserLevel(ds, uid)
+	if err != nil {
+		return nil, fmt.Errorf("get user level: %w", err)
 	}
 
-	return shotName, nil
+	if structureLevel == "" {
+		return shortName, nil
+	}
+
+	var decoded string
+	if err := json.Unmarshal(shortName, &decoded); err != nil {
+		return nil, fmt.Errorf("decoding short name: %w", err)
+	}
+	decoded = fmt.Sprintf("%s (%s)", decoded, structureLevel)
+
+	shortName, err = json.Marshal(decoded)
+	if err != nil {
+		return nil, fmt.Errorf("encoding short name: %w", err)
+	}
+
+	return shortName, nil
 }
