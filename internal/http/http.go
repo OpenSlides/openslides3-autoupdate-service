@@ -102,6 +102,7 @@ func Projector(mux *http.ServeMux, auto *autoupdate.Autoupdate, auth Auther) {
 		}
 
 		w.WriteHeader(http.StatusOK)
+		fmt.Fprintln(w, `{"connected":true}`)
 		w.(http.Flusher).Flush()
 
 		encoder := json.NewEncoder(w)
@@ -145,6 +146,7 @@ func Notify(mux *http.ServeMux, n *notify.Notify, auther Auther) {
 		tid := n.LastID()
 
 		w.WriteHeader(http.StatusOK)
+		fmt.Fprintln(w, `{"connected":true}`)
 
 		if _, err := fmt.Fprintf(w, `{"channel_id": "%s"}`, cid); err != nil {
 			return noStatusCodeError{err}
