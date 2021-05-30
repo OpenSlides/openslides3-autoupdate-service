@@ -41,7 +41,7 @@ func Slide() projector.CallableFunc {
 				return nil, fmt.Errorf("getting username: %w", err)
 			}
 
-			ru = append(ru, []byte(fmt.Sprintf(`{"user":"%s"}`, username)))
+			ru = append(ru, []byte(fmt.Sprintf(`{"user":%s}`, username)))
 		}
 		dru, err := json.Marshal(ru)
 		if err != nil {
@@ -132,7 +132,7 @@ func PollSlide() projector.CallableFunc {
 			}
 
 			data := map[string]interface{}{
-				"user": map[string]string{
+				"user": map[string]json.RawMessage{
 					"short_name": username,
 				},
 			}

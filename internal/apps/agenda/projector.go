@@ -159,7 +159,7 @@ func ListOfSpeakersSlide() projector.CallableFunc {
 }
 
 type formattedSpeaker struct {
-	User         string                  `json:"user"`
+	User         json.RawMessage         `json:"user"`
 	Marked       json.RawMessage         `json:"marked"`
 	PointOfOrder bool                    `json:"point_of_order"`
 	ProSpeech    *projector.OptionalBool `json:"pro_speech"`
@@ -424,11 +424,11 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 			return nil, fmt.Errorf("getting current list of speakers: %w", err)
 		}
 
-		var userName string
+		var currentName []byte
 		var userLevel string
 		for _, speaker := range los.Speakers {
 			if !bytes.Equal(speaker.BeginTime, []byte("null")) && bytes.Equal(speaker.EndTime, []byte("null")) {
-				userName, err = user.GetUserShortName(ds, speaker.UserID)
+				currentName, err = user.GetUserShortName(ds, speaker.UserID)
 				userLevel, err = user.GetUserLevel(ds, speaker.UserID)
 				if err != nil {
 					return nil, fmt.Errorf("getting username: %w", err)
@@ -437,12 +437,16 @@ func CurrentSpeakerChyronSlide() projector.CallableFunc {
 			}
 		}
 
-		if userName != "" {
-			currentSpeaker["current_speaker_name"] = []byte(`"` + userName + `"`)
+		if currentName != nil {
+			currentSpeaker["current_speaker_name"] = currentName
 		}
 
 		if userLevel != "" {
-			currentSpeaker["current_speaker_level"] = []byte(`"` + userLevel + `"`)
+			encoded, err := json.Marshal(userLevel)
+			if err != nil {
+				return nil, fmt.Errorf("encoding user level: %w", err)
+			}
+			currentSpeaker["current_speaker_level"] = encoded
 		}
 
 		b, err := json.Marshal(currentSpeaker)
