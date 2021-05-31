@@ -73,6 +73,7 @@ func Autoupdate(mux *http.ServeMux, auto *autoupdate.Autoupdate, auther Auther) 
 			}
 
 			if len(data) == 0 {
+				changeID = newChangeID
 				continue
 			}
 
