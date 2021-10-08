@@ -1,4 +1,4 @@
-FROM golang:1.17.1-alpine as builder
+FROM golang:1.17.2-alpine as builder
 LABEL maintainer="OpenSlides Team <info@openslides.com>"
 
 WORKDIR /root/
