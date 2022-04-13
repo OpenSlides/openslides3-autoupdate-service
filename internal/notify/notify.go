@@ -15,7 +15,7 @@ import (
 // Notify is a service to send messages between clients.
 type Notify struct {
 	backend          Backend
-	topic            *topic.Topic
+	topic            *topic.Topic[string]
 	closed           <-chan struct{}
 	cIDGen           cIDGen
 	applauser        Applauser
@@ -28,7 +28,7 @@ func New(backend Backend, applauser Applauser, applauseInterval int, closed <-ch
 		backend:          backend,
 		applauser:        applauser,
 		applauseInterval: applauseInterval,
-		topic:            topic.New(topic.WithClosed(closed)),
+		topic:            topic.New(topic.WithClosed[string](closed)),
 		closed:           closed,
 	}
 

@@ -20,7 +20,7 @@ type Projectors struct {
 	projectors map[int]json.RawMessage
 	closed     <-chan struct{}
 	callables  map[string]projector.Callable
-	topic      *topic.Topic
+	topic      *topic.Topic[string]
 	ds         projector.Datastore
 }
 
@@ -56,7 +56,7 @@ func (p *Projectors) Update(data map[string]json.RawMessage) error {
 	defer p.mu.Unlock()
 
 	if p.topic == nil {
-		p.topic = topic.New(topic.WithClosed(p.closed))
+		p.topic = topic.New(topic.WithClosed[string](p.closed))
 		p.projectors = make(map[int]json.RawMessage)
 	}
 
