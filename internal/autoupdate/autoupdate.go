@@ -21,7 +21,7 @@ type Autoupdate struct {
 	datastore  Datastore
 	restricter Restricter
 	closed     <-chan struct{}
-	topic      *topic.Topic
+	topic      *topic.Topic[string]
 
 	pccMu                    sync.Mutex
 	projectorConnectionCount int
@@ -33,7 +33,7 @@ func New(datastore Datastore, restricter Restricter, closed <-chan struct{}) (*A
 		datastore:  datastore,
 		closed:     closed,
 		restricter: restricter,
-		topic:      topic.New(topic.WithClosed(closed), topic.WithStartID(uint64(datastore.CurrentID()))),
+		topic:      topic.New(topic.WithClosed[string](closed), topic.WithStartID[string](uint64(datastore.CurrentID()))),
 	}
 
 	go func() {
@@ -152,7 +152,7 @@ func (a *Autoupdate) Projectors(ctx context.Context, tid uint64, pids []int) (nt
 
 func (a *Autoupdate) reset() {
 	oldTopic := a.topic
-	a.topic = topic.New(topic.WithClosed(a.closed), topic.WithStartID(uint64(a.datastore.CurrentID())))
+	a.topic = topic.New(topic.WithClosed[string](a.closed), topic.WithStartID[string](uint64(a.datastore.CurrentID())))
 
 	// Send an empty message on the old topic to wake up all clients.
 	oldTopic.Publish()
