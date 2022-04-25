@@ -7,7 +7,7 @@ RUN apk --no-cache add git
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN CGO_ENABLED=0 go build ./cmd/autoupdate
+RUN CGO_ENABLED=0 go build -buildvcs=false ./cmd/autoupdate
 
 # Development build.
 FROM builder as development
