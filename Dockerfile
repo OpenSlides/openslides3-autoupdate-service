@@ -15,9 +15,9 @@ FROM builder as development
 RUN mkdir -p /run/secrets
 RUN echo "DJANGO_SECRET_KEY='development'" > /run/secrets/django
 
-RUN ["go", "get", "github.com/githubnemo/CompileDaemon"]
+RUN ["go", "install", "github.com/githubnemo/CompileDaemon@latest"]
 EXPOSE 8002
-CMD CompileDaemon -log-prefix=false -build="go build ./cmd/autoupdate" -command="./autoupdate"
+CMD CompileDaemon -log-prefix=false -build="go build -buildvcs=false ./cmd/autoupdate" -command="./autoupdate"
 
 # Productive build
 FROM scratch
