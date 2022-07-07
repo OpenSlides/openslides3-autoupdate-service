@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/gomodule/redigo v1.8.8
+	github.com/gomodule/redigo v1.8.9
 	github.com/ostcar/topic v0.4.0
 )
 
