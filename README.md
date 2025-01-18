@@ -1,5 +1,14 @@
 # OpenSlides3 Autoupdate Service
 
+## ⚠️ Repository Archived
+
+This repository is archived because OpenSlides3 is no longer supported. The new
+version can be found here:
+https://github.com/OpenSlides/openslides-autoupdate-service/
+
+
+## Intoduction
+
 The OpenSlides3 autoupdate service is a messaging system for openslides 3.x.
 
 To work, the service needs running OpenSlides 3 instance. It reads the data from
